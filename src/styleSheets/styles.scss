@@ -1,0 +1,8 @@
+// import variables.scss
+@import "variables";
+@import "mixins";
+@import "./components/navBar";
+
+* {
+  font-size: $font-size-10;
+}
