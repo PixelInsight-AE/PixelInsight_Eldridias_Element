@@ -1,7 +1,110 @@
 * {
-  font-size: 3rem;
+  margin: 0;
+  padding: 0;
+  font-size: 1.25rem;
 }
 
-* {
+nav {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+}
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  color: #ffffff;
+}
+
+body {
+  background-image: url("/src/assets/images/heros/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+#homeScreen .hero {
+  background-image: url("path/to/hero-image.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+#homeScreen .hero #hero-content-wrapper {
+  max-width: 800px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+#homeScreen .hero #hero-content-wrapper h2 {
   font-size: 3rem;
+  margin-bottom: 1rem;
+}
+#homeScreen .hero #hero-content-wrapper p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+#homeScreen .hero #hero-content-wrapper button {
+  background-color: pink;
+  color: rgb(1, 0, 0);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+#homeScreen .hero #hero-content-wrapper button:hover {
+  background-color: #cc5500;
+}
+#homeScreen .features {
+  display: flex;
+  justify-content: space-between;
+  margin: 4rem 0;
+}
+#homeScreen .features .feature {
+  flex-basis: calc(50% - 1rem);
+  background-color: white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+}
+#homeScreen .features .feature h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+#homeScreen .features .feature p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+#homeScreen .features .feature button {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+#homeScreen .features .feature button:hover {
+  background-color: #cc5500;
+}
+#homeScreen .about {
+  background-color: #f2f2f2;
+  padding: 4rem;
+}
+#homeScreen .about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+#homeScreen .about p {
+  font-size: 1.2rem;
+  line-height: 1.5;
 }/*# sourceMappingURL=styles.css.map */
