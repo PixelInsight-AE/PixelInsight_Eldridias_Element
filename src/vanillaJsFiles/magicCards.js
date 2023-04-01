@@ -1,3 +1,4 @@
+import { MagicCard } from "../utils.js";
 const extraManaCard = (playerParty) => {
   let controller = playerParty[0];
   console.log(controller.mana);
@@ -35,39 +36,6 @@ const backFromTheDead = (playerParty) => {
     console.log("You are not dead");
   }
 };
-
-class MagicCard {
-  constructor(
-    id,
-    name,
-    descriptions,
-    keyWords,
-    rarity,
-    cardLevel,
-    maxCardLevel,
-    imgUrl,
-    effect,
-    manaCost,
-    duration,
-    healpower,
-    elementType
-  ) {
-    this.id = id;
-    this.name = name;
-    this.descriptions = descriptions;
-    this.keyWords = keyWords;
-    this.rarity = rarity;
-    this.cardLevel = cardLevel;
-    this.maxCardLevel = maxCardLevel;
-    this.imgUrl = imgUrl;
-    this.effect = effect;
-    this.manaCost = manaCost;
-    this.duration = duration;
-    this.healpower = healpower;
-    this.elementType = elementType;
-  }
-}
-
 const healthBoost = new MagicCard(
   1, //id
   "Health Boost", //name
@@ -83,7 +51,6 @@ const healthBoost = new MagicCard(
   100,
   "Magic"
 );
-
 const extraMana = new MagicCard(
   2,
   "Extra Mana",
@@ -99,7 +66,6 @@ const extraMana = new MagicCard(
   0,
   "Magic"
 );
-
 const revive = new MagicCard(
   3,
   "Revive",
@@ -115,7 +81,6 @@ const revive = new MagicCard(
   0,
   "Magic"
 );
-
 const extraAttack = new MagicCard(
   4,
   "Extra Attack",
@@ -131,5 +96,4 @@ const extraAttack = new MagicCard(
   0,
   "Magic"
 );
-
 export { healthBoost, extraMana, revive, extraAttack };

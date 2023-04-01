@@ -14,7 +14,7 @@ const bulwark = new Hero(
   1, //specialAttackCost
   200, //specialAttackPower
   true, //canRegularAttack
-  "https://i.pinimg.com", //imgUrl
+  "https://i.imgur.com/OEIQ1ee.png", //imgUrl
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -36,7 +36,7 @@ const hogarth = new Hero(
   1,
   100,
   true,
-  "https://i.pinimg.com",
+  "https://i.imgur.com/N4X30zf.png",
   1,
   100,
   0,
@@ -58,7 +58,7 @@ const beastMaster = new Hero(
   1,
   200,
   true,
-  "https://i.pinimg.com",
+  "https://i.imgur.com/IMAhrX8.png",
   1,
   100,
   0,
@@ -80,7 +80,7 @@ const sorceress = new Hero(
   1,
   200,
   true,
-  "https://i.pinimg.com",
+  "https://i.imgur.com/cLQfh6c.png",
   1,
   100,
   0,

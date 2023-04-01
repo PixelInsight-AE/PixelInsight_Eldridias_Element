@@ -1,37 +1,4 @@
-class ElementCard {
-  constructor(
-    id,
-    name,
-    descriptions,
-    keyWords,
-    elementType,
-    attackPower,
-    defense,
-    manaCost,
-    effect,
-    healpower,
-    rarity,
-    cardLevel,
-    maxCardLevel,
-    duration,
-    imgUrl
-  ) {
-    this.id = id;
-    this.name = name;
-    this.descriptions = descriptions;
-    this.elementType = elementType;
-    this.attackPower = attackPower;
-    this.defense = defense;
-    this.manaCost = manaCost;
-    this.effect = effect;
-    this.healpower = healpower;
-    this.rarity = rarity;
-    this.cardLevel = cardLevel;
-    this.maxCardLevel = maxCardLevel;
-    this.duration = duration;
-    this.imgUrl = imgUrl;
-  }
-}
+import { ElementCard } from "../utils.js";
 
 const waterCard = new ElementCard(
   501,

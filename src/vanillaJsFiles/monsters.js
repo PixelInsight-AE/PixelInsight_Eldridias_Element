@@ -1,32 +1,5 @@
-class Monster {
-  constructor(
-    name,
-    description,
-    message,
-    elementType,
-    role,
-    attackPower,
-    defense,
-    mana,
-    health,
-    maxHealth,
-    flag,
-    imgUrl
-  ) {
-    this.name = name;
-    this.description = description;
-    this.message = message;
-    this.elementType = elementType;
-    this.role = role;
-    this.attackPower = attackPower;
-    this.defense = defense;
-    this.mana = mana;
-    this.health = health;
-    this.maxHealth = maxHealth;
-    this.flag = flag;
-    this.imgUrl = imgUrl;
-  }
-}
+import { Monster } from "../utils.js";
+
 const wizard = new Monster(
   "Wizard of the North",
   "A powerful mage that can deal massive damage.",
