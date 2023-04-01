@@ -1,7 +1,10 @@
 import { NavBar } from "../NavBar";
+import { useState } from "react";
 
 const Party = (props) => {
-  // const [currentHero, setCurrentHero] = useState(props.party[props.party.length - 1]);
+  const [currentHero, setCurrentHero] = useState(
+    props.party[props.party.length - 1]
+  );
   return (
     <div id="party">
       {props.party.map((hero) => {
@@ -67,4 +70,4 @@ const MainHome = (props) => {
   );
 };
 
-export { MainHome };
+export { MainHome, Party, HeroCard };
