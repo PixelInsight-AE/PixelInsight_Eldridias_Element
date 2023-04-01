@@ -1,6 +1,33 @@
-const MainHome = () => {
+import { NavBar } from "../NavBar";
+
+const Party = (props) => {
+  // const [currentHero, setCurrentHero] = useState(props.party[props.party.length - 1]);
+  return (
+    <div id="party">
+      {props.party.map((hero) => {
+        return <HeroCard {...hero} />;
+      })}
+    </div>
+  );
+};
+
+const HeroCard = (props) => {
+  return (
+    <div key={props.name} className="hero">
+      <div className="heroName">{props.name}</div>
+      <div className="heroHealth">{props.health}</div>
+      <div className="heroImg">
+        <img src={props.imgUrl} alt="" />
+      </div>
+      <div className="heroType">{props.elementType}</div>
+    </div>
+  );
+};
+
+const MainHome = (props) => {
   return (
     <main id="homeScreen">
+      <NavBar />
       <section className="hero">
         <div id="hero-content-wrapper">
           <h2>Eldridia's Element</h2>
@@ -35,6 +62,7 @@ const MainHome = () => {
           hands.
         </p>
       </section>
+      <Party party={props.party} />
     </main>
   );
 };

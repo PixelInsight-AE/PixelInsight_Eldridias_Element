@@ -107,4 +107,30 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+}
+
+#party {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: scroll;
+}
+#party .hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 1rem;
+  height: 300px;
+  width: 250px;
+  margin: 1rem;
+  color: whitesmoke;
+}
+#party .hero img {
+  padding: 0.25rem;
+  height: 200px;
+  width: 200px;
+  border-radius: 1rem;
 }/*# sourceMappingURL=styles.css.map */

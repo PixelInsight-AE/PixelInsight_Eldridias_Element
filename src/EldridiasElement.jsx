@@ -23,12 +23,13 @@ function EldridiasElement() {
 
   return (
     <div className="App">
-      <MainHome />
-      {/*  <GameBoard /> */}
+      <>
+        <MainHome party={party} />
+      </>
     </div>
   );
 }
 
 export default EldridiasElement;
 
-// party and set party hook
+// party and set party hoo

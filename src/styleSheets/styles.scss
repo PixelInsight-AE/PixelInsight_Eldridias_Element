@@ -11,3 +11,30 @@ body {
   background-repeat: no-repeat;
   height: 100vh;
 }
+
+#party {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  overflow: scroll;
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba($color: #000000, $alpha: 0.5);
+    border-radius: $border-radius-4;
+    height: 300px;
+    width: 250px;
+    margin: $margin-4;
+    color: whitesmoke;
+    img {
+      padding: $padding-1;
+      height: 200px;
+      width: 200px;
+      border-radius: $border-radius-4;
+    }
+  }
+}

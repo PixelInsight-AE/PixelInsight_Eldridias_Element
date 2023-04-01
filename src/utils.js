@@ -18,7 +18,7 @@ class Hero {
     maxHeroLevel,
     heroExperience,
     maxAttackPower,
-    modifier
+    id
   ) {
     this.name = name;
     this.attackPower = attackPower;
@@ -38,7 +38,7 @@ class Hero {
     this.maxHeroLevel = maxHeroLevel;
     this.heroExperience = heroExperience;
     this.maxAttackPower = maxAttackPower;
-    this.modifier = modifier;
+    this.id = id;
   }
 }
 

@@ -7,7 +7,7 @@ import { compareElements } from "./helpers.js";
 
 //! PLAYER OBJECT
 const controller = {
-  PlayerName: "Arno",
+  name: "Arno",
   mana: 5,
   isTurn: true,
   canPlayCard: true,
@@ -25,6 +25,7 @@ const controller = {
     extraAttack,
   ],
   effect: [],
+  imgUrl: "https://i.imgur.com/ej7j6r0.jpeg",
 
   selectCard: function (party, level) {
     if (this.canPlayCard === true) {
