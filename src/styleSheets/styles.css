@@ -17,14 +17,6 @@ nav ul {
   list-style: none;
 }
 
-body {
-  background-image: url("/src/assets/images/heros/hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-}
-
 #homeScreen .hero {
   background-image: url("path/to/hero-image.jpg");
   background-size: cover;
@@ -107,4 +99,12 @@ body {
 #homeScreen .about p {
   font-size: 1.2rem;
   line-height: 1.5;
+}
+
+body {
+  background-image: url("/src/assets/images/heros/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }/*# sourceMappingURL=styles.css.map */
