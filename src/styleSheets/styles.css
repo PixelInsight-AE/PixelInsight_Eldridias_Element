@@ -101,14 +101,6 @@ nav ul {
   line-height: 1.5;
 }
 
-body {
-  background-image: url("/src/assets/images/heros/hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-}
-
 #party {
   display: flex;
   justify-content: center;
@@ -133,4 +125,47 @@ body {
   height: 200px;
   width: 200px;
   border-radius: 1rem;
+}
+
+#home-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+}
+#home-header button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#home-header button:hover {
+  background-color: #0062cc;
+}
+#home-header #signUp-btn {
+  background-color: #28a745;
+}
+#home-header #signUp-btn:hover {
+  background-color: #218838;
+}
+#home-header #login-btn {
+  background-color: #dc3545;
+}
+#home-header #login-btn:hover {
+  background-color: #c82333;
+}
+
+body {
+  background-image: url("/src/assets/images/heros/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }/*# sourceMappingURL=styles.css.map */

@@ -83,3 +83,70 @@
     }
   }
 }
+
+#party {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  overflow: scroll;
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba($color: #000000, $alpha: 0.5);
+    border-radius: $border-radius-4;
+    height: 300px;
+    width: 250px;
+    margin: $margin-4;
+    color: whitesmoke;
+    img {
+      padding: $padding-1;
+      height: 200px;
+      width: 200px;
+      border-radius: $border-radius-4;
+    }
+  }
+}
+
+#home-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  padding: $padding-4;
+  button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #0062cc;
+    }
+  }
+
+  #signUp-btn {
+    background-color: #28a745;
+
+    &:hover {
+      background-color: #218838;
+    }
+  }
+
+  #login-btn {
+    background-color: #dc3545;
+
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+}

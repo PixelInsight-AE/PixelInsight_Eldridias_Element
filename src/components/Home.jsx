@@ -1,6 +1,30 @@
 import { NavBar } from "../NavBar";
 import { useState } from "react";
 
+const Header = () => {
+  return (
+    <header id="home-header">
+      <button id="signUp-btn">sign up!</button>
+      <button id="login-btn">log in!</button>
+    </header>
+  );
+};
+
+const Hero = (props) => {
+  return (
+    <section className="hero">
+      <div id="hero-content-wrapper">
+        <h2>Eldridia's Element</h2>
+        <p>
+          Enter a world of magic and adventure, where you can collect and trade
+          powerful cards featuring epic heroes and fearsome monsters.
+        </p>
+        <button>Play Now!</button>
+      </div>
+    </section>
+  );
+};
+
 const Party = (props) => {
   const [currentHero, setCurrentHero] = useState(
     props.party[props.party.length - 1]
@@ -30,17 +54,8 @@ const HeroCard = (props) => {
 const MainHome = (props) => {
   return (
     <main id="homeScreen">
-      <NavBar />
-      <section className="hero">
-        <div id="hero-content-wrapper">
-          <h2>Eldridia's Element</h2>
-          <p>
-            Enter a world of magic and adventure, where you can collect and
-            trade powerful cards featuring epic heroes and fearsome monsters.
-          </p>
-          <button>Play Now!</button>
-        </div>
-      </section>
+      <Header />
+      <Hero />
       <section className="features">
         <div className="feature">
           <h3>Cards</h3>
