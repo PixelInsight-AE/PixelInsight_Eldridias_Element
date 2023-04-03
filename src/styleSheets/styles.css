@@ -147,10 +147,10 @@ nav ul {
 
 #party {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
-  overflow: auto;
+  overflow: scroll;
 }
 #party .hero {
   display: flex;
@@ -232,13 +232,6 @@ body {
 }
 .overview-container h1 {
   font-size: 2rem;
-}
-
-.party-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
 }
 
 .hero-card {

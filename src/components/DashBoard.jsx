@@ -35,17 +35,7 @@ const OverView = () => {
 
         {/* Needs to be changed to party after that component is made */}
         <h2>Current Party</h2>
-        <div className="party-container">
-          {heroList.slice(0, 5).map((hero) => (
-            <div key={hero.name} className="hero-card">
-              <div>{hero.name}</div>
-              <img src={hero.imgUrl} alt="" />
-              <div className="hero-info">
-                <div>Level {hero.heroLevel}</div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <div className="party-container"></div>
 
         <div className="achievements-container">
           <h2>Achievements</h2>
@@ -129,6 +119,11 @@ const Shop = () => {
 // ! For now I simply placed a back button to navigate back to the landing page.
 // ? Navbar will be added to each component later.
 const Dashboard = () => {
+  const [tank, setTank] = useState({});
+  const [melee, setMelee] = useState({});
+  const [ranged, setRanged] = useState({});
+  const [healer, setHealer] = useState({});
+  const [party, setParty] = useState([tank, melee, ranged, healer]);
   return <OverView />;
 };
 
