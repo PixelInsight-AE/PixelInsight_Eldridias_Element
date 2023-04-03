@@ -1,5 +1,6 @@
 import { NavBar } from "../NavBar";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -64,7 +65,7 @@ const Party = (props) => {
   return (
     <div id="party">
       {props.party.map((hero) => {
-        return <HeroCard {...hero} />;
+        return <HeroCard key={hero.name} {...hero} />;
       })}
     </div>
   );
@@ -74,7 +75,7 @@ const HeroCard = (props) => {
   return (
     <div key={props.name} className="hero">
       <div className="heroName">{props.name}</div>
-      <div className="heroLevel">{props.level}</div>
+      <div className="heroLevel">{props.heroLevel}</div>
       <div className="heroImg">
         <img src={props.imgUrl} alt="" />
       </div>
