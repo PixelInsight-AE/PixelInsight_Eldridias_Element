@@ -129,6 +129,11 @@ const Shop = () => {
 // ! For now I simply placed a back button to navigate back to the landing page.
 // ? Navbar will be added to each component later.
 const Dashboard = () => {
+  const [tank, setTank] = useState({});
+  const [melee, setMelee] = useState({});
+  const [ranged, setRanged] = useState({});
+  const [healer, setHealer] = useState({});
+  const [party, setParty] = useState([tank, melee, ranged, healer]);
   return <OverView />;
 };
 
