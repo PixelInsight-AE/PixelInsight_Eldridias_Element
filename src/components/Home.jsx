@@ -20,7 +20,10 @@ const Hero = (props) => {
           Enter a world of magic and adventure, where you can collect and trade
           powerful cards featuring epic heroes and fearsome monsters.
         </p>
-        <button>Play Now!</button>
+        <Link to="/dashboard">
+          {/* // ! Links are working anywhere you import them!  */}
+          <button>Play Now!</button>
+        </Link>
       </div>
     </section>
   );
