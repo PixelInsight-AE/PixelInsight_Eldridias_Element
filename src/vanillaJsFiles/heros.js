@@ -52,7 +52,7 @@ const beastMaster = new Hero(
   false, //flag
   3400, //defense
   "A powerful warrior that can deal massive damage.", //description
-  "Damage", //role
+  "Ranged", //role
   "Earth", //elementType
   "Call of the Wild", //specialAttackName
   1, //specialAttackCost
@@ -74,7 +74,7 @@ const sorceress = new Hero(
   false, //flag
   2400, //defense
   "A powerful mage that can deal massive damage.", //description
-  "Damage", //role
+  "Ranged", //role
   "Fire", //elementType
   "Fireball", //specialAttackName
   1, //specialAttackCost
@@ -140,7 +140,7 @@ const gunslinger = new Hero(
   false, //flag
   1000, //defense
   "A quick and deadly marksman that can shoot down enemies from afar.", //description
-  "Damage", //role
+  "Ranged", //role
   "Fire", //elementType
   "Trick Shot", //specialAttackName
   1, //specialAttackCost
@@ -184,7 +184,7 @@ const shadow = new Hero(
   false, //flag
   1500, //defense
   "A rogue that can deal high damage and evade attacks.", //description
-  "Damage", //role
+  "Melee", //role
   "Water", //elementType
   "Shadow Strike", //specialAttackName
   2, //specialAttackCost
@@ -228,7 +228,7 @@ const storm = new Hero(
   false, //flag
   2000, //defense
   "A skilled fighter that can manipulate lightning.", //description
-  "Damage", //role
+  "Melee", //role
   "Air", //elementType
   "Thunderbolt", //specialAttackName
   2, //specialAttackCost
@@ -250,7 +250,7 @@ const nightshade = new Hero(
   false, //flag
   1800, //defense
   "A skilled assassin that can inflict poison damage.", //description
-  "Damage", //role
+  "Melee", //role
   "Earth", //elementType
   "Venom Strike", //specialAttackName
   1, //specialAttackCost

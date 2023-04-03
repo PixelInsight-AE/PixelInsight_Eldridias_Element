@@ -6,7 +6,6 @@ import {
   dragon,
   spider,
   slime,
-  zombie,
   blackKnight,
 } from "./monsters.js";
 
@@ -43,7 +42,6 @@ const checkMana = (playerParty, card) => {
     );
   }
 };
-
 
 // ! Function to compare elements
 const compareElements = (playerParty, card) => {

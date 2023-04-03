@@ -3,7 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import { NavBar } from "./NavBar.jsx";
 import { heroList } from "../vanillaJsFiles/heros.js";
 
-const OverView = () => {
+const OverView = (props) => {
   const [currentLevel, setCurrentLevel] = useState(1);
   const [currency, setCurrency] = useState(500);
   const [achievements, setAchievements] = useState([
@@ -68,14 +68,76 @@ const OverView = () => {
   );
 };
 
-const Party = () => {
+const Party = (props) => {
+  const handlePartySelect = (hero) => {
+    console.log("clicked");
+    if (hero.role === "Tank") {
+      setTank(hero);
+      console.log(tank);
+    }
+  };
+
   return (
     <div>
       <NavBar />
       <h1>Party</h1>
-      <Link to="/dashboard">
-        <button>Back</button>
-      </Link>
+      <div id="party-select-container">
+        <div className="tank-select">
+          <h1>Tank</h1>
+          <div
+            id="tank-select"
+            style={{ border: props.tank && "1px solid #000" }}
+          >
+            {props.tank}
+          </div>
+        </div>
+        <div className="melee-select">
+          <h1>Melee</h1>
+          <div
+            id="melee-select"
+            style={{ border: props.melee && "1px solid #000" }}
+          >
+            {props.melee}
+          </div>
+        </div>
+        <div className="ranged-select">
+          <h1>Ranged</h1>
+          <div
+            id="ranged-select"
+            style={{ border: props.ranged && "1px solid #000" }}
+          >
+            {props.ranged}
+          </div>
+        </div>
+        <div className="healer-select">
+          <h1>Healer</h1>
+          <div
+            id="healer-select"
+            style={{ border: props.healer && "1px solid #000" }}
+          >
+            {props.healer}
+          </div>
+        </div>
+      </div>
+      <div id="available-heros">
+        <h2>Available Heros</h2>
+        <div id="hero-list">
+          {heroList.map((hero) => (
+            <div
+              className="hero-card"
+              onClick={() => handlePartySelect(hero)}
+              key={hero.name}
+            >
+              <div className="hero-image">
+                <img src={hero.image} alt={hero.name} />
+              </div>
+            </div>
+          ))}
+        </div>
+        <Link to="/dashboard">
+          <button>Back</button>
+        </Link>
+      </div>
     </div>
   );
 };
