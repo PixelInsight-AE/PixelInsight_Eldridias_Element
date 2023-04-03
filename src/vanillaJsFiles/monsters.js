@@ -12,7 +12,9 @@ const wizard = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com"
+  "https://i.pinimg.com",
+  1,
+  []
 );
 const goblin = new Monster(
   "Goble",
@@ -26,7 +28,9 @@ const goblin = new Monster(
   100,
   100,
   false,
-  "https://i.pinimg.com"
+  "https://i.pinimg.com",
+  1,
+  []
 );
 const dragon = new Monster(
   "Dragon",
@@ -40,7 +44,9 @@ const dragon = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com"
+  "https://i.pinimg.com",
+  1,
+  []
 );
 const skeleton = new Monster(
   "Skeleton",
@@ -54,7 +60,9 @@ const skeleton = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com"
+  "https://i.pinimg.com",
+  1,
+  []
 );
 const orc = new Monster(
   "Orc",
@@ -68,7 +76,9 @@ const orc = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com"
+  "https://i.pinimg.com",
+  1,
+  []
 );
 const spider = new Monster(
   "Spider",
@@ -82,7 +92,9 @@ const spider = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com"
+  "https://i.pinimg.com",
+  1,
+  []
 );
 const slime = new Monster(
   "Slime",
@@ -95,9 +107,12 @@ const slime = new Monster(
   100,
   200,
   200,
-  false
+  false,
+  "https://i.pinimg.com",
+  1,
+  []
 );
-const zombie = new Monster(
+const blackWasp = new Monster(
   "Zombie",
   "A powerful zombie that can deal massive damage.",
   "I'll be baaaaacccckkkk aaarrrg!",
@@ -109,7 +124,9 @@ const zombie = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com"
+  "https://i.pinimg.com",
+  1,
+  []
 );
 const blackKnight = new Monster(
   "Black Knight",
@@ -123,7 +140,10 @@ const blackKnight = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com"
+  "https://i.pinimg.com",
+
+  1,
+  []
 );
 
 export {
@@ -134,6 +154,6 @@ export {
   dragon,
   spider,
   slime,
-  zombie,
+  blackWasp,
   blackKnight,
 };
