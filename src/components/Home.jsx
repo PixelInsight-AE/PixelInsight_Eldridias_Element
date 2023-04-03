@@ -1,4 +1,4 @@
-import { NavBar } from "../NavBar";
+import { NavBar } from "./NavBar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { heroList } from "../vanillaJsFiles/heros";
@@ -88,7 +88,7 @@ const PlayingCard = (props) => {
   );
 };
 
-const MainHome = (props) => {
+const Home = (props) => {
   return (
     <main id="homeScreen">
       <Header />
@@ -100,7 +100,7 @@ const MainHome = (props) => {
   );
 };
 
-export { MainHome, Header, Hero, HeroDivider, SubHero, CardExamples };
+export { Home, Header, Hero, HeroDivider, SubHero, CardExamples };
 
 /**
  * TODO: Also display element cards on the scrollable row
