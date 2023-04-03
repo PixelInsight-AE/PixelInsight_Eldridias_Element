@@ -88,4 +88,6 @@ const sorceress = new Hero(
   4 //id
 );
 
-export { bulwark, hogarth, beastMaster, sorceress };
+const heroList = [bulwark, hogarth, beastMaster, sorceress];
+
+export { bulwark, hogarth, beastMaster, sorceress, heroList };

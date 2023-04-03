@@ -1,38 +1,29 @@
 import { useState, useEffect, useRef } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { NavBar } from "./NavBar.jsx";
+import { Routes, Route, Link } from "react-router-dom";
 import { controller } from "./vanillaJsFiles/controller.js";
-import {
-  bulwark,
-  hogarth,
-  sorceress,
-  beastMaster,
-} from "./vanillaJsFiles/heros.js";
-import { MainHome } from "./components/Home.jsx";
 
-const Dashboard = () => {
-  return (
-    <div>
-      <h1>Dashboard</h1>
-    </div>
-  );
-};
+import { Home } from "./components/Home.jsx";
+import {
+  Dashboard,
+  Party,
+  Deck,
+  Catalog,
+  Shop,
+  OverView,
+} from "./components/DashBoard.jsx";
 
 function EldridiasElement() {
-  const [party, setParty] = useState([
-    controller,
-    bulwark,
-    hogarth,
-    sorceress,
-    beastMaster,
-  ]);
-
-  console.log(party[party.length - 1].name);
-
+  // ! Like our error said, in V6 we need to nest all Route elements inside of a Routes component.
   return (
-    <div id="app">
-      <MainHome party={party} />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard/overview" element={<OverView />} />
+      <Route path="/dashboard/party" element={<Party />} />
+      <Route path="/dashboard/deck" element={<Deck />} />
+      <Route path="/dashboard/catalog" element={<Catalog />} />
+      <Route path="/dashboard/shop" element={<Shop />} />
+    </Routes>
   );
 }
 

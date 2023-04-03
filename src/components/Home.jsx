@@ -1,6 +1,7 @@
-import { NavBar } from "../NavBar";
+import { NavBar } from "./NavBar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { heroList } from "../vanillaJsFiles/heros";
 
 const Header = () => {
   return (
@@ -20,7 +21,10 @@ const Hero = (props) => {
           Enter a world of magic and adventure, where you can collect and trade
           powerful cards featuring epic heroes and fearsome monsters.
         </p>
-        <button>Play Now!</button>
+        <Link to="/dashboard">
+          {/* // ! Links are working anywhere you import them!  */}
+          <button>Play Now!</button>
+        </Link>
       </div>
     </section>
   );
@@ -58,20 +62,17 @@ const SubHero = (props) => {
   );
 };
 
-const Party = (props) => {
-  const [currentHero, setCurrentHero] = useState(
-    props.party[props.party.length - 1]
-  );
+const CardExamples = (props) => {
   return (
     <div id="party">
-      {props.party.map((hero) => {
-        return <HeroCard key={hero.name} {...hero} />;
+      {heroList.map((hero) => {
+        return <PlayingCard key={hero.name} {...hero} />;
       })}
     </div>
   );
 };
 
-const HeroCard = (props) => {
+const PlayingCard = (props) => {
   return (
     <div key={props.name} className="hero">
       <div className="heroName">{props.name}</div>
@@ -87,19 +88,19 @@ const HeroCard = (props) => {
   );
 };
 
-const MainHome = (props) => {
+const Home = (props) => {
   return (
     <main id="homeScreen">
       <Header />
       <Hero />
       <HeroDivider />
       <SubHero />
-      <Party party={props.party} />
+      <CardExamples />
     </main>
   );
 };
 
-export { MainHome, Party, HeroCard };
+export { Home, Header, Hero, HeroDivider, SubHero, CardExamples };
 
 /**
  * TODO: Also display element cards on the scrollable row
