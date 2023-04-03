@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { NavBar } from "./NavBar.jsx";
 import { controller } from "./vanillaJsFiles/controller.js";
 import {
@@ -9,6 +9,14 @@ import {
   beastMaster,
 } from "./vanillaJsFiles/heros.js";
 import { MainHome } from "./components/Home.jsx";
+
+const Dashboard = () => {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+    </div>
+  );
+};
 
 function EldridiasElement() {
   const [party, setParty] = useState([
@@ -22,10 +30,8 @@ function EldridiasElement() {
   console.log(party[party.length - 1].name);
 
   return (
-    <div className="App">
-      <>
-        <MainHome party={party} />
-      </>
+    <div id="app">
+      <MainHome party={party} />
     </div>
   );
 }
