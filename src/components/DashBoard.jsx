@@ -35,17 +35,7 @@ const OverView = () => {
 
         {/* Needs to be changed to party after that component is made */}
         <h2>Current Party</h2>
-        <div className="party-container">
-          {heroList.slice(0, 5).map((hero) => (
-            <div key={hero.name} className="hero-card">
-              <div>{hero.name}</div>
-              <img src={hero.imgUrl} alt="" />
-              <div className="hero-info">
-                <div>Level {hero.heroLevel}</div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <div className="party-container"></div>
 
         <div className="achievements-container">
           <h2>Achievements</h2>
