@@ -62,35 +62,6 @@ const SubHero = (props) => {
   );
 };
 
-/* const Party = (props) => {
-  const [currentHero, setCurrentHero] = useState(
-    props.party[props.party.length - 1]
-  );
-  return (
-    <div id="party">
-      {props.party.map((hero) => {
-        return <HeroCard key={hero.name} {...hero} />;
-      })}
-    </div>
-  );
-};
-
-const HeroCard = (props) => {
-  return (
-    <div key={props.name} className="hero">
-      <div className="heroName">{props.name}</div>
-      <div className="heroLevel">{props.heroLevel}</div>
-      <div className="heroImg">
-        <img src={props.imgUrl} alt="" />
-      </div>
-      <div className="heroType">{props.elementType}</div>
-      <div className="heroActions">
-        <button className="heroActionBtn">Equip Gear</button>
-      </div>
-    </div>
-  );
-}; */
-
 const CardExamples = (props) => {
   return (
     <div id="party">
