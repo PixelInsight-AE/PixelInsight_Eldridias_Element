@@ -1,12 +1,31 @@
+import { Link } from "react-router-dom";
+
 function NavBar() {
   return (
-    <nav>
-      <ul>
-        <li>Cards/Hero's</li>
-        <li>Play Now!</li>
-        <li>Settings</li>
-      </ul>
-    </nav>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/dashboard/overview">OverView</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/party">Party</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/deck">Deck</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/catalog">Catalog</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/shop">Shop</Link>
+          </li>
+        </ul>
+      </nav>
+      <Link to="/">
+        <button>Back</button>
+      </Link>
+    </div>
   );
 }
 

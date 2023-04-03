@@ -13,6 +13,7 @@ import { MainHome } from "./components/Home.jsx";
 const OverView = () => {
   return (
     <div>
+      <NavBar />
       <h1>OverView</h1>
       <Link to="/dashboard">
         <button>Back</button>
@@ -24,6 +25,7 @@ const OverView = () => {
 const Party = () => {
   return (
     <div>
+      <NavBar />
       <h1>Party</h1>
       <Link to="/dashboard">
         <button>Back</button>
@@ -35,6 +37,7 @@ const Party = () => {
 const Deck = () => {
   return (
     <div>
+      <NavBar />
       <h1>Deck</h1>
       <Link to="/dashboard">
         <button>Back</button>
@@ -46,6 +49,7 @@ const Deck = () => {
 const Catalog = () => {
   return (
     <div>
+      <NavBar />
       <h1>Catalog</h1>
       <Link to="/dashboard">
         <button>Back</button>
@@ -57,6 +61,7 @@ const Catalog = () => {
 const Shop = () => {
   return (
     <div>
+      <NavBar />
       <h1>Shop</h1>
       <Link to="/dashboard">
         <button>Back</button>
@@ -67,33 +72,7 @@ const Shop = () => {
 
 // ! For now I simply placed a back button to navigate back to the landing page.
 const Dashboard = () => {
-  return (
-    <div>
-      <h1>Dashboard</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/dashboard/overview">OverView</Link>
-          </li>
-          <li>
-            <Link to="/dashboard/party">Party</Link>
-          </li>
-          <li>
-            <Link to="/dashboard/deck">Deck</Link>
-          </li>
-          <li>
-            <Link to="/dashboard/catalog">Catalog</Link>
-          </li>
-          <li>
-            <Link to="/dashboard/shop">Shop</Link>
-          </li>
-        </ul>
-      </nav>
-      <Link to="/">
-        <button>Back</button>
-      </Link>
-    </div>
-  );
+  return <NavBar />;
 };
 function EldridiasElement() {
   const [party, setParty] = useState([
