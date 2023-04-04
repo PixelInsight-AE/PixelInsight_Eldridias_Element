@@ -59,7 +59,7 @@ const poisonFunction = (hero, monster) => {
 // !!    Cards   !! //
 const shieldCard = new MagicCard(
   100,
-  "Shield",
+  "Shield Bash",
   "A card that can be used to gain a shield.",
   "Shield",
   "Un-Common",

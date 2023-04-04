@@ -493,9 +493,9 @@ const tremorCard = new ElementCard(
 
 const avalancheCard = new ElementCard(
   407,
-  "Volcano Card",
-  "A card that can be used to summon a volcano elemental.",
-  "Volcano",
+  "Avalanche Card",
+  "A card that can be used to summon an avalanche elemental.",
+  "Avalanche",
   "Earth",
   100,
   100,
@@ -776,4 +776,10 @@ const allEarthCards = [
   earthQuakeCard,
 ];
 
-export { waterCard, fireCard, airCard, earthCard };
+const allElementalCards = [
+  ...allWaterCards,
+  ...allFireCards,
+  ...allAirCards,
+  ...allEarthCards,
+];
+export { waterCard, fireCard, airCard, earthCard, allElementalCards };

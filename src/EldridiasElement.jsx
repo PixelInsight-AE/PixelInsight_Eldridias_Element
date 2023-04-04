@@ -9,16 +9,12 @@ import {
   hogarth,
   gunslinger,
 } from "./vanillaJsFiles/heros.js";
-
+import { magicPlayingCards } from "./vanillaJsFiles/magicCards.js";
+import { allElementalCards } from "./vanillaJsFiles/elementCards.js";
 import { Home } from "./components/Home.jsx";
-import {
-  Dashboard,
-  Deck,
-  Catalog,
-  Shop,
-  OverView,
-} from "./components/DashBoard.jsx";
+import { Dashboard, Catalog, Shop, OverView } from "./components/DashBoard.jsx";
 import { Party } from "./components/DashBoard_Party.jsx";
+import { DeckBuilder } from "./components/DashBoard_Deck.jsx";
 
 function EldridiasElement() {
   const [tank, setTank] = useState(bulwark);
@@ -26,6 +22,10 @@ function EldridiasElement() {
   const [ranged, setRanged] = useState(gunslinger);
   const [healer, setHealer] = useState(hogarth);
   const [party, setParty] = useState([tank, melee, ranged, healer]);
+  const [deck, setDeck] = useState([
+    ...magicPlayingCards,
+    ...allElementalCards,
+  ]);
 
   // ! Like our error said, in V6 we need to nest all Route elements inside of a Routes component.
   return (
@@ -50,7 +50,7 @@ function EldridiasElement() {
           />
         }
       />
-      <Route path="/dashboard/deck" element={<Deck />} />
+      <Route path="/dashboard/deck" element={<DeckBuilder deck={deck} />} />
       <Route path="/dashboard/catalog" element={<Catalog />} />
       <Route path="/dashboard/shop" element={<Shop />} />
     </Routes>

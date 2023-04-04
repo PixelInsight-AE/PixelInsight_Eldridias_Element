@@ -1,10 +1,5 @@
-import { waterCard, fireCard, airCard, earthCard } from "./elementCards.js";
-import {
-  healthBoostCard,
-  extraManaCard,
-  reviveCard,
-  extraAttackCard,
-} from "./magicCards.js";
+import { allElementalCards } from "./elementCards.js";
+import { magicPlayingCards } from "./magicCards.js";
 
 const createDeck = () => {
   const deck = [];

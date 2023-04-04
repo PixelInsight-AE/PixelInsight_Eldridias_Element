@@ -76,18 +76,6 @@ const OverView = (props) => {
   );
 };
 
-const Deck = () => {
-  return (
-    <div>
-      <NavBar />
-      <h1>Deck</h1>
-      <Link to="/dashboard">
-        <button>Back</button>
-      </Link>
-    </div>
-  );
-};
-
 const Catalog = () => {
   return (
     <div>
@@ -123,4 +111,4 @@ const Dashboard = () => {
   );
 };
 
-export { Dashboard, Deck, Catalog, Shop, OverView };
+export { Dashboard, Catalog, Shop, OverView };
