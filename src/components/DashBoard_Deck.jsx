@@ -5,14 +5,15 @@ const DeckDisplayCard = (props) => {
   const { card } = props;
   return (
     <div className="display-card">
-      <h1>{card.name}</h1>
-      <div className="hero-image">
+      <h1 className="card-name">{card.name}</h1>
+      <div className="card-image">
         <img src={card.imgUrl} alt={card.name} />
       </div>
-      <h2>
-        {card.cardLevel} - {card.elementType}
-      </h2>
       <h3>{card.rarity}</h3>
+      <h2>
+        {card.cardLevel} - <img className="magic-icon" src={card.elementIcon} />{" "}
+        - {card.attackPower}
+      </h2>
     </div>
   );
 };
@@ -23,11 +24,13 @@ const DeckBuilder = (props) => {
     <div>
       <NavBar />
       <h1>Deck</h1>
-      {deck.map((card) => (
-        <div key={card.id}>
-          <DeckDisplayCard card={card} />
-        </div>
-      ))}
+      <div id="deck-grid">
+        {deck.map((card) => (
+          <div key={card.id}>
+            <DeckDisplayCard card={card} />
+          </div>
+        ))}
+      </div>
       <Link to="/dashboard">
         <button>Back</button>
       </Link>

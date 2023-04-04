@@ -19,7 +19,8 @@ class Hero {
     heroExperience,
     maxAttackPower,
     id,
-    effects
+    effects,
+    elementIcon
   ) {
     this.name = name;
     this.attackPower = attackPower;
@@ -41,6 +42,7 @@ class Hero {
     this.maxAttackPower = maxAttackPower;
     this.id = id;
     this.effects = effects;
+    this.elementIcon = elementIcon;
   }
 }
 
@@ -57,7 +59,8 @@ class Monster {
     health,
     maxHealth,
     flag,
-    imgUrl
+    imgUrl,
+    elementIcon
   ) {
     this.name = name;
     this.description = description;
@@ -71,6 +74,7 @@ class Monster {
     this.maxHealth = maxHealth;
     this.flag = flag;
     this.imgUrl = imgUrl;
+    this.elementIcon = elementIcon;
   }
 }
 
@@ -78,7 +82,7 @@ class ElementCard {
   constructor(
     id,
     name,
-    descriptions,
+    description,
     keyWords,
     elementType,
     attackPower,
@@ -90,11 +94,12 @@ class ElementCard {
     cardLevel,
     maxCardLevel,
     duration,
-    imgUrl
+    imgUrl,
+    elementIcon
   ) {
     this.id = id;
     this.name = name;
-    this.descriptions = descriptions;
+    this.description = description;
     this.elementType = elementType;
     this.attackPower = attackPower;
     this.defense = defense;
@@ -106,6 +111,7 @@ class ElementCard {
     this.maxCardLevel = maxCardLevel;
     this.duration = duration;
     this.imgUrl = imgUrl;
+    this.elementIcon = elementIcon;
   }
 }
 
@@ -113,7 +119,7 @@ class MagicCard {
   constructor(
     id,
     name,
-    descriptions,
+    description,
     keyWords,
     rarity,
     cardLevel,
@@ -123,11 +129,12 @@ class MagicCard {
     manaCost,
     duration,
     healpower,
-    elementType
+    elementType,
+    elementIcon
   ) {
     this.id = id;
     this.name = name;
-    this.descriptions = descriptions;
+    this.description = description;
     this.keyWords = keyWords;
     this.rarity = rarity;
     this.cardLevel = cardLevel;
@@ -138,6 +145,7 @@ class MagicCard {
     this.duration = duration;
     this.healpower = healpower;
     this.elementType = elementType;
+    this.elementIcon = elementIcon;
   }
 }
 

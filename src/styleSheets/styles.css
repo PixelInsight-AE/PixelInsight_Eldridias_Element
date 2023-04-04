@@ -461,6 +461,35 @@ nav ul li a:hover {
   align-self: center;
 }
 
+#deck-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+}
+#deck-grid img {
+  width: 250px;
+  height: auto;
+}
+#deck-grid .display-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  height: 90%;
+}
+#deck-grid .display-card .card-name {
+  text-align: center;
+}
+#deck-grid .display-card .card-image {
+  border-radius: 0.5rem;
+}
+#deck-grid .display-card .magic-icon {
+  color: white;
+}
+
 body {
   background-image: url("/src/assets/images/heros/hero.jpg");
   background-size: cover;

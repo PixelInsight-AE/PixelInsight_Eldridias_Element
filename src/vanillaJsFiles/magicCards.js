@@ -62,15 +62,16 @@ const shieldCard = new MagicCard(
   "Shield Bash",
   "A card that can be used to gain a shield.",
   "Shield",
-  "Un-Common",
+  "UnCommon",
   1,
   100,
-  "https://i.pinimg.com",
+  "https://i.imgur.com/TNmls10.png",
   shieldBash,
   2,
   0,
   0,
-  "Magic"
+  "Magic",
+  "https://i.imgur.com/uFSzmC8.png"
 );
 const disarmCard = new MagicCard(
   101,
@@ -80,42 +81,45 @@ const disarmCard = new MagicCard(
   "Common",
   1,
   100,
-  "https://i.pinimg.com",
+  "https://i.imgur.com/TNmls10.png",
   disarmEnemy,
   1,
   0,
   0,
-  "Magic"
+  "Magic",
+  "https://i.imgur.com/uFSzmC8.png"
 );
 const entangleCard = new MagicCard(
   102,
   "Entangle",
   "A card that can be used to entangle your opponent.",
   "Entangle",
-  "Un-Common",
+  "UnCommon",
   1,
   100,
-  "https://i.pinimg.com",
+  "https://i.imgur.com/TNmls10.png",
   entangleFunction,
   2,
   0,
   0,
-  "Magic"
+  "Magic",
+  "https://i.imgur.com/uFSzmC8.png"
 );
 const poisonCard = new MagicCard(
   103, //id
   "Poison", //name
   "A card that can be used to poison your opponent.", //descriptions
   "Poison", //keyWords
-  "Un-Common", //rarity
+  "UnCommon", //rarity
   1, //cardLevel
   100, //maxCardLevel
-  "https://i.pinimg.com", //imgUrl
+  "https://i.imgur.com/TNmls10.png", //imgUrl
   poisonFunction,
   2, //manaCost
   0, //duration
   0, //healing power
-  "Magic" //type
+  "Magic", //type
+  "https://i.imgur.com/uFSzmC8.png"
 );
 const majorHealCard = new MagicCard(
   104, //id
@@ -125,27 +129,29 @@ const majorHealCard = new MagicCard(
   "Rare", //rarity
   1, //cardLevel
   100, //maxCardLevel
-  "https://i.pinimg.com", //imgUrl
+  "https://i.imgur.com/TNmls10.png", //imgUrl
   majorHealFunction,
   3, //manaCost
   0, //duration
   100, //healing power
-  "Magic" //type
+  "Magic", //type
+  "https://i.imgur.com/uFSzmC8.png"
 );
 const attackPowerCard = new MagicCard(
   105, //id
-  "Attack Power", //name
+  "Attack Power Boost", //name
   "A card that can be used to increase your attack power.", //descriptions
   "Attack Power", //keyWords
   "Common", //rarity
   1, //cardLevel
   100, //maxCardLevel
-  "https://i.pinimg.com", //imgUrl
+  "https://i.imgur.com/TNmls10.png", //imgUrl
   attackPowerFunction,
   1, //manaCost
   0, //duration
   0, //healing power
-  "Magic" //type
+  "Magic", //type
+  "https://i.imgur.com/uFSzmC8.png"
 );
 const healthBoostCard = new MagicCard(
   106, //id
@@ -155,12 +161,13 @@ const healthBoostCard = new MagicCard(
   "Common", //rarity
   1, //cardLevel
   100, //maxCardLevel
-  "https://i.pinimg.com", //imgUrl
+  "https://i.imgur.com/TNmls10.png", //imgUrl
   healthBoostFunction, //effect
   1,
   0,
   100,
-  "Magic"
+  "Magic",
+  "https://i.imgur.com/uFSzmC8.png"
 );
 const extraManaCard = new MagicCard(
   107,
@@ -170,12 +177,13 @@ const extraManaCard = new MagicCard(
   "Common",
   1,
   100,
-  "https://i.pinimg.com",
+  "https://i.imgur.com/TNmls10.png",
   extraManaFunction, //effect
   1,
   0,
   0,
-  "Magic"
+  "Magic",
+  "https://i.imgur.com/uFSzmC8.png"
 );
 const reviveCard = new MagicCard(
   108,
@@ -185,12 +193,13 @@ const reviveCard = new MagicCard(
   "Legendary",
   1,
   100,
-  "https://i.pinimg.com",
+  "https://i.imgur.com/TNmls10.png",
   backFromTheDead,
   5,
   0,
   0,
-  "Magic"
+  "Magic",
+  "https://i.imgur.com/uFSzmC8.png"
 );
 const extraAttackCard = new MagicCard(
   109,
@@ -200,12 +209,13 @@ const extraAttackCard = new MagicCard(
   "Rare",
   1,
   100,
-  "https://i.pinimg.com",
+  "https://i.imgur.com/TNmls10.png",
   extraAttackFunction,
   3,
   0,
   0,
-  "Magic"
+  "Magic",
+  "https://i.imgur.com/uFSzmC8.png"
 );
 
 const magicPlayingCards = [
