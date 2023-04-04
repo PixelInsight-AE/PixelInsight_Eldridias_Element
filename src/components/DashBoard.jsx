@@ -11,7 +11,46 @@ import {
   shadow,
 } from "../vanillaJsFiles/heros.js";
 
+const CurrentParty = (props) => {
+  const { party } = props;
+  return (
+    <div className="current-party-container">
+      <h2>Current Party</h2>
+      {party.map((hero) => (
+        <div key={hero.name} className="hero-container">
+          <div className="healer-select">
+            <h1 className="hero-name">{hero.name}</h1>
+
+            <div className="hero-image">
+              <img src={hero.imgUrl} alt={hero.name} />
+            </div>
+            <h2>
+              LV: {hero.heroLevel} - {hero.elementType}
+            </h2>
+            <div className="stats-container">
+              <div className="stats-hp">
+                <h3>HP:</h3>
+                <h3>{hero.maxHealth}</h3>
+              </div>
+              <div className="stats-ap">
+                <h3>ATK:</h3>
+                <h3>{hero.attackPower}</h3>
+              </div>
+              <div className="stats-df">
+                <h3>DEF:</h3>
+                <h3>{hero.defense}</h3>
+              </div>
+            </div>
+            {/*   <div>{tank.description}</div> */}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const OverView = (props) => {
+  const { party } = props;
   const [currentLevel, setCurrentLevel] = useState(1);
   const [currency, setCurrency] = useState(500);
   const [achievements, setAchievements] = useState([
@@ -41,9 +80,7 @@ const OverView = (props) => {
           </div>
         </div>
 
-        {/* Needs to be changed to party after that component is made */}
-        <h2>Current Party</h2>
-        <div className="party-container"></div>
+        <CurrentParty party={party} />
 
         <div className="achievements-container">
           <h2>Achievements</h2>
