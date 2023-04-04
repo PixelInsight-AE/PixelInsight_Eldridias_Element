@@ -124,7 +124,7 @@ const druidess = new Hero(
   1, //specialAttackCost
   100, //specialAttackPower
   true, //canRegularAttack
-  "https://i.imgur.com/D4X9H4t.png", //imgUrl
+  "https://i.imgur.com/v9lWrKm.png", //imgUrl
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -146,7 +146,7 @@ const gunslinger = new Hero(
   1, //specialAttackCost
   200, //specialAttackPower
   true, //canRegularAttack
-  "https://i.imgur.com/NkwWJLU.png", //imgUrl
+  "https://i.imgur.com/UiHboMP.png", //imgUrl
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -190,7 +190,7 @@ const shadow = new Hero(
   2, //specialAttackCost
   300, //specialAttackPower
   true, //canRegularAttack
-  "https://i.imgur.com/n5q3fRW.png", //imgUrl
+  "https://i.imgur.com/MyJBxJW.png", //imgUrl
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -212,7 +212,7 @@ const seer = new Hero(
   1, //specialAttackCost
   0, //specialAttackPower
   false, //canRegularAttack
-  "https://i.imgur.com/mFZUrxW.png", //imgUrl
+  "https://i.imgur.com/rjbFnVY.png", //imgUrl
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -234,7 +234,7 @@ const storm = new Hero(
   2, //specialAttackCost
   350, //specialAttackPower
   true, //canRegularAttack
-  "https://i.imgur.com/P5r5klM.png", //imgUrl
+  "https://i.imgur.com/n8UhyMD.png", //imgUrl
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -256,7 +256,7 @@ const nightshade = new Hero(
   1, //specialAttackCost
   250, //specialAttackPower
   true, //canRegularAttack
-  "https://i.imgur.com/GaCkNf7.png", //imgUrl
+  "https://i.imgur.com/M086jxu.png", //imgUrl
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience

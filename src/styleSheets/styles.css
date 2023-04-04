@@ -8,7 +8,7 @@ nav {
   background-color: rgba(0, 0, 0, 0.75);
   color: #fff;
   text-decoration: none;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 nav ul {
   display: flex;
@@ -21,7 +21,7 @@ nav ul {
 nav ul li {
   border: #fff solid 1px;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 nav ul li a {
   color: #ffffff;
@@ -341,6 +341,9 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
   overflow: scroll;
 }
 
@@ -378,6 +381,34 @@ body {
 .healer-select .hero-image img,
 .melee-select .hero-image img,
 .ranged-select .hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  border: 3px solid red;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 25px;
+  width: 600px;
+  height: 400px;
+}
+.hero-card h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.hero-card .hero-image {
+  margin: 20px 0;
+}
+.hero-card .hero-image img {
   max-width: 100%;
   height: auto;
   border-radius: 50%;
@@ -452,4 +483,9 @@ body {
   font-size: 1rem;
   background-color: rgba(0, 0, 0, 0.75);
   color: #ffffff;
+}
+
+.role-container {
+  display: flex;
+  justify-content: center;
 }/*# sourceMappingURL=styles.css.map */

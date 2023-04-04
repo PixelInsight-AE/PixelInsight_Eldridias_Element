@@ -128,6 +128,9 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba($color: #000000, $alpha: 0.75);
+  color: #ffffff;
   overflow: scroll;
 }
 
@@ -149,6 +152,35 @@ body {
   width: 200px;
   height: 400px;
 
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-image {
+    margin: 20px 0;
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.hero-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba($color: #000000, $alpha: 0.75);
+  color: #ffffff;
+  border: 3px solid red;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 25px;
+  width: 600px;
+  height: 400px;
   h1 {
     font-size: 2rem;
     margin-bottom: 10px;
@@ -234,4 +266,9 @@ body {
   font-size: 1rem;
   background-color: rgba($color: #000000, $alpha: 0.75);
   color: #ffffff;
+}
+
+.role-container {
+  display: flex;
+  justify-content: center;
 }
