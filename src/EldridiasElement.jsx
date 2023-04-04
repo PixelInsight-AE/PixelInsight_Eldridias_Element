@@ -44,6 +44,8 @@ function EldridiasElement() {
             setRanged={setRanged}
             healer={healer}
             setHealer={setHealer}
+            party={party}
+            setParty={setParty}
           />
         }
       />

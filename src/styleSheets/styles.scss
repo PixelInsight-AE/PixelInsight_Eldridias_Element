@@ -130,3 +130,51 @@ body {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+// TANKSELECT.JS
+.tank-select,
+.healer-select,
+.melee-select,
+.ranged-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-image {
+    margin: 20px 0;
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  div {
+    margin: 10px 0;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #555;
+    }
+  }
+}
