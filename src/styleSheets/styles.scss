@@ -127,8 +127,8 @@ body {
 #hero-list {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  overflow: scroll;
 }
 
 // TANKSELECT.JS
@@ -138,12 +138,16 @@ body {
 .ranged-select {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba($color: #000000, $alpha: 0.75);
+  color: #ffffff;
+  border: 3px solid red;
   padding: 20px;
   margin: 10px;
-  border-radius: 5px;
+  border-radius: 25px;
+  width: 200px;
+  height: 400px;
 
   h1 {
     font-size: 2rem;
@@ -159,22 +163,75 @@ body {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
   }
+}
 
-  div {
-    margin: 10px 0;
-  }
+.tank-select {
+  border-color: blue;
+}
 
-  button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.healer-select {
+  border-color: green;
+}
 
-    &:hover {
-      background-color: #555;
-    }
-  }
+.melee-select {
+  border-color: orange;
+}
+
+.ranged-select {
+  border-color: purple;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px 0;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  font-size: 1rem;
+}
+
+.stats {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.stats-hp {
+  color: green;
+  display: flex;
+  flex-direction: column;
+}
+
+.fire {
+  align-self: flex-end;
+  background-color: orange;
+  color: #ff0000;
+  border: 3px solid #ff0000;
+  border-radius: 50%;
+  font-size: 1rem;
+  padding: 0.25rem;
+  margin-bottom: -50px;
+}
+
+.hero-name {
+  align-self: center;
+}
+
+// ROLES COMPONENT
+#roles-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  font-size: 1rem;
+  background-color: rgba($color: #000000, $alpha: 0.75);
+  color: #ffffff;
 }

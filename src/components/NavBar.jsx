@@ -22,9 +22,6 @@ function NavBar() {
           </li>
         </ul>
       </nav>
-      <Link to="/">
-        <button>Back</button>
-      </Link>
     </div>
   );
 }

@@ -3,91 +3,143 @@ import { Routes, Route, Link } from "react-router-dom";
 import { NavBar } from "./NavBar.jsx";
 import { heroList } from "../vanillaJsFiles/heros.js";
 
+// ! SELECT COMPONENTS
 const RangedSelect = (props) => {
   const { ranged, setRanged, handlePartySelect } = props;
   return (
-    <div className="ranged-select">
-      <h1>Ranged</h1>
-      <div>
-        {ranged.name} - {ranged.currentLevel}
+    <div>
+      <div className="ranged-select">
+        <h1 className="hero-name">{ranged.name}</h1>
+        <div className="elementType fire">{ranged.elementType}</div>
+        <div className="hero-image">
+          <img src={ranged.imgUrl} alt={ranged.name} />
+        </div>
+        <h2>LV: {ranged.heroLevel}</h2>
+        <div className="stats-container">
+          <div className="stats-hp">
+            <h3>HP:</h3>
+            <h3>{ranged.maxHealth}</h3>
+          </div>
+          <div className="stats-ap">
+            <h3>ATK:</h3>
+            <h3>{ranged.attackPower}</h3>
+          </div>
+          <div className="stats-df">
+            <h3>DEF:</h3>
+            <h3>{ranged.defense}</h3>
+          </div>
+        </div>
+        {/*   <div>{tank.description}</div> */}
       </div>
-      <div>{ranged.maxHealth}</div>
-      <div>
-        {ranged.attackPower}-{ranged.defense}
-      </div>
-      <div className="hero-image">
-        <img src={ranged.imgUrl} alt={ranged.name} />
-      </div>
-      <div>{ranged.elementType}</div>
-
-      <div>{ranged.description}</div>
     </div>
   );
 };
-
 const HealerSelect = (props) => {
   const { healer, setHealer, handlePartySelect } = props;
   return (
-    <div className="healer-select">
-      <h1>Healer</h1>
-      <div>
-        {healer.name} - {healer.currentLevel}
+    <div>
+      <div className="healer-select">
+        <h1 className="hero-name">{healer.name}</h1>
+        <div className="elementType fire">{healer.elementType}</div>
+        <div className="hero-image">
+          <img src={healer.imgUrl} alt={healer.name} />
+        </div>
+        <h2>LV: {healer.heroLevel}</h2>
+        <div className="stats-container">
+          <div className="stats-hp">
+            <h3>HP:</h3>
+            <h3>{healer.maxHealth}</h3>
+          </div>
+          <div className="stats-ap">
+            <h3>ATK:</h3>
+            <h3>{healer.attackPower}</h3>
+          </div>
+          <div className="stats-df">
+            <h3>DEF:</h3>
+            <h3>{healer.defense}</h3>
+          </div>
+        </div>
+        {/*   <div>{tank.description}</div> */}
       </div>
-      <div>{healer.maxHealth}</div>
-      <div>
-        {healer.attackPower}-{healer.defense}
-      </div>
-      <div className="hero-image">
-        <img src={healer.imgUrl} alt={healer.name} />
-      </div>
-      <div>{healer.elementType}</div>
-      <div>{healer.description}</div>
     </div>
   );
 };
-
 const MeleeSelect = (props) => {
   const { melee, setMelee, handlePartySelect } = props;
   return (
-    <div className="melee-select">
-      <h1>Melee</h1>
-      <div>
-        {melee.name} - {melee.currentLevel}
+    <div>
+      <div className="melee-select">
+        <h1 className="hero-name">{melee.name}</h1>
+        <div className="elementType fire">{melee.elementType}</div>
+        <div className="hero-image">
+          <img src={melee.imgUrl} alt={melee.name} />
+        </div>
+        <h2>LV: {melee.heroLevel}</h2>
+        <div className="stats-container">
+          <div className="stats-hp">
+            <h3>HP:</h3>
+            <h3>{melee.maxHealth}</h3>
+          </div>
+          <div className="stats-ap">
+            <h3>ATK:</h3>
+            <h3>{melee.attackPower}</h3>
+          </div>
+          <div className="stats-df">
+            <h3>DEF:</h3>
+            <h3>{melee.defense}</h3>
+          </div>
+        </div>
+        {/*   <div>{tank.description}</div> */}
       </div>
-      <div>{melee.maxHealth}</div>
-      <div>
-        {melee.attackPower}-{melee.defense}
-      </div>
-      <div className="hero-image">
-        <img src={melee.imgUrl} alt={melee.name} />
-      </div>
-      <div>{melee.elementType}</div>
-      <div>{melee.description}</div>
     </div>
   );
 };
 
+// ? EXAMPLE FOR STYLING
 const TankSelect = (props) => {
   const { tank, setTank, handlePartySelect } = props;
   return (
-    <div className="tank-select">
-      <h1>Tank</h1>
-      <div>
-        {tank.name} - {tank.currentLevel}
+    <div>
+      <div className="tank-select">
+        <h1 className="hero-name">{tank.name}</h1>
+        <div className="elementType fire">{tank.elementType}</div>
+        <div className="hero-image">
+          <img src={tank.imgUrl} alt={tank.name} />
+        </div>
+        <h2>LV: {tank.heroLevel}</h2>
+        <div className="stats-container">
+          <div className="stats-hp">
+            <h3>HP:</h3>
+            <h3>{tank.maxHealth}</h3>
+          </div>
+          <div className="stats-ap">
+            <h3>ATK:</h3>
+            <h3>{tank.attackPower}</h3>
+          </div>
+          <div className="stats-df">
+            <h3>DEF:</h3>
+            <h3>{tank.defense}</h3>
+          </div>
+        </div>
+        {/*   <div>{tank.description}</div> */}
       </div>
-      <div>{tank.maxHealth}</div>
-      <div>
-        {tank.attackPower}-{tank.defense}
-      </div>
-      <div className="hero-image">
-        <img src={tank.imgUrl} alt={tank.name} />
-      </div>
-      <div>{tank.elementType}</div>
-      <div>{tank.description}</div>
     </div>
   );
 };
 
+// ! ROLES TITLE/HEADER
+const Roles = () => {
+  return (
+    <div id="roles-container">
+      <h1>Tank</h1>
+      <h1>Melee</h1>
+      <h1>Ranged</h1>
+      <h1>Healer</h1>
+    </div>
+  );
+};
+
+//! MAIN PARTY COMPONENT
 const Party = ({
   tank,
   setTank,
@@ -127,34 +179,33 @@ const Party = ({
   return (
     <div>
       <NavBar />
-      <h1>Party</h1>
+      {/* //! INSERT TITLE CONTAINER */}
+
+      <Roles />
       <div id="party-select-container">
         <TankSelect
           tank={tank}
           setTank={setTank}
           handlePartySelect={handlePartySelect}
         />
-        <div className="melee-select">
-          <MeleeSelect
-            melee={melee}
-            setMelee={setMelee}
-            handlePartySelect={handlePartySelect}
-          />
-        </div>
-        <div className="ranged-select">
-          <RangedSelect
-            ranged={ranged}
-            setRanged={setRanged}
-            handlePartySelect={handlePartySelect}
-          />
-        </div>
-        <div className="healer-select">
-          <HealerSelect
-            healer={healer}
-            setHealer={setHealer}
-            handlePartySelect={handlePartySelect}
-          />
-        </div>
+
+        <MeleeSelect
+          melee={melee}
+          setMelee={setMelee}
+          handlePartySelect={handlePartySelect}
+        />
+
+        <RangedSelect
+          ranged={ranged}
+          setRanged={setRanged}
+          handlePartySelect={handlePartySelect}
+        />
+
+        <HealerSelect
+          healer={healer}
+          setHealer={setHealer}
+          handlePartySelect={handlePartySelect}
+        />
       </div>
       <div id="available-heros">
         <h2>Available Heros</h2>
@@ -166,13 +217,16 @@ const Party = ({
               key={hero.name}
             >
               <div className="hero-image">
-                <img src={hero.image} alt={hero.name} />
+                <img src={hero.imgUrl} alt={hero.name} />
               </div>
             </div>
           ))}
         </div>
         <Link to="/dashboard">
-          <button>Back</button>
+          <button>Back to Dash</button>
+        </Link>
+        <Link to="/">
+          <button>Back to Landing</button>
         </Link>
       </div>
     </div>

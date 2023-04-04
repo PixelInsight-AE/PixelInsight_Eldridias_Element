@@ -23,7 +23,7 @@ const bulwark = new Hero(
 );
 
 const hogarth = new Hero(
-  "Hogarth the Healer",
+  "Hogarth",
   100, //attackPower
   3000, //health
   3000, //maxHealth
@@ -168,7 +168,7 @@ const paladin = new Hero(
   1, //specialAttackCost
   200, //specialAttackPower
   true, //canRegularAttack
-  "https://i.imgur.com/4y4TKlR.png", //imgUrl
+  "https://i.imgur.com/19BRYcF.png", //imgUrl
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience

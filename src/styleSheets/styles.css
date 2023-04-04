@@ -5,7 +5,9 @@
 }
 
 nav {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  text-decoration: none;
   padding: 1rem;
 }
 nav ul {
@@ -15,6 +17,18 @@ nav ul {
   align-items: center;
   color: #ffffff;
   list-style: none;
+}
+nav ul li {
+  border: #fff solid 1px;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+nav ul li a:hover {
+  color: #000000;
 }
 
 #homeScreen {
@@ -326,8 +340,8 @@ body {
 #hero-list {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  overflow: scroll;
 }
 
 .tank-select,
@@ -336,12 +350,16 @@ body {
 .ranged-select {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  border: 3px solid red;
   padding: 20px;
   margin: 10px;
-  border-radius: 5px;
+  border-radius: 25px;
+  width: 200px;
+  height: 400px;
 }
 .tank-select h1,
 .healer-select h1,
@@ -365,27 +383,73 @@ body {
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-.tank-select div,
-.healer-select div,
-.melee-select div,
-.ranged-select div {
+
+.tank-select {
+  border-color: blue;
+}
+
+.healer-select {
+  border-color: green;
+}
+
+.melee-select {
+  border-color: orange;
+}
+
+.ranged-select {
+  border-color: purple;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   margin: 10px 0;
+  padding: 10px 0;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  font-size: 1rem;
 }
-.tank-select button,
-.healer-select button,
-.melee-select button,
-.ranged-select button {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+
+.stats {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
 }
-.tank-select button:hover,
-.healer-select button:hover,
-.melee-select button:hover,
-.ranged-select button:hover {
-  background-color: #555;
+
+.stats-hp {
+  color: green;
+  display: flex;
+  flex-direction: column;
+}
+
+.fire {
+  align-self: flex-end;
+  background-color: orange;
+  color: #ff0000;
+  border: 3px solid #ff0000;
+  border-radius: 50%;
+  font-size: 1rem;
+  padding: 0.25rem;
+  margin-bottom: -50px;
+}
+
+.hero-name {
+  align-self: center;
+}
+
+#roles-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
 }/*# sourceMappingURL=styles.css.map */
