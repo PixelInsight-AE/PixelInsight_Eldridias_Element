@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function NavBar() {
+function NavBar(props) {
   return (
     <div>
       <nav>
@@ -9,7 +9,23 @@ function NavBar() {
             <Link to="/dashboard/overview">OverView</Link>
           </li>
           <li>
-            <Link to="/dashboard/party">Party</Link>
+            <Link to="/dashboard/party">
+              Party
+              {/* // to={{
+              //   pathname: "/dashboard/party",
+              //   state: {
+              //     setTank: props.setTank,
+              //     setMelee: props.setMelee,
+              //     setRanged: props.setRanged,
+              //     setHealer: props.setHealer,
+              //     tank: props.tank,
+              //     melee: props.melee,
+              //     ranged: props.ranged,
+              //     healer: props.healer,
+              //   },
+              // }} */}
+              Party
+            </Link>
           </li>
           <li>
             <Link to="/dashboard/deck">Deck</Link>

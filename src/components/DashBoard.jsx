@@ -19,7 +19,6 @@ const OverView = (props) => {
   // ! PLACEHOLDER DATA!
   return (
     <div>
-      <NavBar />
       <div className="overview-container">
         <h1>Overview</h1>
         <div id="overview-header">
@@ -69,17 +68,26 @@ const OverView = (props) => {
 };
 
 const Party = (props) => {
-  const handlePartySelect = (hero) => {
-    console.log("clicked");
-    if (hero.role === "Tank") {
-      setTank(hero);
-      console.log(tank);
-    }
-  };
+  /*   const { setTank, setMelee, setRanged, setHealer } = location.state; */
+  // const handlePartySelect = (hero) => {
+  //   console.log("clicked");
+  //   if (hero.role === "Tank") {
+  //     props.setTank(hero);
+  //     console.log(tank);
+  //   }
+  //   if (hero.role === "Melee") {
+  //     //
+  //   }
+  //   if (hero.role === "Ranged") {
+  //     //
+  //   }
+  //   if (hero.role === "Healer") {
+  //     //
+  //   }
+  // };
 
   return (
     <div>
-      <NavBar />
       <h1>Party</h1>
       <div id="party-select-container">
         <div className="tank-select">
@@ -145,7 +153,6 @@ const Party = (props) => {
 const Deck = () => {
   return (
     <div>
-      <NavBar />
       <h1>Deck</h1>
       <Link to="/dashboard">
         <button>Back</button>
@@ -157,7 +164,6 @@ const Deck = () => {
 const Catalog = () => {
   return (
     <div>
-      <NavBar />
       <h1>Catalog</h1>
       <Link to="/dashboard">
         <button>Back</button>
@@ -169,7 +175,6 @@ const Catalog = () => {
 const Shop = () => {
   return (
     <div>
-      <NavBar />
       <h1>Shop</h1>
       <Link to="/dashboard">
         <button>Back</button>
@@ -181,12 +186,25 @@ const Shop = () => {
 // ! For now I simply placed a back button to navigate back to the landing page.
 // ? Navbar will be added to each component later.
 const Dashboard = () => {
-  const [tank, setTank] = useState({});
-  const [melee, setMelee] = useState({});
-  const [ranged, setRanged] = useState({});
-  const [healer, setHealer] = useState({});
+  const [tank, setTank] = useState(bulwark);
+  const [melee, setMelee] = useState(shadow);
+  const [ranged, setRanged] = useState(beastMaster);
+  const [healer, setHealer] = useState(hogarth);
   const [party, setParty] = useState([tank, melee, ranged, healer]);
-  return <OverView />;
+  return (
+    <>
+      <NavBar
+      // tank={tank}
+      // melee={melee}
+      // ranged={ranged}
+      // healer={healer}
+      // setTank={setTank}
+      // setMelee={setMelee}
+      // setRanged={setRanged}
+      // setHealer={setHealer}
+      />
+    </>
+  );
 };
 
 export { Dashboard, Party, Deck, Catalog, Shop, OverView };
