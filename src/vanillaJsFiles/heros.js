@@ -52,7 +52,7 @@ const beastMaster = new Hero(
   false, //flag
   3400, //defense
   "A powerful warrior that can deal massive damage.", //description
-  "Ranged", //role
+  "Melee", //role
   "Earth", //elementType
   "Call of the Wild", //specialAttackName
   1, //specialAttackCost

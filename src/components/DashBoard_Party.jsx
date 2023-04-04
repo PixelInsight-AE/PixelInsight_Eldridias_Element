@@ -1,11 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { NavBar } from "./NavBar.jsx";
 import { heroList } from "../vanillaJsFiles/heros.js";
 
 // ! SELECT COMPONENTS
+
+/**
+ * ! Hero select components
+ * ? These components are used to select a hero for each party slot
+ * ? They are passed the hero object, the setHero function, and the handlePartySelect function
+ * ? The handlePartySelect function is used to update the party array
+ */
 const RangedSelect = (props) => {
-  const { ranged, setRanged, handlePartySelect } = props;
+  const { ranged } = props;
   return (
     <div>
       <div className="ranged-select">
@@ -40,7 +47,7 @@ const RangedSelect = (props) => {
   );
 };
 const HealerSelect = (props) => {
-  const { healer, setHealer, handlePartySelect } = props;
+  const { healer } = props;
   return (
     <div>
       <div className="healer-select">
@@ -75,7 +82,7 @@ const HealerSelect = (props) => {
   );
 };
 const MeleeSelect = (props) => {
-  const { melee, setMelee, handlePartySelect } = props;
+  const { melee } = props;
   return (
     <div>
       <div className="melee-select">
@@ -109,10 +116,8 @@ const MeleeSelect = (props) => {
     </div>
   );
 };
-
-// ? EXAMPLE FOR STYLING
 const TankSelect = (props) => {
-  const { tank, setTank, handlePartySelect } = props;
+  const { tank } = props;
   return (
     <div>
       <div className="tank-select">
@@ -147,51 +152,47 @@ const TankSelect = (props) => {
   );
 };
 
-// ! ROLES TITLE/HEADER
-const Roles = () => {
-  return (
-    <div id="roles-container">
-      <h1>Tank</h1>
-      <h1>Melee</h1>
-      <h1>Ranged</h1>
-      <h1>Healer</h1>
-    </div>
-  );
-};
+/**
+ *
+ * ! All available heroes
+ * ? This component will display all available heroes
+ * ? This component will be passed a list of heroes
+ * ? This component will be passed a function to handle the selection of a hero
+ *
+ */
 
 const AvailableHeroes = (props) => {
-  const { heroList, hero, handlePartySelect } = props;
-
+  const { heroList, handlePartySelect } = props;
   return (
     <div id="available-heros">
       <h2>Available Heros</h2>
       <div id="hero-list">
-        {props.heroList.map((hero) => (
+        {heroList.map((hero) => (
           <div
             className="hero-card"
-            onClick={() => props.handlePartySelect(props.hero)}
-            key={props.name}
+            onClick={() => handlePartySelect(hero)}
+            key={hero.name}
           >
-            <h1 className="hero-name">{props.name}</h1>
+            <h1 className="hero-name">{hero.name}</h1>
 
             <div className="hero-image">
-              <img src={props.imgUrl} alt={props.name} />
+              <img src={hero.imgUrl} alt={hero.name} />
             </div>
             <h2>
-              LV: {props.heroLevel} - {props.role}
+              {hero.elementType} - {hero.role}
             </h2>
             <div className="stats-container">
               <div className="stats-hp">
                 <h3>HP:</h3>
-                <h3>{props.maxHealth}</h3>
+                <h3>{hero.maxHealth}</h3>
               </div>
               <div className="stats-ap">
                 <h3>ATK:</h3>
-                <h3>{props.attackPower}</h3>
+                <h3>{hero.attackPower}</h3>
               </div>
               <div className="stats-df">
                 <h3>DEF:</h3>
-                <h3>{props.defense}</h3>
+                <h3>{hero.defense}</h3>
               </div>
             </div>
           </div>
@@ -208,7 +209,15 @@ const AvailableHeroes = (props) => {
 };
 
 //! MAIN PARTY COMPONENT
+/**
+ * ! Main Party component
+ * ? This component will display the selected heroes
+ * ? This component will be passed a list of heroes
+ * ? This component will be passed a list of selected heroes
+ * ? This component will be passed a function to handle the selection of a hero
+ */
 const Party = ({
+  hero,
   tank,
   setTank,
   melee,
@@ -220,6 +229,7 @@ const Party = ({
   party,
   setParty,
 }) => {
+  // ? This function will handle the selection of a hero
   const handlePartySelect = (hero) => {
     console.log("clicked");
     if (hero.role === "Tank") {
@@ -236,20 +246,15 @@ const Party = ({
     }
   };
 
+  // ? This useEffect will update the party array when a hero state is updated
   useEffect(() => {
     setParty([tank, melee, ranged, healer]);
   }, [tank, melee, ranged, healer]);
 
-  setTimeout(() => {
-    console.log(party);
-  }, 1000);
-
   return (
     <div>
       <NavBar />
-      {/* //! INSERT TITLE CONTAINER */}
 
-      {/* <Roles /> */}
       <div id="party-select-container">
         <TankSelect
           tank={tank}
@@ -272,52 +277,10 @@ const Party = ({
           handlePartySelect={handlePartySelect}
         />
       </div>
-      {/* <AvailableHeroes
+      <AvailableHeroes
         heroList={heroList}
-        hero={hero}
-        handlePartySelect={handlePartySelect(hero)}
-      /> */}
-      <div id="available-heros">
-        <h2>Available Heros</h2>
-        <div id="hero-list">
-          {heroList.map((hero) => (
-            <div
-              className="hero-card"
-              onClick={() => handlePartySelect(hero)}
-              key={hero.name}
-            >
-              <h1 className="hero-name">{hero.name}</h1>
-
-              <div className="hero-image">
-                <img src={hero.imgUrl} alt={hero.name} />
-              </div>
-              <h2>
-                {hero.elementType} - {hero.role}
-              </h2>
-              <div className="stats-container">
-                <div className="stats-hp">
-                  <h3>HP:</h3>
-                  <h3>{hero.maxHealth}</h3>
-                </div>
-                <div className="stats-ap">
-                  <h3>ATK:</h3>
-                  <h3>{hero.attackPower}</h3>
-                </div>
-                <div className="stats-df">
-                  <h3>DEF:</h3>
-                  <h3>{hero.defense}</h3>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <Link to="/dashboard">
-          <button>Back to Dash</button>
-        </Link>
-        <Link to="/">
-          <button>Back to Landing</button>
-        </Link>
-      </div>
+        handlePartySelect={handlePartySelect}
+      />
     </div>
   );
 };
