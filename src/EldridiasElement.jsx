@@ -12,12 +12,12 @@ import {
 import { Home } from "./components/Home.jsx";
 import {
   Dashboard,
-  Party,
   Deck,
   Catalog,
   Shop,
   OverView,
 } from "./components/DashBoard.jsx";
+import { Party } from "./components/DashBoard_Party.jsx";
 
 function EldridiasElement() {
   const [tank, setTank] = useState(bulwark);
