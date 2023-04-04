@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { NavBar } from "./NavBar.jsx";
 import { heroList } from "../vanillaJsFiles/heros.js";
+import {
+  bulwark,
+  sorceress,
+  hogarth,
+  druidess,
+  beastMaster,
+  shadow,
+} from "../vanillaJsFiles/heros.js";
 
 const OverView = (props) => {
   const [currentLevel, setCurrentLevel] = useState(1);
@@ -19,6 +27,7 @@ const OverView = (props) => {
   // ! PLACEHOLDER DATA!
   return (
     <div>
+      <NavBar />
       <div className="overview-container">
         <h1>Overview</h1>
         <div id="overview-header">
@@ -67,64 +76,54 @@ const OverView = (props) => {
   );
 };
 
-const Party = (props) => {
-  /*   const { setTank, setMelee, setRanged, setHealer } = location.state; */
-  // const handlePartySelect = (hero) => {
-  //   console.log("clicked");
-  //   if (hero.role === "Tank") {
-  //     props.setTank(hero);
-  //     console.log(tank);
-  //   }
-  //   if (hero.role === "Melee") {
-  //     //
-  //   }
-  //   if (hero.role === "Ranged") {
-  //     //
-  //   }
-  //   if (hero.role === "Healer") {
-  //     //
-  //   }
-  // };
+const Party = ({
+  tank,
+  setTank,
+  melee,
+  setMelee,
+  ranged,
+  setRanged,
+  healer,
+  setHealer,
+  party,
+  setParty,
+}) => {
+  const handlePartySelect = (hero) => {
+    console.log("clicked");
+    if (hero.role === "Tank") {
+      setTank(hero);
+    }
+    if (hero.role === "Melee") {
+      setMelee(hero);
+    }
+    if (hero.role === "Ranged") {
+      setRanged(hero);
+    }
+    if (hero.role === "Healer") {
+      setHealer(hero);
+    }
+  };
 
   return (
     <div>
+      <NavBar />
       <h1>Party</h1>
       <div id="party-select-container">
         <div className="tank-select">
           <h1>Tank</h1>
-          <div
-            id="tank-select"
-            style={{ border: props.tank && "1px solid #000" }}
-          >
-            {props.tank}
-          </div>
+          <div id="tank-select">{tank.name}</div>
         </div>
         <div className="melee-select">
           <h1>Melee</h1>
-          <div
-            id="melee-select"
-            style={{ border: props.melee && "1px solid #000" }}
-          >
-            {props.melee}
-          </div>
+          <div id="melee-select">{melee.name}</div>
         </div>
         <div className="ranged-select">
           <h1>Ranged</h1>
-          <div
-            id="ranged-select"
-            style={{ border: props.ranged && "1px solid #000" }}
-          >
-            {props.ranged}
-          </div>
+          <div id="ranged-select">{ranged.name}</div>
         </div>
         <div className="healer-select">
           <h1>Healer</h1>
-          <div
-            id="healer-select"
-            style={{ border: props.healer && "1px solid #000" }}
-          >
-            {props.healer}
-          </div>
+          <div id="healer-select">{healer.name}</div>
         </div>
       </div>
       <div id="available-heros">
@@ -153,6 +152,7 @@ const Party = (props) => {
 const Deck = () => {
   return (
     <div>
+      <NavBar />
       <h1>Deck</h1>
       <Link to="/dashboard">
         <button>Back</button>
@@ -164,6 +164,7 @@ const Deck = () => {
 const Catalog = () => {
   return (
     <div>
+      <NavBar />
       <h1>Catalog</h1>
       <Link to="/dashboard">
         <button>Back</button>
@@ -175,6 +176,7 @@ const Catalog = () => {
 const Shop = () => {
   return (
     <div>
+      <NavBar />
       <h1>Shop</h1>
       <Link to="/dashboard">
         <button>Back</button>
@@ -186,24 +188,11 @@ const Shop = () => {
 // ! For now I simply placed a back button to navigate back to the landing page.
 // ? Navbar will be added to each component later.
 const Dashboard = () => {
-  const [tank, setTank] = useState(bulwark);
-  const [melee, setMelee] = useState(shadow);
-  const [ranged, setRanged] = useState(beastMaster);
-  const [healer, setHealer] = useState(hogarth);
-  const [party, setParty] = useState([tank, melee, ranged, healer]);
   return (
-    <>
-      <NavBar
-      // tank={tank}
-      // melee={melee}
-      // ranged={ranged}
-      // healer={healer}
-      // setTank={setTank}
-      // setMelee={setMelee}
-      // setRanged={setRanged}
-      // setHealer={setHealer}
-      />
-    </>
+    <div>
+      <h1>Dashboard</h1>
+      <OverView />
+    </div>
   );
 };
 
