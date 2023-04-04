@@ -113,9 +113,9 @@ const slime = new Monster(
   []
 );
 const blackWasp = new Monster(
-  "Zombie",
-  "A powerful zombie that can deal massive damage.",
-  "I'll be baaaaacccckkkk aaarrrg!",
+  "Black Wasp",
+  " A powerful wasp that can deal massive damage.",
+  "I  am the queen of the wasps!",
   "Earth",
   "Monster",
   100,

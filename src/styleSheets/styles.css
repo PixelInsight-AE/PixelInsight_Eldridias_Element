@@ -5,8 +5,10 @@
 }
 
 nav {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem;
 }
 nav ul {
   display: flex;
@@ -15,6 +17,18 @@ nav ul {
   align-items: center;
   color: #ffffff;
   list-style: none;
+}
+nav ul li {
+  border: #fff solid 1px;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+nav ul li a:hover {
+  color: #000000;
 }
 
 #homeScreen {
@@ -314,4 +328,164 @@ body {
 
 .start-game-container button:hover {
   background-color: #0056b3;
+}
+
+#party-select-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#hero-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  overflow: scroll;
+}
+
+.tank-select,
+.healer-select,
+.melee-select,
+.ranged-select {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  border: 3px solid red;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 25px;
+  width: 200px;
+  height: 400px;
+}
+.tank-select h1,
+.healer-select h1,
+.melee-select h1,
+.ranged-select h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.tank-select .hero-image,
+.healer-select .hero-image,
+.melee-select .hero-image,
+.ranged-select .hero-image {
+  margin: 20px 0;
+}
+.tank-select .hero-image img,
+.healer-select .hero-image img,
+.melee-select .hero-image img,
+.ranged-select .hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  border: 3px solid red;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 25px;
+  width: 600px;
+  height: 400px;
+}
+.hero-card h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.hero-card .hero-image {
+  margin: 20px 0;
+}
+.hero-card .hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.tank-select {
+  border-color: blue;
+}
+
+.healer-select {
+  border-color: green;
+}
+
+.melee-select {
+  border-color: orange;
+}
+
+.ranged-select {
+  border-color: purple;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px 0;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  font-size: 1rem;
+}
+
+.stats {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.stats-hp {
+  color: green;
+  display: flex;
+  flex-direction: column;
+}
+
+.fire {
+  align-self: flex-end;
+  background-color: orange;
+  color: #ff0000;
+  border: 3px solid #ff0000;
+  border-radius: 50%;
+  font-size: 1rem;
+  padding: 0.25rem;
+  margin-bottom: -50px;
+}
+
+.hero-name {
+  align-self: center;
+}
+
+#roles-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+}
+
+.role-container {
+  display: flex;
+  justify-content: center;
 }/*# sourceMappingURL=styles.css.map */

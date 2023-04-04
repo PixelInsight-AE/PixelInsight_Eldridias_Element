@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { NavBar } from "./NavBar.jsx";
 import { heroList } from "../vanillaJsFiles/heros.js";
+import {
+  bulwark,
+  sorceress,
+  hogarth,
+  druidess,
+  beastMaster,
+  shadow,
+} from "../vanillaJsFiles/heros.js";
 
-const OverView = () => {
+const OverView = (props) => {
   const [currentLevel, setCurrentLevel] = useState(1);
   const [currency, setCurrency] = useState(500);
   const [achievements, setAchievements] = useState([
@@ -68,18 +76,6 @@ const OverView = () => {
   );
 };
 
-const Party = () => {
-  return (
-    <div>
-      <NavBar />
-      <h1>Party</h1>
-      <Link to="/dashboard">
-        <button>Back</button>
-      </Link>
-    </div>
-  );
-};
-
 const Deck = () => {
   return (
     <div>
@@ -119,12 +115,12 @@ const Shop = () => {
 // ! For now I simply placed a back button to navigate back to the landing page.
 // ? Navbar will be added to each component later.
 const Dashboard = () => {
-  const [tank, setTank] = useState({});
-  const [melee, setMelee] = useState({});
-  const [ranged, setRanged] = useState({});
-  const [healer, setHealer] = useState({});
-  const [party, setParty] = useState([tank, melee, ranged, healer]);
-  return <OverView />;
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <OverView />
+    </div>
+  );
 };
 
-export { Dashboard, Party, Deck, Catalog, Shop, OverView };
+export { Dashboard, Deck, Catalog, Shop, OverView };
