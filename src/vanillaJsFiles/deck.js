@@ -1,17 +1,15 @@
 import { waterCard, fireCard, airCard, earthCard } from "./elementCards.js";
-import { healthBoost, extraMana, revive, extraAttack } from "./magicCards.js";
+import {
+  healthBoostCard,
+  extraManaCard,
+  reviveCard,
+  extraAttackCard,
+} from "./magicCards.js";
 
 const createDeck = () => {
   const deck = [];
   for (let i = 0; i < 40; i++) {
-    deck.push(waterCard);
-    deck.push(fireCard);
-    deck.push(airCard);
-    deck.push(earthCard);
-    deck.push(healthBoost);
-    deck.push(extraMana);
-    deck.push(revive);
-    deck.push(extraAttack);
+    // deck here
   }
   return deck;
 };

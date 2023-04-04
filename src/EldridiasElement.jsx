@@ -7,6 +7,7 @@ import {
   shadow,
   beastMaster,
   hogarth,
+  gunslinger,
 } from "./vanillaJsFiles/heros.js";
 
 import { Home } from "./components/Home.jsx";
@@ -21,8 +22,8 @@ import { Party } from "./components/DashBoard_Party.jsx";
 
 function EldridiasElement() {
   const [tank, setTank] = useState(bulwark);
-  const [melee, setMelee] = useState(shadow);
-  const [ranged, setRanged] = useState(beastMaster);
+  const [melee, setMelee] = useState(beastMaster);
+  const [ranged, setRanged] = useState(gunslinger);
   const [healer, setHealer] = useState(hogarth);
   const [party, setParty] = useState([tank, melee, ranged, healer]);
 
