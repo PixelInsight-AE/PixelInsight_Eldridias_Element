@@ -38,7 +38,6 @@ const RangedSelect = (props) => {
             <h3>{ranged.defense}</h3>
           </div>
         </div>
-        {/*   <div>{tank.description}</div> */}
       </div>
       <div className="role-container">
         <button className="ranged-btn">Ranged</button>
@@ -73,7 +72,6 @@ const HealerSelect = (props) => {
             <h3>{healer.defense}</h3>
           </div>
         </div>
-        {/*   <div>{tank.description}</div> */}
       </div>
       <div className="role-container">
         <button className="healer-btn">Healer</button>
@@ -108,7 +106,6 @@ const MeleeSelect = (props) => {
             <h3>{melee.defense}</h3>
           </div>
         </div>
-        {/*   <div>{tank.description}</div> */}
       </div>
       <div className="role-container">
         <button className="melee-btn">Melee</button>
@@ -143,7 +140,6 @@ const TankSelect = (props) => {
             <h3>{tank.defense}</h3>
           </div>
         </div>
-        {/*   <div>{tank.description}</div> */}
       </div>
       <div className="role-container">
         <button className="tank-btn">Tank</button>
@@ -245,16 +241,13 @@ const Party = ({
       setHealer(hero);
     }
   };
-
   // ? This useEffect will update the party array when a hero state is updated
   useEffect(() => {
     setParty([tank, melee, ranged, healer]);
   }, [tank, melee, ranged, healer]);
-
   return (
     <div>
       <NavBar />
-
       <div id="party-select-container">
         <TankSelect
           tank={tank}

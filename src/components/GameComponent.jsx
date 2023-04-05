@@ -1,8 +1,5 @@
 // import bootstrap oly to this file
 import React, { useEffect, useState } from "react";
-import { waveOne } from "../vanillaJsFiles/floors";
-import { computer } from "../vanillaJsFiles/computerPlayer.js";
-import { NavBar } from "./NavBar";
 import { Link } from "react-router-dom";
 
 const BossCard = (props) => {
@@ -16,7 +13,6 @@ const BossCard = (props) => {
     </div>
   );
 };
-
 const PartyStats = (props) => {
   const { party } = props;
   return (
@@ -33,7 +29,6 @@ const PartyStats = (props) => {
     </div>
   );
 };
-
 const EnemyStats = (props) => {
   const { floor, boss } = props;
   return (
@@ -46,6 +41,21 @@ const EnemyStats = (props) => {
           <MonsterStats floor={floor} />
         </div>
       </div>
+    </div>
+  );
+};
+const MonsterStats = (props) => {
+  const { floor } = props;
+  return (
+    <div className="monster-stats-container">
+      {floor.map((monster) => (
+        <div id="monster-stats" key={monster.name}>
+          <img src={monster.elementIcon} alt="" />
+          <h3>
+            {monster.name}-{monster.health}-
+          </h3>
+        </div>
+      ))}
     </div>
   );
 };
@@ -76,24 +86,8 @@ const Battlefield = (props) => {
         <h2>In here go the animations</h2>
       </div>
       <div id="party-battlefield">
-        <PartyHeros handleHeroClick={handleHeroClick} party={party} />
+        <PartyOfHeros handleHeroClick={handleHeroClick} party={party} />
       </div>
-    </div>
-  );
-};
-
-const MonsterStats = (props) => {
-  const { floor } = props;
-  return (
-    <div className="monster-stats-container">
-      {floor.map((monster) => (
-        <div id="monster-stats" key={monster.name}>
-          <img src={monster.elementIcon} alt="" />
-          <h3>
-            {monster.name}-{monster.health}-
-          </h3>
-        </div>
-      ))}
     </div>
   );
 };
@@ -113,7 +107,7 @@ const Wave = (props) => {
   );
 };
 
-const PartyHeros = (props) => {
+const PartyOfHeros = (props) => {
   const { party, handleHeroClick } = props;
   return (
     <div className="battlefield">
@@ -157,25 +151,16 @@ const GameComponent = (props) => {
     playerController,
     boss,
     party,
-    deck,
     floor,
-    setFloor,
-    currency,
-    setCurrency,
-    inventory,
-    setInventory,
+    // deck,
+    // setFloor,
+    // currency,
+    // setCurrency,
+    // inventory,
+    // setInventory,
   } = props;
-  const tank = party[0];
-  const melee = party[1];
-  const ranged = party[2];
-  const healer = party[3];
-  const [selectedHero, setSelectedHero] = useState(tank);
+  const [selectedHero, setSelectedHero] = useState(party[0]);
   const [selectedMonster, setSelectedMonster] = useState(floor[0]);
-
-  useEffect(() => {
-    console.log("selectedHero health", selectedHero.health);
-    console.log("selectedMonster health", selectedMonster.health);
-  }, [selectedHero, selectedMonster]);
 
   const handleHeroClick = (hero) => {
     setSelectedHero(hero);
@@ -238,7 +223,7 @@ const PlayerControlls = (props) => {
       >
         End Turn
       </button>
-      <Link to="/dashboard/">
+      <Link to="/dashboard">
         <button>Surrender</button>
       </Link>
     </div>
