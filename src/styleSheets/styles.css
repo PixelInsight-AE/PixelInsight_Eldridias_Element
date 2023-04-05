@@ -558,6 +558,10 @@ nav ul li a:hover {
   width: 40px;
 }
 
+.hero-click {
+  border: 1px solid white;
+}
+
 body {
   background-image: url("/src/assets/images/heros/hero.jpg");
   background-size: cover;

@@ -1,5 +1,6 @@
 // import bootstrap oly to this file
-
+import React, { useEffect, useState } from "react";
+import { waveOne } from "../vanillaJsFiles/floors";
 const BossCard = (props) => {
   const { boss } = props;
   return (
@@ -16,9 +17,9 @@ const BossCard = (props) => {
 };
 
 const TankHero = (props) => {
-  const { tank } = props;
+  const { tank, handleHeroClick } = props;
   return (
-    <div className="tank-card">
+    <div onClick={handleHeroClick} className="tank-card">
       <h1 className="tank-name">{tank.name}</h1>
       {/*       <div className="tank-image">
         <img src={tank.imgUrl} alt={tank.name} />
@@ -84,11 +85,11 @@ const MonsterStats = (props) => {
 };
 
 const Wave = (props) => {
-  const { floor } = props;
+  const { floor, handleMonsterClick } = props;
   return (
     <div className="battlefield">
       {floor.map((mob) => (
-        <div key={mob.name}>
+        <div onClick={() => handleMonsterClick(mob)} key={mob.name}>
           <h1>{mob.name}</h1>
           <img src={mob.imgUrl} alt={mob.name} />
           <h2>HP:{mob.health}</h2>
@@ -99,11 +100,15 @@ const Wave = (props) => {
 };
 
 const PartyHeros = (props) => {
-  const { party } = props;
+  const { party, handleHeroClick } = props;
   return (
     <div className="battlefield">
       {party.map((hero) => (
-        <div key={hero.name}>
+        <div
+          className="hero-click"
+          onClick={() => handleHeroClick(hero)}
+          key={hero.name}
+        >
           <h1>{hero.name}</h1>
           <img src={hero.imgUrl} alt="hero.name" />
           <h2>HP: {hero.health}</h2>
@@ -130,6 +135,21 @@ const GameComponent = (props) => {
   const melee = party[1];
   const ranged = party[2];
   const healer = party[3];
+  const [selectedHero, setSelectedHero] = useState(tank);
+  const [selectedMonster, setSelectedMonster] = useState(floor[0]);
+
+  const handleHeroClick = (hero) => {
+    setSelectedHero(hero);
+  };
+  const handleMonsterClick = (monster) => {
+    setSelectedMonster(monster);
+  };
+  useEffect(() => {
+    console.log("selectedHero", selectedHero);
+  }, [selectedHero]);
+  useEffect(() => {
+    console.log("selectedMonster", selectedMonster);
+  }, [selectedMonster]);
 
   return (
     <>
@@ -157,13 +177,13 @@ const GameComponent = (props) => {
             <h2>Here goes the dynamic messages, .... has died... and so on</h2>
           </div>
           <div id="enemy-battlefield">
-            <Wave floor={floor} />
+            <Wave handleMonsterClick={handleMonsterClick} floor={floor} />
           </div>
           <div id="battle-animation-container">
             <h2>In here go the animations</h2>
           </div>
           <div id="party-battlefield">
-            <PartyHeros party={party} />
+            <PartyHeros handleHeroClick={handleHeroClick} party={party} />
           </div>
         </div>
 
