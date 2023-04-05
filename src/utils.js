@@ -5,6 +5,7 @@ class Hero {
     health,
     maxHealth,
     flag,
+    elementIcon,
     defense,
     description,
     role,
@@ -19,14 +20,15 @@ class Hero {
     heroExperience,
     maxAttackPower,
     id,
-    effects,
-    elementIcon
+    buffs,
+    debuffs
   ) {
     this.name = name;
     this.attackPower = attackPower;
     this.health = health;
     this.maxHealth = maxHealth;
     this.flag = flag;
+    this.elementIcon = elementIcon;
     this.defense = defense;
     this.description = description;
     this.role = role;
@@ -41,8 +43,8 @@ class Hero {
     this.heroExperience = heroExperience;
     this.maxAttackPower = maxAttackPower;
     this.id = id;
-    this.effects = effects;
-    this.elementIcon = elementIcon;
+    this.buffs = buffs;
+    this.debuffs = debuffs;
   }
 }
 
@@ -60,7 +62,9 @@ class Monster {
     maxHealth,
     flag,
     imgUrl,
-    elementIcon
+    elementIcon,
+    buffs,
+    debuffs
   ) {
     this.name = name;
     this.description = description;
@@ -75,6 +79,8 @@ class Monster {
     this.flag = flag;
     this.imgUrl = imgUrl;
     this.elementIcon = elementIcon;
+    this.buffs = buffs;
+    this.debuffs = debuffs;
   }
 }
 

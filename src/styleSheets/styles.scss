@@ -1,4 +1,5 @@
-// import variables.scss
+// Import all of Bootstrap's CSS
+
 @import "variables";
 @import "mixins";
 @import "./components/navBar";
@@ -6,6 +7,7 @@
 @import "./components/Overview";
 @import "./components/PartyBuilder";
 @import "./components/DeckBuilder";
+@import "./components/GameComponent";
 
 body {
   background-image: url("/src/assets/images/heros/hero.jpg");
