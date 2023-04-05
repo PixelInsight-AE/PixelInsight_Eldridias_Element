@@ -15,6 +15,7 @@ import { Home } from "./components/Home.jsx";
 import { Dashboard, Catalog, Shop, OverView } from "./components/DashBoard.jsx";
 import { Party } from "./components/DashBoard_Party.jsx";
 import { DeckBuilder } from "./components/DashBoard_Deck.jsx";
+import { GameComponent } from "./components/GameComponent.jsx";
 
 function EldridiasElement() {
   const [tank, setTank] = useState(bulwark);
@@ -53,6 +54,7 @@ function EldridiasElement() {
       <Route path="/dashboard/deck" element={<DeckBuilder deck={deck} />} />
       <Route path="/dashboard/catalog" element={<Catalog />} />
       <Route path="/dashboard/shop" element={<Shop />} />
+      <Route path="/dashboard/play" element={<GameComponent />} />
     </Routes>
   );
 }

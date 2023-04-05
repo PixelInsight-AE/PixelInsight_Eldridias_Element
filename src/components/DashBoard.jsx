@@ -102,8 +102,10 @@ const OverView = (props) => {
             <option value={3}>Level 3</option>
             <option value={4}>Level 4</option>
           </select>
-          <button onClick={startGame}>Start</button>
         </div>
+        <Link to="/dashboard/play">
+          <button>Start Game</button>
+        </Link>
       </div>
 
       <Link to="/dashboard">
