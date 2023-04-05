@@ -31,7 +31,7 @@ function EldridiasElement() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard" element={<Dashboard party={party} />} />
       <Route path="/dashboard/overview" element={<OverView party={party} />} />
       <Route
         path="/dashboard/party"

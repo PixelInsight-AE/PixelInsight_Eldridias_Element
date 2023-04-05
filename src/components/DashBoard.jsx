@@ -139,11 +139,12 @@ const Shop = () => {
 
 // ! For now I simply placed a back button to navigate back to the landing page.
 // ? Navbar will be added to each component later.
-const Dashboard = () => {
+const Dashboard = (props) => {
+  const { party } = props;
   return (
     <div>
       <h1>Dashboard</h1>
-      <OverView />
+      <OverView party={party} />
     </div>
   );
 };
