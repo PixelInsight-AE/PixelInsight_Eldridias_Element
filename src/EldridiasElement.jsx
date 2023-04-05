@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { controller } from "./vanillaJsFiles/controller.js";
+import { computer } from "./vanillaJsFiles/computerPlayer.js";
 import {
   bulwark,
   sorceress,
@@ -26,6 +27,7 @@ import {
 //console.log(controller);
 function EldridiasElement() {
   const [playerController, setPlayerController] = useState(controller);
+  const [computerController, setComputerController] = useState(computer);
   const [tank, setTank] = useState(bulwark);
   const [melee, setMelee] = useState(beastMaster);
   const [ranged, setRanged] = useState(gunslinger);
@@ -100,6 +102,7 @@ function EldridiasElement() {
         element={
           <GameComponent
             playerController={playerController}
+            computerController={computerController}
             boss={boss}
             party={party}
             deck={deck}

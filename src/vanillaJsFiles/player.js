@@ -1,8 +1,5 @@
 import { computer } from "./computerPlayer.js";
-import { displayCurrentGame } from "./index.js";
-import { deck } from "./deck.js";
-import { airCard, earthCard, fireCard, waterCard } from "./elementCards.js";
-import { extraMana, healthBoost, revive, extraAttack } from "./magicCards.js";
+
 import { compareElements } from "./helpers.js";
 
 //! PLAYER OBJECT
@@ -14,16 +11,7 @@ const controller = {
   turnCount: 0,
   playerGraveyard: [],
   playerUsedCards: [],
-  playingCardsInHand: [
-    waterCard,
-    fireCard,
-    earthCard,
-    airCard,
-    healthBoost,
-    extraMana,
-    revive,
-    extraAttack,
-  ],
+  playingCardsInHand: [],
   effect: [],
 
   selectCard: function (party, level) {
@@ -132,4 +120,4 @@ const controller = {
   },
 };
 
-export { player, playerGraveyard };
+export { controller };
