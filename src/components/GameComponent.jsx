@@ -1,4 +1,4 @@
-const GameComponent = () => {
+const GameComponent = (props) => {
   return (
     <div>
       <h1>Game Component</h1>

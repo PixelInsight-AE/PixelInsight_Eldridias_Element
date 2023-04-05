@@ -23,6 +23,9 @@ function EldridiasElement() {
   const [ranged, setRanged] = useState(gunslinger);
   const [healer, setHealer] = useState(hogarth);
   const [party, setParty] = useState([tank, melee, ranged, healer]);
+  const [floor, setFloor] = useState(1);
+  const [currency, setCurrency] = useState(500);
+  const [inventory, setInventory] = useState([]);
   const [deck, setDeck] = useState([
     ...magicPlayingCards,
     ...allElementalCards,
@@ -32,7 +35,20 @@ function EldridiasElement() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/dashboard" element={<Dashboard party={party} />} />
+      <Route
+        path="/dashboard"
+        element={
+          <Dashboard
+            currency={currency}
+            setCurrency={setCurrency}
+            inventory={inventory}
+            setInventory={setInventory}
+            floor={floor}
+            setFloor={setFloor}
+            party={party}
+          />
+        }
+      />
       <Route path="/dashboard/overview" element={<OverView party={party} />} />
       <Route
         path="/dashboard/party"
@@ -54,7 +70,21 @@ function EldridiasElement() {
       <Route path="/dashboard/deck" element={<DeckBuilder deck={deck} />} />
       <Route path="/dashboard/catalog" element={<Catalog />} />
       <Route path="/dashboard/shop" element={<Shop />} />
-      <Route path="/dashboard/play" element={<GameComponent />} />
+      <Route
+        path="/dashboard/play"
+        element={
+          <GameComponent
+            party={party}
+            deck={deck}
+            floor={floor}
+            setFloor={setFloor}
+            currency={currency}
+            setCurrency={setCurrency}
+            inventory={inventory}
+            setInventory={setInventory}
+          />
+        }
+      />
     </Routes>
   );
 }
