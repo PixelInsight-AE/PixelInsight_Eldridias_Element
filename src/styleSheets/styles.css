@@ -488,8 +488,74 @@ nav ul li a:hover {
 #deck-grid .display-card .card-image {
   border-radius: 0.5rem;
 }
-#deck-grid .display-card .magic-icon {
-  color: white;
+#deck-grid .display-card .element-icon {
+  width: 35px;
+  height: 35px;
+}
+
+#game-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+#game-container #middle-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 60%;
+  border: 1px solid white;
+}
+#game-container #left-side-container,
+#game-container #right-side-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 20%;
+  border: 1px solid white;
+}
+#game-container #enemy-battlefield {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid white;
+}
+#game-container #enemy-battlefield .battlefield {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid white;
+}
+#game-container #enemy-battlefield .battlefield img {
+  width: 100px;
+  border-radius: 50%;
+}
+#game-container #party-battlefield {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid white;
+}
+#game-container #party-battlefield .battlefield {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid white;
+}
+#game-container #party-battlefield .battlefield img {
+  width: 100px;
+  border-radius: 50%;
+}
+#game-container #mob-status #monster-stats {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+#game-container #mob-status #monster-stats img {
+  width: 40px;
 }
 
 body {

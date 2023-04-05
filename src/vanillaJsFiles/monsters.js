@@ -1,19 +1,20 @@
 import { Monster } from "../utils.js";
 
 const wizard = new Monster(
-  "Wizard of the North",
-  "A powerful mage that can deal massive damage.",
-  "It seems I was no match for you... AAArggggzz",
-  "Magic",
-  "Monster",
-  100,
-  150,
-  100,
-  200,
-  200,
-  false,
-  "https://i.pinimg.com",
-  1,
+  "Wizard of the North", //name
+  "A powerful mage that can deal massive damage.", //description
+  "It seems I was no match for you... AAArggggzz", //deathMessage
+  "Magic", //elementType
+  "Monster", //role
+  100, //attackPower
+  150, //defense
+  100, //mana
+  200, //health
+  200, //maxHealth
+  false, //flag
+  "https://i.imgur.com/shL6XSb.png", //imgUrl
+  "https://i.imgur.com/uFSzmC8.png",
+  [],
   []
 );
 const goblin = new Monster(
@@ -28,8 +29,9 @@ const goblin = new Monster(
   100,
   100,
   false,
-  "https://i.pinimg.com",
-  1,
+  "https://i.imgur.com/p6y7Qsm.png",
+  "https://i.imgur.com/2Iff7Gw.png",
+  [],
   []
 );
 const dragon = new Monster(
@@ -44,8 +46,9 @@ const dragon = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com",
-  1,
+  "https://i.imgur.com/7xoGo13.png",
+  "",
+  [],
   []
 );
 const skeleton = new Monster(
@@ -60,8 +63,9 @@ const skeleton = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com",
-  1,
+  "https://i.imgur.com/UJ2L5j5.png",
+  "https://i.imgur.com/2Iff7Gw.png",
+  [],
   []
 );
 const orc = new Monster(
@@ -76,8 +80,9 @@ const orc = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com",
-  1,
+  "https://i.imgur.com/6Xp0ZCL.png",
+  "https://i.imgur.com/2Iff7Gw.png",
+  [],
   []
 );
 const spider = new Monster(
@@ -92,8 +97,9 @@ const spider = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com",
-  1,
+  "https://i.imgur.com/XPEgQJS.png",
+  "https://i.imgur.com/2Iff7Gw.png",
+  [],
   []
 );
 const slime = new Monster(
@@ -108,8 +114,9 @@ const slime = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com",
-  1,
+  "https://i.imgur.com/JfRBpmh.png",
+  "https://i.imgur.com/2Iff7Gw.png",
+  [],
   []
 );
 const blackWasp = new Monster(
@@ -124,8 +131,9 @@ const blackWasp = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com",
-  1,
+  "https://i.imgur.com/wBLOJNA.png",
+  "https://i.imgur.com/2Iff7Gw.png",
+  [],
   []
 );
 const blackKnight = new Monster(
@@ -140,9 +148,9 @@ const blackKnight = new Monster(
   200,
   200,
   false,
-  "https://i.pinimg.com",
-
-  1,
+  "https://i.imgur.com/u0f5o7s.png",
+  "https://i.imgur.com/2Iff7Gw.png",
+  [],
   []
 );
 

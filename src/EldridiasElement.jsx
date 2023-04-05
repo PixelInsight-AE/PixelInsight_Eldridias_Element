@@ -16,14 +16,23 @@ import { Dashboard, Catalog, Shop, OverView } from "./components/DashBoard.jsx";
 import { Party } from "./components/DashBoard_Party.jsx";
 import { DeckBuilder } from "./components/DashBoard_Deck.jsx";
 import { GameComponent } from "./components/GameComponent.jsx";
-
+import {
+  waveOne,
+  waveTwo,
+  waveThree,
+  bossOne,
+  floorOne,
+} from "./vanillaJsFiles/floors.js";
+//console.log(controller);
 function EldridiasElement() {
+  const [playerController, setPlayerController] = useState(controller);
   const [tank, setTank] = useState(bulwark);
   const [melee, setMelee] = useState(beastMaster);
   const [ranged, setRanged] = useState(gunslinger);
   const [healer, setHealer] = useState(hogarth);
   const [party, setParty] = useState([tank, melee, ranged, healer]);
-  const [floor, setFloor] = useState(1);
+  const [boss, setBoss] = useState(bossOne);
+  const [floor, setFloor] = useState(waveOne);
   const [currency, setCurrency] = useState(500);
   const [inventory, setInventory] = useState([]);
   const [deck, setDeck] = useState([
@@ -39,6 +48,7 @@ function EldridiasElement() {
         path="/dashboard"
         element={
           <Dashboard
+            playerController={playerController}
             currency={currency}
             setCurrency={setCurrency}
             inventory={inventory}
@@ -46,10 +56,25 @@ function EldridiasElement() {
             floor={floor}
             setFloor={setFloor}
             party={party}
+            boss={boss}
           />
         }
       />
-      <Route path="/dashboard/overview" element={<OverView party={party} />} />
+      <Route
+        path="/dashboard/overview"
+        element={
+          <OverView
+            currency={currency}
+            setCurrency={setCurrency}
+            inventory={inventory}
+            setInventory={setInventory}
+            controller={playerController}
+            floor={floor}
+            setFloor={setFloor}
+            party={party}
+          />
+        }
+      />
       <Route
         path="/dashboard/party"
         element={
@@ -74,6 +99,8 @@ function EldridiasElement() {
         path="/dashboard/play"
         element={
           <GameComponent
+            playerController={playerController}
+            boss={boss}
             party={party}
             deck={deck}
             floor={floor}

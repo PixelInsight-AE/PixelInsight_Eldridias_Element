@@ -6,6 +6,7 @@ const bulwark = new Hero(
   1000, //health
   4500, //maxHealth
   false, //flag
+  "https://i.imgur.com/2Ue37HJ.png", //elementIcon
   5000, //defense
   "A strong and sturdy warrior that can take a lot of damage.", //description
   "Tank", //role
@@ -19,7 +20,9 @@ const bulwark = new Hero(
   100, //maxHeroLevel
   0, //heroExperience
   100, //maxAttackPower
-  1 //id
+  1, //id
+  [], //buffs
+  [] //debuffs
 );
 
 const hogarth = new Hero(
@@ -27,7 +30,8 @@ const hogarth = new Hero(
   100, //attackPower
   3000, //health
   3000, //maxHealth
-  false, //flag
+  false,
+  "https://i.imgur.com/17dYylC.png",
   1500, //defense
   "A healer that can restore health to allies.", //description
   "Healer", //role
@@ -41,7 +45,9 @@ const hogarth = new Hero(
   100, //maxHeroLevel
   0, //heroExperience
   100, //maxAttackPower
-  2 //id
+  2, //id
+  [],
+  []
 );
 
 const beastMaster = new Hero(
@@ -49,7 +55,8 @@ const beastMaster = new Hero(
   100, //attackPower
   3000, //health
   3000, //maxHealth
-  false, //flag
+  false,
+  "https://i.imgur.com/2Iff7Gw.png",
   3400, //defense
   "A powerful warrior that can deal massive damage.", //description
   "Melee", //role
@@ -63,7 +70,9 @@ const beastMaster = new Hero(
   100, //maxHeroLevel
   0, //heroExperience
   100, //maxAttackPower
-  3 //id
+  3, //id
+  [],
+  []
 );
 
 const sorceress = new Hero(
@@ -71,7 +80,8 @@ const sorceress = new Hero(
   100, //attackPower
   3000, //health
   3000, //maxHealth
-  false, //flag
+  false,
+  "https://i.imgur.com/2Ue37HJ.png",
   2400, //defense
   "A powerful mage that can deal massive damage.", //description
   "Ranged", //role
@@ -85,7 +95,9 @@ const sorceress = new Hero(
   100, //maxHeroLevel
   0, //heroExperience
   100, //maxAttackPower
-  4 //id
+  4, //id
+  [],
+  []
 );
 
 const sentinel = new Hero(
@@ -93,7 +105,8 @@ const sentinel = new Hero(
   100, //attackPower
   1200, //health
   4500, //maxHealth
-  false, //flag
+  false,
+  "https://i.imgur.com/17dYylC.png",
   4500, //defense
   "A stalwart defender that can shield allies and withstand attacks.", //description
   "Tank", //role
@@ -107,7 +120,9 @@ const sentinel = new Hero(
   100, //maxHeroLevel
   0, //heroExperience
   100, //maxAttackPower
-  5 //id
+  5, //id
+  [],
+  []
 );
 
 const druidess = new Hero(
@@ -115,7 +130,8 @@ const druidess = new Hero(
   100, //attackPower
   2000, //health
   3000, //maxHealth
-  false, //flag
+  false,
+  "https://i.imgur.com/2Iff7Gw.png",
   1500, //defense
   "A mystical healer that can summon nature's power to heal allies.", //description
   "Healer", //role
@@ -129,7 +145,9 @@ const druidess = new Hero(
   100, //maxHeroLevel
   0, //heroExperience
   100, //maxAttackPower
-  6 //id
+  6, //id
+  [],
+  []
 );
 
 const gunslinger = new Hero(
@@ -137,7 +155,8 @@ const gunslinger = new Hero(
   100, //attackPower
   2500, //health
   2500, //maxHealth
-  false, //flag
+  false,
+  "https://i.imgur.com/2Ue37HJ.png",
   1000, //defense
   "A quick and deadly marksman that can shoot down enemies from afar.", //description
   "Ranged", //role
@@ -151,7 +170,9 @@ const gunslinger = new Hero(
   100, //maxHeroLevel
   0, //heroExperience
   100, //maxAttackPower
-  7 //id
+  7, //id
+  [],
+  []
 );
 
 const paladin = new Hero(
@@ -159,7 +180,8 @@ const paladin = new Hero(
   100, //attackPower
   1500, //health
   3500, //maxHealth
-  false, //flag
+  false,
+  "https://i.imgur.com/17dYylC.png",
   3000, //defense
   "A devout warrior that can protect allies and smite enemies.", //description
   "Tank", //role
@@ -173,7 +195,9 @@ const paladin = new Hero(
   100, //maxHeroLevel
   0, //heroExperience
   100, //maxAttackPower
-  8 //id
+  8, //id
+  [],
+  []
 );
 
 const shadow = new Hero(
@@ -181,7 +205,8 @@ const shadow = new Hero(
   150, //attackPower
   2500, //health
   2500, //maxHealth
-  false, //flag
+  false,
+  "https://i.imgur.com/17dYylC.png",
   1500, //defense
   "A rogue that can deal high damage and evade attacks.", //description
   "Melee", //role
@@ -195,7 +220,9 @@ const shadow = new Hero(
   100, //maxHeroLevel
   0, //heroExperience
   150, //maxAttackPower
-  9 //id
+  9, //id
+  [],
+  []
 );
 
 const seer = new Hero(
@@ -203,21 +230,24 @@ const seer = new Hero(
   50, //attackPower
   4000, //health
   4000, //maxHealth
-  false, //flag
+  false,
+  "https://i.imgur.com/2Ue37HJ.png",
   1200, //defense
   "A wise oracle that can see the future and predict enemy attacks.", //description
   "Healer", //role
   "Fire", //elementType
   "Precognition", //specialAttackName
   1, //specialAttackCost
-  0, //specialAttackPower
-  false, //canRegularAttack
+  300, //specialAttackPower
+  true,
   "https://i.imgur.com/rjbFnVY.png", //imgUrl
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
   50, //maxAttackPower
-  10 //id
+  10, //id
+  [],
+  []
 );
 
 const storm = new Hero(
@@ -225,7 +255,8 @@ const storm = new Hero(
   100, //attackPower
   2800, //health
   2800, //maxHealth
-  false, //flag
+  false,
+  "https://i.imgur.com/7GU6uHO.png",
   2000, //defense
   "A skilled fighter that can manipulate lightning.", //description
   "Melee", //role
@@ -239,7 +270,9 @@ const storm = new Hero(
   100, //maxHeroLevel
   0, //heroExperience
   100, //maxAttackPower
-  11 //id
+  11, //id
+  [],
+  []
 );
 
 const nightshade = new Hero(
@@ -247,7 +280,8 @@ const nightshade = new Hero(
   75, //attackPower
   3200, //health
   3200, //maxHealth
-  false, //flag
+  false,
+  "https://i.imgur.com/2Iff7Gw.png",
   1800, //defense
   "A skilled assassin that can inflict poison damage.", //description
   "Melee", //role
@@ -261,7 +295,9 @@ const nightshade = new Hero(
   100, //maxHeroLevel
   0, //heroExperience
   75, //maxAttackPower
-  12 //id
+  12, //id
+  [],
+  []
 );
 
 const heroList = [

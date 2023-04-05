@@ -146,7 +146,7 @@ const Dashboard = (props) => {
   return (
     <div>
       <h1>Dashboard</h1>
-      <OverView party={party} />
+      <OverView party={party} floor={floor} boss={boss} />
     </div>
   );
 };

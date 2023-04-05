@@ -159,20 +159,22 @@ const sargarasTheDestroyer = {
 
 const magiTheLiar = {
   name: "Magi the Liar",
+  description:
+    "Magi the Liar is a powerful mage who uses deception to her advantage.",
   attackPower: 100,
   defense: 500,
-  mana: 100,
-  health: 1000,
+  mana: 1000,
+  health: 10000,
   maxHealth: 10000,
   turnCount: 0,
   effect: [],
+  imgUrl: "https://i.imgur.com/6QFTJpp.png",
   abilities: [
     {
       liarsLament: function () {
         let currentTarget = party[party.length - 1];
         console.log("Magi the Liar summons a Liar's Lament.");
         currentTarget.health -= attackPower * 2;
-        currentTarget.attack -= attackPower * 2;
       },
       name: "Liar's Lament",
       description: "Magi the Liar summons a Liar's Lament.",

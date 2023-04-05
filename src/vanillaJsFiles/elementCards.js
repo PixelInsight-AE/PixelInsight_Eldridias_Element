@@ -17,7 +17,7 @@ const fireCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/gDxoOo1.png",
-  ""
+  "https://i.imgur.com/2Ue37HJ.png"
 ); // 1 fire
 
 const fireballCard = new ElementCard(
@@ -36,7 +36,7 @@ const fireballCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/gDxoOo1.png",
-  ""
+  "https://i.imgur.com/2Ue37HJ.png"
 ); // 2 fire
 
 const lavaCard = new ElementCard(
@@ -55,7 +55,7 @@ const lavaCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/gDxoOo1.png",
-  ""
+  "https://i.imgur.com/2Ue37HJ.png"
 ); // 3 fire
 
 const rainOfFireCard = new ElementCard(
@@ -74,7 +74,7 @@ const rainOfFireCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/gDxoOo1.png",
-  ""
+  "https://i.imgur.com/2Ue37HJ.png"
 ); // 4 fire
 
 const volcanoCard = new ElementCard(
@@ -93,7 +93,7 @@ const volcanoCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/gDxoOo1.png",
-  ""
+  "https://i.imgur.com/2Ue37HJ.png"
 ); // 5 fire
 
 const ashRainCard = new ElementCard(
@@ -112,7 +112,7 @@ const ashRainCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/gDxoOo1.png",
-  ""
+  "https://i.imgur.com/2Ue37HJ.png"
 ); // 6 fire
 
 const ignitionStrikeCard = new ElementCard(
@@ -131,7 +131,7 @@ const ignitionStrikeCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/gDxoOo1.png",
-  ""
+  "https://i.imgur.com/2Ue37HJ.png"
 ); // 7 fire
 
 const PyroclasmCard = new ElementCard(
@@ -150,7 +150,7 @@ const PyroclasmCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/gDxoOo1.png",
-  ""
+  "https://i.imgur.com/2Ue37HJ.png"
 ); // 8 fire
 
 const fireWhipCard = new ElementCard(
@@ -169,7 +169,7 @@ const fireWhipCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/gDxoOo1.png",
-  ""
+  "https://i.imgur.com/2Ue37HJ.png"
 ); // 9 fire
 
 const burningMeteorCard = new ElementCard(
@@ -188,7 +188,7 @@ const burningMeteorCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/gDxoOo1.png",
-  ""
+  "https://i.imgur.com/2Ue37HJ.png"
 ); // 10 fire
 
 // ! WATER CARDS
@@ -209,7 +209,7 @@ const waterCard = new ElementCard(
   100, //max level
   0, //duration
   "https://i.imgur.com/KPF1V5g.png",
-  ""
+  "https://i.imgur.com/17dYylC.png"
 ); // 1 water
 
 const aquaSlashCard = new ElementCard(
@@ -228,7 +228,7 @@ const aquaSlashCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/KPF1V5g.png",
-  ""
+  "https://i.imgur.com/17dYylC.png"
 ); // 2 water
 
 const waterFallCard = new ElementCard(
@@ -247,7 +247,7 @@ const waterFallCard = new ElementCard(
   100,
   0, // duration
   "https://i.imgur.com/KPF1V5g.png",
-  ""
+  "https://i.imgur.com/17dYylC.png"
 ); //3 water
 
 const iceCard = new ElementCard(
@@ -266,7 +266,7 @@ const iceCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/KPF1V5g.png",
-  ""
+  "https://i.imgur.com/17dYylC.png"
 ); //4 water
 
 const blizzardCard = new ElementCard(
@@ -285,7 +285,7 @@ const blizzardCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/KPF1V5g.png",
-  ""
+  "https://i.imgur.com/17dYylC.png"
 ); // 5 water
 
 const iceSpikeCard = new ElementCard(
@@ -304,7 +304,7 @@ const iceSpikeCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/KPF1V5g.png",
-  ""
+  "https://i.imgur.com/17dYylC.png"
 ); // 6 water
 
 const oceanCurrentCard = new ElementCard(
@@ -323,7 +323,7 @@ const oceanCurrentCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/KPF1V5g.png",
-  ""
+  "https://i.imgur.com/17dYylC.png"
 ); // 7 water
 
 const highTideCard = new ElementCard(
@@ -342,7 +342,7 @@ const highTideCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/KPF1V5g.png",
-  ""
+  "https://i.imgur.com/17dYylC.png"
 ); // 8 water
 
 const coralCrushCard = new ElementCard(
@@ -361,7 +361,7 @@ const coralCrushCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/KPF1V5g.png",
-  ""
+  "https://i.imgur.com/17dYylC.png"
 ); // 9 water
 
 const tsunamiCard = new ElementCard(
@@ -379,7 +379,8 @@ const tsunamiCard = new ElementCard(
   1,
   100,
   0,
-  "https://i.imgur.com/KPF1V5g.png"
+  "https://i.imgur.com/KPF1V5g.png",
+  "https://i.imgur.com/17dYylC.png"
 ); // 10 water
 
 // ! EARTH CARDS
@@ -400,7 +401,7 @@ const earthCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/jBCGQPK.png",
-  ""
+  "https://i.imgur.com/2Iff7Gw.png"
 ); // 1 earth
 
 const rockCard = new ElementCard(
@@ -419,7 +420,7 @@ const rockCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/jBCGQPK.png",
-  ""
+  "https://i.imgur.com/2Iff7Gw.png"
 ); // 2 earth
 
 const sandCard = new ElementCard(
@@ -438,7 +439,7 @@ const sandCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/jBCGQPK.png",
-  ""
+  "https://i.imgur.com/2Iff7Gw.png"
 ); // 3 earth
 
 const treeCard = new ElementCard(
@@ -457,7 +458,7 @@ const treeCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/jBCGQPK.png",
-  ""
+  "https://i.imgur.com/2Iff7Gw.png"
 ); // 4 earth
 
 const leafCard = new ElementCard(
@@ -476,7 +477,7 @@ const leafCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/jBCGQPK.png",
-  ""
+  "https://i.imgur.com/2Iff7Gw.png"
 ); // 5 earth
 
 const quakeStrikeCard = new ElementCard(
@@ -494,7 +495,8 @@ const quakeStrikeCard = new ElementCard(
   1,
   100,
   0,
-  "https://i.imgur.com/jBCGQPK.png"
+  "https://i.imgur.com/jBCGQPK.png",
+  "https://i.imgur.com/2Iff7Gw.png"
 ); // 6 earth
 
 const tremorCard = new ElementCard(
@@ -513,7 +515,7 @@ const tremorCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/jBCGQPK.png",
-  ""
+  "https://i.imgur.com/2Iff7Gw.png"
 ); // 7 earth
 
 const avalancheCard = new ElementCard(
@@ -532,7 +534,7 @@ const avalancheCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/jBCGQPK.png",
-  ""
+  "https://i.imgur.com/2Iff7Gw.png"
 ); // 8 earth
 
 const dustDevilCard = new ElementCard(
@@ -551,7 +553,7 @@ const dustDevilCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/jBCGQPK.png",
-  ""
+  "https://i.imgur.com/2Iff7Gw.png"
 ); // 9 earth
 
 const earthQuakeCard = new ElementCard(
@@ -570,7 +572,7 @@ const earthQuakeCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/jBCGQPK.png",
-  ""
+  "https://i.imgur.com/2Iff7Gw.png"
 ); // 10 earth
 
 // ! AIR CARDS
@@ -591,7 +593,7 @@ const airCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/VgkRpPU.png",
-  ""
+  "https://i.imgur.com/7GU6uHO.png"
 ); // 1 air
 
 const cloudCard = new ElementCard(
@@ -610,7 +612,7 @@ const cloudCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/VgkRpPU.png",
-  ""
+  "https://i.imgur.com/7GU6uHO.png"
 ); // 2 air
 const lightningCard = new ElementCard(
   502,
@@ -628,7 +630,7 @@ const lightningCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/VgkRpPU.png",
-  ""
+  "https://i.imgur.com/7GU6uHO.png"
 ); //3 air
 const windCard = new ElementCard(
   503,
@@ -646,7 +648,7 @@ const windCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/VgkRpPU.png",
-  ""
+  "https://i.imgur.com/7GU6uHO.png"
 ); //4 air
 const rainCard = new ElementCard(
   504,
@@ -664,7 +666,7 @@ const rainCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/VgkRpPU.png",
-  ""
+  "https://i.imgur.com/7GU6uHO.png"
 );
 
 const featherCard = new ElementCard(
@@ -683,7 +685,7 @@ const featherCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/VgkRpPU.png",
-  ""
+  "https://i.imgur.com/7GU6uHO.png"
 );
 
 const skyDiveCard = new ElementCard(
@@ -702,7 +704,7 @@ const skyDiveCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/VgkRpPU.png",
-  ""
+  "https://i.imgur.com/7GU6uHO.png"
 );
 
 const gustCannonCard = new ElementCard(
@@ -721,7 +723,7 @@ const gustCannonCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/VgkRpPU.png",
-  ""
+  "https://i.imgur.com/7GU6uHO.png"
 );
 
 const aerialAssaultCard = new ElementCard(
@@ -740,7 +742,7 @@ const aerialAssaultCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/VgkRpPU.png",
-  ""
+  "https://i.imgur.com/7GU6uHO.png"
 );
 
 const hurricaneCard = new ElementCard(
@@ -759,7 +761,7 @@ const hurricaneCard = new ElementCard(
   100,
   0,
   "https://i.imgur.com/VgkRpPU.png",
-  ""
+  "https://i.imgur.com/7GU6uHO.png"
 );
 
 const allWaterCards = [

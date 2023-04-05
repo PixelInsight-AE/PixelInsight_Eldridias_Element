@@ -11,8 +11,9 @@ const DeckDisplayCard = (props) => {
       </div>
       <h3>{card.rarity}</h3>
       <h2>
-        {card.cardLevel} - <img className="magic-icon" src={card.elementIcon} />{" "}
-        - {card.attackPower}
+        {card.cardLevel} -{" "}
+        <img className="element-icon" src={card.elementIcon} /> -{" "}
+        {card.attackPower}
       </h2>
     </div>
   );
