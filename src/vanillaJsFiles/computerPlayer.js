@@ -9,16 +9,16 @@ const computer = {
       console.log("PARTY HAS FALLEN Game Over.");
     }
   },
-  attack: function (hero, monster) {
+  attack: function (hero, monster, party) {
     if (monster.health > 0 && hero.health > 0) {
       console.log(
         `${monster.name} attacked ${hero.name} with ${monster.name} for ${monster.attackPower} damage`
       );
       hero.health -= monster.attackPower;
-      controller.death(hero);
+      controller.deathCheck(hero, party);
     }
   },
-  death: function (monster) {
+  deathCheck: function (monster) {
     if (monster.health <= 0) {
       console.log(`${monster.name} has died, you ruinded hes family dinner!`);
       this.monsterGraveyard.push(monster);
@@ -27,9 +27,9 @@ const computer = {
       console.log(this.monsterGraveyard);
     }
   },
-  computerTurn: function (hero, monster, controller) {
+  computerTurn: function (hero, monster, party) {
     console.log("=== Computer's Turn ===");
-    this.attack(hero, monster);
+    this.attack(hero, monster, party);
   },
 };
 

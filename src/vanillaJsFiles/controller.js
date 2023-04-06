@@ -34,12 +34,30 @@ const controller = {
       }
     }
   },
-  death: function (hero) {
+  deathCheck: function (hero, party) {
     if (hero.health <= 0) {
       console.log(`${hero.name} has fallen`);
       this.playerGraveyard.push(hero);
       hero.imgUrl = hero.deathImgUrl;
       console.log(this.playerGraveyard);
+      this.death(party);
+    }
+  },
+  death: function (party) {
+    console.log("death function");
+    let isPartyDead = false;
+    // check if all party members are dead
+    // if all party members are dead, end game
+    for (let i = 0; i < party.length; i++) {
+      if (party[i].health <= 0) {
+        isPartyDead = true;
+      } else {
+        isPartyDead = false;
+        break;
+      }
+    }
+    if (isPartyDead) {
+      console.log("Game Over");
     }
   },
   attack: function (hero, monster) {
@@ -53,7 +71,7 @@ const controller = {
         console.log(
           `Damage Done :${hero.attackPower} , ${monster.name} has ${monster.health} health left`
         );
-        computer.death(monster);
+        computer.deathCheck(monster);
         hero.canRegularAttack = false;
       } else {
         console.log(`${monster.name} is already dead`);
@@ -69,7 +87,7 @@ const controller = {
     controller.mana += 1;
     controller.turnCount++;
     this.resetStats(party);
-    computer.computerTurn(hero, monster);
+    computer.computerTurn(hero, monster, party);
   },
   gameOver: function (hero) {
     // TODO: add a game over function
@@ -89,7 +107,7 @@ const controller = {
       console.log(
         `${currentTarget.name} has ${currentTarget.health} health left`
       );
-      computer.death(hero, monster);
+      computer.deathCheck(hero, monster);
       console.log(player.mana);
     } else {
       console.log("Not enough mana");

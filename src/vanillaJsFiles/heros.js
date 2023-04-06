@@ -3,7 +3,7 @@ const deathImg = "https://i.imgur.com/jEiDFYT.png";
 const bulwark = new Hero(
   "Bulwark", //name
   100, //attackPower
-  1000, //health
+  500, //health
   4500, //maxHealth
   false, //flag
   "https://i.imgur.com/2Ue37HJ.png", //elementIcon
@@ -29,7 +29,7 @@ const bulwark = new Hero(
 const hogarth = new Hero(
   "Hogarth",
   100, //attackPower
-  3000, //health
+  300, //health
   3000, //maxHealth
   false,
   "https://i.imgur.com/17dYylC.png",
@@ -55,7 +55,7 @@ const hogarth = new Hero(
 const beastMaster = new Hero(
   "Beastmaster", //name
   100, //attackPower
-  3000, //health
+  300, //health
   3000, //maxHealth
   false,
   "https://i.imgur.com/2Iff7Gw.png",
@@ -81,7 +81,7 @@ const beastMaster = new Hero(
 const sorceress = new Hero(
   "Sorceress", //name
   100, //attackPower
-  3000, //health
+  300, //health
   3000, //maxHealth
   false,
   "https://i.imgur.com/2Ue37HJ.png",
@@ -133,7 +133,7 @@ const sentinel = new Hero(
 const druidess = new Hero(
   "Druidess", //name
   100, //attackPower
-  2000, //health
+  200, //health
   3000, //maxHealth
   false,
   "https://i.imgur.com/2Iff7Gw.png",
@@ -159,7 +159,7 @@ const druidess = new Hero(
 const gunslinger = new Hero(
   "Gunslinger", //name
   100, //attackPower
-  2500, //health
+  200, //health
   2500, //maxHealth
   false,
   "https://i.imgur.com/2Ue37HJ.png",
