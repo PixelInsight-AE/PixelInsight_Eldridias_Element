@@ -1,6 +1,7 @@
 // import bootstrap oly to this file
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { waveTwo } from "../vanillaJsFiles/floors";
 
 const BossCard = (props) => {
   const { boss } = props;
@@ -152,19 +153,28 @@ const GameComponent = (props) => {
     boss,
     party,
     floor,
+    setFloor,
     // deck,
     // setFloor,
     // currency,
     // setCurrency,
     // inventory,
     // setInventory,
+    currentWave,
+    setCurrentWave,
   } = props;
+
   const [selectedHero, setSelectedHero] = useState(party[0]);
   const [selectedMonster, setSelectedMonster] = useState(floor[0]);
+  const [selectedHerosHp, setSelectedHerosHp] = useState(selectedHero.health);
+  const [selectedMonstersHp, setSelectedMonstersHp] = useState(
+    selectedMonster.health
+  );
 
   const handleHeroClick = (hero) => {
     setSelectedHero(hero);
   };
+
   const handleMonsterClick = (monster) => {
     setSelectedMonster(monster);
   };
@@ -183,46 +193,75 @@ const GameComponent = (props) => {
         />
         <EnemyStats floor={floor} boss={boss} />
         <PlayerControlls
+          floor={floor}
+          setFloor={setFloor}
+          party={party}
           playerController={playerController}
           computerController={computerController}
           selectedHero={selectedHero}
           selectedMonster={selectedMonster}
+          setSelectedMonster={setSelectedMonstersHp}
+          setSelectedHerosHp={setSelectedHerosHp}
+          setCurrentWave={setCurrentWave}
+          currentWave={currentWave}
         />
       </div>
     </>
   );
 };
+
 const PlayerControlls = (props) => {
   const {
+    floor,
+    setFloor,
+    party,
     playerController,
     computerController,
     selectedHero,
     selectedMonster,
+    setSelectedMonster,
+    setSelectedHerosHp,
+    currentWave,
+    setCurrentWave,
   } = props;
+
+  const handleAttack = () => {
+    playerController.attack(selectedHero, selectedMonster, floor);
+    setSelectedMonster(selectedMonster.health);
+    handleWaveChange();
+  };
+  const handleWaveChange = () => {
+    console.log(floor);
+    if (computerController.isWaveDefeated) {
+      console.log("wave change ran");
+
+      setFloor(() => waveTwo);
+      console.log(currentWave);
+      computerController.isWaveDefeated = false;
+    }
+  };
+
+  const handleEndTurn = () => {
+    playerController.endTurn(
+      playerController,
+      computerController,
+      selectedHero,
+      selectedMonster,
+      party
+    );
+    setSelectedHerosHp(selectedHero.health);
+  };
+
   return (
     <div id="controls-container">
-      <button
-        onClick={() => playerController.attack(selectedHero, selectedMonster)}
-      >
-        Attack
-      </button>
+      <button onClick={() => handleAttack()}>Attack</button>
+
       <button
         onClick={() => playerController.heal(selectedHero, selectedMonster)}
       >
         Heal
       </button>
-      <button
-        onClick={() =>
-          playerController.endTurn(
-            playerController,
-            computerController,
-            selectedHero,
-            selectedMonster
-          )
-        }
-      >
-        End Turn
-      </button>
+      <button onClick={() => handleEndTurn()}>End Turn</button>
       <Link to="/dashboard">
         <button>Surrender</button>
       </Link>

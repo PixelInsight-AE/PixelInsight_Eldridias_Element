@@ -1,4 +1,4 @@
-#game-container {
+/* #game-container {
   background-color: rgba($color: #000000, $alpha: 0.8);
   color: #fff;
   display: flex;
@@ -72,4 +72,104 @@
 
 .hero-click {
   border: 1px solid white;
+}
+ */
+
+#game-container {
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+
+  #middle-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 60%;
+    border: 1px solid white;
+
+    // Additional styles for middle container
+    padding: 1rem; // Add padding for spacing
+  }
+
+  #left-side-container,
+  #right-side-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 20%;
+    border: 1px solid white;
+
+    // Additional styles for left and right side containers
+    padding: 1rem; // Add padding for spacing
+    margin: 0 1rem; // Add margin for spacing
+  }
+
+  #enemy-battlefield {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid white;
+
+    // Additional styles for enemy battlefield
+    margin-top: 1rem; // Add margin for spacing
+    padding: 1rem; // Add padding for spacing
+
+    .battlefield {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      border: 1px solid white;
+
+      img {
+        width: 100px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  #party-battlefield {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid white;
+
+    // Additional styles for party battlefield
+    margin-top: 1rem; // Add margin for spacing
+    padding: 1rem; // Add padding for spacing
+
+    .battlefield {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      border: 1px solid white;
+
+      img {
+        width: 100px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  #mob-status {
+    #monster-stats {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      padding: 1rem;
+
+      img {
+        width: 40px;
+      }
+    }
+  }
+}
+
+.hero-click {
+  border: 1px solid white;
+
+  // Additional styles for hero-click class
+  cursor: pointer; // Add cursor pointer for indicating clickable element
 }

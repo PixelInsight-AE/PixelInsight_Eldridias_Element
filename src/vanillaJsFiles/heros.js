@@ -1,9 +1,9 @@
 import { Hero } from "../utils.js";
-
+const deathImg = "https://i.imgur.com/jEiDFYT.png";
 const bulwark = new Hero(
   "Bulwark", //name
   100, //attackPower
-  1000, //health
+  500, //health
   4500, //maxHealth
   false, //flag
   "https://i.imgur.com/2Ue37HJ.png", //elementIcon
@@ -16,6 +16,8 @@ const bulwark = new Hero(
   200, //specialAttackPower
   true, //canRegularAttack
   "https://i.imgur.com/OEIQ1ee.png", //imgUrl
+  "https://i.imgur.com/OEIQ1ee.png", //imgUrl
+  deathImg,
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -28,7 +30,7 @@ const bulwark = new Hero(
 const hogarth = new Hero(
   "Hogarth",
   100, //attackPower
-  3000, //health
+  300, //health
   3000, //maxHealth
   false,
   "https://i.imgur.com/17dYylC.png",
@@ -41,6 +43,8 @@ const hogarth = new Hero(
   100, //specialAttackPower
   true, //canRegularAttack
   "https://i.imgur.com/N4X30zf.png", //imgUrl
+  "https://i.imgur.com/N4X30zf.png", //imgUrl
+  deathImg,
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -53,7 +57,7 @@ const hogarth = new Hero(
 const beastMaster = new Hero(
   "Beastmaster", //name
   100, //attackPower
-  3000, //health
+  300, //health
   3000, //maxHealth
   false,
   "https://i.imgur.com/2Iff7Gw.png",
@@ -66,6 +70,8 @@ const beastMaster = new Hero(
   200, //specialAttackPower
   true, //canRegularAttack
   "https://i.imgur.com/IMAhrX8.png", //imgUrl
+  "https://i.imgur.com/IMAhrX8.png", //imgUrl
+  deathImg,
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -78,7 +84,7 @@ const beastMaster = new Hero(
 const sorceress = new Hero(
   "Sorceress", //name
   100, //attackPower
-  3000, //health
+  300, //health
   3000, //maxHealth
   false,
   "https://i.imgur.com/2Ue37HJ.png",
@@ -91,6 +97,9 @@ const sorceress = new Hero(
   200, //specialAttackPower
   true, //canRegularAttack
   "https://i.imgur.com/cLQfh6c.png", //imgUrl
+  "https://i.imgur.com/cLQfh6c.png", //imgUrl
+
+  deathImg,
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -116,6 +125,9 @@ const sentinel = new Hero(
   200, //specialAttackPower
   true, //canRegularAttack
   "https://i.imgur.com/gaNb84R.png", //imgUrl
+  "https://i.imgur.com/gaNb84R.png", //imgUrl
+
+  deathImg,
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -128,7 +140,7 @@ const sentinel = new Hero(
 const druidess = new Hero(
   "Druidess", //name
   100, //attackPower
-  2000, //health
+  200, //health
   3000, //maxHealth
   false,
   "https://i.imgur.com/2Iff7Gw.png",
@@ -141,6 +153,9 @@ const druidess = new Hero(
   100, //specialAttackPower
   true, //canRegularAttack
   "https://i.imgur.com/v9lWrKm.png", //imgUrl
+  "https://i.imgur.com/v9lWrKm.png", //imgUrl
+
+  deathImg,
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -153,7 +168,7 @@ const druidess = new Hero(
 const gunslinger = new Hero(
   "Gunslinger", //name
   100, //attackPower
-  2500, //health
+  200, //health
   2500, //maxHealth
   false,
   "https://i.imgur.com/2Ue37HJ.png",
@@ -166,6 +181,9 @@ const gunslinger = new Hero(
   200, //specialAttackPower
   true, //canRegularAttack
   "https://i.imgur.com/UiHboMP.png", //imgUrl
+  "https://i.imgur.com/UiHboMP.png", //imgUrl
+
+  deathImg,
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -191,6 +209,9 @@ const paladin = new Hero(
   200, //specialAttackPower
   true, //canRegularAttack
   "https://i.imgur.com/19BRYcF.png", //imgUrl
+  "https://i.imgur.com/19BRYcF.png", //imgUrl
+
+  deathImg,
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -216,6 +237,9 @@ const shadow = new Hero(
   300, //specialAttackPower
   true, //canRegularAttack
   "https://i.imgur.com/MyJBxJW.png", //imgUrl
+  "https://i.imgur.com/MyJBxJW.png", //imgUrl
+
+  deathImg,
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -241,6 +265,9 @@ const seer = new Hero(
   300, //specialAttackPower
   true,
   "https://i.imgur.com/rjbFnVY.png", //imgUrl
+  "https://i.imgur.com/rjbFnVY.png", //imgUrl
+
+  deathImg,
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -266,6 +293,9 @@ const storm = new Hero(
   350, //specialAttackPower
   true, //canRegularAttack
   "https://i.imgur.com/n8UhyMD.png", //imgUrl
+  "https://i.imgur.com/n8UhyMD.png", //imgUrl
+
+  deathImg,
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience
@@ -291,6 +321,9 @@ const nightshade = new Hero(
   250, //specialAttackPower
   true, //canRegularAttack
   "https://i.imgur.com/M086jxu.png", //imgUrl
+  "https://i.imgur.com/M086jxu.png", //imgUrl
+
+  deathImg,
   1, //heroLevel
   100, //maxHeroLevel
   0, //heroExperience

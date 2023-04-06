@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { useState, useRef } from "react";
+import { Routes, Route } from "react-router-dom";
 import { controller } from "./vanillaJsFiles/controller.js";
 import { computer } from "./vanillaJsFiles/computerPlayer.js";
 import {
@@ -26,6 +26,7 @@ import {
 } from "./vanillaJsFiles/floors.js";
 //console.log(controller);
 function EldridiasElement() {
+  const [currentWave, setCurrentWave] = useState(0);
   const [playerController, setPlayerController] = useState(controller);
   const [computerController, setComputerController] = useState(computer);
   const [tank, setTank] = useState(bulwark);
@@ -34,7 +35,7 @@ function EldridiasElement() {
   const [healer, setHealer] = useState(hogarth);
   const [party, setParty] = useState([tank, melee, ranged, healer]);
   const [boss, setBoss] = useState(bossOne);
-  const [floor, setFloor] = useState(waveOne);
+  const [floor, setFloor] = useState(floorOne[0]);
   const [currency, setCurrency] = useState(500);
   const [inventory, setInventory] = useState([]);
   const [deck, setDeck] = useState([
@@ -112,6 +113,8 @@ function EldridiasElement() {
             setCurrency={setCurrency}
             inventory={inventory}
             setInventory={setInventory}
+            currentWave={currentWave}
+            setCurrentWave={setCurrentWave}
           />
         }
       />

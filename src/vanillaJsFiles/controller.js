@@ -1,5 +1,6 @@
 import { deck } from "./deck.js";
 import { compareElements } from "./helpers.js";
+import { computer } from "./computerPlayer.js";
 
 //! PLAYER OBJECT
 const controller = {
@@ -33,48 +34,64 @@ const controller = {
       }
     }
   },
-  death: function (hero) {
-    console.log("death function");
-    if (currentHero.health <= 0) {
-      console.log(`${currentHero.name} has fallen`);
-      playerGraveyard.push(hero.pop());
-      console.log(playerGraveyard);
-      this.gameOver(hero);
+  deathCheck: function (hero, party) {
+    if (hero.health <= 0) {
+      console.log(`${hero.name} has fallen`);
+      this.playerGraveyard.push(hero);
+      hero.imgUrl = hero.deathImgUrl;
+      console.log(this.playerGraveyard);
+      this.death(party);
     }
   },
-  attack: function (hero, monster, computer) {
-    console.log("Attack Clicked");
-
+  death: function (party) {
+    console.log("death function");
+    let isPartyDead = false;
+    // check if all party members are dead
+    // if all party members are dead, end game
+    for (let i = 0; i < party.length; i++) {
+      if (party[i].health <= 0) {
+        isPartyDead = true;
+      } else {
+        isPartyDead = false;
+        break;
+      }
+    }
+    if (isPartyDead) {
+      console.log("Game Over");
+      this.resetImgUrl(party);
+    }
+  },
+  attack: function (hero, monster, floor) {
     if (hero.canRegularAttack === false) {
       console.log("You can't attack again this turn with a basic attack");
     }
-    if (hero.canRegularAttack === true) {
+    if (hero.health > 0 && hero.canRegularAttack === true) {
       if (monster.health > 0) {
         console.log(`player attacked ${monster.name} with ${hero.name}`);
         monster.health -= hero.attackPower;
         console.log(
           `Damage Done :${hero.attackPower} , ${monster.name} has ${monster.health} health left`
         );
-        //computer.death(hero, monster);
+        computer.deathCheck(monster, floor);
         hero.canRegularAttack = false;
       } else {
-        console.log("No enemies left, monster complete");
+        console.log(`${monster.name} is already dead`);
       }
+    } else {
+      console.log("You cant use this action!");
     }
   },
-  endTurn: function (controller, computer, hero, monster) {
+  endTurn: function (controller, computer, hero, monster, party) {
     console.log("End turn");
     controller.isTurn = false;
     computer.isTurn = true;
     controller.mana += 1;
     controller.turnCount++;
-
-    computer.computerTurn(hero, monster);
+    this.resetStats(party);
+    computer.computerTurn(hero, monster, party);
   },
   gameOver: function (hero) {
-    if (hero.length <= 1) {
-      console.log("PARTY HAS FALLEN Game Over.");
-    }
+    // TODO: add a game over function
   },
   playerTurn: function () {
     console.log("=== Player's Turn ===");
@@ -91,7 +108,7 @@ const controller = {
       console.log(
         `${currentTarget.name} has ${currentTarget.health} health left`
       );
-      computer.death(hero, monster);
+      computer.deathCheck(hero, monster);
       console.log(player.mana);
     } else {
       console.log("Not enough mana");
@@ -107,10 +124,15 @@ const controller = {
       console.log("You have too many cards in hand");
     }
   },
-  resetStats: function (hero) {
-    for (let i = 0; i < hero.length; i++) {
-      hero[i].canRegularAttack = true;
-      hero[i].attackPower = hero[i].maxAttackPower;
+  resetStats: function (party) {
+    for (let i = 0; i < party.length; i++) {
+      party[i].canRegularAttack = true;
+    }
+  },
+  resetImgUrl: function (party) {
+    for (let i = 0; i < party.length; i++) {
+      party[i].imgUrl = party[i].defaultImgUrl;
+      party[i].health = party[i].maxHealth;
     }
   },
 };
