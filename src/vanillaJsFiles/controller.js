@@ -58,6 +58,7 @@ const controller = {
     }
     if (isPartyDead) {
       console.log("Game Over");
+      this.resetImgUrl(party);
     }
   },
   attack: function (hero, monster, floor) {
@@ -126,6 +127,12 @@ const controller = {
   resetStats: function (party) {
     for (let i = 0; i < party.length; i++) {
       party[i].canRegularAttack = true;
+    }
+  },
+  resetImgUrl: function (party) {
+    for (let i = 0; i < party.length; i++) {
+      party[i].imgUrl = party[i].defaultImgUrl;
+      party[i].health = party[i].maxHealth;
     }
   },
 };

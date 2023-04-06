@@ -43,11 +43,18 @@ const computer = {
     }
     if (isWaveDefeated) {
       console.log("WaveDefeated");
+      this.resetMonsters(floor);
     }
   },
   computerTurn: function (hero, monster, party) {
     console.log("=== Computer's Turn ===");
     this.attack(hero, monster, party);
+  },
+  resetMonsters: function (floor) {
+    for (let i = 0; i < floor.length; i++) {
+      floor[i].health = floor[i].maxHealth;
+      floor[i].imgUrl = floor[i].defaultImgUrl;
+    }
   },
 };
 

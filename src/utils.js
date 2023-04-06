@@ -14,6 +14,7 @@ class Hero {
     specialAttackCost,
     specialAttackPower,
     canRegularAttack,
+    defaultImgUrl,
     imgUrl,
     deathImgUrl,
     heroLevel,
@@ -38,6 +39,7 @@ class Hero {
     this.specialAttackCost = specialAttackCost;
     this.specialAttackPower = specialAttackPower;
     this.canRegularAttack = canRegularAttack;
+    this.defaultImgUrl = defaultImgUrl;
     this.imgUrl = imgUrl;
     this.deathImgUrl = deathImgUrl;
     this.heroLevel = heroLevel;
@@ -63,6 +65,7 @@ class Monster {
     health,
     maxHealth,
     flag,
+    defaultImgUrl,
     imgUrl,
     deathImgUrl,
     elementIcon,
@@ -80,6 +83,7 @@ class Monster {
     this.health = health;
     this.maxHealth = maxHealth;
     this.flag = flag;
+    this.defaultImgUrl = defaultImgUrl;
     this.imgUrl = imgUrl;
     this.deathImgUrl = deathImgUrl;
     this.elementIcon = elementIcon;
