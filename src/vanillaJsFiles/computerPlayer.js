@@ -9,8 +9,12 @@ const computer = {
     }
   },
   attack: function (hero, monster) {
-    console.log("Attack Clicked");
-    hero.health -= monster.attackPower;
+    if (monster.health > 0) {
+      console.log(
+        `${monster.name} attacked ${hero.name} with ${monster.name} for ${monster.attackPower} damage`
+      );
+      hero.health -= monster.attackPower;
+    }
   },
   death: function (monster) {
     console.log("death function clicked in monster.death");
@@ -19,9 +23,9 @@ const computer = {
       monster.health = monster.maxHealth;
     }
   },
-  computerTurn: function (hero, monster) {
+  computerTurn: function (hero, monster, controller) {
     console.log("=== Computer's Turn ===");
-    this.attack(hero, monster, controller);
+    this.attack(hero, monster);
   },
 };
 

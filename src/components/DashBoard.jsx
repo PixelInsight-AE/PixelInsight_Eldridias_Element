@@ -80,6 +80,7 @@ const OverviewHeader = (props) => {
   );
 };
 
+// ? Start game component.
 const OverviewStartGame = (props) => {
   const { currentLevel, setCurrentLevel } = props;
   return (

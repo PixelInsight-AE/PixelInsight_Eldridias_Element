@@ -161,10 +161,15 @@ const GameComponent = (props) => {
   } = props;
   const [selectedHero, setSelectedHero] = useState(party[0]);
   const [selectedMonster, setSelectedMonster] = useState(floor[0]);
+  const [selectedHerosHp, setSelectedHerosHp] = useState(selectedHero.health);
+  const [selectedMonstersHp, setSelectedMonstersHp] = useState(
+    selectedMonster.health
+  );
 
   const handleHeroClick = (hero) => {
     setSelectedHero(hero);
   };
+
   const handleMonsterClick = (monster) => {
     setSelectedMonster(monster);
   };
@@ -183,29 +188,36 @@ const GameComponent = (props) => {
         />
         <EnemyStats floor={floor} boss={boss} />
         <PlayerControlls
+          party={party}
           playerController={playerController}
           computerController={computerController}
           selectedHero={selectedHero}
           selectedMonster={selectedMonster}
+          setSelectedMonster={setSelectedMonstersHp}
         />
       </div>
     </>
   );
 };
+
 const PlayerControlls = (props) => {
   const {
+    party,
     playerController,
     computerController,
     selectedHero,
     selectedMonster,
+    setSelectedMonster,
   } = props;
+  const handleAttack = () => {
+    playerController.attack(selectedHero, selectedMonster);
+    setSelectedMonster(selectedMonster.health);
+  };
+
   return (
     <div id="controls-container">
-      <button
-        onClick={() => playerController.attack(selectedHero, selectedMonster)}
-      >
-        Attack
-      </button>
+      <button onClick={() => handleAttack()}>Attack</button>
+
       <button
         onClick={() => playerController.heal(selectedHero, selectedMonster)}
       >
@@ -217,7 +229,8 @@ const PlayerControlls = (props) => {
             playerController,
             computerController,
             selectedHero,
-            selectedMonster
+            selectedMonster,
+            party
           )
         }
       >

@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { useState, useRef } from "react";
+import { Routes, Route } from "react-router-dom";
 import { controller } from "./vanillaJsFiles/controller.js";
 import { computer } from "./vanillaJsFiles/computerPlayer.js";
 import {

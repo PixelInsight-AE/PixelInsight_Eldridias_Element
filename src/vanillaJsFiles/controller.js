@@ -1,5 +1,6 @@
 import { deck } from "./deck.js";
 import { compareElements } from "./helpers.js";
+import { computer } from "./computerPlayer.js";
 
 //! PLAYER OBJECT
 const controller = {
@@ -42,7 +43,7 @@ const controller = {
       this.gameOver(hero);
     }
   },
-  attack: function (hero, monster, computer) {
+  attack: function (hero, monster) {
     console.log("Attack Clicked");
 
     if (hero.canRegularAttack === false) {
@@ -58,17 +59,17 @@ const controller = {
         //computer.death(hero, monster);
         hero.canRegularAttack = false;
       } else {
-        console.log("No enemies left, monster complete");
+        console.log(`${monster.name} is already dead`);
       }
     }
   },
-  endTurn: function (controller, computer, hero, monster) {
+  endTurn: function (controller, computer, hero, monster, party) {
     console.log("End turn");
     controller.isTurn = false;
     computer.isTurn = true;
     controller.mana += 1;
     controller.turnCount++;
-
+    this.resetStats(party);
     computer.computerTurn(hero, monster);
   },
   gameOver: function (hero) {
@@ -107,10 +108,10 @@ const controller = {
       console.log("You have too many cards in hand");
     }
   },
-  resetStats: function (hero) {
-    for (let i = 0; i < hero.length; i++) {
-      hero[i].canRegularAttack = true;
-      hero[i].attackPower = hero[i].maxAttackPower;
+  resetStats: function (party) {
+    for (let i = 0; i < party.length; i++) {
+      party[i].canRegularAttack = true;
+      party[i].attackPower = party[i].maxAttackPower;
     }
   },
 };
