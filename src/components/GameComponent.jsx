@@ -1,6 +1,7 @@
 // import bootstrap oly to this file
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { waveTwo } from "../vanillaJsFiles/floors";
 
 const BossCard = (props) => {
   const { boss } = props;
@@ -152,13 +153,17 @@ const GameComponent = (props) => {
     boss,
     party,
     floor,
+    setFloor,
     // deck,
     // setFloor,
     // currency,
     // setCurrency,
     // inventory,
     // setInventory,
+    currentWave,
+    setCurrentWave,
   } = props;
+
   const [selectedHero, setSelectedHero] = useState(party[0]);
   const [selectedMonster, setSelectedMonster] = useState(floor[0]);
   const [selectedHerosHp, setSelectedHerosHp] = useState(selectedHero.health);
@@ -189,6 +194,7 @@ const GameComponent = (props) => {
         <EnemyStats floor={floor} boss={boss} />
         <PlayerControlls
           floor={floor}
+          setFloor={setFloor}
           party={party}
           playerController={playerController}
           computerController={computerController}
@@ -196,6 +202,8 @@ const GameComponent = (props) => {
           selectedMonster={selectedMonster}
           setSelectedMonster={setSelectedMonstersHp}
           setSelectedHerosHp={setSelectedHerosHp}
+          setCurrentWave={setCurrentWave}
+          currentWave={currentWave}
         />
       </div>
     </>
@@ -205,6 +213,7 @@ const GameComponent = (props) => {
 const PlayerControlls = (props) => {
   const {
     floor,
+    setFloor,
     party,
     playerController,
     computerController,
@@ -212,10 +221,24 @@ const PlayerControlls = (props) => {
     selectedMonster,
     setSelectedMonster,
     setSelectedHerosHp,
+    currentWave,
+    setCurrentWave,
   } = props;
+
   const handleAttack = () => {
     playerController.attack(selectedHero, selectedMonster, floor);
     setSelectedMonster(selectedMonster.health);
+    handleWaveChange();
+  };
+  const handleWaveChange = () => {
+    console.log(floor);
+    if (computerController.isWaveDefeated) {
+      console.log("wave change ran");
+
+      setFloor(() => waveTwo);
+      console.log(currentWave);
+      computerController.isWaveDefeated = false;
+    }
   };
 
   const handleEndTurn = () => {

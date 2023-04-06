@@ -4,6 +4,7 @@ const computer = {
   name: "Computer",
   isTurn: false,
   monsterGraveyard: [],
+  isWaveDefeated: false,
   gameOver: function (hero) {
     if (hero.length <= 1) {
       console.log("PARTY HAS FALLEN Game Over.");
@@ -44,6 +45,7 @@ const computer = {
     if (isWaveDefeated) {
       console.log("WaveDefeated");
       this.resetMonsters(floor);
+      this.isWaveDefeated = true;
     }
   },
   computerTurn: function (hero, monster, party) {
