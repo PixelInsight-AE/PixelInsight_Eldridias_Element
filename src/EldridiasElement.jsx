@@ -26,7 +26,6 @@ import {
 } from "./vanillaJsFiles/floors.js";
 //console.log(controller);
 function EldridiasElement() {
-  const [currentWave, setCurrentWave] = useState(0);
   const [playerController, setPlayerController] = useState(controller);
   const [computerController, setComputerController] = useState(computer);
   const [tank, setTank] = useState(bulwark);
@@ -35,7 +34,8 @@ function EldridiasElement() {
   const [healer, setHealer] = useState(hogarth);
   const [party, setParty] = useState([tank, melee, ranged, healer]);
   const [boss, setBoss] = useState(bossOne);
-  const [floor, setFloor] = useState(floorOne[0]);
+  const [currentWave, setCurrentWave] = useState(0);
+  const [floor, setFloor] = useState(floorOne[currentWave]);
   const [currency, setCurrency] = useState(500);
   const [inventory, setInventory] = useState([]);
   const [deck, setDeck] = useState([

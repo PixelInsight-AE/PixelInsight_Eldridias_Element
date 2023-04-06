@@ -18,7 +18,7 @@ import {
 const waveOne = [skeleton, orc, goblin, spider, wizard];
 const waveTwo = [slime, blackKnight, blackWasp, dragon];
 const waveThree = [dragon, blackKnight, blackWasp, slime];
-const bossOne = magiTheLiar;
+const bossOne = [magiTheLiar];
 
 const floorOne = [waveOne, waveTwo, waveThree, bossOne];
 

@@ -1,7 +1,7 @@
 // import bootstrap oly to this file
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { waveTwo } from "../vanillaJsFiles/floors";
+import { floorOne } from "../vanillaJsFiles/floors";
 
 const BossCard = (props) => {
   const { boss } = props;
@@ -14,24 +14,31 @@ const BossCard = (props) => {
     </div>
   );
 };
+
 const PartyStats = (props) => {
   const { party } = props;
   return (
     <div id="left-side-container">
-      <div className="party-stats-container">
-        {party.map((hero) => (
-          <div id="party-stats" key={hero.name}>
-            <h2>
-              {hero.name} - {hero.health}
-            </h2>
+      {party.map((hero) => (
+        <div className="party-stats" key={hero.name}>
+          <div className="hero-stats">
+            <img src={hero.imgUrl} alt="" />
+            <h2>{hero.name}</h2>
           </div>
-        ))}
-      </div>
+          <hr />
+          <div className="hero-stats">
+            <h3 className="hp">HP: {hero.health}</h3>
+            <h3>ATK: {hero.attackPower}</h3>
+            <h3>DEF: {hero.defense}</h3>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
+
 const EnemyStats = (props) => {
-  const { floor, boss } = props;
+  const { floor, boss, currentWave } = props;
   return (
     <div id="right-side-container">
       <div id="enemy-status-container">
@@ -39,14 +46,15 @@ const EnemyStats = (props) => {
           <BossCard boss={boss} />
         </div>
         <div id="mob-status">
-          <MonsterStats floor={floor} />
+          <MonsterStats currentWave={currentWave} floor={floor} />
         </div>
       </div>
     </div>
   );
 };
+
 const MonsterStats = (props) => {
-  const { floor } = props;
+  const { floor, currentWave } = props;
   return (
     <div className="monster-stats-container">
       {floor.map((monster) => (
@@ -61,6 +69,7 @@ const MonsterStats = (props) => {
   );
 };
 
+// ! IN PROGRESS
 const Battlefield = (props) => {
   const {
     floor,
@@ -69,22 +78,28 @@ const Battlefield = (props) => {
     handleHeroClick,
     selectedHero,
     selectedMonster,
+    currentWave,
+    setCurrentWave,
   } = props;
   return (
     <div id="middle-container">
-      <DisplayCurrentBattle
-        selectedHero={selectedHero}
-        selectedMonster={selectedMonster}
-      />
-      <h1>Middle container / battlefield and message box</h1>
       <div id="message-box">
-        <h2>Here goes the dynamic messages, .... has died... and so on</h2>
+        <h2></h2>
       </div>
+
       <div id="enemy-battlefield">
-        <Wave handleMonsterClick={handleMonsterClick} floor={floor} />
+        <Wave
+          handleMonsterClick={handleMonsterClick}
+          floor={floor}
+          currentWave={currentWave}
+          setCurrentWave={setCurrentWave}
+        />
       </div>
       <div id="battle-animation-container">
-        <h2>In here go the animations</h2>
+        <DisplayCurrentBattle
+          selectedHero={selectedHero}
+          selectedMonster={selectedMonster}
+        />
       </div>
       <div id="party-battlefield">
         <PartyOfHeros handleHeroClick={handleHeroClick} party={party} />
@@ -94,7 +109,7 @@ const Battlefield = (props) => {
 };
 
 const Wave = (props) => {
-  const { floor, handleMonsterClick } = props;
+  const { handleMonsterClick, floor } = props;
   return (
     <div className="battlefield">
       {floor.map((mob) => (
@@ -133,14 +148,19 @@ const DisplayCurrentBattle = (props) => {
   return (
     <div className="battlefield">
       <div className="battle-hero">
-        <h1>
-          {selectedHero.name} - {selectedHero.health}
-        </h1>
+        <h1>{selectedHero.name}</h1>
+        <h2>{selectedHero.health}</h2>
+        <img src={selectedHero.imgUrl} alt="" />
       </div>
+
+      <div className="battle-animation">
+        <h1>VS</h1>
+      </div>
+
       <div className="battle-monster">
-        <h1>
-          {selectedMonster.name} - {selectedMonster.health}
-        </h1>
+        <h1>{selectedMonster.name}</h1>
+        <h2>{selectedMonster.health}</h2>
+        <img src={selectedMonster.imgUrl} alt="" />
       </div>
     </div>
   );
@@ -190,8 +210,9 @@ const GameComponent = (props) => {
           handleHeroClick={handleHeroClick}
           selectedHero={selectedHero}
           selectedMonster={selectedMonster}
+          currentWave={currentWave}
+          setCurrentWave={setCurrentWave}
         />
-        <EnemyStats floor={floor} boss={boss} />
         <PlayerControlls
           floor={floor}
           setFloor={setFloor}
@@ -205,6 +226,7 @@ const GameComponent = (props) => {
           setCurrentWave={setCurrentWave}
           currentWave={currentWave}
         />
+        <EnemyStats currentWave={currentWave} floor={floor} boss={boss} />
       </div>
     </>
   );
@@ -232,10 +254,20 @@ const PlayerControlls = (props) => {
   };
   const handleWaveChange = () => {
     console.log(floor);
+    if (floor.length < 1) {
+      console.log("boss wave !!");
+    }
+    // if (floor.length < 1) {
+    //   console.log("boss wave !!");
+    // }
     if (computerController.isWaveDefeated) {
       console.log("wave change ran");
+      //setCurrentWave(currentWave + 1);
+      setCurrentWave((prev) => prev + 1);
+      setFloor(floorOne[currentWave + 1]);
+      //setFloor((prev) => prev.slice(i, prev.length));
 
-      setFloor(() => waveTwo);
+      console.log(floor);
       console.log(currentWave);
       computerController.isWaveDefeated = false;
     }

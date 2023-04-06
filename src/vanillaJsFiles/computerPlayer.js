@@ -25,13 +25,13 @@ const computer = {
       this.monsterGraveyard.push(monster);
       monster.flag = true;
       monster.imgUrl = monster.deathImgUrl;
-      console.log(this.monsterGraveyard);
+
       this.death(floor);
     }
   },
   death: function (floor) {
-    console.log("death function");
     let isWaveDefeated = false;
+    console.log(isWaveDefeated);
     // check if all party members are dead
     // if all party members are dead, end game
     for (let i = 0; i < floor.length; i++) {
