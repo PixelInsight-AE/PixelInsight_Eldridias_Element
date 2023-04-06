@@ -18,13 +18,31 @@ const computer = {
       controller.deathCheck(hero, party);
     }
   },
-  deathCheck: function (monster) {
+  deathCheck: function (monster, floor) {
     if (monster.health <= 0) {
       console.log(`${monster.name} has died, you ruinded hes family dinner!`);
       this.monsterGraveyard.push(monster);
       monster.flag = true;
       monster.imgUrl = monster.deathImgUrl;
       console.log(this.monsterGraveyard);
+      this.death(floor);
+    }
+  },
+  death: function (floor) {
+    console.log("death function");
+    let isWaveDefeated = false;
+    // check if all party members are dead
+    // if all party members are dead, end game
+    for (let i = 0; i < floor.length; i++) {
+      if (floor[i].health <= 0) {
+        isWaveDefeated = true;
+      } else {
+        isWaveDefeated = false;
+        break;
+      }
+    }
+    if (isWaveDefeated) {
+      console.log("WaveDefeated");
     }
   },
   computerTurn: function (hero, monster, party) {

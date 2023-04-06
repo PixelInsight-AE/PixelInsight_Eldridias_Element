@@ -188,6 +188,7 @@ const GameComponent = (props) => {
         />
         <EnemyStats floor={floor} boss={boss} />
         <PlayerControlls
+          floor={floor}
           party={party}
           playerController={playerController}
           computerController={computerController}
@@ -203,6 +204,7 @@ const GameComponent = (props) => {
 
 const PlayerControlls = (props) => {
   const {
+    floor,
     party,
     playerController,
     computerController,
@@ -212,7 +214,7 @@ const PlayerControlls = (props) => {
     setSelectedHerosHp,
   } = props;
   const handleAttack = () => {
-    playerController.attack(selectedHero, selectedMonster);
+    playerController.attack(selectedHero, selectedMonster, floor);
     setSelectedMonster(selectedMonster.health);
   };
 

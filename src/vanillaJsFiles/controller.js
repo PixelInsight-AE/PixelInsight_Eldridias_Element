@@ -60,7 +60,7 @@ const controller = {
       console.log("Game Over");
     }
   },
-  attack: function (hero, monster) {
+  attack: function (hero, monster, floor) {
     if (hero.canRegularAttack === false) {
       console.log("You can't attack again this turn with a basic attack");
     }
@@ -71,7 +71,7 @@ const controller = {
         console.log(
           `Damage Done :${hero.attackPower} , ${monster.name} has ${monster.health} health left`
         );
-        computer.deathCheck(monster);
+        computer.deathCheck(monster, floor);
         hero.canRegularAttack = false;
       } else {
         console.log(`${monster.name} is already dead`);
