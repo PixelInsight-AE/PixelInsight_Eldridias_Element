@@ -35,32 +35,31 @@ const controller = {
     }
   },
   death: function (hero) {
-    console.log("death function");
-    if (currentHero.health <= 0) {
-      console.log(`${currentHero.name} has fallen`);
-      playerGraveyard.push(hero.pop());
-      console.log(playerGraveyard);
-      this.gameOver(hero);
+    if (hero.health <= 0) {
+      console.log(`${hero.name} has fallen`);
+      this.playerGraveyard.push(hero);
+      hero.imgUrl = hero.deathImgUrl;
+      console.log(this.playerGraveyard);
     }
   },
   attack: function (hero, monster) {
-    console.log("Attack Clicked");
-
     if (hero.canRegularAttack === false) {
       console.log("You can't attack again this turn with a basic attack");
     }
-    if (hero.canRegularAttack === true) {
+    if (hero.health > 0 && hero.canRegularAttack === true) {
       if (monster.health > 0) {
         console.log(`player attacked ${monster.name} with ${hero.name}`);
         monster.health -= hero.attackPower;
         console.log(
           `Damage Done :${hero.attackPower} , ${monster.name} has ${monster.health} health left`
         );
-        //computer.death(hero, monster);
+        computer.death(monster);
         hero.canRegularAttack = false;
       } else {
         console.log(`${monster.name} is already dead`);
       }
+    } else {
+      console.log("You cant use this action!");
     }
   },
   endTurn: function (controller, computer, hero, monster, party) {
@@ -73,9 +72,7 @@ const controller = {
     computer.computerTurn(hero, monster);
   },
   gameOver: function (hero) {
-    if (hero.length <= 1) {
-      console.log("PARTY HAS FALLEN Game Over.");
-    }
+    // TODO: add a game over function
   },
   playerTurn: function () {
     console.log("=== Player's Turn ===");
@@ -111,7 +108,6 @@ const controller = {
   resetStats: function (party) {
     for (let i = 0; i < party.length; i++) {
       party[i].canRegularAttack = true;
-      party[i].attackPower = party[i].maxAttackPower;
     }
   },
 };

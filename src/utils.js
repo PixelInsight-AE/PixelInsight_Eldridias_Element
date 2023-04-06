@@ -15,6 +15,7 @@ class Hero {
     specialAttackPower,
     canRegularAttack,
     imgUrl,
+    deathImgUrl,
     heroLevel,
     maxHeroLevel,
     heroExperience,
@@ -38,6 +39,7 @@ class Hero {
     this.specialAttackPower = specialAttackPower;
     this.canRegularAttack = canRegularAttack;
     this.imgUrl = imgUrl;
+    this.deathImgUrl = deathImgUrl;
     this.heroLevel = heroLevel;
     this.maxHeroLevel = maxHeroLevel;
     this.heroExperience = heroExperience;
@@ -62,6 +64,7 @@ class Monster {
     maxHealth,
     flag,
     imgUrl,
+    deathImgUrl,
     elementIcon,
     buffs,
     debuffs
@@ -78,6 +81,7 @@ class Monster {
     this.maxHealth = maxHealth;
     this.flag = flag;
     this.imgUrl = imgUrl;
+    this.deathImgUrl = deathImgUrl;
     this.elementIcon = elementIcon;
     this.buffs = buffs;
     this.debuffs = debuffs;

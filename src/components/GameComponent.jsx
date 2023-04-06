@@ -194,6 +194,7 @@ const GameComponent = (props) => {
           selectedHero={selectedHero}
           selectedMonster={selectedMonster}
           setSelectedMonster={setSelectedMonstersHp}
+          setSelectedHerosHp={setSelectedHerosHp}
         />
       </div>
     </>
@@ -208,10 +209,22 @@ const PlayerControlls = (props) => {
     selectedHero,
     selectedMonster,
     setSelectedMonster,
+    setSelectedHerosHp,
   } = props;
   const handleAttack = () => {
     playerController.attack(selectedHero, selectedMonster);
     setSelectedMonster(selectedMonster.health);
+  };
+
+  const handleEndTurn = () => {
+    playerController.endTurn(
+      playerController,
+      computerController,
+      selectedHero,
+      selectedMonster,
+      party
+    );
+    setSelectedHerosHp(selectedHero.health);
   };
 
   return (
@@ -223,19 +236,7 @@ const PlayerControlls = (props) => {
       >
         Heal
       </button>
-      <button
-        onClick={() =>
-          playerController.endTurn(
-            playerController,
-            computerController,
-            selectedHero,
-            selectedMonster,
-            party
-          )
-        }
-      >
-        End Turn
-      </button>
+      <button onClick={() => handleEndTurn()}>End Turn</button>
       <Link to="/dashboard">
         <button>Surrender</button>
       </Link>
