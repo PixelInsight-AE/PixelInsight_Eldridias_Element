@@ -569,6 +569,11 @@ nav ul li a:hover {
   border-radius: 50%;
   border: 3px solid gold;
   padding: 0.5rem;
+  margin: 0.25rem;
+}
+#game-container #middle-container #enemy-battlefield .battlefield img:hover {
+  background-color: rgba(200, 59, 111, 0.7);
+  transform: scale(1.1);
 }
 #game-container #middle-container .battlefield {
   display: flex;
@@ -584,9 +589,17 @@ nav ul li a:hover {
   padding: 1rem;
   margin: 1rem;
 }
+#game-container #middle-container .battlefield .battle-hero h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 0.5 0.25 0.25rem black;
+  webkit-text-stroke: 0.5px black;
+}
 #game-container #middle-container .battlefield .battle-hero img {
+  border: 4px solid blue;
   width: 200px;
   border-radius: 20%;
+  padding: 0.5rem;
 }
 #game-container #middle-container .battlefield .battle-animation {
   display: flex;
@@ -603,6 +616,27 @@ nav ul li a:hover {
   text-shadow: 0.5 0.25 0.25rem black;
   webkit-text-stroke: 0.5px black;
 }
+#game-container #middle-container .battlefield .hero-click {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem;
+}
+#game-container #middle-container .battlefield .hero-click h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 0.5 0.25 0.25rem black;
+  webkit-text-stroke: 0.5px black;
+}
+#game-container #middle-container .battlefield .hero-click img {
+  border: 4px solid blue;
+  width: 125px;
+  border-radius: 20%;
+  padding: 0.5rem;
+}
 #game-container #middle-container .battlefield .battle-monster {
   display: flex;
   flex-direction: column;
@@ -612,12 +646,17 @@ nav ul li a:hover {
   padding: 1rem;
   margin: 1rem;
 }
+#game-container #middle-container .battlefield .battle-monster h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 0.5 0.25 0.25rem black;
+  webkit-text-stroke: 0.5px black;
+}
 #game-container #middle-container .battlefield .battle-monster img {
+  border: 4px solid gold;
   width: 200px;
   border-radius: 20%;
-}
-#game-container:focus {
-  background-color: #868e96;
+  padding: 0.5rem;
 }
 
 #right-side-container {
@@ -626,48 +665,62 @@ nav ul li a:hover {
   justify-content: flex-start;
   width: 20%;
   padding: 1rem;
+  color: #fff;
 }
-#right-side-container:focus {
-  background-color: #868e96;
+#right-side-container .monster-stats-container {
+  background-color: rgba(108, 117, 125, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 3px solid gold;
+  border-radius: 0.5rem;
+  margin: 0.25rem;
 }
-
-#party-battlefield {
+#right-side-container .monster-stats-container img {
+  width: 150px;
+  border-radius: 25%;
+}
+#right-side-container .monster-stats-container .monster-stats {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  padding: 1rem;
-  margin-top: 1rem;
-}
-#party-battlefield .battlefield {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-#party-battlefield .battlefield img {
-  width: 100px;
-  border-radius: 50%;
-}
-
-#mob-status #monster-stats {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  padding: 1rem;
-}
-#mob-status #monster-stats img {
-  width: 40px;
-}
-
-.hero-click {
-  border: 1px solid #fff;
+  justify-content: flex-start;
+  align-self: start;
+  align-items: flex-end;
+  width: 100%;
   padding: 0.5rem;
-  margin-top: 0.5rem;
 }
-.hero-click:hover {
-  background-color: #3395ff;
+#right-side-container .monster-stats-container .monster-stats .hp {
+  font-size: 1.5rem;
+  color: green;
+  text-shadow: 0.5 0.25 0.25rem black;
+  webkit-text-stroke: 0.5px black;
 }
-.hero-click:focus {
-  background-color: #868e96;
+#right-side-container .monster-stats-container .monster-stats img {
+  width: 50px;
+  border-radius: 20%;
+  margin-right: 2rem;
+}
+#right-side-container .monster-stats-container .monster-stats h2 {
+  font-size: 1.75rem;
+}
+
+#controls-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#controls-container button {
+  background-color: rgba(108, 117, 125, 0.7);
+  border: 3px solid gold;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.25rem;
+}
+#controls-container button:hover {
+  background-color: rgba(200, 59, 111, 0.7);
+  transform: scale(1.1);
 }
 
 body {

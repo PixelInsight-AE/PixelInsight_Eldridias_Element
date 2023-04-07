@@ -52,17 +52,22 @@ const EnemyStats = (props) => {
     </div>
   );
 };
-
 const MonsterStats = (props) => {
   const { floor, currentWave } = props;
   return (
     <div className="monster-stats-container">
       {floor.map((monster) => (
-        <div id="monster-stats" key={monster.name}>
-          <img src={monster.elementIcon} alt="" />
-          <h3>
-            {monster.name}-{monster.health}-
-          </h3>
+        <div className="monster-stats" key={monster.name}>
+          <div className="monster-stats-top">
+            <img src={monster.imgUrl} alt="" />
+            <h2>{monster.name}</h2>
+          </div>
+          <hr />
+          <div className="monster-stats-bottom">
+            <h3 className="hp">HP: {monster.health}</h3>
+            <h3>ATK: {monster.attackPower}</h3>
+            <h3>DEF: {monster.defense}</h3>
+          </div>
         </div>
       ))}
     </div>
@@ -114,9 +119,7 @@ const Wave = (props) => {
     <div className="battlefield">
       {floor.map((mob) => (
         <div onClick={() => handleMonsterClick(mob)} key={mob.name}>
-          <h1>{mob.name}</h1>
           <img src={mob.imgUrl} alt={mob.name} />
-          <h2>HP:{mob.health}</h2>
         </div>
       ))}
     </div>
@@ -133,9 +136,7 @@ const PartyOfHeros = (props) => {
           onClick={() => handleHeroClick(hero)}
           key={hero.name}
         >
-          <h1>{hero.name}</h1>
           <img src={hero.imgUrl} alt="hero.name" />
-          <h2>HP: {hero.health}</h2>
         </div>
       ))}
     </div>
@@ -213,21 +214,22 @@ const GameComponent = (props) => {
           currentWave={currentWave}
           setCurrentWave={setCurrentWave}
         />
-        <PlayerControlls
-          floor={floor}
-          setFloor={setFloor}
-          party={party}
-          playerController={playerController}
-          computerController={computerController}
-          selectedHero={selectedHero}
-          selectedMonster={selectedMonster}
-          setSelectedMonster={setSelectedMonstersHp}
-          setSelectedHerosHp={setSelectedHerosHp}
-          setCurrentWave={setCurrentWave}
-          currentWave={currentWave}
-        />
         <EnemyStats currentWave={currentWave} floor={floor} boss={boss} />
       </div>
+      <div id="cards-container"></div>
+      <PlayerControlls
+        floor={floor}
+        setFloor={setFloor}
+        party={party}
+        playerController={playerController}
+        computerController={computerController}
+        selectedHero={selectedHero}
+        selectedMonster={selectedMonster}
+        setSelectedMonster={setSelectedMonstersHp}
+        setSelectedHerosHp={setSelectedHerosHp}
+        setCurrentWave={setCurrentWave}
+        currentWave={currentWave}
+      />
     </>
   );
 };
