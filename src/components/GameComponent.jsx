@@ -56,7 +56,7 @@ const MonsterStats = (props) => {
   const { floor, currentWave } = props;
   return (
     <div className="monster-stats-container">
-      {floor.map((monster) => (
+      {currentWave.map((monster) => (
         <div className="monster-stats" key={monster.name}>
           <div className="monster-stats-top">
             <img src={monster.imgUrl} alt="" />
@@ -114,10 +114,10 @@ const Battlefield = (props) => {
 };
 
 const Wave = (props) => {
-  const { handleMonsterClick, floor } = props;
+  const { handleMonsterClick, floor, currentWave } = props;
   return (
     <div className="battlefield">
-      {floor.map((mob) => (
+      {currentWave.map((mob) => (
         <div onClick={() => handleMonsterClick(mob)} key={mob.name}>
           <img src={mob.imgUrl} alt={mob.name} />
         </div>
@@ -186,7 +186,9 @@ const GameComponent = (props) => {
   } = props;
 
   const [selectedHero, setSelectedHero] = useState(party[0]);
-  const [selectedMonster, setSelectedMonster] = useState(floor[0]);
+  const [selectedMonster, setSelectedMonster] = useState(
+    currentWave[currentWave.length - 1]
+  );
   const [selectedHerosHp, setSelectedHerosHp] = useState(selectedHero.health);
   const [selectedMonstersHp, setSelectedMonstersHp] = useState(
     selectedMonster.health
@@ -254,25 +256,41 @@ const PlayerControlls = (props) => {
     setSelectedMonster(selectedMonster.health);
     handleWaveChange();
   };
+  // const handleWaveChange = () => {
+  //   console.log(floor);
+  //   if (floor.length < 1) {
+  //     console.log("boss wave !!");
+  //   }
+
+  //   if (computerController.isWaveDefeated) {
+  //     console.log("wave change ran");
+  //     //setCurrentWave(currentWave + 1);
+  //     setCurrentWave((prev) => prev + 1);
+  //     setFloor(floorOne[currentWave + 1]);
+  //     //setFloor((prev) => prev.slice(i, prev.length));
+
+  //     console.log(floor);
+  //     console.log(currentWave);
+  //     computerController.isWaveDefeated = false;
+  //   }
+  // };
+
   const handleWaveChange = () => {
     console.log(floor);
-    if (floor.length < 1) {
-      console.log("boss wave !!");
-    }
-    // if (floor.length < 1) {
-    //   console.log("boss wave !!");
-    // }
-    if (computerController.isWaveDefeated) {
-      console.log("wave change ran");
-      //setCurrentWave(currentWave + 1);
-      setCurrentWave((prev) => prev + 1);
-      setFloor(floorOne[currentWave + 1]);
-      //setFloor((prev) => prev.slice(i, prev.length));
+    console.log(currentWave);
+    setSelectedMonster([]);
+    console.log(selectedMonster);
 
-      console.log(floor);
-      console.log(currentWave);
-      computerController.isWaveDefeated = false;
-    }
+    currentWave.push(floor.slice(0, 4));
+    currentWave.flat(1);
+    console.log(currentWave);
+
+    console.log(floor);
+    setFloor(floor);
+    setCurrentWave(currentWave);
+  };
+  const handleSetFloor = () => {
+    //setFloor(floorOne[currentWave]);
   };
 
   const handleEndTurn = () => {

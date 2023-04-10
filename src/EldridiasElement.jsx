@@ -17,13 +17,8 @@ import { Dashboard, Catalog, Shop, OverView } from "./components/DashBoard.jsx";
 import { Party } from "./components/DashBoard_Party.jsx";
 import { DeckBuilder } from "./components/DashBoard_Deck.jsx";
 import { GameComponent } from "./components/GameComponent.jsx";
-import {
-  waveOne,
-  waveTwo,
-  waveThree,
-  bossOne,
-  floorOne,
-} from "./vanillaJsFiles/floors.js";
+import { floorOne, bossOne } from "./vanillaJsFiles/floors.js";
+import { skeleton } from "./vanillaJsFiles/monsters.js";
 //console.log(controller);
 function EldridiasElement() {
   const [playerController, setPlayerController] = useState(controller);
@@ -34,10 +29,10 @@ function EldridiasElement() {
   const [healer, setHealer] = useState(hogarth);
   const [party, setParty] = useState([tank, melee, ranged, healer]);
   const [boss, setBoss] = useState(bossOne);
-  const [currentWave, setCurrentWave] = useState(0);
-  const [floor, setFloor] = useState(floorOne[currentWave]);
+  const [currentWave, setCurrentWave] = useState([skeleton]);
+  const [floor, setFloor] = useState(floorOne);
   const [currency, setCurrency] = useState(500);
-  const [inventory, setInventory] = useState([]);
+  const [inventory, setInventory] = useState([skeleton]);
   const [deck, setDeck] = useState([
     ...magicPlayingCards,
     ...allElementalCards,

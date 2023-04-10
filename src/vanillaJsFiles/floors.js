@@ -19,7 +19,37 @@ const waveOne = [skeleton, orc, goblin, spider, wizard];
 const waveTwo = [slime, blackKnight, blackWasp, dragon];
 const waveThree = [dragon, blackKnight, blackWasp, slime];
 const bossOne = [magiTheLiar];
+const f1 = [waveOne, waveTwo, waveThree, bossOne];
+const floorOne = [
+  skeleton,
+  orc,
+  goblin,
+  spider,
+  wizard,
+  slime,
+  blackKnight,
+  blackWasp,
+  dragon,
+  magiTheLiar,
+];
 
-const floorOne = [waveOne, waveTwo, waveThree, bossOne];
-
-export { waveOne, waveTwo, waveThree, bossOne, floorOne };
+export {
+  waveOne,
+  waveTwo,
+  waveThree,
+  bossOne,
+  floorOne,
+  f1,
+  skeleton,
+  orc,
+  goblin,
+  spider,
+  wizard,
+  slime,
+  blackKnight,
+  blackWasp,
+  dragon,
+  magiTheLiar,
+  yamiTheDreamer,
+  sargarasTheDestroyer,
+};
