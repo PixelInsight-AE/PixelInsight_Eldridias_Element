@@ -36,6 +36,8 @@ function EldridiasElement() {
   const [boss, setBoss] = useState(bossOne);
   const [currentWave, setCurrentWave] = useState(0);
   const [floor, setFloor] = useState(floorOne[currentWave]);
+  const [maxFloor, setMaxFloor] = useState(1);
+  const [currentFloor, setCurrentFloor] = useState(1);
   const [currency, setCurrency] = useState(500);
   const [inventory, setInventory] = useState([]);
   const [deck, setDeck] = useState([
@@ -58,6 +60,10 @@ function EldridiasElement() {
             setInventory={setInventory}
             floor={floor}
             setFloor={setFloor}
+            currentFloor={currentFloor}
+            setCurrentFloor={setCurrentFloor}
+            maxFloor={maxFloor}
+            setMaxFloor={setMaxFloor}
             party={party}
             boss={boss}
           />
@@ -74,6 +80,10 @@ function EldridiasElement() {
             controller={playerController}
             floor={floor}
             setFloor={setFloor}
+            currentFloor={currentFloor}
+            setCurrentFloor={setCurrentFloor}
+            maxFloor={maxFloor}
+            setMaxFloor={setMaxFloor}
             party={party}
           />
         }
@@ -109,6 +119,10 @@ function EldridiasElement() {
             deck={deck}
             floor={floor}
             setFloor={setFloor}
+            currentFloor={currentFloor}
+            setCurrentFloor={setCurrentFloor}
+            maxFloor={maxFloor}
+            setMaxFloor={setMaxFloor}
             currency={currency}
             setCurrency={setCurrency}
             inventory={inventory}

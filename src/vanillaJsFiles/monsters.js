@@ -9,7 +9,7 @@ const wizard = new Monster(
   100, //attackPower
   150, //defense
   100, //mana
-  200, //health
+  100, //health
   200, //maxHealth
   false, //flag
   "https://i.imgur.com/shL6XSb.png",
@@ -28,7 +28,7 @@ const goblin = new Monster(
   50,
   250,
   100,
-  200,
+  100,
   200,
   false,
   "https://i.imgur.com/p6y7Qsm.png",
@@ -47,7 +47,7 @@ const dragon = new Monster(
   100,
   150,
   100,
-  200,
+  100,
   200,
   false,
   "https://i.imgur.com/7xoGo13.png",
@@ -66,7 +66,7 @@ const skeleton = new Monster(
   100,
   150,
   100,
-  200,
+  100,
   200,
   false,
   "https://i.imgur.com/UJ2L5j5.png",
@@ -85,7 +85,7 @@ const orc = new Monster(
   100,
   150,
   100,
-  200,
+  100,
   200,
   false,
   "https://i.imgur.com/6Xp0ZCL.png",
@@ -104,7 +104,7 @@ const spider = new Monster(
   100,
   150,
   100,
-  200,
+  100,
   200,
   false,
   "https://i.imgur.com/XPEgQJS.png",
@@ -123,7 +123,7 @@ const slime = new Monster(
   100,
   150,
   100,
-  200,
+  100,
   200,
   false,
   "https://i.imgur.com/JfRBpmh.png",
@@ -142,7 +142,7 @@ const blackWasp = new Monster(
   100,
   150,
   100,
-  200,
+  100,
   200,
   false,
   "https://i.imgur.com/wBLOJNA.png",
@@ -162,7 +162,7 @@ const blackKnight = new Monster(
   100,
   150,
   100,
-  200,
+  100,
   200,
   false,
   "https://i.imgur.com/u0f5o7s.png",

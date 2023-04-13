@@ -85,6 +85,7 @@ const Battlefield = (props) => {
     selectedMonster,
     currentWave,
     setCurrentWave,
+    computerController,
   } = props;
   return (
     <div id="middle-container">
@@ -104,6 +105,7 @@ const Battlefield = (props) => {
         <DisplayCurrentBattle
           selectedHero={selectedHero}
           selectedMonster={selectedMonster}
+          computerController={computerController}
         />
       </div>
       <div id="party-battlefield">
@@ -144,7 +146,22 @@ const PartyOfHeros = (props) => {
 };
 
 const DisplayCurrentBattle = (props) => {
-  const { selectedHero, selectedMonster } = props;
+  const { selectedHero, selectedMonster, computerController } = props;
+  const victoryMessage = (
+    <div>
+      <h1>You Completed The Floor</h1>
+      <Link to="/dashboard">
+        <button>
+          <h2>Next Floor</h2>
+        </button>
+      </Link>
+      <Link to="/dashboard">
+        <button>
+          <h2>Return To Town</h2>
+        </button>
+      </Link>
+    </div>
+  );
 
   return (
     <div className="battlefield">
@@ -155,7 +172,7 @@ const DisplayCurrentBattle = (props) => {
       </div>
 
       <div className="battle-animation">
-        <h1>VS</h1>
+        {computerController.isBossDefeated ? victoryMessage : <h1>VS</h1>}
       </div>
 
       <div className="battle-monster">
@@ -175,6 +192,10 @@ const GameComponent = (props) => {
     party,
     floor,
     setFloor,
+    currentFloor,
+    setCurrentFloor,
+    maxFloor,
+    setMaxFloor,
     // deck,
     // setFloor,
     // currency,
@@ -213,6 +234,7 @@ const GameComponent = (props) => {
           selectedMonster={selectedMonster}
           currentWave={currentWave}
           setCurrentWave={setCurrentWave}
+          computerController={computerController}
         />
         <EnemyStats currentWave={currentWave} floor={floor} boss={boss} />
       </div>
@@ -220,6 +242,10 @@ const GameComponent = (props) => {
       <PlayerControlls
         floor={floor}
         setFloor={setFloor}
+        currentFloor={currentFloor}
+        setCurrentFloor={setCurrentFloor}
+        maxFloor={maxFloor}
+        setMaxFloor={setMaxFloor}
         party={party}
         playerController={playerController}
         computerController={computerController}
@@ -248,29 +274,26 @@ const PlayerControlls = (props) => {
     currentWave,
     setCurrentWave,
   } = props;
-
+  const progressCheck = () => {
+    //silly
+  };
   const handleAttack = () => {
     playerController.attack(selectedHero, selectedMonster, floor);
     setSelectedMonster(selectedMonster.health);
     handleWaveChange();
   };
   const handleWaveChange = () => {
-    console.log(floor);
-    if (floor.length < 1) {
+    // what happens when boss wave is defeated
+    if (floor.length <= 1) {
       console.log("boss wave !!");
+      progressCheck();
     }
-    // if (floor.length < 1) {
-    //   console.log("boss wave !!");
-    // }
+
+    // what happens when a normal wave is defeated
     if (computerController.isWaveDefeated) {
       console.log("wave change ran");
-      //setCurrentWave(currentWave + 1);
       setCurrentWave((prev) => prev + 1);
       setFloor(floorOne[currentWave + 1]);
-      //setFloor((prev) => prev.slice(i, prev.length));
-
-      console.log(floor);
-      console.log(currentWave);
       computerController.isWaveDefeated = false;
     }
   };
