@@ -30,6 +30,24 @@ import {
   floorOne,
 } from "./vanillaJsFiles/floors.js";
 //console.log(controller);
+
+const SnowEffect = () => {
+  return (
+    <div class="snow-container">
+      <div class="snow"></div>
+      <div class="snow"></div>
+      <div class="snow"></div>
+      <div class="snow"></div>
+      <div class="snow"></div>
+      <div class="snow"></div>
+      <div class="snow"></div>
+      <div class="snow"></div>
+      <div class="snow"></div>
+      <div class="snow"></div>
+    </div>
+  );
+};
+
 function EldridiasElement() {
   const [playerController, setPlayerController] = useState(controller);
   const [computerController, setComputerController] = useState(computer);

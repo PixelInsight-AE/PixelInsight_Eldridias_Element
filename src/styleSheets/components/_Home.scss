@@ -1,7 +1,9 @@
 #homeScreen {
-  background-image: url("path/to/hero-image.jpg");
+  background-image: url("src/assets/images/castles/iceTower.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
   // ! HEADER component
   #home-header {
     display: flex;
@@ -55,11 +57,14 @@
     #hero-content-wrapper {
       max-width: 800px;
       text-align: center;
-      background-color: rgba($color: #000000, $alpha: 0.3);
+      background-color: rgba($color: #000000, $alpha: 0.6);
+      box-shadow: 0 0 10px rgba($color: #ffffff, $alpha: 0.7);
       border-radius: $border-radius-4;
       padding: 2rem;
+      transition: transform 0.5s ease-in-out;
+
       h2 {
-        font-size: 3rem;
+        font-size: 3.5rem;
         margin-bottom: 1rem;
       }
       p {
@@ -67,16 +72,18 @@
         margin-bottom: 2rem;
       }
       button {
-        background-color: pink;
+        background-color: $custom-color-3;
         color: rgb(1, 0, 0);
         border: none;
         padding: 1rem 2rem;
         font-size: 1.5rem;
         border-radius: $border-radius-4;
         cursor: pointer;
-        transition: background-color 0.2s ease-in-out;
+        box-shadow: 0 0 10px rgba($color: #ffffff, $alpha: 0.7);
+        transition: 0.5s ease-in-out;
         &:hover {
-          background-color: #cc5500;
+          transform: translateY(-10px) scale(1.1);
+          background-color: pink;
         }
       }
     }
@@ -203,5 +210,27 @@
         box-shadow: 0 0 10px rgba($color: #ffffff, $alpha: 0.7);
       }
     }
+  }
+}
+
+.snow {
+  position: absolute;
+  top: -10px;
+  left: random(100%) - 5%; // random left value between -5% and 95%
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  animation: fall linear infinite;
+  animation-duration: 5s;
+  animation-delay: random(10s); // random delay between 0s and 10s
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
   }
 }
