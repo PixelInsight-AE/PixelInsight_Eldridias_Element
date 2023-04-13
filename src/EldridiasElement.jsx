@@ -31,23 +31,6 @@ import {
 } from "./vanillaJsFiles/floors.js";
 //console.log(controller);
 
-const SnowEffect = () => {
-  return (
-    <div class="snow-container">
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-    </div>
-  );
-};
-
 function EldridiasElement() {
   const [playerController, setPlayerController] = useState(controller);
   const [computerController, setComputerController] = useState(computer);
@@ -131,7 +114,7 @@ function EldridiasElement() {
         }
       />
       <Route path="/dashboard/deck" element={<DeckBuilder deck={deck} />} />
-      <Route path="/dashboard/catalog" element={<Catalog />} />
+      <Route path="/dashboard/catalog" element={<Catalog party={party} />} />
       <Route path="/dashboard/shop" element={<Shop />} />
       <Route
         path="/dashboard/play"

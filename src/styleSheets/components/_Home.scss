@@ -212,25 +212,3 @@
     }
   }
 }
-
-.snow {
-  position: absolute;
-  top: -10px;
-  left: random(100%) - 5%; // random left value between -5% and 95%
-  width: 10px;
-  height: 10px;
-  background-color: white;
-  border-radius: 50%;
-  animation: fall linear infinite;
-  animation-duration: 5s;
-  animation-delay: random(10s); // random delay between 0s and 10s
-}
-
-@keyframes fall {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100vh);
-  }
-}
