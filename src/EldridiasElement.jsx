@@ -29,9 +29,12 @@ import {
   bossOne,
   floorOne,
 } from "./vanillaJsFiles/floors.js";
+import { StoryBoard } from "./components/UI/GameComponent_StoryBoard.jsx";
+import { storyOne } from "./vanillaJsFiles/storyboard.js";
 //console.log(controller);
 
 function EldridiasElement() {
+  const [story, setStory] = useState(storyOne);
   const [playerController, setPlayerController] = useState(controller);
   const [computerController, setComputerController] = useState(computer);
   const [tank, setTank] = useState(bulwark);
@@ -139,6 +142,10 @@ function EldridiasElement() {
             setCurrentWave={setCurrentWave}
           />
         }
+      />
+      <Route
+        path="/dashboard/story"
+        element={<StoryBoard party={party} story={story} />}
       />
     </Routes>
   );

@@ -125,7 +125,7 @@ const OverView = (props) => {
           setCurrentLevel={setCurrentLevel}
         />
 
-        <Link to="/dashboard/play">
+        <Link to="/dashboard/story">
           <button>Start Game</button>
         </Link>
       </div>
