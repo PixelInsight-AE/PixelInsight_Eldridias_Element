@@ -1,16 +1,4 @@
-import { NavBar } from "./NavBar";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { heroList } from "../vanillaJsFiles/heros";
-
-const Header = () => {
-  return (
-    <header id="home-header">
-      <button id="signUp-btn">sign up!</button>
-      <button id="login-btn">log in!</button>
-    </header>
-  );
-};
 
 const Hero = (props) => {
   return (
@@ -62,46 +50,4 @@ const SubHero = (props) => {
   );
 };
 
-const CardExamples = (props) => {
-  return (
-    <div id="party">
-      {heroList.map((hero) => {
-        return <PlayingCard key={hero.name} {...hero} />;
-      })}
-    </div>
-  );
-};
-
-const PlayingCard = (props) => {
-  return (
-    <div key={props.name} className="hero">
-      <div className="heroName">{props.name}</div>
-      <div className="heroLevel">{props.heroLevel}</div>
-      <div className="heroImg">
-        <img src={props.imgUrl} alt="" />
-      </div>
-      <div className="heroType">{props.elementType}</div>
-      <div className="heroActions">
-        <button className="heroActionBtn">Equip Gear</button>
-      </div>
-    </div>
-  );
-};
-
-const Home = (props) => {
-  return (
-    <main id="homeScreen">
-      <Header />
-      <Hero />
-      <HeroDivider />
-      <SubHero />
-      <CardExamples />
-    </main>
-  );
-};
-
-export { Home, Header, Hero, HeroDivider, SubHero, CardExamples };
-
-/**
- * TODO: Also display element cards on the scrollable row
- */
+export { Hero, HeroDivider, SubHero };

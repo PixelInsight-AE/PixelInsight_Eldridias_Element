@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { NavBar } from "./NavBar.jsx";
-import { heroList } from "../vanillaJsFiles/heros.js";
+import { heroList } from "../../vanillaJsFiles/heros.js";
 
 // ! SELECT COMPONENTS
 

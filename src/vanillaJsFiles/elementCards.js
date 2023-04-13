@@ -1,4 +1,4 @@
-import { ElementCard } from "../utils.js";
+import { ElementCard } from "./constructor.js";
 
 // ! FIRE CARDS
 const fireCard = new ElementCard(

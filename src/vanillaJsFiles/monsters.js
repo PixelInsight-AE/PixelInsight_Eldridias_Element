@@ -1,4 +1,4 @@
-import { Monster } from "../utils.js";
+import { Monster } from "./constructor.js";
 const gravestoneIMG = "https://i.imgur.com/jEiDFYT.png";
 const wizard = new Monster(
   "Wizard of the North", //name

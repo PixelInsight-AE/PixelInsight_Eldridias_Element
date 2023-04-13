@@ -12,11 +12,16 @@ import {
 } from "./vanillaJsFiles/heros.js";
 import { magicPlayingCards } from "./vanillaJsFiles/magicCards.js";
 import { allElementalCards } from "./vanillaJsFiles/elementCards.js";
-import { Home } from "./components/Home.jsx";
-import { Dashboard, Catalog, Shop, OverView } from "./components/DashBoard.jsx";
-import { Party } from "./components/DashBoard_Party.jsx";
-import { DeckBuilder } from "./components/DashBoard_Deck.jsx";
-import { GameComponent } from "./components/GameComponent.jsx";
+import { Home } from "./components/UI/Home.jsx";
+import {
+  Dashboard,
+  Catalog,
+  Shop,
+  OverView,
+} from "./components/UI/DashBoard.jsx";
+import { Party } from "./components/UI/DashBoard_Party.jsx";
+import { DeckBuilder } from "./components/UI/DashBoard_Deck.jsx";
+import { GameComponent } from "./components/UI/GameComponent.jsx";
 import {
   waveOne,
   waveTwo,
