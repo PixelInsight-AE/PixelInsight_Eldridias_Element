@@ -86,6 +86,7 @@ const Battlefield = (props) => {
     currentWave,
     setCurrentWave,
     computerController,
+    maxFloor,
   } = props;
   return (
     <div id="middle-container">
@@ -106,6 +107,7 @@ const Battlefield = (props) => {
           selectedHero={selectedHero}
           selectedMonster={selectedMonster}
           computerController={computerController}
+          maxFloor={maxFloor}
         />
       </div>
       <div id="party-battlefield">
@@ -146,7 +148,7 @@ const PartyOfHeros = (props) => {
 };
 
 const DisplayCurrentBattle = (props) => {
-  const { selectedHero, selectedMonster, computerController } = props;
+  const { selectedHero, selectedMonster, computerController, maxFloor } = props;
   const victoryMessage = (
     <div>
       <h1>You Completed The Floor</h1>
@@ -235,6 +237,7 @@ const GameComponent = (props) => {
           currentWave={currentWave}
           setCurrentWave={setCurrentWave}
           computerController={computerController}
+          maxFloor={maxFloor}
         />
         <EnemyStats currentWave={currentWave} floor={floor} boss={boss} />
       </div>
@@ -273,9 +276,18 @@ const PlayerControlls = (props) => {
     setSelectedHerosHp,
     currentWave,
     setCurrentWave,
+    currentFloor,
+    setCurrentFloor,
+    maxFloor,
+    setMaxFloor,
   } = props;
   const progressCheck = () => {
-    //silly
+    console.log(maxFloor);
+    if (currentFloor == maxFloor && computerController.isBossDefeated) {
+      console.log("floor one done");
+      setMaxFloor((prev) => prev + 1);
+      console.log(maxFloor);
+    }
   };
   const handleAttack = () => {
     playerController.attack(selectedHero, selectedMonster, floor);

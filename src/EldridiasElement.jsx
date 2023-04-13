@@ -66,6 +66,7 @@ function EldridiasElement() {
             setMaxFloor={setMaxFloor}
             party={party}
             boss={boss}
+            computerController={computerController}
           />
         }
       />
@@ -85,6 +86,7 @@ function EldridiasElement() {
             maxFloor={maxFloor}
             setMaxFloor={setMaxFloor}
             party={party}
+            computerController={computerController}
           />
         }
       />

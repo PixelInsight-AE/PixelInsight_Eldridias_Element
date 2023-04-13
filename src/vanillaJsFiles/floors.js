@@ -26,6 +26,6 @@ const waveTwo = [slime, blackKnight, blackWasp, dragon];
 const waveThree = [dragon, blackKnight, blackWasp, slime];
 const bossOne = [magiTheLiar];
 
-const floorOne = [waveOne, waveTwo, waveThree, bossOne, lootBox];
+const floorOne = [waveOne, bossOne, lootBox];
 
 export { waveOne, waveTwo, waveThree, bossOne, floorOne };
