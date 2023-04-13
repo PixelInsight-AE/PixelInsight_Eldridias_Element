@@ -12,11 +12,16 @@ import {
 } from "./vanillaJsFiles/heros.js";
 import { magicPlayingCards } from "./vanillaJsFiles/magicCards.js";
 import { allElementalCards } from "./vanillaJsFiles/elementCards.js";
-import { Home } from "./components/Home.jsx";
-import { Dashboard, Catalog, Shop, OverView } from "./components/DashBoard.jsx";
-import { Party } from "./components/DashBoard_Party.jsx";
-import { DeckBuilder } from "./components/DashBoard_Deck.jsx";
-import { GameComponent } from "./components/GameComponent.jsx";
+import { Home } from "./components/UI/Home.jsx";
+import {
+  Dashboard,
+  Catalog,
+  Shop,
+  OverView,
+} from "./components/UI/DashBoard.jsx";
+import { Party } from "./components/UI/DashBoard_Party.jsx";
+import { DeckBuilder } from "./components/UI/DashBoard_Deck.jsx";
+import { GameComponent } from "./components/UI/GameComponent.jsx";
 import {
   waveOne,
   waveTwo,
@@ -26,7 +31,6 @@ import {
 } from "./vanillaJsFiles/floors.js";
 //console.log(controller);
 function EldridiasElement() {
-  const [currentWave, setCurrentWave] = useState(0);
   const [playerController, setPlayerController] = useState(controller);
   const [computerController, setComputerController] = useState(computer);
   const [tank, setTank] = useState(bulwark);
@@ -35,7 +39,10 @@ function EldridiasElement() {
   const [healer, setHealer] = useState(hogarth);
   const [party, setParty] = useState([tank, melee, ranged, healer]);
   const [boss, setBoss] = useState(bossOne);
-  const [floor, setFloor] = useState(floorOne[0]);
+  const [currentWave, setCurrentWave] = useState(0);
+  const [floor, setFloor] = useState(floorOne[currentWave]);
+  const [maxFloor, setMaxFloor] = useState(1);
+  const [currentFloor, setCurrentFloor] = useState(1);
   const [currency, setCurrency] = useState(500);
   const [inventory, setInventory] = useState([]);
   const [deck, setDeck] = useState([
@@ -58,8 +65,13 @@ function EldridiasElement() {
             setInventory={setInventory}
             floor={floor}
             setFloor={setFloor}
+            currentFloor={currentFloor}
+            setCurrentFloor={setCurrentFloor}
+            maxFloor={maxFloor}
+            setMaxFloor={setMaxFloor}
             party={party}
             boss={boss}
+            computerController={computerController}
           />
         }
       />
@@ -74,7 +86,12 @@ function EldridiasElement() {
             controller={playerController}
             floor={floor}
             setFloor={setFloor}
+            currentFloor={currentFloor}
+            setCurrentFloor={setCurrentFloor}
+            maxFloor={maxFloor}
+            setMaxFloor={setMaxFloor}
             party={party}
+            computerController={computerController}
           />
         }
       />
@@ -109,6 +126,10 @@ function EldridiasElement() {
             deck={deck}
             floor={floor}
             setFloor={setFloor}
+            currentFloor={currentFloor}
+            setCurrentFloor={setCurrentFloor}
+            maxFloor={maxFloor}
+            setMaxFloor={setMaxFloor}
             currency={currency}
             setCurrency={setCurrency}
             inventory={inventory}

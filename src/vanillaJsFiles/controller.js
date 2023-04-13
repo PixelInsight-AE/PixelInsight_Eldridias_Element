@@ -73,7 +73,7 @@ const controller = {
           `Damage Done :${hero.attackPower} , ${monster.name} has ${monster.health} health left`
         );
         computer.deathCheck(monster, floor);
-        hero.canRegularAttack = false;
+        //hero.canRegularAttack = false;
       } else {
         console.log(`${monster.name} is already dead`);
       }

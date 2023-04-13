@@ -1,4 +1,4 @@
-import { MagicCard } from "../utils.js";
+import { MagicCard } from "./constructor.js";
 
 // !! Card Functions !! //
 

@@ -14,12 +14,18 @@ import {
   blackWasp,
   dragon,
 } from "./monsters.js";
+const lootBox = [
+  {
+    name: "Loot Box",
+    currency: 1000,
+  },
+];
 
 const waveOne = [skeleton, orc, goblin, spider, wizard];
 const waveTwo = [slime, blackKnight, blackWasp, dragon];
 const waveThree = [dragon, blackKnight, blackWasp, slime];
-const bossOne = magiTheLiar;
+const bossOne = [magiTheLiar];
 
-const floorOne = [waveOne, waveTwo, waveThree, bossOne];
+const floorOne = [waveOne, bossOne, lootBox];
 
 export { waveOne, waveTwo, waveThree, bossOne, floorOne };

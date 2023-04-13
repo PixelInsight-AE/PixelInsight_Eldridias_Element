@@ -6,6 +6,7 @@ const yamiTheDreamer = {
   health: 10000,
   maxHealth: 10000,
   turnCount: 0,
+  role: "Boss",
   effect: [],
   abilities: [
     {
@@ -92,6 +93,7 @@ const sargarasTheDestroyer = {
   health: 15750,
   maxHealth: 15750,
   turnCount: 0,
+  role: "Boss",
   effect: [],
   abilities: [
     {
@@ -164,9 +166,10 @@ const magiTheLiar = {
   attackPower: 100,
   defense: 500,
   mana: 1000,
-  health: 10000,
+  health: 200,
   maxHealth: 10000,
   turnCount: 0,
+  role: "Boss",
   effect: [],
   imgUrl: "https://i.imgur.com/6QFTJpp.png",
   abilities: [

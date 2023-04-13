@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { NavBar } from "./NavBar.jsx";
+import { NavBar } from "./NavBar";
+import { Shop } from "./DashBoard_Shop";
+import { Catalog } from "./DashBoard_Catalog";
 
 // ? Party member to be mapped into the current party component.
 const PartyMember = (props) => {
@@ -128,30 +130,6 @@ const OverView = (props) => {
         </Link>
       </div>
 
-      <Link to="/dashboard">
-        <button>Back</button>
-      </Link>
-    </div>
-  );
-};
-
-const Catalog = (props) => {
-  return (
-    <div>
-      <NavBar />
-      <h1>Catalog</h1>
-      <Link to="/dashboard">
-        <button>Back</button>
-      </Link>
-    </div>
-  );
-};
-
-const Shop = (props) => {
-  return (
-    <div>
-      <NavBar />
-      <h1>Shop</h1>
       <Link to="/dashboard">
         <button>Back</button>
       </Link>

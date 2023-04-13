@@ -5,6 +5,7 @@ const computer = {
   isTurn: false,
   monsterGraveyard: [],
   isWaveDefeated: false,
+  isBossDefeated: false,
   gameOver: function (hero) {
     if (hero.length <= 1) {
       console.log("PARTY HAS FALLEN Game Over.");
@@ -20,18 +21,21 @@ const computer = {
     }
   },
   deathCheck: function (monster, floor) {
+    if (monster.role === "Boss" && monster.health <= 0) {
+      this.isBossDefeated = true;
+    }
     if (monster.health <= 0) {
       console.log(`${monster.name} has died, you ruinded hes family dinner!`);
       this.monsterGraveyard.push(monster);
       monster.flag = true;
       monster.imgUrl = monster.deathImgUrl;
-      console.log(this.monsterGraveyard);
+
       this.death(floor);
     }
   },
   death: function (floor) {
-    console.log("death function");
     let isWaveDefeated = false;
+    console.log(isWaveDefeated);
     // check if all party members are dead
     // if all party members are dead, end game
     for (let i = 0; i < floor.length; i++) {

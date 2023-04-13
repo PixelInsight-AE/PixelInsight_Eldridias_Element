@@ -493,82 +493,6 @@ nav ul li a:hover {
   height: 35px;
 }
 
-/* #game-container {
-  background-color: rgba($color: #000000, $alpha: 0.8);
-  color: #fff;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-
-  #middle-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 60%;
-    border: 1px solid white;
-  }
-
-  #left-side-container,
-  #right-side-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 20%;
-    border: 1px solid white;
-  }
-
-  #enemy-battlefield {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border: 1px solid white;
-    .battlefield {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      border: 1px solid white;
-      img {
-        width: 100px;
-        border-radius: 50%;
-      }
-    }
-  }
-
-  #party-battlefield {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border: 1px solid white;
-    .battlefield {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      border: 1px solid white;
-      img {
-        width: 100px;
-        border-radius: 50%;
-      }
-    }
-  }
-
-  #mob-status {
-    #monster-stats {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: flex-end;
-      padding: 1rem;
-      img {
-        width: 40px;
-      }
-    }
-  }
-}
-
-.hero-click {
-  border: 1px solid white;
-}
- */
 #game-container {
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
@@ -577,73 +501,226 @@ nav ul li a:hover {
   align-items: center;
   width: 100%;
 }
-#game-container #middle-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 60%;
-  border: 1px solid white;
-  padding: 1rem;
-}
-#game-container #left-side-container,
-#game-container #right-side-container {
+#game-container #left-side-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   width: 20%;
-  border: 1px solid white;
   padding: 1rem;
-  margin: 0 1rem;
+  color: #fff;
 }
-#game-container #enemy-battlefield {
+#game-container #left-side-container .party-stats {
+  background-color: rgba(108, 117, 125, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 3px solid blue;
+  border-radius: 0.5rem;
+  margin: 0.25rem;
+}
+#game-container #left-side-container .party-stats img {
+  width: 150px;
+  border-radius: 25%;
+}
+#game-container #left-side-container .party-stats .hero-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-self: start;
+  align-items: flex-end;
+  width: 100%;
+  padding: 0.5rem;
+}
+#game-container #left-side-container .party-stats .hero-stats .hp {
+  font-size: 1.5rem;
+  color: green;
+  text-shadow: 0.5 0.25 0.25rem black;
+  webkit-text-stroke: 0.5px black;
+}
+#game-container #left-side-container .party-stats .hero-stats img {
+  width: 50px;
+  border-radius: 20%;
+  margin-right: 2rem;
+}
+#game-container #left-side-container .party-stats .hero-stats h2 {
+  font-size: 1.75rem;
+}
+#game-container #middle-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  padding: 1rem;
+}
+#game-container #middle-container #enemy-battlefield {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border: 1px solid white;
+  padding: 1rem;
   margin-top: 1rem;
-  padding: 1rem;
 }
-#game-container #enemy-battlefield .battlefield {
+#game-container #middle-container #enemy-battlefield .battlefield {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border: 1px solid white;
 }
-#game-container #enemy-battlefield .battlefield img {
+#game-container #middle-container #enemy-battlefield .battlefield img {
   width: 100px;
   border-radius: 50%;
+  border: 3px solid gold;
+  padding: 0.5rem;
+  margin: 0.25rem;
 }
-#game-container #party-battlefield {
+#game-container #middle-container #enemy-battlefield .battlefield img:hover {
+  background-color: rgba(200, 59, 111, 0.7);
+  transform: scale(1.1);
+}
+#game-container #middle-container .battlefield {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  border: 1px solid white;
-  margin-top: 1rem;
-  padding: 1rem;
+  justify-content: center;
 }
-#game-container #party-battlefield .battlefield {
+#game-container #middle-container .battlefield .battle-hero {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border: 1px solid white;
-}
-#game-container #party-battlefield .battlefield img {
-  width: 100px;
-  border-radius: 50%;
-}
-#game-container #mob-status #monster-stats {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   padding: 1rem;
+  margin: 1rem;
 }
-#game-container #mob-status #monster-stats img {
-  width: 40px;
+#game-container #middle-container .battlefield .battle-hero h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 0.5 0.25 0.25rem black;
+  webkit-text-stroke: 0.5px black;
+}
+#game-container #middle-container .battlefield .battle-hero img {
+  border: 4px solid blue;
+  width: 200px;
+  border-radius: 20%;
+  padding: 0.5rem;
+}
+#game-container #middle-container .battlefield .battle-animation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem;
+}
+#game-container #middle-container .battlefield .battle-animation h1 {
+  font-size: 4rem;
+  color: red;
+  text-shadow: 0.5 0.25 0.25rem black;
+  webkit-text-stroke: 0.5px black;
+}
+#game-container #middle-container .battlefield .hero-click {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem;
+}
+#game-container #middle-container .battlefield .hero-click h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 0.5 0.25 0.25rem black;
+  webkit-text-stroke: 0.5px black;
+}
+#game-container #middle-container .battlefield .hero-click img {
+  border: 4px solid blue;
+  width: 125px;
+  border-radius: 20%;
+  padding: 0.5rem;
+}
+#game-container #middle-container .battlefield .battle-monster {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem;
+}
+#game-container #middle-container .battlefield .battle-monster h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 0.5 0.25 0.25rem black;
+  webkit-text-stroke: 0.5px black;
+}
+#game-container #middle-container .battlefield .battle-monster img {
+  border: 4px solid gold;
+  width: 200px;
+  border-radius: 20%;
+  padding: 0.5rem;
 }
 
-.hero-click {
-  border: 1px solid white;
-  cursor: pointer;
+#right-side-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 20%;
+  padding: 1rem;
+  color: #fff;
+}
+#right-side-container .monster-stats-container {
+  background-color: rgba(108, 117, 125, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 3px solid gold;
+  border-radius: 0.5rem;
+  margin: 0.25rem;
+}
+#right-side-container .monster-stats-container img {
+  width: 150px;
+  border-radius: 25%;
+}
+#right-side-container .monster-stats-container .monster-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-self: start;
+  align-items: flex-end;
+  width: 100%;
+  padding: 0.5rem;
+}
+#right-side-container .monster-stats-container .monster-stats .hp {
+  font-size: 1.5rem;
+  color: green;
+  text-shadow: 0.5 0.25 0.25rem black;
+  webkit-text-stroke: 0.5px black;
+}
+#right-side-container .monster-stats-container .monster-stats img {
+  width: 50px;
+  border-radius: 20%;
+  margin-right: 2rem;
+}
+#right-side-container .monster-stats-container .monster-stats h2 {
+  font-size: 1.75rem;
+}
+
+#controls-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#controls-container button {
+  background-color: rgba(108, 117, 125, 0.7);
+  border: 3px solid gold;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.25rem;
+}
+#controls-container button:hover {
+  background-color: rgba(200, 59, 111, 0.7);
+  transform: scale(1.1);
 }
 
 body {
