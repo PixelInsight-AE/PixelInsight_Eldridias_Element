@@ -339,6 +339,7 @@ nav ul li a:hover {
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -373,15 +374,35 @@ nav ul li a:hover {
   margin: 10px;
 }
 
-#storyBoard-navigation {
+#storyboard-navigation {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-#storyBoard-navigation button {
+#storyboard-navigation button {
   margin: 1rem;
   padding: 0.5rem;
+}
+
+.storyboard-start-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.storyboard-exit-button {
+  margin: 1rem;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 #party-select-container {

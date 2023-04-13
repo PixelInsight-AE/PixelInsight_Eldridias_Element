@@ -13,6 +13,7 @@ const StoryBoard = (props) => {
     }
     if (currentPart == story.length - 1) {
       console.log("finished story");
+
       //make button appear to start game
     }
   };
@@ -51,19 +52,18 @@ const StoryBoard = (props) => {
                 />
               </div>
             </div>
-          </div>
-          <div id="storyBoard-navigation">
             <Link to="/dashboard">
-              <button>Exit</button>
+              <button className="storyboard-exit-button">Exit</button>
             </Link>
-
-            <button onClick={handleBack}>Back</button>
-            <button onClick={handleNext}>Next</button>
             {currentPart == story.length - 1 ? (
               <Link to="/dashboard/play">
-                <button>Start</button>
+                <button className="storyboard-start-button">Start</button>
               </Link>
             ) : null}
+          </div>
+          <div id="storyboard-navigation">
+            <button onClick={handleBack}>Back</button>
+            <button onClick={handleNext}>Next</button>
           </div>
         </div>
       </div>
