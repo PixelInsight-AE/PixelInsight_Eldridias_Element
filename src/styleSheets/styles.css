@@ -142,22 +142,29 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   background-image: url("src/assets/images/landscapes/background-10.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
 }
+#heroThree h1 {
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  font-family: "Lovers Quarrel", cursive;
+  font-size: 5rem;
+}
 #heroThree #playingCards {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
-  justify-content: space-evenly;
   text-align: center;
   height: 100%;
-  overflow: auto;
+  flex-wrap: wrap;
 }
 #heroThree #playingCards .card-big {
   display: flex;
@@ -167,8 +174,9 @@ body {
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   border-radius: 1rem;
-  width: 250px;
-  height: auto;
+  margin: 2rem;
+  width: 150px;
+  height: 200px;
 }
 #heroThree #playingCards .card-big h2 {
   font-family: "Lovers Quarrel", cursive;
@@ -182,6 +190,62 @@ body {
   width: 80%;
   height: auto;
   margin-bottom: 2rem;
+}
+
+#heroFour {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-image: url("src/assets/images/landscapes/background-11.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+#heroFour #heroFour-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 60%;
+  height: 100%;
+  margin: 2rem;
+}
+#heroFour #heroFour-left .text-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
+  padding: 6rem;
+}
+#heroFour #heroFour-left h2 {
+  font-family: "Lovers Quarrel", cursive;
+  font-size: 5rem;
+  margin-bottom: 2rem;
+}
+#heroFour #heroFour-left p {
+  line-height: 1.5;
+}
+#heroFour #heroFour-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40%;
+  height: 60%;
+  padding: 6rem;
+}
+#heroFour #heroFour-right img {
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
+  margin-top: 2rem;
+  width: 80%;
+  height: auto;
 }
 
 #overview-header {

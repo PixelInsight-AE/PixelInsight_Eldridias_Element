@@ -3,6 +3,7 @@ import Snowfall from "react-snowfall";
 import { HeroOne } from "./Home_HeroOne";
 import { HeroTwo } from "./Home_HeroTwo";
 import { HeroThree } from "./Home_HeroThree";
+import { HeroFour } from "./Home_HeroFour";
 
 const Home = (props) => {
   return (
@@ -12,6 +13,7 @@ const Home = (props) => {
       <HeroOne />
       <HeroTwo />
       <HeroThree />
+      <HeroFour />
     </main>
   );
 };
