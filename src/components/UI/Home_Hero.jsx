@@ -10,7 +10,7 @@ const Hero = (props) => {
           powerful cards featuring epic heroes and fearsome monsters.
         </p>
 
-        <Link to="/dashboard">
+        <Link to="/dashboard/story">
           {/* // ! Links are working anywhere you import them!  */}
           <button>Play Now!</button>
         </Link>

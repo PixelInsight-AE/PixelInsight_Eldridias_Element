@@ -329,7 +329,15 @@ nav ul li a:hover {
 }
 
 #storyBoard {
-  height: 65vh;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  right: 25%;
+  height: 45vh;
+  bottom: 0%;
+  margin: auto;
 }
 
 #story-board-card {
@@ -338,7 +346,7 @@ nav ul li a:hover {
   background-position: center;
   background-repeat: no-repeat;
   height: 100%;
-  width: 100%;
+  width: 200%;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -346,9 +354,6 @@ nav ul li a:hover {
   justify-content: center;
   border: 1px solid black;
   border-radius: 1rem;
-  width: 75%;
-  height: 100%;
-  margin: auto;
 }
 #story-board-card span {
   padding: 1rem;

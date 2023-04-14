@@ -35,6 +35,7 @@ import { storyOne } from "./vanillaJsFiles/storyboard.js";
 
 function EldridiasElement() {
   const [story, setStory] = useState(storyOne);
+  const [currentStory, setCurrentStory] = useState(0);
   const [playerController, setPlayerController] = useState(controller);
   const [computerController, setComputerController] = useState(computer);
   const [tank, setTank] = useState(bulwark);
@@ -76,6 +77,10 @@ function EldridiasElement() {
             party={party}
             boss={boss}
             computerController={computerController}
+            story={story}
+            setStory={setStory}
+            currentStory={currentStory}
+            setCurrentStory={setCurrentStory}
           />
         }
       />
@@ -96,6 +101,10 @@ function EldridiasElement() {
             setMaxFloor={setMaxFloor}
             party={party}
             computerController={computerController}
+            story={story}
+            setStory={setStory}
+            currentStory={currentStory}
+            setCurrentStory={setCurrentStory}
           />
         }
       />
@@ -140,12 +149,23 @@ function EldridiasElement() {
             setInventory={setInventory}
             currentWave={currentWave}
             setCurrentWave={setCurrentWave}
+            story={story}
+            setStory={setStory}
+            currentStory={currentStory}
+            setCurrentStory={setCurrentStory}
           />
         }
       />
       <Route
         path="/dashboard/story"
-        element={<StoryBoard party={party} story={story} />}
+        element={
+          <StoryBoard
+            party={party}
+            story={story}
+            currentStory={currentStory}
+            setCurrentStory={setCurrentStory}
+          />
+        }
       />
     </Routes>
   );

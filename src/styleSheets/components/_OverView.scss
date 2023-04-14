@@ -91,7 +91,15 @@
   background-color: #0056b3;
 }
 #storyBoard {
-  height: 65vh;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  right: 25%;
+  height: 45vh;
+  bottom: 0%;
+  margin: auto;
 }
 #story-board-card {
   background-image: url("https://i.imgur.com/ShaZNgM.png");
@@ -99,7 +107,7 @@
   background-position: center;
   background-repeat: no-repeat;
   height: 100%;
-  width: 100%;
+  width: 200%;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -107,9 +115,7 @@
   justify-content: center;
   border: 1px solid black;
   border-radius: 1rem;
-  width: 75%;
-  height: 100%;
-  margin: auto;
+
   span {
     padding: 1rem;
   }

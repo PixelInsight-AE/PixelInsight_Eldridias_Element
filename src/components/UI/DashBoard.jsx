@@ -102,7 +102,7 @@ const OverviewStartGame = (props) => {
 };
 
 const OverView = (props) => {
-  const { party } = props;
+  const { party, story, setStory, currentStory, setCurrentStory } = props;
   const [currentLevel, setCurrentLevel] = useState(1);
   const [currency, setCurrency] = useState(500);
   const [achievements, setAchievements] = useState([
@@ -110,6 +110,7 @@ const OverView = (props) => {
     "Achievement 2",
     "Achievement 3",
   ]);
+  //set story state to current story
 
   return (
     <div>
@@ -125,7 +126,7 @@ const OverView = (props) => {
           setCurrentLevel={setCurrentLevel}
         />
 
-        <Link to="/dashboard/story">
+        <Link to={story[currentStory].path}>
           <button>Start Game</button>
         </Link>
       </div>
@@ -138,11 +139,20 @@ const OverView = (props) => {
 };
 
 const Dashboard = (props) => {
-  const { party, floor, boss } = props;
+  const { party, floor, boss, story, setStory, currentStory, setCurrentStory } =
+    props;
   return (
     <div>
       <h1>Dashboard</h1>
-      <OverView party={party} floor={floor} boss={boss} />
+      <OverView
+        party={party}
+        floor={floor}
+        boss={boss}
+        story={story}
+        setStory={setStory}
+        currentStory={currentStory}
+        setCurrentStory={setCurrentStory}
+      />
     </div>
   );
 };
