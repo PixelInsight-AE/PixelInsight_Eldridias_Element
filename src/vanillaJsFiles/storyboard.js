@@ -129,7 +129,7 @@ const storyOne = [
     path: "/dashboard/play",
     imageIcon: "https://i.imgur.com/jWo5uD3.png",
     nameOfSpeaker: "Stranger On the Road",
-    pathIsValid: true,
+    pathIsValid: false,
   },
 ];
 
