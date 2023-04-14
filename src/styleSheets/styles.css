@@ -32,49 +32,48 @@ nav ul li a:hover {
   color: #000000;
 }
 
-#homeScreen {
+#background {
   background-image: url("src/assets/images/castles/iceTower.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
 }
-#homeScreen #home-header {
+#background #home-header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  flex-direction: row;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1rem;
   height: 10vh;
 }
-#homeScreen #home-header button {
-  margin: 0 10px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 18px;
-  font-weight: bold;
+#background #home-header button {
+  margin: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  font-size: 1rem;
   color: #fff;
-  background-color: #007bff;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-#homeScreen #home-header button:hover {
+#background #home-header button:hover {
   background-color: #0062cc;
 }
-#homeScreen #home-header #signUp-btn {
+#background #home-header #signUp-btn {
   background-color: #28a745;
 }
-#homeScreen #home-header #signUp-btn:hover {
+#background #home-header #signUp-btn:hover {
   background-color: #218838;
 }
-#homeScreen #home-header #login-btn {
+#background #home-header #login-btn {
   background-color: #dc3545;
 }
-#homeScreen #home-header #login-btn:hover {
+#background #home-header #login-btn:hover {
   background-color: #c82333;
 }
-#homeScreen .hero {
+#background .hero {
   height: 85vh;
   display: flex;
   align-items: center;
@@ -82,7 +81,7 @@ nav ul li a:hover {
   color: white;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
-#homeScreen .hero #hero-content-wrapper {
+#background .hero #hero-content-wrapper {
   max-width: 800px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.6);
@@ -91,16 +90,16 @@ nav ul li a:hover {
   padding: 2rem;
   transition: transform 0.5s ease-in-out;
 }
-#homeScreen .hero #hero-content-wrapper h2 {
+#background .hero #hero-content-wrapper h2 {
   font-family: "Lovers Quarrel", cursive;
   font-size: 5rem;
   margin-bottom: 1rem;
 }
-#homeScreen .hero #hero-content-wrapper p {
+#background .hero #hero-content-wrapper p {
   font-size: 1.5rem;
   margin-bottom: 2rem;
 }
-#homeScreen .hero #hero-content-wrapper button {
+#background .hero #hero-content-wrapper button {
   background-color: #a9bed6;
   color: rgb(1, 0, 0);
   border: none;
@@ -111,7 +110,7 @@ nav ul li a:hover {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   transition: 0.5s ease-in-out;
 }
-#homeScreen .hero #hero-content-wrapper button:hover {
+#background .hero #hero-content-wrapper button:hover {
   transform: translateY(-10px) scale(1.1);
   background-color: pink;
 }
@@ -165,9 +164,9 @@ nav ul li a:hover {
 
 #playingCardsHero {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  height: 105vh;
+  height: 100vh;
   background-image: url("/src/assets/images/landscapes/background-11.jpg");
   background-position: center center;
   background-repeat: no-repeat;
@@ -175,10 +174,9 @@ nav ul li a:hover {
   color: white;
 }
 #playingCardsHero #playingCards {
-  width: 50%;
-  padding: 6rem;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -187,9 +185,9 @@ nav ul li a:hover {
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   border-radius: 1rem;
-  width: 300px;
+  width: 200px;
   height: auto;
-  margin-bottom: 2rem;
+  margin: 2rem;
 }
 #playingCardsHero #playingCards .card-big h2 {
   font-family: "Lovers Quarrel", cursive;

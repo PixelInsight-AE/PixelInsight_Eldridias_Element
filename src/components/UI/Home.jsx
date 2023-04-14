@@ -10,7 +10,7 @@ import {
 
 const Home = (props) => {
   return (
-    <main id="homeScreen">
+    <main id="background">
       <Snowfall snowflakeCount={250} />
       <Header />
       <Hero />

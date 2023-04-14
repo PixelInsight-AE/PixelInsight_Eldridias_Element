@@ -1,36 +1,47 @@
 @import url("https://fonts.googleapis.com/css2?family=Lovers+Quarrel&display=swap");
 $font-title: "Lovers Quarrel", cursive;
+
+// ? backgorund image mixin
+@mixin background-image($image) {
+  background-image: url($image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+// ? flex mixin
+@mixin flex($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+// ? Gradient mixin
 $start-color: #2d2d2d;
 $end-color: #000000;
-
 @mixin radial-gradient-dark($start-color, $end-color) {
   background: $start-color;
   background: radial-gradient(circle, $start-color, $end-color);
 }
 
 // ! FIRST 100VH SECTION ------------------------------------------------------------------
-#homeScreen {
-  background-image: url("src/assets/images/castles/iceTower.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+#background {
+  @include background-image("src/assets/images/castles/iceTower.jpg");
   height: 100vh;
+
   // ! HEADER component
   #home-header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    @include flex(flex-end, center, row);
     background-color: rgba($color: #000000, $alpha: 0.5);
     padding: $padding-4;
     height: 10vh;
     button {
-      margin: 0 10px;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 18px;
-      font-weight: bold;
+      margin: 0.75rem;
+      padding: 0.75rem;
+      border-radius: 1rem;
+      font-size: 1rem;
       color: #fff;
-      background-color: #007bff;
       border: none;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -161,19 +172,18 @@ $end-color: #000000;
 // ! THIRD 100VH SECTION ------------------------------------------------------------------
 #playingCardsHero {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  height: 105vh;
+  height: 100vh;
   background-image: url("/src/assets/images/landscapes/background-11.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
   #playingCards {
-    width: 50%;
-    padding: 6rem;
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -182,9 +192,9 @@ $end-color: #000000;
       background-color: rgba($color: #000000, $alpha: 0.6);
       box-shadow: 0 0 10px rgba($color: #ffffff, $alpha: 0.7);
       border-radius: $border-radius-4;
-      width: 300px;
+      width: 200px;
       height: auto;
-      margin-bottom: 2rem;
+      margin: 2rem;
 
       h2 {
         font-family: $font-title;

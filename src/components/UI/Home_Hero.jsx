@@ -80,6 +80,42 @@ const PlayingCardsHero = (props) => {
           <h2 className="card-title">BullWark</h2>
           <img src="https://i.imgur.com/OEIQ1ee.png" alt="" />
         </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -500 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 4 }}
+          drag
+          dragConstraints={{ left: 200, right: 200, top: 100, bottom: 100 }}
+          className="card-big"
+        >
+          <h2 className="card-title">Sorceress</h2>
+          <img src="https://i.imgur.com/cLQfh6c.png" alt="" />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -500 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 4 }}
+          drag
+          dragConstraints={{ left: 200, right: 200, top: 100, bottom: 100 }}
+          className="card-big"
+        >
+          <h2 className="card-title">Hogarth</h2>
+          <img src="https://i.imgur.com/N4X30zf.png" alt="" />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -500 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 4 }}
+          drag
+          dragConstraints={{ left: 200, right: 200, top: 100, bottom: 100 }}
+          className="card-big"
+        >
+          <h2 className="card-title">Seer</h2>
+          <img src="https://i.imgur.com/rjbFnVY.png" alt="" />
+        </motion.div>
       </div>
     </section>
   );
