@@ -6,28 +6,19 @@ import { NavBar } from "./NavBar";
 const StoryBoard = (props) => {
   const { party, story, currentStory, setCurrentStory } = props;
   const handleNext = () => {
-    console.log("next");
     if (currentStory < story.length - 1) {
       setCurrentStory(currentStory + 1);
     }
-    if (currentStory == story.length - 1) {
-      console.log("finished story");
-
-      //make button appear to start game
-    }
   };
   const handleBack = () => {
-    console.log("back");
     if (currentStory > 0) {
       setCurrentStory(currentStory - 1);
     }
   };
-  console.log(story[currentStory].id);
-  console.log(story[currentStory].title);
-  console.log(story[currentStory].image);
-  console.log(story[currentStory].playerText);
-  console.log(story[currentStory].npcText);
-  console.log(story[currentStory].path);
+  const handleStart = () => {
+    setCurrentStory(currentStory + 1);
+  };
+
   return (
     <>
       <div
@@ -41,38 +32,40 @@ const StoryBoard = (props) => {
         }}
       >
         <div id="storyBoard">
+          <div>{story[currentStory].title}</div>
           <div id="story-board-card">
             {story[currentStory].playerText ? (
               <div id="player-box">
                 <div id="player-box-image">
-                  <span>{party[0].name}</span>
-                  <img
-                    className="player-image story-board-images"
-                    src={party[0].imgUrl}
-                    alt="blankfornow"
-                  />
+                  <span>{story[currentStory].nameOfSpeaker}</span>
+                  {story[currentStory].imageIcon ? (
+                    <img
+                      className="player-image story-board-images"
+                      src={story[currentStory].imageIcon}
+                      alt="blankfornow"
+                    />
+                  ) : (
+                    <img
+                      className="player-image story-board-images"
+                      src={party[0].imgUrl}
+                      alt="blankfornow"
+                    />
+                  )}
                 </div>
                 <div id="player-box-text">{story[currentStory].playerText}</div>
               </div>
             ) : (
-              <div></div>
-            )}
-
-            <div></div>
-            {story[currentStory].npcText ? (
               <div id="npc-box">
                 <div id="npc-box-text">{story[currentStory].npcText}</div>
                 <div id="npc-box-image">
-                  <span>npc name here</span>
+                  <span>{story[currentStory].nameOfSpeaker}</span>
                   <img
                     className="npc-image story-board-images"
-                    src="https://i.imgur.com/PcpghWi.png"
+                    src={story[currentStory].imageIcon}
                     alt="blankfornow"
                   />
                 </div>
               </div>
-            ) : (
-              <div></div>
             )}
             <Link to="/dashboard">
               <button className="storyboard-exit-button">Exit</button>
@@ -93,7 +86,7 @@ const StoryBoard = (props) => {
             {story[currentStory].pathIsValid ? (
               <p></p>
             ) : (
-              <button onClick={handleNext}>Next</button>
+              <button onClick={handleStart}>Next</button>
             )}
           </div>
         </div>

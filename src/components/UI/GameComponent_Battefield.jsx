@@ -1,23 +1,70 @@
 import { ClickableHeros, ClickableMonsters } from "./GameComponent_Clickables";
 import { PartyStats, MonsterStats } from "./GameComponent_Stats";
 import { Link } from "react-router-dom";
+import { floor1, floor2 } from "../../vanillaJsFiles/floors";
 
-const DisplayCurrentBattle = (props) => {
-  const { selectedHero, selectedMonster, computerController, maxFloor } = props;
-  const victoryMessage = (
+const VictoryComponent = (props) => {
+  const {
+    currentFloor,
+    maxFloor,
+    setMaxFloor,
+    setFloor,
+    floor,
+    currentWave,
+    setCurrentWave,
+    computerController,
+  } = props;
+
+  const handleLevelChange = () => {
+    setCurrentWave(0);
+    setFloor(floor2[currentWave]);
+    setTimeout(() => {
+      console.log(floor, currentWave);
+    }, 1000);
+
+    computerController.isBossDefeated = false;
+  };
+  return (
     <div>
       <h1>You Completed The Floor</h1>
-      <Link to="/dashboard">
-        <button>
+      <Link to="/dashboard/story">
+        <button onClick={handleLevelChange}>
           <h2>Next Floor</h2>
         </button>
       </Link>
-      <Link to="/dashboard">
-        <button>
+      <Link to="/dashboard/story">
+        <button onClick={handleLevelChange}>
           <h2>Return To Town</h2>
         </button>
       </Link>
     </div>
+  );
+};
+
+const DisplayCurrentBattle = (props) => {
+  const {
+    selectedHero,
+    selectedMonster,
+    computerController,
+    maxFloor,
+    currentFloor,
+    setMaxFloor,
+    floor,
+    setFloor,
+    currentWave,
+    setCurrentWave,
+  } = props;
+  const victoryMessage = (
+    <VictoryComponent
+      currentFloor={currentFloor}
+      maxFloor={maxFloor}
+      setMaxFloor={setMaxFloor}
+      floor={floor}
+      setFloor={setFloor}
+      currentWave={currentWave}
+      setCurrentWave={setCurrentWave}
+      computerController={computerController}
+    />
   );
 
   return (
@@ -44,6 +91,7 @@ const DisplayCurrentBattle = (props) => {
 const Battlefield = (props) => {
   const {
     floor,
+    setFloor,
     party,
     handleMonsterClick,
     handleHeroClick,
@@ -78,6 +126,10 @@ const Battlefield = (props) => {
             selectedMonster={selectedMonster}
             computerController={computerController}
             maxFloor={maxFloor}
+            floor={floor}
+            setFloor={setFloor}
+            currentWave={currentWave}
+            setCurrentWave={setCurrentWave}
           />
         </div>
         <div id="party-battlefield">
