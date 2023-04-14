@@ -94,45 +94,32 @@ body {
   color: rgb(1, 0, 0);
   border: none;
   padding: 1rem 2rem;
-  /* font-size: 1.5rem; */
   border-radius: 1rem;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
-#hero-divider {
+#heroTwo {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  flex-direction: row;
+  background: #2d2d2d;
+  background: radial-gradient(circle, #2d2d2d, #000000);
   height: 100vh;
-  background: radial-gradient(ellipse at center, #1c1c1c 0%, #000000 100%);
 }
-#hero-divider #divider-left,
-#hero-divider #divider-right {
+#heroTwo #heroTwo-left,
+#heroTwo #heroTwo-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 50%;
   height: 100%;
   padding: 6rem;
 }
-#hero-divider #divider-left h2,
-#hero-divider #divider-right h2 {
-  font-family: "Lovers Quarrel", cursive;
-  font-size: 5rem;
-  color: #fff;
-  margin-bottom: 2rem;
-}
-#hero-divider #divider-left p,
-#hero-divider #divider-right p {
-  font-size: 1.5rem;
-  color: #fff;
-  line-height: 1.5;
-}
-#hero-divider #divider-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-#hero-divider #divider-left img {
+#heroTwo #heroTwo-left img,
+#heroTwo #heroTwo-right img {
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   border-radius: 1rem;
@@ -140,46 +127,55 @@ body {
   width: 80%;
   height: auto;
 }
-#hero-divider #divider-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+#heroTwo #heroTwo-left h2,
+#heroTwo #heroTwo-right h2 {
+  font-family: "Lovers Quarrel", cursive;
+  font-size: 5rem;
+  margin-bottom: 2rem;
+}
+#heroTwo #heroTwo-left p,
+#heroTwo #heroTwo-right p {
+  line-height: 1.5;
 }
 
-#playingCardsHero {
+#heroThree {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  height: 100vh;
-  background-image: url("/src/assets/images/landscapes/background-11.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
-}
-#playingCardsHero #playingCards {
-  width: 100%;
-  display: flex;
   flex-direction: row;
+  background-image: url("src/assets/images/landscapes/background-10.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+#heroThree #playingCards {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
+  height: 100%;
+  overflow: auto;
+}
+#heroThree #playingCards .card-big {
+  display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-}
-#playingCardsHero #playingCards .card-big {
+  flex-direction: column;
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   border-radius: 1rem;
-  width: 200px;
+  width: 250px;
   height: auto;
-  margin: 2rem;
 }
-#playingCardsHero #playingCards .card-big h2 {
+#heroThree #playingCards .card-big h2 {
   font-family: "Lovers Quarrel", cursive;
   font-size: 3rem;
   margin-bottom: 1rem;
 }
-#playingCardsHero #playingCards .card-big img {
+#heroThree #playingCards .card-big img {
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   border-radius: 1rem;

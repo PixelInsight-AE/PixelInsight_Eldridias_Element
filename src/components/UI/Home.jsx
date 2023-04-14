@@ -1,6 +1,8 @@
 import { Header } from "./Home_Header";
 import Snowfall from "react-snowfall";
-import { HeroOne, HeroTwo, SubHero, PlayingCardsHero } from "./Home_Hero";
+import { HeroOne } from "./Home_HeroOne";
+import { HeroTwo } from "./Home_HeroTwo";
+import { HeroThree } from "./Home_HeroThree";
 
 const Home = (props) => {
   return (
@@ -9,13 +11,12 @@ const Home = (props) => {
       <Header />
       <HeroOne />
       <HeroTwo />
-      <PlayingCardsHero />
-      <SubHero />
+      <HeroThree />
     </main>
   );
 };
 
-export { Home, Header, HeroOne, HeroTwo, SubHero };
+export { Home, Header, HeroOne, HeroTwo };
 
 /**
  * TODO: Also display element cards on the scrollable row
