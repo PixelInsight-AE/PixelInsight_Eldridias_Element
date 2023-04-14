@@ -2,38 +2,67 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 
-const Hero = (props) => {
+const HeroOne = (props) => {
   return (
-    <section className="hero">
+    <section id="heroOne">
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        whileHover={{ scale: 1.1 }}
         transition={{ duration: 1 }}
-        id="hero-content-wrapper"
+        id="heroOne-wrapper"
       >
-        <h2>Eldridia's Element</h2>
-        <p>
+        <motion.h2
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2, delay: 0.25, ease: "easeInOut" }}
+        >
+          Eldridia's Element
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
+        >
           Enter a world of magic and adventure, where you can collect and trade
           powerful cards featuring epic heroes and fearsome monsters.
-        </p>
+        </motion.p>
 
         <Link to="/dashboard">
-          {/* // ! Links are working anywhere you import them!  */}
-          <button>Play Now!</button>
+          <motion.div
+            initial={{ scale: 1, x: -50, opacity: 0 }}
+            animate={{ scale: 1, x: 0, opacity: 1 }}
+            transition={{
+              ease: "easeInOut",
+              delay: 2,
+              duration: 1,
+            }}
+          >
+            <motion.button
+              whileHover={{
+                scale: 1.1,
+                y: -10,
+                backgroundColor: "pink",
+                duration: 0.5,
+              }}
+            >
+              Play Now!
+            </motion.button>
+          </motion.div>
         </Link>
       </motion.div>
     </section>
   );
 };
 
-const HeroDivider = () => {
+const HeroTwo = () => {
   return (
     <section id="hero-divider">
       <div id="divider-left">
         <motion.h2
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 2, delay: 1 }}
+          transition={{ duration: 2 }}
         >
           Battle Glorious Hero's!
         </motion.h2>
@@ -46,7 +75,12 @@ const HeroDivider = () => {
           alt=""
         />
       </div>
-      <div id="divider-right">
+      <motion.div
+        initial={{ opacity: 0, y: 300 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, delay: 0.5 }}
+        id="divider-right"
+      >
         <h2>Eldridias Element</h2>
 
         <p>
@@ -59,7 +93,7 @@ const HeroDivider = () => {
           elements and emerge victorious? The fate of the world is in your
           hands.
         </p>
-      </div>
+      </motion.div>
     </section>
   );
 };
@@ -72,7 +106,7 @@ const PlayingCardsHero = (props) => {
           initial={{ opacity: 0, x: -500 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 4 }}
+          transition={{ duration: 4, delay: 1.5 }}
           drag
           dragConstraints={{ left: 200, right: 200, top: 100, bottom: 100 }}
           className="card-big"
@@ -84,7 +118,7 @@ const PlayingCardsHero = (props) => {
           initial={{ opacity: 0, x: -500 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 4 }}
+          transition={{ duration: 4, delay: 1 }}
           drag
           dragConstraints={{ left: 200, right: 200, top: 100, bottom: 100 }}
           className="card-big"
@@ -96,7 +130,7 @@ const PlayingCardsHero = (props) => {
           initial={{ opacity: 0, x: -500 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 4 }}
+          transition={{ duration: 4, delay: 0.5 }}
           drag
           dragConstraints={{ left: 200, right: 200, top: 100, bottom: 100 }}
           className="card-big"
@@ -121,44 +155,6 @@ const PlayingCardsHero = (props) => {
   );
 };
 
-const CardAnimation = () => {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-    >
-      <h1>animated</h1>
-      <TypeAnimation
-        className="type-animation"
-        sequence={[
-          "Follow me on social media",
-          1000,
-          "You can connect with me!",
-          2000,
-          "O",
-          1000,
-          "On Facebook",
-          500,
-          "Or on Instagram",
-          2000,
-          // "Connect with me through social media",
-          () => {
-            console.log("Sequence completed");
-          },
-        ]}
-        wrapper="h3"
-        cursor={false}
-        repeat={Infinity}
-        style={{
-          fontFamily: "Dancing Script",
-          fontSize: "2em",
-          display: "block",
-        }}
-      />
-    </motion.div>
-  );
-};
 const SubHero = (props) => {
   return (
     <section className="subHero">
@@ -174,4 +170,4 @@ const SubHero = (props) => {
   );
 };
 
-export { Hero, HeroDivider, PlayingCardsHero, SubHero, CardAnimation };
+export { HeroOne, HeroTwo, PlayingCardsHero, SubHero };
