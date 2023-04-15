@@ -21,11 +21,11 @@ const lootBox = [
   },
 ];
 
-const waveOne = [skeleton, orc, goblin, spider, wizard];
+const waveOne = [skeleton, orc];
 const waveTwo = [slime, blackKnight, blackWasp, dragon];
 const waveThree = [dragon, blackKnight, blackWasp, slime];
 const bossOne = [magiTheLiar];
-
-const floorOne = [waveOne, bossOne, lootBox];
-
-export { waveOne, waveTwo, waveThree, bossOne, floorOne };
+const bossTwo = [yamiTheDreamer];
+const floor1 = [waveOne, bossOne, lootBox];
+const floor2 = [waveTwo, bossTwo, lootBox];
+export { waveOne, waveTwo, waveThree, bossOne, bossTwo, floor1, floor2 };

@@ -102,14 +102,15 @@ const OverviewStartGame = (props) => {
 };
 
 const OverView = (props) => {
-  const { party } = props;
-  const [currentLevel, setCurrentLevel] = useState(1);
+  const { party, story, setStory, currentStory, setCurrentStory } = props;
+
   const [currency, setCurrency] = useState(500);
   const [achievements, setAchievements] = useState([
     "Achievement 1",
     "Achievement 2",
     "Achievement 3",
   ]);
+  //set story state to current story
 
   return (
     <div>
@@ -117,15 +118,12 @@ const OverView = (props) => {
       <div className="overview-container">
         <h1>Overview</h1>
 
-        <OverviewHeader currentLevel={currentLevel} currency={currency} />
+        <OverviewHeader currency={currency} />
         <OverviewCurrentParty party={party} />
         <OverviewAchievements achievements={achievements} />
-        <OverviewStartGame
-          currentLevel={currentLevel}
-          setCurrentLevel={setCurrentLevel}
-        />
+        <OverviewStartGame />
 
-        <Link to="/dashboard/play">
+        <Link to={story[currentStory].path}>
           <button>Start Game</button>
         </Link>
       </div>
@@ -138,11 +136,35 @@ const OverView = (props) => {
 };
 
 const Dashboard = (props) => {
-  const { party, floor, boss } = props;
+  const {
+    party,
+    floor,
+    boss,
+    story,
+    setStory,
+    currentStory,
+    setCurrentStory,
+    maxFloor,
+    setMaxFloor,
+    currentFloor,
+    setCurrentFloor,
+  } = props;
   return (
     <div>
       <h1>Dashboard</h1>
-      <OverView party={party} floor={floor} boss={boss} />
+      <OverView
+        party={party}
+        floor={floor}
+        boss={boss}
+        story={story}
+        setStory={setStory}
+        currentStory={currentStory}
+        setCurrentStory={setCurrentStory}
+        maxFloor={maxFloor}
+        setMaxFloor={setMaxFloor}
+        currentFloor={currentFloor}
+        setCurrentFloor={setCurrentFloor}
+      />
     </div>
   );
 };

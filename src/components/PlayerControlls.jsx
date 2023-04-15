@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { floorOne } from "../vanillaJsFiles/floors";
+import { floor1 } from "../vanillaJsFiles/floors";
 const PlayerControlls = (props) => {
   const {
     floor,
@@ -14,15 +14,18 @@ const PlayerControlls = (props) => {
     currentWave,
     setCurrentWave,
     currentFloor,
+    setCurrentFloor,
     maxFloor,
     setMaxFloor,
   } = props;
   const progressCheck = () => {
-    console.log(maxFloor);
     if (currentFloor == maxFloor && computerController.isBossDefeated) {
-      console.log("floor one done");
-      setMaxFloor((prev) => prev + 1);
-      console.log(maxFloor);
+      setMaxFloor(maxFloor + 1);
+      setCurrentFloor((prev) => prev + 1);
+
+      setCurrentWave(0);
+      // console.log(maxFloor);
+      // console.log(currentFloor);
     }
   };
   const handleAttack = () => {
@@ -31,16 +34,12 @@ const PlayerControlls = (props) => {
     handleWaveChange();
   };
   const handleWaveChange = () => {
-    // what happens when boss wave is defeated
-    if (floor.length <= 1) {
-      console.log("boss wave !!");
-      progressCheck();
-    }
+    // what happens when boss wave is defeate
     // what happens when a normal wave is defeated
     if (computerController.isWaveDefeated) {
-      console.log("wave change ran");
       setCurrentWave((prev) => prev + 1);
-      setFloor(floorOne[currentWave + 1]);
+      setFloor(floor1[currentWave + 1]);
+      progressCheck();
       computerController.isWaveDefeated = false;
     }
   };

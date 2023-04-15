@@ -39,6 +39,7 @@ const GameComponent = (props) => {
       <div id="game-container">
         <Battlefield
           floor={floor}
+          setFloor={setFloor}
           party={party}
           handleMonsterClick={handleMonsterClick}
           handleHeroClick={handleHeroClick}

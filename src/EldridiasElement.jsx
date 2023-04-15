@@ -27,28 +27,20 @@ import {
   waveTwo,
   waveThree,
   bossOne,
-  floorOne,
+  bossTwo,
+  floor1,
+  floor2,
 } from "./vanillaJsFiles/floors.js";
+import { StoryBoard } from "./components/UI/GameComponent_StoryBoard.jsx";
+import { storyOne } from "./vanillaJsFiles/storyboard.js";
 //console.log(controller);
 
-const SnowEffect = () => {
-  return (
-    <div class="snow-container">
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-      <div class="snow"></div>
-    </div>
-  );
-};
-
 function EldridiasElement() {
+  // states to be used for story of the game.
+  const [story, setStory] = useState(storyOne);
+  const [currentStory, setCurrentStory] = useState(0);
+
+  // states for controller, computer, and heros.
   const [playerController, setPlayerController] = useState(controller);
   const [computerController, setComputerController] = useState(computer);
   const [tank, setTank] = useState(bulwark);
@@ -56,11 +48,15 @@ function EldridiasElement() {
   const [ranged, setRanged] = useState(gunslinger);
   const [healer, setHealer] = useState(hogarth);
   const [party, setParty] = useState([tank, melee, ranged, healer]);
-  const [boss, setBoss] = useState(bossOne);
+
+  //states for bosses and levels
+  const [boss, setBoss] = useState(bossTwo);
   const [currentWave, setCurrentWave] = useState(0);
-  const [floor, setFloor] = useState(floorOne[currentWave]);
   const [maxFloor, setMaxFloor] = useState(1);
   const [currentFloor, setCurrentFloor] = useState(1);
+  const [floor, setFloor] = useState(floor1[currentWave]);
+
+  //states for currency and inventory
   const [currency, setCurrency] = useState(500);
   const [inventory, setInventory] = useState([]);
   const [deck, setDeck] = useState([
@@ -90,6 +86,10 @@ function EldridiasElement() {
             party={party}
             boss={boss}
             computerController={computerController}
+            story={story}
+            setStory={setStory}
+            currentStory={currentStory}
+            setCurrentStory={setCurrentStory}
           />
         }
       />
@@ -110,6 +110,10 @@ function EldridiasElement() {
             setMaxFloor={setMaxFloor}
             party={party}
             computerController={computerController}
+            story={story}
+            setStory={setStory}
+            currentStory={currentStory}
+            setCurrentStory={setCurrentStory}
           />
         }
       />
@@ -131,7 +135,7 @@ function EldridiasElement() {
         }
       />
       <Route path="/dashboard/deck" element={<DeckBuilder deck={deck} />} />
-      <Route path="/dashboard/catalog" element={<Catalog />} />
+      <Route path="/dashboard/catalog" element={<Catalog party={party} />} />
       <Route path="/dashboard/shop" element={<Shop />} />
       <Route
         path="/dashboard/play"
@@ -154,6 +158,21 @@ function EldridiasElement() {
             setInventory={setInventory}
             currentWave={currentWave}
             setCurrentWave={setCurrentWave}
+            story={story}
+            setStory={setStory}
+            currentStory={currentStory}
+            setCurrentStory={setCurrentStory}
+          />
+        }
+      />
+      <Route
+        path="/dashboard/story"
+        element={
+          <StoryBoard
+            party={party}
+            story={story}
+            currentStory={currentStory}
+            setCurrentStory={setCurrentStory}
           />
         }
       />
