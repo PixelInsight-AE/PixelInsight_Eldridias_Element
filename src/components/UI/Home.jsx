@@ -5,6 +5,7 @@ import { HeroTwo } from "./Home_HeroTwo";
 import { HeroThree } from "./Home_HeroThree";
 import { HeroFour } from "./Home_HeroFour";
 import { HeroFive } from "./Home_HeroFive";
+import { HeroSix } from "./Home_HeroSix";
 
 const Home = (props) => {
   return (
@@ -16,6 +17,7 @@ const Home = (props) => {
       <HeroThree />
       <HeroFour />
       <HeroFive />
+      <HeroSix />
     </main>
   );
 };
