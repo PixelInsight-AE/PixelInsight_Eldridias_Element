@@ -174,6 +174,18 @@ const blackKnight = new Monster(
   []
 );
 
+const monsterList = [
+  wizard,
+  goblin,
+  dragon,
+  skeleton,
+  orc,
+  spider,
+  slime,
+  blackWasp,
+  blackKnight,
+];
+
 export {
   skeleton,
   orc,
@@ -184,4 +196,5 @@ export {
   slime,
   blackWasp,
   blackKnight,
+  monsterList,
 };

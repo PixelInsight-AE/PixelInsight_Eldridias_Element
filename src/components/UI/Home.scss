@@ -20,8 +20,3 @@ $end-color: #000000;
   background: $start-color;
   background: radial-gradient(circle, $start-color, $end-color);
 }
-
-body {
-  color: whitesmoke;
-  font-size: $font-size-3;
-}
