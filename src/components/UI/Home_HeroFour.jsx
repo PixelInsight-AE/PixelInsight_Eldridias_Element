@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { heroList } from "../../vanillaJsFiles/heros.js";
+import "./Home_HeroFour.scss";
 
 const HeroFour = (props) => {
   return (
