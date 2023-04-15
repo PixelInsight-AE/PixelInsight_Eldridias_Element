@@ -1,25 +1,28 @@
-import { NavBar } from "./NavBar";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { heroList } from "../../vanillaJsFiles/heros";
-
 import { Header } from "./Home_Header";
-import { Hero, HeroDivider, SubHero } from "./Home_Hero";
-import { CardExamples } from "./Home_CardDisplay";
+import Snowfall from "react-snowfall";
+import { HeroOne } from "./Home_HeroOne";
+import { HeroTwo } from "./Home_HeroTwo";
+import { HeroThree } from "./Home_HeroThree";
+import { HeroFour } from "./Home_HeroFour";
+import { HeroFive } from "./Home_HeroFive";
+import { HeroSix } from "./Home_HeroSix";
 
 const Home = (props) => {
   return (
-    <main id="homeScreen">
+    <main id="background">
+      <Snowfall snowflakeCount={250} />
       <Header />
-      <Hero />
-      <HeroDivider />
-      <SubHero />
-      <CardExamples />
+      <HeroOne />
+      <HeroTwo />
+      <HeroThree />
+      <HeroFour />
+      <HeroFive />
+      <HeroSix />
     </main>
   );
 };
 
-export { Home, Header, Hero, HeroDivider, SubHero, CardExamples };
+export { Home, Header, HeroOne, HeroTwo };
 
 /**
  * TODO: Also display element cards on the scrollable row

@@ -1,0 +1,17 @@
+@import "../../styleSheets/_variables.scss";
+@import "../../styleSheets/_mixins.scss";
+@import "./Home.scss";
+
+#heroSix {
+  @include flex(center, center, column);
+  @include background-image("/src/assets/images/landscapes/background-11.jpg");
+  height: 100vh;
+
+  h1 {
+    font-family: $font-title;
+    font-size: 8rem;
+    color: black;
+    text-align: center;
+    margin-top: 6rem;
+  }
+}
