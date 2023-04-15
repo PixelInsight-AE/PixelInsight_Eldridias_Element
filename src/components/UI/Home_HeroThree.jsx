@@ -11,6 +11,7 @@ const HeroThree = (props) => {
       >
         Choose your party!
       </motion.h1>
+
       <div id="playingCards">
         {heroList.map((hero, index) => (
           <motion.div
