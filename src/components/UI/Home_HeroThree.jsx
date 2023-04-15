@@ -21,6 +21,7 @@ const HeroThree = (props) => {
             whileHover={{ rotate: 5, scale: 1.5 }}
             whileTap={{ scale: 0.9 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0, scale: 1.1 }}
+            viewport={{ once: true }}
             transition={{ duration: 1, delay: index * 0.2 }}
             className="card-big"
             style={{

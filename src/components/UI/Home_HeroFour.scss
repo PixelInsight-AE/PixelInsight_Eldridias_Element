@@ -5,49 +5,43 @@
 // !---Home_HeroFour.jsx------------------------------------------------------------------
 #heroFour {
   @include flex(center, center, row);
-  @include background-image("src/assets/images/landscapes/background-11.jpg");
+  @include radial-gradient-dark($start-color, $end-color);
   height: 100vh;
+  width: 100%;
 
   #heroFour-left {
     @include flex(center, center, column);
-
-    width: 60%;
+    width: 50%;
     height: 100%;
-    margin: 2rem;
+    padding: 1rem;
 
-    .text-card {
-      @include flex(center, center, column);
-      background-color: rgba($color: #000000, $alpha: 0.6);
-      box-shadow: 0 0 10px rgba($color: #ffffff, $alpha: 0.7);
-      border-radius: $border-radius-4;
-
-      padding: 6rem;
-    }
-
-    h2 {
+    h1 {
       font-family: $font-title;
-      font-size: 5rem;
-      margin-bottom: 2rem;
+      font-size: 8rem;
+      color: lightBlue;
+      text-align: center;
+      margin: 1rem;
     }
 
     p {
-      line-height: 1.5;
+      font-size: 1.5rem;
+      color: #ffffff;
+      text-align: center;
+      margin: 1rem;
     }
   }
 
   #heroFour-right {
     @include flex(center, center, column);
+    padding: 1rem;
 
-    width: 40%;
-    height: 60%;
-    padding: 6rem;
-    img {
-      background-color: rgba($color: #000000, $alpha: 0.6);
-      box-shadow: 0 0 10px rgba($color: #ffffff, $alpha: 0.7);
-      border-radius: $border-radius-4;
-      margin-top: 2rem;
-      width: 80%;
-      height: auto;
+    #wizard {
+      border: 1px solid #ffffff;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      margin: 1rem;
     }
   }
 }
