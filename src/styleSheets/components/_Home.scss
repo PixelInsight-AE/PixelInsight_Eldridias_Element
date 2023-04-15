@@ -101,14 +101,15 @@ body {
   #heroTwo-left,
   #heroTwo-right {
     @include flex(center, center, column);
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    height: 70%;
     padding: 6rem;
 
     img {
       background-color: rgba($color: #000000, $alpha: 0.6);
-      box-shadow: 0 0 10px rgba($color: #ffffff, $alpha: 0.7);
+      box-shadow: 0 0 10px rgba($color: #b17e06, $alpha: 0.7);
       border-radius: $border-radius-4;
+      padding: 2px;
       margin-top: 2rem;
       width: 80%;
       height: auto;
@@ -116,7 +117,15 @@ body {
 
     h2 {
       font-family: $font-title;
+      color: #b17e06;
       font-size: 5rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-family: $font-title;
+      color: #b17e06;
+      font-size: 6rem;
       margin-bottom: 2rem;
     }
 
