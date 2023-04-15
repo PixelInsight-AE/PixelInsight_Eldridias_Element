@@ -32,7 +32,6 @@ const HeroThree = (props) => {
           >
             <motion.h2
               initial={{ opacity: 0, y: -100 }}
-              whileHover={{ opacity: 0 }}
               whileTap={{ opacity: 0 }}
               whileInView={{ opacity: 1, y: 0, scale: 1.1 }}
               transition={{ duration: 0.25, delay: index * 0.2 + 0.5 }}

@@ -6,10 +6,10 @@ const HeroOne = (props) => {
     <section id="heroOne">
       <motion.div
         id="heroOne-wrapper"
-        initial={{ opacity: 0, scale: 0.5 }}
+        initial={{ opacity: 0, scale: 0.25 }}
         animate={{ opacity: 1, scale: 1 }}
         whileHover={{ scale: 1.1 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 2 }}
       >
         <motion.h2
           initial={{ opacity: 0, x: -100 }}
@@ -21,7 +21,7 @@ const HeroOne = (props) => {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 2, delay: 0.75, ease: "easeInOut" }}
+          transition={{ duration: 2, delay: 1.5, ease: "easeInOut" }}
         >
           Enter a world of magic and adventure, where you can collect and trade
           powerful cards featuring epic heroes and fearsome monsters.
