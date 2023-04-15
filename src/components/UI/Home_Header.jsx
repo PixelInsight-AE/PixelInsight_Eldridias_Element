@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import "./Home_Header.scss"; // ? Keep each component's SCSS truly separate
 
 const Header = () => {
   return (

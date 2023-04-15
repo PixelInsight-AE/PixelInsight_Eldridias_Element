@@ -26,68 +26,38 @@ body {
   font-size: $font-size-3;
 }
 
-// !---Home_Header.jsx------------------------------------------------------------------
-#background {
-  @include background-image("src/assets/images/castles/iceTower.jpg");
-  height: 100vh;
+// !---Home_HeroOne.jsx---------------------------------------------------------------
+#heroOne {
+  @include flex(center, center, column);
+  height: 85vh;
 
-  #home-header {
-    @include flex(flex-end, center, row);
-    background-color: rgba($color: #000000, $alpha: 0.5);
-    padding: $padding-4;
-    height: 10vh;
-    box-shadow: 0 0 5px rgba($color: #ffffff, $alpha: 0.7);
+  #heroOne-wrapper {
+    width: 50%;
+    text-align: center;
+    background-color: rgba($color: #000000, $alpha: 0.75);
+    box-shadow: 0 0 10px rgba($color: #ffffff, $alpha: 0.7);
+    border-radius: $border-radius-4;
+    padding: $padding-6;
 
-    h1 {
-      font-family: $font-title;
-      font-size: 4rem;
-      margin-right: 2rem;
+    h2 {
+      font-family: "Lovers Quarrel", cursive;
+      color: lightblue;
+      font-size: 5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 2rem;
     }
 
     button {
-      margin: 0.75rem;
-      padding: 0.75rem;
-      border-radius: $border-radius-4;
+      background-color: $custom-color-3;
+      color: rgb(1, 0, 0);
       border: none;
+      padding: 1rem 2rem;
+      border-radius: $border-radius-4;
       cursor: pointer;
       box-shadow: 0 0 10px rgba($color: #ffffff, $alpha: 0.7);
-      background-color: #ffffff;
-    }
-  }
-
-  // !---Home_HeroOne.jsx---------------------------------------------------------------
-  #heroOne {
-    @include flex(center, center, column);
-    height: 85vh;
-
-    #heroOne-wrapper {
-      width: 50%;
-      text-align: center;
-      background-color: rgba($color: #000000, $alpha: 0.75);
-      box-shadow: 0 0 10px rgba($color: #ffffff, $alpha: 0.7);
-      border-radius: $border-radius-4;
-      padding: $padding-6;
-
-      h2 {
-        font-family: "Lovers Quarrel", cursive;
-        color: lightblue;
-        font-size: 5rem;
-        margin-bottom: 1rem;
-      }
-
-      p {
-        margin-bottom: 2rem;
-      }
-
-      button {
-        background-color: $custom-color-3;
-        color: rgb(1, 0, 0);
-        border: none;
-        padding: 1rem 2rem;
-        border-radius: $border-radius-4;
-        cursor: pointer;
-        box-shadow: 0 0 10px rgba($color: #ffffff, $alpha: 0.7);
-      }
     }
   }
 }
@@ -171,7 +141,7 @@ body {
       h2 {
         background-color: rgba($color: #000, $alpha: 0.25);
         box-shadow: 0 0 10px rgba($color: #ffffff, $alpha: 0.3);
-        color: #lightblue;
+        color: lightblue;
         border-radius: 10%;
         width: 200px;
         font-family: $font-title;
