@@ -9,6 +9,7 @@ import {
   beastMaster,
   hogarth,
   gunslinger,
+  paladin,
 } from "./vanillaJsFiles/heros.js";
 import { magicPlayingCards } from "./vanillaJsFiles/magicCards.js";
 import { allElementalCards } from "./vanillaJsFiles/elementCards.js";
@@ -48,7 +49,37 @@ function EldridiasElement() {
   const [ranged, setRanged] = useState(gunslinger);
   const [healer, setHealer] = useState(hogarth);
   const [party, setParty] = useState([tank, melee, ranged, healer]);
+  //!-----------------------------------------------------------------------------------------
+  // ! EXAMPLE of how we can simplify our states.....
+  // ? Let's take controller for example. We can just use the controller object as our state.
 
+  /*   const [controller, setController] = 
+    useState(
+      {
+        playerController: controller,
+        computerController: computer,
+        tank: bulwark,
+        melee: beastMaster,
+        ranged: gunslinger,
+        healer: hogarth,
+        party: [tank, melee, ranged, healer]
+      }
+    );
+ */
+  // ! Then we would have the one state just CONTROLLER, and we can modify it using this.
+
+  /*   const exampleHandler = () => {
+    setController((prevState) => { // ? Take in the previous state
+      return {
+        ...prevState, // ? Spread the previous state into the new state
+        tank: paladin, // ? Modify the state
+        party: [paladin, melee, ranged, healer] // ? Modify the state
+      }
+    })
+  } */
+
+  // ? So what do you think, good or no? Doesn't safe on lines of code I think, but it does make it easier to read and understand. Especially if we have a lot of states.
+  //!-----------------------------------------------------------------------------------------
   //states for bosses and levels
   const [boss, setBoss] = useState(bossTwo);
   const [currentWave, setCurrentWave] = useState(0);
