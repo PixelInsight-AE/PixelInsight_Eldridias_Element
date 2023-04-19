@@ -5,7 +5,7 @@
 #heroOne {
   @include flex(center, center, column);
   height: 85vh;
-
+  scroll-snap-align: center;
   #heroOne-wrapper {
     width: 50%;
     text-align: center;

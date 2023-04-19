@@ -28,7 +28,7 @@ const HeroOne = (props) => {
           powerful cards featuring epic heroes and fearsome monsters.
         </motion.p>
 
-        <Link to="/dashboard">
+        <Link to="/dashboard/story">
           <motion.div
             initial={{ scale: 1, x: -50, opacity: 0 }}
             animate={{ scale: 1, x: 0, opacity: 1 }}

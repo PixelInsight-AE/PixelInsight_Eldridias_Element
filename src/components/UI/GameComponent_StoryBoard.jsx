@@ -2,6 +2,20 @@ import { Link } from "react-router-dom";
 //import { story } from "../../vanillaJsFiles/storyboard";
 import { useState } from "react";
 import { NavBar } from "./NavBar";
+import "./GameComponent_StoryBoard.scss";
+
+const StoryBoard_Header = (props) => {
+  const { story, currentStory } = props;
+  console.log(story[currentStory].chapterTitle);
+  return (
+    <div id="StoryBoard_Header">
+      <h2>{story[currentStory].chapterTitle}</h2>
+      <Link to="/dashboard">
+        <button className="exit-button">Exit</button>
+      </Link>
+    </div>
+  );
+};
 
 const StoryBoard = (props) => {
   const { party, story, currentStory, setCurrentStory } = props;
@@ -23,16 +37,16 @@ const StoryBoard = (props) => {
     <>
       <div
         className="storyboard-background"
-        style={{
-          backgroundImage: `url(${story[currentStory].image})`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          height: "100vh",
-        }}
+        style={
+          {
+            // backgroundImage: `url(${story[currentStory].background})`,
+          }
+        }
       >
+        <StoryBoard_Header story={story} currentStory={currentStory} />
+
         <div id="storyBoard">
-          <div>{story[currentStory].title}</div>
+          <div id="chapter-title">{story[currentStory].title}</div>
           <div id="story-board-card">
             {story[currentStory].playerText ? (
               <div id="player-box">
@@ -67,31 +81,44 @@ const StoryBoard = (props) => {
                 </div>
               </div>
             )}
-            <Link to="/dashboard">
-              <button className="storyboard-exit-button">Exit</button>
-            </Link>
-            {story[currentStory].pathIsValid ? (
-              <Link to={story[currentStory].path}>
-                <button
-                  onClick={handleNext}
-                  className="storyboard-start-button"
-                >
-                  Start
-                </button>
-              </Link>
-            ) : null}
           </div>
-          <div id="storyboard-navigation">
-            <button onClick={handleBack}>Back</button>
-            {story[currentStory].pathIsValid ? (
-              <p></p>
-            ) : (
-              <button onClick={handleStart}>Next</button>
-            )}
-          </div>
+          <StoryBoardNavigation
+            story={story}
+            currentStory={currentStory}
+            handleBack={handleBack}
+            handleNext={handleNext}
+            handleStart={handleStart}
+          />
         </div>
       </div>
     </>
+  );
+};
+
+const StoryBoardNavigation = ({
+  story,
+  handleBack,
+  handleNext,
+  handleStart,
+  currentStory,
+}) => {
+  const startButton = (
+    <Link to={story[currentStory].path}>
+      <button onClick={handleNext}>Start</button>
+    </Link>
+  );
+
+  const buttons = (
+    <div>
+      <button onClick={handleBack}>Back</button>
+      <button onClick={handleStart}>Next</button>
+    </div>
+  );
+
+  return (
+    <div id="storyboard-naviagation">
+      {story[currentStory].pathIsValid ? startButton : buttons}
+    </div>
   );
 };
 export { StoryBoard };

@@ -20,3 +20,7 @@ $end-color: #000000;
   background: $start-color;
   background: radial-gradient(circle, $start-color, $end-color);
 }
+
+main {
+  scroll-snap-type: y mandatory;
+}

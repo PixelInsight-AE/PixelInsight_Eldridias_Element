@@ -6,6 +6,7 @@ import { HeroThree } from "./Home_HeroThree";
 import { HeroFour } from "./Home_HeroFour";
 import { HeroFive } from "./Home_HeroFive";
 import { HeroSix } from "./Home_HeroSix";
+import "./Home.scss";
 
 const Home = (props) => {
   return (
