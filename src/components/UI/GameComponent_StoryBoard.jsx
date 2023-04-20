@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import './GameComponent_StoryBoard.scss';
 import { TypeAnimation } from 'react-type-animation';
+import './GameComponent_StoryBoard.scss';
 
 const StoryBoard_Header = (props) => {
   const { story, currentStory } = props;
@@ -23,33 +24,55 @@ const StoryBoard_AnimationScreen = (props) => {
     </div>
   );
 };
+const StoryBoard_PlayerContent = (props) => {
+  const { story, currentStory } = props;
 
-const StoryBoard_Content = ({ story, currentStory }) => {
+  let content = story[currentStory].content;
+
   return (
-    <div id="StoryBoard_Content">
-      {story[currentStory].playerText ? (
-        <div id="player-text">
-          <PlayerImg story={story} currentStory={currentStory} />
-        </div>
-      ) : (
-        <div id="npc-text">
-          <NpcImg story={story} currentStory={currentStory} />
-        </div>
-      )}
-      <StoryBoard_Dialog story={story} currentStory={currentStory} />
+    <div id="StoryBoard_PlayerContent">
+      <PlayerImg story={story} currentStory={currentStory} />
+      <p>{story[currentStory].content}</p>
     </div>
   );
 };
-const StoryBoard_Dialog = (props) => {
+const StoryBoard_NpcContent = (props) => {
   const { story, currentStory } = props;
+  let content = story[currentStory].content;
   return (
-    <div id="StoryBoard_Text">
-      <p>
-        {story[currentStory].playerText}
-        {story[currentStory].npcText}
-      </p>
+    <div id="StoryBoard_NpcContent">
+      <NpcImg story={story} currentStory={currentStory} />
+
+      <p>{story[currentStory].content}</p>
     </div>
   );
+};
+const StoryBoard_NarratorContent = (props) => {
+  const { story, currentStory } = props;
+
+  return (
+    <div id="StoryBoard_NarratorContent">
+      <img src={story[currentStory].image} alt="blankfornow" />
+      <p>{story[currentStory].content}</p>
+    </div>
+  );
+};
+
+const StoryBoard_Content = ({ story, currentStory }) => {
+  let text;
+  if (story[currentStory].nameOfSpeaker === 'player') {
+    text = (
+      <StoryBoard_PlayerContent story={story} currentStory={currentStory} />
+    );
+  } else if (story[currentStory].nameOfSpeaker === 'npc') {
+    text = <StoryBoard_NpcContent story={story} currentStory={currentStory} />;
+  } else {
+    text = (
+      <StoryBoard_NarratorContent story={story} currentStory={currentStory} />
+    );
+  }
+  useEffect(() => {}, [story]);
+  return <div id="StoryBoard_Content">{text}</div>;
 };
 
 const StoryBoardNavigation = ({
@@ -84,23 +107,15 @@ const StoryBoard_LootBox = (props) => {
   );
 };
 
-// ? Framer Motion Varient, (Object to store re-useable animation values) used in both PlayerImg and NpcImg
-const imgVariants = {
-  initial: { opacity: 0, scale: 0.75 },
-  animate: { opacity: 1, scale: 1 },
-  transition: { duration: 1, type: 'spring' },
-  whileHover: { scale: 1.2 },
-};
-
 const NpcImg = ({ story, currentStory }) => {
   return (
     <motion.img
-      src={story[currentStory].npcImg}
+      src={story[currentStory].image}
       alt="blankfornow"
       id="npc-img"
-      initial={{ opacity: 0, scale: 0.75 }}
+      initial={{ opacity: 0, scale: 0 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1, type: 'spring' }}
+      transition={{ duration: 1 }}
       whileHover={{ scale: 1.2 }}
     />
   );
@@ -108,10 +123,13 @@ const NpcImg = ({ story, currentStory }) => {
 const PlayerImg = ({ story, currentStory }) => {
   return (
     <motion.img
-      src={story[currentStory].playerImg}
+      src={story[currentStory].image}
       alt="blankfornow"
       id="player-img"
-      variants={imgVariants}
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1 }}
+      whileHover={{ scale: 1.2 }}
     />
   );
 };
