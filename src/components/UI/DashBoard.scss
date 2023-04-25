@@ -1,17 +1,29 @@
+@import '/src/styleSheets/variables';
+@import '/src/styleSheets/mixins';
+
 #OverviewCurrentParty {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @include flex(row, center, center);
 
-  #hero-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    #stats-container {
-      display: flex;
-      flex-direction: row;  
-      justify-content: space-between;
+  .hero-container {
+    border: 5px solid black;
+    @include flex(column, space-around, center);
+    border-radius: 5px;
+    .hero-name {
+      text-align: center;
     }
-  }
+    .hero-image {
+      img{
+        margin: 0  auto;
+        width: 45%;
+        height: 45%;
+        border-radius: 5px;
+      }
+    }
+    .stats-container {
+      @include flex(row, space-between, center);
+      
+    }
+     
+  } 
+
 }

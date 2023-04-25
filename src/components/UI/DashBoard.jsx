@@ -8,7 +8,7 @@ import "./DashBoard.scss";
 const PartyMember = (props) => {
   const { hero } = props;
   return (
-    <div id="hero-card">
+    <div>
       <h1 className="hero-name">{hero.name}</h1>
 
       <div className="hero-image">
@@ -17,7 +17,7 @@ const PartyMember = (props) => {
       <h2>
         LV: {hero.heroLevel} - {hero.elementType}
       </h2>
-      <div id="stats-container">
+      <div className="stats-container">
         <div className="stats-hp">
           <h3>HP:</h3>
           <h3>{hero.maxHealth}</h3>
@@ -40,7 +40,7 @@ const OverviewCurrentParty = (props) => {
   const { state, setState } = props;
   return (
     <div id="OverviewCurrentParty">
-      <h2>Current Party</h2>
+      
       {state.party.map((hero) => (
         <div key={hero.name} className="hero-container">
           <PartyMember hero={hero} />
