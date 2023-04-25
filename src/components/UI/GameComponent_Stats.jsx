@@ -1,8 +1,8 @@
 const PartyStats = (props) => {
-  const { party } = props;
+  const { state, setState } = props;
   return (
     <div id="left-side-container">
-      {party.map((hero) => (
+      {state.party.map((hero) => (
         <div className="party-stats" key={hero.name}>
           <div className="hero-stats">
             <img src={hero.imgUrl} alt="" />
@@ -21,10 +21,10 @@ const PartyStats = (props) => {
 };
 
 const MonsterStats = (props) => {
-  const { floor } = props;
+  const { state, setState } = props;
   return (
     <div className="monster-stats-container">
-      {floor.map((monster) => (
+      {state.floor.map((monster) => (
         <div className="monster-stats" key={monster.name}>
           <div className="monster-stats-top">
             <img src={monster.imgUrl} alt="" />

@@ -229,16 +229,16 @@ const Party = ({
   const handlePartySelect = (hero) => {
     console.log("clicked");
     if (hero.role === "Tank") {
-      setTank(hero);
+      setState({...state, tank: hero});
     }
     if (hero.role === "Melee") {
-      setMelee(hero);
+      setState({...state, melee: hero});
     }
     if (hero.role === "Ranged") {
-      setRanged(hero);
+      setState({...state, ranged: hero});
     }
     if (hero.role === "Healer") {
-      setHealer(hero);
+      setState({...state, healer: hero});
     }
   };
   // ? This useEffect will update the party array when a hero state is updated
@@ -250,8 +250,8 @@ const Party = ({
       <NavBar />
       <div id="party-select-container">
         <TankSelect
-          tank={tank}
-          setTank={setTank}
+          tank={state.tank}
+          
           handlePartySelect={handlePartySelect}
         />
         <MeleeSelect

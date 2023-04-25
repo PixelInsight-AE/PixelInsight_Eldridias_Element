@@ -1,8 +1,8 @@
 const ClickableMonsters = (props) => {
-  const { handleMonsterClick, floor } = props;
+  const { handleMonsterClick, state, setState } = props;
   return (
     <div className="battlefield">
-      {floor.map((mob) => (
+      {state.floor.map((mob) => (
         <div onClick={() => handleMonsterClick(mob)} key={mob.name}>
           <img src={mob.imgUrl} alt={mob.name} />
         </div>
@@ -12,10 +12,10 @@ const ClickableMonsters = (props) => {
 };
 
 const ClickableHeros = (props) => {
-  const { party, handleHeroClick } = props;
+  const { state, setState, handleHeroClick } = props;
   return (
     <div className="battlefield">
-      {party.map((hero) => (
+      {state.party.map((hero) => (
         <div
           className="hero-click"
           onClick={() => handleHeroClick(hero)}

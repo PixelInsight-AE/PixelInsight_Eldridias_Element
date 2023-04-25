@@ -4,25 +4,18 @@ import { Link } from "react-router-dom";
 import { floor1, floor2 } from "../../vanillaJsFiles/floors";
 
 const VictoryComponent = (props) => {
-  const {
-    currentFloor,
-    maxFloor,
-    setMaxFloor,
-    setFloor,
-    floor,
-    currentWave,
-    setCurrentWave,
-    computerController,
+  const {    
+    state,
+    setState,
+    battle,
+    setBattle,
   } = props;
 
   const handleLevelChange = () => {
-    setCurrentWave(0);
-    setFloor(floor2[currentWave]);
-    setTimeout(() => {
-      console.log(floor, currentWave);
-    }, 1000);
+    
+    setState({ ...state, currentWave: 0, floor: floor2[state.currentWave] });
 
-    computerController.isBossDefeated = false;
+    state.computer.isBossDefeated = false;
   };
   return (
     <div>
@@ -41,48 +34,41 @@ const VictoryComponent = (props) => {
   );
 };
 
-const DisplayCurrentBattle = (props) => {
+const DisplayCurrentBattle = (props) =>{ 
   const {
-    selectedHero,
-    selectedMonster,
-    computerController,
-    maxFloor,
-    currentFloor,
-    setMaxFloor,
-    floor,
-    setFloor,
-    currentWave,
-    setCurrentWave,
+    state,
+    setState,
+    battle,
+    setBattle,
   } = props;
+
+
   const victoryMessage = (
     <VictoryComponent
-      currentFloor={currentFloor}
-      maxFloor={maxFloor}
-      setMaxFloor={setMaxFloor}
-      floor={floor}
-      setFloor={setFloor}
-      currentWave={currentWave}
-      setCurrentWave={setCurrentWave}
-      computerController={computerController}
+      state={state}
+      setState={setState}
+      battle={battle}
+      setBattle={setBattle}
     />
   );
 
   return (
     <div className="battlefield">
       <div className="battle-hero">
-        <h1>{selectedHero.name}</h1>
-        <h2>{selectedHero.health}</h2>
-        <img src={selectedHero.imgUrl} alt="" />
+        <h1></h1>
+        <h1>{battle.targetHero.name}</h1>
+        <h2>{battle.targetHero.health}</h2>
+        <img src={battle.targetHero.imgUrl} alt="" />
       </div>
 
       <div className="battle-animation">
-        {computerController.isBossDefeated ? victoryMessage : <h1>VS</h1>}
+        {state.computer.isBossDefeated ? victoryMessage : <h1>VS</h1>}
       </div>
 
       <div className="battle-monster">
-        <h1>{selectedMonster.name}</h1>
-        <h2>{selectedMonster.health}</h2>
-        <img src={selectedMonster.imgUrl} alt="" />
+        <h1>{battle.targetMonster.name}</h1>
+        <h2>{battle.targetMonster.health}</h2>
+        <img src={battle.targetMonster.imgUrl} alt="" />
       </div>
     </div>
   );
@@ -90,22 +76,18 @@ const DisplayCurrentBattle = (props) => {
 
 const Battlefield = (props) => {
   const {
-    floor,
-    setFloor,
-    party,
-    handleMonsterClick,
+    state,
+    setState,
+    battle,
+    setBattle,
     handleHeroClick,
-    selectedHero,
-    selectedMonster,
-    currentWave,
-    setCurrentWave,
-    computerController,
-    maxFloor,
+    handleMonsterClick,
+
   } = props;
   return (
     <>
       <div id="left-container">
-        <PartyStats party={party} />
+        <PartyStats battle={battle} setBattle={setBattle} state={state} setState={setState} />
       </div>
       <div id="middle-container">
         <div id="message-box">
@@ -114,31 +96,30 @@ const Battlefield = (props) => {
 
         <div id="enemy-battlefield">
           <ClickableMonsters
+            battle={battle} 
+            setBattle={setBattle}
+            state={state} 
+            setState={setState}
             handleMonsterClick={handleMonsterClick}
-            floor={floor}
-            currentWave={currentWave}
-            setCurrentWave={setCurrentWave}
           />
         </div>
         <div id="battle-animation-container">
           <DisplayCurrentBattle
-            selectedHero={selectedHero}
-            selectedMonster={selectedMonster}
-            computerController={computerController}
-            maxFloor={maxFloor}
-            floor={floor}
-            setFloor={setFloor}
-            currentWave={currentWave}
-            setCurrentWave={setCurrentWave}
+            battle={battle} 
+            setBattle={setBattle}
+            state={state} 
+            setState={setState}
           />
         </div>
         <div id="party-battlefield">
-          <ClickableHeros handleHeroClick={handleHeroClick} party={party} />
+          <ClickableHeros
+          battle={battle} setBattle={setBattle} state={state} setState={setState} handleHeroClick={handleHeroClick} />
         </div>
       </div>
 
       <div id="right-container">
-        <MonsterStats floor={floor} />
+        <MonsterStats
+        battle={battle} setBattle={setBattle} state={state} setState={setState}  />
       </div>
     </>
   );

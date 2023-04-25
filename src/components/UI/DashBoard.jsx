@@ -6,29 +6,29 @@ import { Catalog } from "./DashBoard_Catalog";
 
 // ? Party member to be mapped into the current party component.
 const PartyMember = (props) => {
-  const { hero } = props;
+  const { state, setState } = props;
   return (
     <div className="healer-select">
-      <h1 className="hero-name">{hero.name}</h1>
+      <h1 className="hero-name">{state.hero.name}</h1>
 
       <div className="hero-image">
-        <img src={hero.imgUrl} alt={hero.name} />
+        <img src={state.hero.imgUrl} alt={state.hero.name} />
       </div>
       <h2>
-        LV: {hero.heroLevel} - {hero.elementType}
+        LV: {state.hero.heroLevel} - {state.hero.elementType}
       </h2>
       <div className="stats-container">
         <div className="stats-hp">
           <h3>HP:</h3>
-          <h3>{hero.maxHealth}</h3>
+          <h3>{state.hero.maxHealth}</h3>
         </div>
         <div className="stats-ap">
           <h3>ATK:</h3>
-          <h3>{hero.attackPower}</h3>
+          <h3>{state.hero.attackPower}</h3>
         </div>
         <div className="stats-df">
           <h3>DEF:</h3>
-          <h3>{hero.defense}</h3>
+          <h3>{state.hero.defense}</h3>
         </div>
       </div>
     </div>
@@ -37,11 +37,11 @@ const PartyMember = (props) => {
 
 // ? Holding the current party.
 const OverviewCurrentParty = (props) => {
-  const { party } = props;
+  const { state, setState } = props;
   return (
     <div className="current-party-container">
       <h2>Current Party</h2>
-      {party.map((hero) => (
+      {state.party.map((hero) => (
         <div key={hero.name} className="hero-container">
           <PartyMember hero={hero} />
         </div>
@@ -52,14 +52,14 @@ const OverviewCurrentParty = (props) => {
 
 // ? mappping the achievements.
 const OverviewAchievements = (props) => {
-  const { achievements } = props;
+  const { state, setState } = props;
   return (
     <div className="achievements-container">
       <h2>Achievements</h2>
       <ul>
-        {achievements.map((achievement) => (
-          <li key={achievement}>{achievement}</li>
-        ))}
+        {/* {achievements.map((achievement) => (
+          <li></li>
+        ))} */}
       </ul>
     </div>
   );
@@ -67,16 +67,16 @@ const OverviewAchievements = (props) => {
 
 // ? Header for the overview page.
 const OverviewHeader = (props) => {
-  const { currentLevel, currency } = props;
+  const { state, setState } = props;
   return (
     <div id="overview-header">
       <div className="level-container">
         <h2>Current Level</h2>
-        <div>{currentLevel}</div>
+        <div>{state.currentLevel}</div>
       </div>
       <div className="currency-container">
         <h2>Currency</h2>
-        <div>{currency}</div>
+        <div>{state.currency}</div>
       </div>
     </div>
   );
@@ -84,12 +84,12 @@ const OverviewHeader = (props) => {
 
 // ? Start game component.
 const OverviewStartGame = (props) => {
-  const { currentLevel, setCurrentLevel } = props;
+  const {  state, setState } = props;
   return (
     <div className="start-game-container">
       <h2>Start Game</h2>
       <select
-        value={currentLevel}
+        value={state.currentLevel}
         onChange={(e) => setCurrentLevel(parseInt(e.target.value))}
       >
         <option value={1}>Level 1</option>
@@ -102,14 +102,9 @@ const OverviewStartGame = (props) => {
 };
 
 const OverView = (props) => {
-  const { party, story, setStory, currentStory, setCurrentStory } = props;
+  const { state, setState } = props;
 
-  const [currency, setCurrency] = useState(500);
-  const [achievements, setAchievements] = useState([
-    "Achievement 1",
-    "Achievement 2",
-    "Achievement 3",
-  ]);
+ 
   //set story state to current story
 
   return (
@@ -118,12 +113,12 @@ const OverView = (props) => {
       <div className="overview-container">
         <h1>Overview</h1>
 
-        <OverviewHeader currency={currency} />
-        <OverviewCurrentParty party={party} />
-        <OverviewAchievements achievements={achievements} />
+        <OverviewHeader state={state} setState={setState} />
+        <OverviewCurrentParty state={state} setState={setState} />
+        <OverviewAchievements state={state} setState={setState} />
         <OverviewStartGame />
 
-        <Link to={story[currentStory].path}>
+        <Link to={state.story[state.currentStory].path}>
           <button>Start Game</button>
         </Link>
       </div>
@@ -137,33 +132,41 @@ const OverView = (props) => {
 
 const Dashboard = (props) => {
   const {
-    party,
-    floor,
-    boss,
-    story,
-    setStory,
-    currentStory,
-    setCurrentStory,
-    maxFloor,
-    setMaxFloor,
-    currentFloor,
-    setCurrentFloor,
+    state,
+    setState,
+    battle,
+    setBattle,
+    // party,
+    // floor,
+    // boss,
+    // story,
+    // setStory,
+    // currentStory,
+    // setCurrentStory,
+    // maxFloor,
+    // setMaxFloor,
+    // currentFloor,
+    // setCurrentFloor,
   } = props;
   return (
     <div>
       <h1>Dashboard</h1>
       <OverView
-        party={party}
-        floor={floor}
-        boss={boss}
-        story={story}
-        setStory={setStory}
-        currentStory={currentStory}
-        setCurrentStory={setCurrentStory}
-        maxFloor={maxFloor}
-        setMaxFloor={setMaxFloor}
-        currentFloor={currentFloor}
-        setCurrentFloor={setCurrentFloor}
+        state={state}
+        setState={setState}
+        battle={battle}
+        setBattle={setBattle}
+        // party={party}
+        // floor={floor}
+        // boss={boss}
+        // story={story}
+        // setStory={setStory}
+        // currentStory={currentStory}
+        // setCurrentStory={setCurrentStory}
+        // maxFloor={maxFloor}
+        // setMaxFloor={setMaxFloor}
+        // currentFloor={currentFloor}
+        // setCurrentFloor={setCurrentFloor}
       />
     </div>
   );
