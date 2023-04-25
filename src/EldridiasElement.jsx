@@ -60,6 +60,7 @@ function EldridiasElement() {
     deck: [...magicPlayingCards, ...allElementalCards],
     story: storyOne,
     currentStory: 0,
+    currentLevel: 0,
   });
 
   // ! Like our error said, in V6 we need to nest all Route elements inside of a Routes component.

@@ -6,29 +6,29 @@ import { Catalog } from "./DashBoard_Catalog";
 
 // ? Party member to be mapped into the current party component.
 const PartyMember = (props) => {
-  const { state, setState } = props;
+  const { hero } = props;
   return (
     <div className="healer-select">
-      <h1 className="hero-name">{state.hero.name}</h1>
+      <h1 className="hero-name">{hero.name}</h1>
 
       <div className="hero-image">
-        <img src={state.hero.imgUrl} alt={state.hero.name} />
+        <img src={hero.imgUrl} alt={hero.name} />
       </div>
       <h2>
-        LV: {state.hero.heroLevel} - {state.hero.elementType}
+        LV: {hero.heroLevel} - {hero.elementType}
       </h2>
       <div className="stats-container">
         <div className="stats-hp">
           <h3>HP:</h3>
-          <h3>{state.hero.maxHealth}</h3>
+          <h3>{hero.maxHealth}</h3>
         </div>
         <div className="stats-ap">
           <h3>ATK:</h3>
-          <h3>{state.hero.attackPower}</h3>
+          <h3>{hero.attackPower}</h3>
         </div>
         <div className="stats-df">
           <h3>DEF:</h3>
-          <h3>{state.hero.defense}</h3>
+          <h3>{hero.defense}</h3>
         </div>
       </div>
     </div>
@@ -90,8 +90,8 @@ const OverviewStartGame = (props) => {
       <h2>Start Game</h2>
       <select
         value={state.currentLevel}
-        onChange={(e) => setCurrentLevel(parseInt(e.target.value))}
-      >
+        onChange={(e) => setState((state) => { return { ...state, currentLevel: e.target.value } })}>
+      
         <option value={1}>Level 1</option>
         <option value={2}>Level 2</option>
         <option value={3}>Level 3</option>
@@ -116,7 +116,7 @@ const OverView = (props) => {
         <OverviewHeader state={state} setState={setState} />
         <OverviewCurrentParty state={state} setState={setState} />
         <OverviewAchievements state={state} setState={setState} />
-        <OverviewStartGame />
+        <OverviewStartGame state={state} setState={setState} />
 
         <Link to={state.story[state.currentStory].path}>
           <button>Start Game</button>
