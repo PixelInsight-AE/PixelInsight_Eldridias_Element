@@ -37,63 +37,31 @@ import { storyOne } from "./vanillaJsFiles/storyboard.js";
 //console.log(controller);
 
 function EldridiasElement() {
-  // states to be used for story of the game.
-  const [story, setStory] = useState(storyOne);
-  const [currentStory, setCurrentStory] = useState(0);
-
-  // states for controller, computer, and heros.
-  const [playerController, setPlayerController] = useState(controller);
-  const [computerController, setComputerController] = useState(computer);
-  const [tank, setTank] = useState(bulwark);
-  const [melee, setMelee] = useState(beastMaster);
-  const [ranged, setRanged] = useState(gunslinger);
-  const [healer, setHealer] = useState(hogarth);
-  const [party, setParty] = useState([tank, melee, ranged, healer]);
-  //!-----------------------------------------------------------------------------------------
-  // ! EXAMPLE of how we can simplify our states.....
-  // ? Let's take controller for example. We can just use the controller object as our state.
-
-  /*   const [controller, setController] = 
-    useState(
-      {
-        playerController: controller,
-        computerController: computer,
-        tank: bulwark,
-        melee: beastMaster,
-        ranged: gunslinger,
-        healer: hogarth,
-        party: [tank, melee, ranged, healer]
-      }
-    );
- */
-  // ! Then we would have the one state just CONTROLLER, and we can modify it using this.
-
-  /*   const exampleHandler = () => {
-    setController((prevState) => { // ? Take in the previous state
-      return {
-        ...prevState, // ? Spread the previous state into the new state
-        tank: paladin, // ? Modify the state
-        party: [paladin, melee, ranged, healer] // ? Modify the state
-      }
-    })
-  } */
-
-  // ? So what do you think, good or no? Doesn't safe on lines of code I think, but it does make it easier to read and understand. Especially if we have a lot of states.
-  //!-----------------------------------------------------------------------------------------
-  //states for bosses and levels
-  const [boss, setBoss] = useState(bossTwo);
-  const [currentWave, setCurrentWave] = useState(0);
-  const [maxFloor, setMaxFloor] = useState(1);
-  const [currentFloor, setCurrentFloor] = useState(1);
-  const [floor, setFloor] = useState(floor1[currentWave]);
-
-  //states for currency and inventory
-  const [currency, setCurrency] = useState(500);
-  const [inventory, setInventory] = useState([]);
-  const [deck, setDeck] = useState([
-    ...magicPlayingCards,
-    ...allElementalCards,
-  ]);
+  const [state, setState] = useState({
+    controller: controller,
+    computer: computer,
+    tank: bulwark,
+    melee: beastMaster,
+    ranged: gunslinger,
+    healer: hogarth,
+    party: [
+      bulwark,
+      beastMaster,
+      gunslinger,
+      hogarth,
+    ],
+    boss: bossTwo,
+    currentWave: 0,
+    maxFloor: 1,
+    currentFloor: 1,
+    floor: floor1[0],
+    currency: 500,
+    inventory: [],
+    deck: [...magicPlayingCards, ...allElementalCards],
+    story: storyOne,
+    currentStory: 0,
+    currentLevel: 0,
+  });
 
   // ! Like our error said, in V6 we need to nest all Route elements inside of a Routes component.
   return (
@@ -102,111 +70,29 @@ function EldridiasElement() {
       <Route
         path="/dashboard"
         element={
-          <Dashboard
-            playerController={playerController}
-            currency={currency}
-            setCurrency={setCurrency}
-            inventory={inventory}
-            setInventory={setInventory}
-            floor={floor}
-            setFloor={setFloor}
-            currentFloor={currentFloor}
-            setCurrentFloor={setCurrentFloor}
-            maxFloor={maxFloor}
-            setMaxFloor={setMaxFloor}
-            party={party}
-            boss={boss}
-            computerController={computerController}
-            story={story}
-            setStory={setStory}
-            currentStory={currentStory}
-            setCurrentStory={setCurrentStory}
-          />
+          <Dashboard state={state} setState={setState}/>
         }
       />
       <Route
         path="/dashboard/overview"
         element={
-          <OverView
-            currency={currency}
-            setCurrency={setCurrency}
-            inventory={inventory}
-            setInventory={setInventory}
-            controller={playerController}
-            floor={floor}
-            setFloor={setFloor}
-            currentFloor={currentFloor}
-            setCurrentFloor={setCurrentFloor}
-            maxFloor={maxFloor}
-            setMaxFloor={setMaxFloor}
-            party={party}
-            computerController={computerController}
-            story={story}
-            setStory={setStory}
-            currentStory={currentStory}
-            setCurrentStory={setCurrentStory}
-          />
+          <OverView state={state} setState={setState} />
         }
       />
       <Route
         path="/dashboard/party"
         element={
-          <Party
-            tank={tank}
-            setTank={setTank}
-            melee={melee}
-            setMelee={setMelee}
-            ranged={ranged}
-            setRanged={setRanged}
-            healer={healer}
-            setHealer={setHealer}
-            party={party}
-            setParty={setParty}
-          />
+          <Party state={state} setState={setState} />
         }
       />
-      <Route path="/dashboard/deck" element={<DeckBuilder deck={deck} />} />
-      <Route path="/dashboard/catalog" element={<Catalog party={party} />} />
+      <Route path="/dashboard/deck" element={<DeckBuilder state={state} setState={setState}  />} />
+      <Route path="/dashboard/catalog" element={<Catalog state={state} setState={setState}  />} />
       <Route path="/dashboard/shop" element={<Shop />} />
       <Route
         path="/dashboard/play"
-        element={
-          <GameComponent
-            playerController={playerController}
-            computerController={computerController}
-            boss={boss}
-            party={party}
-            deck={deck}
-            floor={floor}
-            setFloor={setFloor}
-            currentFloor={currentFloor}
-            setCurrentFloor={setCurrentFloor}
-            maxFloor={maxFloor}
-            setMaxFloor={setMaxFloor}
-            currency={currency}
-            setCurrency={setCurrency}
-            inventory={inventory}
-            setInventory={setInventory}
-            currentWave={currentWave}
-            setCurrentWave={setCurrentWave}
-            story={story}
-            setStory={setStory}
-            currentStory={currentStory}
-            setCurrentStory={setCurrentStory}
-          />
-        }
+        element={<GameComponent state={state} setState={setState} />}
       />
-      <Route
-        path="/dashboard/story"
-        element={
-          <StoryBoard
-            party={party}
-            story={story}
-            currentStory={currentStory}
-            setCurrentStory={setCurrentStory}
-          />
-        }
-      />
+      <Route path="/dashboard/story" element={<StoryBoard state={state} setState={setState} />} />
     </Routes>
   );
 }

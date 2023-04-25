@@ -1,15 +1,15 @@
-import { Link } from "react-router-dom";
-//import { story } from "../../vanillaJsFiles/storyboard";
-import { useState } from "react";
-import { NavBar } from "./NavBar";
-import "./GameComponent_StoryBoard.scss";
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
+import './GameComponent_StoryBoard.scss';
 
 const StoryBoard_Header = (props) => {
-  const { story, currentStory } = props;
-  console.log(story[currentStory].chapterTitle);
+  const { state, setState } = props;
+  console.log(state.story[state.currentStory].chapterTitle);
   return (
     <div id="StoryBoard_Header">
-      <h2>{story[currentStory].chapterTitle}</h2>
+      <h2>{state.story[state.currentStory].chapterTitle}</h2>
       <Link to="/dashboard">
         <button className="exit-button">Exit</button>
       </Link>
@@ -17,107 +17,160 @@ const StoryBoard_Header = (props) => {
   );
 };
 
-const StoryBoard = (props) => {
-  const { party, story, currentStory, setCurrentStory } = props;
-  const handleNext = () => {
-    if (currentStory < story.length - 1) {
-      setCurrentStory(currentStory + 1);
-    }
-  };
-  const handleBack = () => {
-    if (currentStory > 0) {
-      setCurrentStory(currentStory - 1);
-    }
-  };
-  const handleStart = () => {
-    setCurrentStory(currentStory + 1);
-  };
+const StoryBoard_AnimationScreen = (props) => {
+  return (
+    <div id="StoryBoard_AnimationScreen">
+      <h2>Animations</h2>
+    </div>
+  );
+};
+const StoryBoard_PlayerContent = (props) => {
+  const { state, setState } = props;
+
+  let content = state.story[state.currentStory].content;
 
   return (
-    <>
-      <div
-        className="storyboard-background"
-        style={
-          {
-            // backgroundImage: `url(${story[currentStory].background})`,
-          }
-        }
-      >
-        <StoryBoard_Header story={story} currentStory={currentStory} />
+    <div id="StoryBoard_PlayerContent">
+      <PlayerImg state={state} />
+      <p>{state.story[state.currentStory].content}</p>
+    </div>
+  );
+};
+const StoryBoard_NpcContent = (props) => {
+  const { state, setState } = props;
+  let content = state.story[state.currentStory].content;
+  return (
+    <div id="StoryBoard_NpcContent">
+      <NpcImg state={state} />
 
-        <div id="storyBoard">
-          <div id="chapter-title">{story[currentStory].title}</div>
-          <div id="story-board-card">
-            {story[currentStory].playerText ? (
-              <div id="player-box">
-                <div id="player-box-image">
-                  <span>{story[currentStory].nameOfSpeaker}</span>
-                  {story[currentStory].imageIcon ? (
-                    <img
-                      className="player-image story-board-images"
-                      src={story[currentStory].imageIcon}
-                      alt="blankfornow"
-                    />
-                  ) : (
-                    <img
-                      className="player-image story-board-images"
-                      src={party[0].imgUrl}
-                      alt="blankfornow"
-                    />
-                  )}
-                </div>
-                <div id="player-box-text">{story[currentStory].playerText}</div>
-              </div>
-            ) : (
-              <div id="npc-box">
-                <div id="npc-box-text">{story[currentStory].npcText}</div>
-                <div id="npc-box-image">
-                  <span>{story[currentStory].nameOfSpeaker}</span>
-                  <img
-                    className="npc-image story-board-images"
-                    src={story[currentStory].imageIcon}
-                    alt="blankfornow"
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-          <StoryBoardNavigation
-            story={story}
-            currentStory={currentStory}
-            handleBack={handleBack}
-            handleNext={handleNext}
-            handleStart={handleStart}
-          />
-        </div>
-      </div>
-    </>
+      <p>{state.story[state.currentStory].content}</p>
+    </div>
+  );
+};
+const StoryBoard_NarratorContent = (props) => {
+  const { state, setState } = props;
+
+  return (
+    <div id="StoryBoard_NarratorContent">
+      <img src={state.story[state.currentStory].image} alt="blankfornow" />
+      <p>{state.story[state.currentStory].content}</p>
+    </div>
   );
 };
 
+const StoryBoard_Content = ({ state, setState }) => {
+  let text;
+  if (state.story[state.currentStory].nameOfSpeaker === 'player') {
+    text = (
+      <StoryBoard_PlayerContent state={state} setState={setState} />
+    );
+  } else if (state.story[state.currentStory].nameOfSpeaker === 'npc') {
+    text = <StoryBoard_NpcContent state={state} />;
+  } else {
+    text = (
+      <StoryBoard_NarratorContent state={state}/>
+    );
+  }
+  useEffect(() => {}, [state.story]);
+  return <div id="StoryBoard_Content">{text}</div>;
+};
+
 const StoryBoardNavigation = ({
-  story,
-  handleBack,
   handleNext,
+  handleBack,
   handleStart,
-  currentStory,
+  state,
+  setState
 }) => {
   const startButton = (
-    <Link to={story[currentStory].path}>
+    <Link to={state.story[state.currentStory].path}>
       <button onClick={handleNext}>Start</button>
     </Link>
   );
-
   const buttons = (
     <div>
       <button onClick={handleBack}>Back</button>
       <button onClick={handleStart}>Next</button>
     </div>
   );
-
   return (
-    <div id="storyboard-naviagation">
-      {story[currentStory].pathIsValid ? startButton : buttons}
+    <div id="story-board-navigation">
+      {state.story[state.currentStory].pathIsValid ? startButton : buttons}
+    </div>
+  );
+};
+const StoryBoard_LootBox = (props) => {
+  return (
+    <div id="StoryBoard_LootBox">
+      <h2>LootBox</h2>
+    </div>
+  );
+};
+
+const NpcImg = ({ state, setState }) => {
+  return (
+    <motion.img
+      src={state.story[state.currentStory].image}
+      alt="blankfornow"
+      id="npc-img"
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1 }}
+      whileHover={{ scale: 1.2 }}
+    />
+  );
+};
+const PlayerImg = ({ state, setState }) => {
+  return (
+    <motion.img
+      src={state.story[state.currentStory].image}
+      alt="blankfornow"
+      id="player-img"
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1 }}
+      whileHover={{ scale: 1.2 }}
+    />
+  );
+};
+
+const StoryBoard = (props) => {
+  const { state, setState } = props;
+  const handleNext = () => {
+    if (state.currentStory < state.story.length - 1) {
+      setState({ ...state, currentStory: state.currentStory + 1, hasViewed: true });
+    }
+  };
+  const handleBack = () => {
+    if (state.currentStory > 0) {
+      setState({ ...state, currentStory: state.currentStory - 1 });
+    }
+  };
+  const handleStart = () => {
+    setState({ ...state, currentStory: state.currentStory +1, hasViewed: true });
+  };
+  return (
+    <div id="StoryBoard"
+      style={{
+        backgroundImage: `url(${state.story[state.currentStory].background})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <StoryBoard_Header state={state}  />
+      <StoryBoard_AnimationScreen />
+      {/* {state.story[state.currentStory].isReward ? <StoryBoard_LootBox /> : null} */}
+
+      <StoryBoard_Content state={state} setState={setState}  />
+
+      <StoryBoardNavigation
+        state={state}
+        setState={setState}
+        handleBack={handleBack}
+        handleNext={handleNext}
+        handleStart={handleStart}
+      />
     </div>
   );
 };

@@ -2,63 +2,49 @@ import { Link } from "react-router-dom";
 import { floor1 } from "../vanillaJsFiles/floors";
 const PlayerControlls = (props) => {
   const {
-    floor,
-    setFloor,
-    party,
-    playerController,
-    computerController,
-    selectedHero,
-    selectedMonster,
-    setSelectedMonster,
-    setSelectedHerosHp,
-    currentWave,
-    setCurrentWave,
-    currentFloor,
-    setCurrentFloor,
-    maxFloor,
-    setMaxFloor,
+    state,
+    setState,
+    battle,
+    setBattle
   } = props;
   const progressCheck = () => {
-    if (currentFloor == maxFloor && computerController.isBossDefeated) {
-      setMaxFloor(maxFloor + 1);
-      setCurrentFloor((prev) => prev + 1);
-
-      setCurrentWave(0);
-      // console.log(maxFloor);
-      // console.log(currentFloor);
+    if (state.currentFloor == state.maxFloor && state.computer.isBossDefeated) {  
+      setState({...state, maxFloor: state.maxFloor + 1, currentFloor: state.currentFloor + 1, currentWave: 0});
     }
   };
   const handleAttack = () => {
-    playerController.attack(selectedHero, selectedMonster, floor);
-    setSelectedMonster(selectedMonster.health);
+    state.controller.attack(battle.targetHero, battle.targetMonster, state.floor);
+    setBattle({...battle, targetMonsterHealth: battle.targetMonster.health, targetHeroHealth: battle.targetHero.health})
+    // setSelectedMonster(selectedMonster.health);
     handleWaveChange();
   };
   const handleWaveChange = () => {
     // what happens when boss wave is defeate
     // what happens when a normal wave is defeated
-    if (computerController.isWaveDefeated) {
-      setCurrentWave((prev) => prev + 1);
-      setFloor(floor1[currentWave + 1]);
+    if (state.computer.isWaveDefeated) {
+      setState({...state, currentWave: state.currentWave + 1, floor: floor1[state.currentWave + 1]});
+      
       progressCheck();
-      computerController.isWaveDefeated = false;
+      state.computer.isWaveDefeated = false;
     }
   };
   const handleEndTurn = () => {
-    playerController.endTurn(
-      playerController,
-      computerController,
-      selectedHero,
-      selectedMonster,
-      party
+    state.controller.endTurn(
+      state.controller,
+      state.computer,
+      battle.targetHero,
+      battle.targetMonster,
+      state.party
     );
-    setSelectedHerosHp(selectedHero.health);
+    setBattle({...battle, targetHeroHealth: battle.targetHero.health, targetMonsterHealth: battle.targetMonster.health})
+    
   };
 
   return (
     <div id="controls-container">
       <button onClick={() => handleAttack()}>Attack</button>
       <button
-        onClick={() => playerController.heal(selectedHero, selectedMonster)}
+        onClick={() => state.controller.heal(selectedHero, selectedMonster)}
       >
         Heal
       </button>

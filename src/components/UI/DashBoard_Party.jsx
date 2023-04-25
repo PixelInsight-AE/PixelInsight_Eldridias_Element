@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { NavBar } from "./NavBar.jsx";
 import { heroList } from "../../vanillaJsFiles/heros.js";
-
+import {  } from "../../vanillaJsFiles/heros.js";
 // ! SELECT COMPONENTS
 
 /**
@@ -12,30 +12,30 @@ import { heroList } from "../../vanillaJsFiles/heros.js";
  * ? The handlePartySelect function is used to update the party array
  */
 const RangedSelect = (props) => {
-  const { ranged } = props;
+  const { state } = props;
   return (
     <div>
       <div className="ranged-select">
-        <h1 className="hero-name">{ranged.name}</h1>
+        <h1 className="hero-name">{state.ranged.name}</h1>
 
         <div className="hero-image">
-          <img src={ranged.imgUrl} alt={ranged.name} />
+          <img src={state.ranged.imgUrl} alt={state.ranged.name} />
         </div>
         <h2>
-          LV: {ranged.heroLevel} - {ranged.elementType}
+          LV: {state.ranged.heroLevel} - {state.ranged.elementType}
         </h2>
         <div className="stats-container">
           <div className="stats-hp">
             <h3>HP:</h3>
-            <h3>{ranged.maxHealth}</h3>
+            <h3>{state.ranged.maxHealth}</h3>
           </div>
           <div className="stats-ap">
             <h3>ATK:</h3>
-            <h3>{ranged.attackPower}</h3>
+            <h3>{state.ranged.attackPower}</h3>
           </div>
           <div className="stats-df">
             <h3>DEF:</h3>
-            <h3>{ranged.defense}</h3>
+            <h3>{state.ranged.defense}</h3>
           </div>
         </div>
       </div>
@@ -46,30 +46,30 @@ const RangedSelect = (props) => {
   );
 };
 const HealerSelect = (props) => {
-  const { healer } = props;
+  const { state } = props;
   return (
     <div>
       <div className="healer-select">
-        <h1 className="hero-name">{healer.name}</h1>
+        <h1 className="hero-name">{state.healer.name}</h1>
 
         <div className="hero-image">
-          <img src={healer.imgUrl} alt={healer.name} />
+          <img src={state.healer.imgUrl} alt={state.healer.name} />
         </div>
         <h2>
-          LV: {healer.heroLevel} - {healer.elementType}
+          LV: {state.healer.heroLevel} - {state.healer.elementType}
         </h2>
         <div className="stats-container">
           <div className="stats-hp">
             <h3>HP:</h3>
-            <h3>{healer.maxHealth}</h3>
+            <h3>{state.healer.maxHealth}</h3>
           </div>
           <div className="stats-ap">
             <h3>ATK:</h3>
-            <h3>{healer.attackPower}</h3>
+            <h3>{state.healer.attackPower}</h3>
           </div>
           <div className="stats-df">
             <h3>DEF:</h3>
-            <h3>{healer.defense}</h3>
+            <h3>{state.healer.defense}</h3>
           </div>
         </div>
       </div>
@@ -80,30 +80,30 @@ const HealerSelect = (props) => {
   );
 };
 const MeleeSelect = (props) => {
-  const { melee } = props;
+  const { state } = props;
   return (
     <div>
       <div className="melee-select">
-        <h1 className="hero-name">{melee.name}</h1>
+        <h1 className="hero-name">{state.melee.name}</h1>
 
         <div className="hero-image">
-          <img src={melee.imgUrl} alt={melee.name} />
+          <img src={state.melee.imgUrl} alt={state.melee.name} />
         </div>
         <h2>
-          LV: {melee.heroLevel} - {melee.elementType}
+          LV: {state.melee.heroLevel} - {state.melee.elementType}
         </h2>
         <div className="stats-container">
           <div className="stats-hp">
             <h3>HP:</h3>
-            <h3>{melee.maxHealth}</h3>
+            <h3>{state.melee.maxHealth}</h3>
           </div>
           <div className="stats-ap">
             <h3>ATK:</h3>
-            <h3>{melee.attackPower}</h3>
+            <h3>{state.melee.attackPower}</h3>
           </div>
           <div className="stats-df">
             <h3>DEF:</h3>
-            <h3>{melee.defense}</h3>
+            <h3>{state.melee.defense}</h3>
           </div>
         </div>
       </div>
@@ -114,30 +114,30 @@ const MeleeSelect = (props) => {
   );
 };
 const TankSelect = (props) => {
-  const { tank } = props;
+  const { state } = props;
   return (
     <div>
       <div className="tank-select">
-        <h1 className="hero-name">{tank.name}</h1>
+        <h1 className="hero-name">{state.tank.name}</h1>
 
         <div className="hero-image">
-          <img src={tank.imgUrl} alt={tank.name} />
+          <img src={state.tank.imgUrl} alt={state.tank.name} />
         </div>
         <h2>
-          LV: {tank.heroLevel} - {tank.elementType}
+          LV: {state.tank.heroLevel} - {state.tank.elementType}
         </h2>
         <div className="stats-container">
           <div className="stats-hp">
             <h3>HP:</h3>
-            <h3>{tank.maxHealth}</h3>
+            <h3>{state.tank.maxHealth}</h3>
           </div>
           <div className="stats-ap">
             <h3>ATK:</h3>
-            <h3>{tank.attackPower}</h3>
+            <h3>{state.tank.attackPower}</h3>
           </div>
           <div className="stats-df">
             <h3>DEF:</h3>
-            <h3>{tank.defense}</h3>
+            <h3>{state.tank.defense}</h3>
           </div>
         </div>
       </div>
@@ -213,60 +213,53 @@ const AvailableHeroes = (props) => {
  * ? This component will be passed a function to handle the selection of a hero
  */
 const Party = ({
-  hero,
-  tank,
-  setTank,
-  melee,
-  setMelee,
-  ranged,
-  setRanged,
-  healer,
-  setHealer,
-  party,
-  setParty,
+  state, setState
 }) => {
   // ? This function will handle the selection of a hero
   const handlePartySelect = (hero) => {
     console.log("clicked");
     if (hero.role === "Tank") {
-      setTank(hero);
+      setState({...state, tank: hero});
     }
     if (hero.role === "Melee") {
-      setMelee(hero);
+      setState({...state, melee: hero});
     }
     if (hero.role === "Ranged") {
-      setRanged(hero);
+      setState({...state, ranged: hero});
     }
     if (hero.role === "Healer") {
-      setHealer(hero);
+      setState({...state, healer: hero});
     }
   };
-  // ? This useEffect will update the party array when a hero state is updated
+  //? This useEffect will update the party array when a hero state is updated
   useEffect(() => {
-    setParty([tank, melee, ranged, healer]);
-  }, [tank, melee, ranged, healer]);
+    setState({...state, party: [state.tank, state.melee, state.ranged, state.healer]})
+  }, [state.tank, state.melee, state.ranged, state.healer])
+  
   return (
     <div>
       <NavBar />
       <div id="party-select-container">
         <TankSelect
-          tank={tank}
-          setTank={setTank}
+          state={state}
+          setState={setState}
           handlePartySelect={handlePartySelect}
         />
         <MeleeSelect
-          melee={melee}
-          setMelee={setMelee}
+          state={state}          
+          setState={setState}
           handlePartySelect={handlePartySelect}
         />
         <RangedSelect
-          ranged={ranged}
-          setRanged={setRanged}
+          state={state}
+          setState={setState}
+          
+
           handlePartySelect={handlePartySelect}
         />
         <HealerSelect
-          healer={healer}
-          setHealer={setHealer}
+          state={state}
+          setState={setState}
           handlePartySelect={handlePartySelect}
         />
       </div>

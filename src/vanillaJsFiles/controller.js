@@ -62,7 +62,7 @@ const controller = {
     }
   },
   attack: function (hero, monster, floor) {
-    if (hero.canRegularAttack === false) {
+    if (hero.health > 100 && hero.canRegularAttack === false) {
       console.log("You can't attack again this turn with a basic attack");
     }
     if (hero.health > 0 && hero.canRegularAttack === true) {
