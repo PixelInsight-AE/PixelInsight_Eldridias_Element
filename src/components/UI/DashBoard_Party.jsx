@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { NavBar } from "./NavBar.jsx";
 import { heroList } from "../../vanillaJsFiles/heros.js";
 import {  } from "../../vanillaJsFiles/heros.js";
+import "./DashBoard_Party.scss";
 // ! SELECT COMPONENTS
 
 /**
@@ -253,8 +254,6 @@ const Party = ({
         <RangedSelect
           state={state}
           setState={setState}
-          
-
           handlePartySelect={handlePartySelect}
         />
         <HealerSelect

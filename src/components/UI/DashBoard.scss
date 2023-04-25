@@ -1,0 +1,17 @@
+#OverviewCurrentParty {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  #hero-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    #stats-container {
+      display: flex;
+      flex-direction: row;  
+      justify-content: space-between;
+    }
+  }
+}

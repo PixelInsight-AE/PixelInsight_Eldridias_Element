@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { PlayerControlls } from "../PlayerControlls";
 import { Battlefield } from "./GameComponent_Battefield";
 import { bulwark } from "../../vanillaJsFiles/heros.js";
+import './GameComponent.scss'
 console.log(bulwark.name);
 const GameComponent = (props) => {
   const {

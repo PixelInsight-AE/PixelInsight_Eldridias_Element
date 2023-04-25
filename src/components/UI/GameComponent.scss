@@ -1,3 +1,6 @@
+@import '/src/styleSheets/variables';
+@import '/src/styleSheets/mixins';
+
 $primaryColor: #007bff;
 $secondaryColor: #6c757d;
 $borderColor: #fff;
@@ -45,7 +48,7 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
           font-size: 1.5rem;
           color: green;
           text-shadow: 0.5 0.25 0.25rem black;
-          webkit-text-stroke: 0.5px black;
+          //webkit-text-stroke: 0.5px black;
         }
         img {
           width: 50px;
@@ -110,7 +113,7 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
           font-size: 2.5rem;
           color: #fff;
           text-shadow: 0.5 0.25 0.25rem black;
-          webkit-text-stroke: 0.5px black;
+          //webkit-text-stroke: 0.5px black;
         }
         img {
           border: 4px solid blue;
@@ -133,7 +136,7 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
           font-size: 4rem;
           color: red;
           text-shadow: 0.5 0.25 0.25rem black;
-          webkit-text-stroke: 0.5px black;
+         //webkit-text-stroke: 0.5px black;
         }
       }
 
@@ -149,7 +152,7 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
           font-size: 2.5rem;
           color: #fff;
           text-shadow: 0.5 0.25 0.25rem black;
-          webkit-text-stroke: 0.5px black;
+          //webkit-text-stroke: 0.5px black;
         }
         img {
           border: 4px solid blue;
@@ -171,7 +174,7 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
           font-size: 2.5rem;
           color: #fff;
           text-shadow: 0.5 0.25 0.25rem black;
-          webkit-text-stroke: 0.5px black;
+          //webkit-text-stroke: 0.5px black;
         }
         img {
           border: 4px solid gold;
@@ -217,7 +220,7 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
         font-size: 1.5rem;
         color: green;
         text-shadow: 0.5 0.25 0.25rem black;
-        webkit-text-stroke: 0.5px black;
+        //webkit-text-stroke: 0.5px black;
       }
       img {
         width: 50px;
