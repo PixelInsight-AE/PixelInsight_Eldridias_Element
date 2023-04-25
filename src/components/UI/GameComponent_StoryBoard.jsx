@@ -138,7 +138,7 @@ const StoryBoard = (props) => {
   const { state, setState } = props;
   const handleNext = () => {
     if (state.currentStory < state.story.length - 1) {
-      setState({ ...state, currentStory: state.currentStory + 1 });
+      setState({ ...state, currentStory: state.currentStory + 1, hasViewed: true });
     }
   };
   const handleBack = () => {
@@ -147,10 +147,17 @@ const StoryBoard = (props) => {
     }
   };
   const handleStart = () => {
-    setState({ ...state, currentStory: state.currentStory +1 });
+    setState({ ...state, currentStory: state.currentStory +1, hasViewed: true });
   };
   return (
-    <div id="StoryBoard">
+    <div id="StoryBoard"
+      style={{
+        backgroundImage: `url(${state.story[state.currentStory].background})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <StoryBoard_Header state={state}  />
       <StoryBoard_AnimationScreen />
       {/* {state.story[state.currentStory].isReward ? <StoryBoard_LootBox /> : null} */}

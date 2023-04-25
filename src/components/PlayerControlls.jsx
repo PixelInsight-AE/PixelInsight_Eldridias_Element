@@ -8,11 +8,8 @@ const PlayerControlls = (props) => {
     setBattle
   } = props;
   const progressCheck = () => {
-    if (state.currentFloor == state.maxFloor && state.computer.isBossDefeated) {
-      
+    if (state.currentFloor == state.maxFloor && state.computer.isBossDefeated) {  
       setState({...state, maxFloor: state.maxFloor + 1, currentFloor: state.currentFloor + 1, currentWave: 0});
-      
-
     }
   };
   const handleAttack = () => {

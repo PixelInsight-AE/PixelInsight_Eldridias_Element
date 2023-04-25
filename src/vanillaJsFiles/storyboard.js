@@ -1,11 +1,12 @@
 const storyOne = [
   {
     id: 0,
+    hasViewed: false,
     chapterTitle: "Eldridia's Elements",
     content:
       '...Once upon a time there was a mighty being, who created the world...and the elements...This is the story of Eldridia, and the Elements of Power.',
     path: '/dashboard/story',
-    background: '',
+    background: "https://i.imgur.com/CrcBLo1.jpg",
     image: 'https://i.imgur.com/ZHLh0zg.png',
     nameOfSpeaker: 'Narrator',
     isReward: false,
@@ -16,11 +17,12 @@ const storyOne = [
   },
   {
     id: 1,
+    hasViewed: false,
     chapterTitle: 'The Changing Winds',
     content:
       'Since the beginning of time the elements always have been in balance, But A great evil has fallen upon the world. Some one is trying to become Eldridias and in so doing turning the world into Chaos.',
     path: '/dashboard/story',
-    background: '',
+    background: "https://i.imgur.com/CrcBLo1.jpg",
     image: 'https://i.imgur.com/ZHLh0zg.png',
     nameOfSpeaker: 'Narrator',
     isReward: false,
@@ -31,11 +33,12 @@ const storyOne = [
   },
   {
     id: 2,
+    hasViewed: false,
     chapterTitle: 'Stillness in the Air',
     content:
       'As something in the air shifts, the presencse of pure darkness lurks hidden in plain sight. ',
     path: '/dashboard/overview',
-    background: '',
+    background: "https://i.imgur.com/CrcBLo1.jpg",
     image: 'https://i.imgur.com/ZHLh0zg.png',
     nameOfSpeaker: 'Narrator',
     isReward: false,
@@ -47,9 +50,10 @@ const storyOne = [
 
   {
     id: 3,
+    hasViewed: false,
     chapterTitle: 'The Calm Before the Storm',
     content: 'Some Days Ago.......',
-    background: '',
+    background: "https://i.imgur.com/CrcBLo1.jpg",
     path: '/dashboard/story',
     image: 'https://i.imgur.com/ZHLh0zg.png',
     isReward: false,
@@ -61,11 +65,12 @@ const storyOne = [
   },
   {
     id: 4,
+    hasViewed: false,
     chapterTitle: 'The Mysterious Stranger',
     image: 'https://i.imgur.com/N4X30zf.png',
     content:
       'Storm clouds are brewing in the distance. Hogarth looks to the sky, worried for the animals. He sets out to round up the animals and bring them to safety. After the animals are brought to saftey the storm is growing bigger.... Storms in the area are rare, almost never happen. Something is off, he can sense it. Its almost as if the strom is brewing inside of him, like his chest is weeping',
-    background: '',
+    background: "https://i.imgur.com/CrcBLo1.jpg",
     path: '/dashboard/story',
     nameOfSpeaker: 'player',
     isReward: false,
@@ -75,11 +80,12 @@ const storyOne = [
   },
   {
     id: 5,
+    hasViewed: false,
     chapterTitle: 'The Mysterious Stranger',
     image: '',
     content:
       'While search Hogarth hears something just over the big rocks up ahead. GOBBLE GOBBBLE GOBBLE, the goblins in front of him making horible noises running towards him. Before he knew it he was unconscious.',
-    background: '',
+    background: 'https://i.imgur.com/CrcBLo1.jpg',
     path: '/dashboard/story',
     image: '',
     nameOfSpeaker: 'The Party',
@@ -90,6 +96,7 @@ const storyOne = [
   },
   {
     id: 6,
+    hasViewed: false,
     chapterTitle: 'The Mysterious Stranger',
     image: '',
     content: '',
@@ -103,6 +110,7 @@ const storyOne = [
   },
   {
     id: 7,
+    hasViewed: false,
     chapterTitle: 'The Mysterious Stranger is saved',
     image: '',
     content: '',
@@ -116,6 +124,7 @@ const storyOne = [
   },
   {
     id: 8,
+    hasViewed: false,
     chapterTitle: 'The Mysterious Stranger is saved',
     content: '',
     image: '',

@@ -103,10 +103,6 @@ const OverviewStartGame = (props) => {
 
 const OverView = (props) => {
   const { state, setState } = props;
-
- 
-  //set story state to current story
-
   return (
     <div>
       <NavBar />
@@ -136,17 +132,6 @@ const Dashboard = (props) => {
     setState,
     battle,
     setBattle,
-    // party,
-    // floor,
-    // boss,
-    // story,
-    // setStory,
-    // currentStory,
-    // setCurrentStory,
-    // maxFloor,
-    // setMaxFloor,
-    // currentFloor,
-    // setCurrentFloor,
   } = props;
   return (
     <div>
@@ -156,17 +141,6 @@ const Dashboard = (props) => {
         setState={setState}
         battle={battle}
         setBattle={setBattle}
-        // party={party}
-        // floor={floor}
-        // boss={boss}
-        // story={story}
-        // setStory={setStory}
-        // currentStory={currentStory}
-        // setCurrentStory={setCurrentStory}
-        // maxFloor={maxFloor}
-        // setMaxFloor={setMaxFloor}
-        // currentFloor={currentFloor}
-        // setCurrentFloor={setCurrentFloor}
       />
     </div>
   );
