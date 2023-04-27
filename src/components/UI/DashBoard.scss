@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+  border: 1px solid red;
+}
+#Dashboard {
+  background: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  #top-row {
+    display: flex;
+    flex-direction: row;
+
+    #OverViewHeader {
+      width: 70vh;
+      height: 15vh;
+    }
+    #OverViewMap {
+      width: 30vh;
+      height: 20vh;
+    }
+  }
+  #ReadyUp {
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+    button {
+      width: 15vh;
+    }
+  }
+  #OverViewHub {
+    height: 60vh;
+    display: flex;
+    flex-direction: row;
+
+    #button-container {
+      width: 25vh;
+      display: flex;
+      flex-direction: column;
+    }
+    #OverViewDisplay {
+      width: 75vh;
+    }
+  }
+}
+
+.hero-image {
+  border: 3px solid lightblue;
+  border-radius: 50%;
+}
