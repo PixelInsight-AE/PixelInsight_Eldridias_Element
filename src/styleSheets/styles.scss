@@ -1,17 +1,17 @@
 // Import all of Bootstrap's CSS
 
-@import "variables";
-@import "mixins";
-@import "./components/navBar";
-@import "./components/Home";
-@import "./components/Overview";
-@import "./components/PartyBuilder";
-@import "./components/DeckBuilder";
-@import "./components/GameComponent";
+@import 'variables';
+@import 'mixins';
+@import './components/navBar';
+@import './components/Home';
+@import './components/Overview';
+@import './components/PartyBuilder';
+@import './components/DeckBuilder';
+@import './components/GameComponent';
 //@import "./components/StoryBoard";
 
 body {
-  background-image: url("/src/assets/images/heros/hero.jpg");
+  background-image: url('https://i.imgur.com/7iZ4mCD.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

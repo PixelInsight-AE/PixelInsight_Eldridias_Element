@@ -1,9 +1,9 @@
-@import "../../styleSheets/_variables.scss";
-@import "../../styleSheets/_mixins.scss";
-@import "./Home.scss";
+@import '../../styleSheets/_variables.scss';
+@import '../../styleSheets/_mixins.scss';
+@import './Home.scss';
 
 #background {
-  @include background-image("src/assets/images/castles/iceTower.jpg");
+  @include background-image('https://i.imgur.com/7iZ4mCD.jpg');
   height: 100vh;
 
   #home-header {

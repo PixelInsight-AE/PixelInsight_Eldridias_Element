@@ -1,10 +1,10 @@
-@import "../../styleSheets/_variables.scss";
-@import "../../styleSheets/_mixins.scss";
-@import "./Home.scss";
+@import '../../styleSheets/_variables.scss';
+@import '../../styleSheets/_mixins.scss';
+@import './Home.scss';
 
 #heroSix {
   @include flex(center, center, column);
-  @include background-image("/src/assets/images/landscapes/background-11.jpg");
+  @include background-image('https://i.imgur.com/zwBmd1T.jpg');
   height: 100vh;
 
   h1 {

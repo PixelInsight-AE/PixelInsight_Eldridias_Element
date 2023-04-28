@@ -2,122 +2,21 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Party } from './DashBoard_Party';
 import { DeckBuilder } from './DashBoard_Deck';
+import { InventoryBuilder } from './DashBoard_Inventory';
 import './DashBoard.scss';
+import { Shop } from './DashBoard_Shop';
 import { useEffect } from 'react';
-let hudDisplay;
+import { OverViewHub, OverViewNavBar } from './Dashboard_Hub';
 
-const Shop = ({ state, setState }) => {
-  return (
-    <div>
-      <h1>Shop</h1>
-      <h2>UNDER CONSTRUCTION</h2>
-    </div>
-  );
-};
-const InventoryBuilder = ({ state, setState }) => {
-  return (
-    <div>
-      <h1>Inventory</h1>
-      <h2>UNDER CONSTRUCTION</h2>
-    </div>
-  );
-};
-const OverViewDisplay = ({ state, setState }) => {
-  const setDisplay = (state) => {
-    switch (state.OverView) {
-      case 'party':
-        hudDisplay = <Party state={state} setState={setState} />;
-        break;
-      case 'deck':
-        hudDisplay = <DeckBuilder state={state} setState={setState} />;
-        break;
-      case 'shop':
-        hudDisplay = <Shop state={state} setState={setState} />;
-        break;
-      case 'inventory':
-        hudDisplay = <InventoryBuilder state={state} setState={setState} />;
-        break;
-      default:
-        hudDisplay = <Party state={state} setState={setState} />;
-        break;
-    }
-    return hudDisplay;
-  };
-
-  useEffect(() => {
-    setDisplay(state);
-  }, [state.OverView]);
-
-  return <div id="OverViewDisplay">{hudDisplay}</div>;
-};
-const PartyBuilderButton = ({ state, setState }) => {
-  const handleClick = () => {
-    console.log('clicked');
-
-    setState({ ...state, OverView: 'party' });
-  };
-  return (
-    <div onClick={handleClick} className="party-builder-button">
-      <h3>Party Builder</h3>
-    </div>
-  );
-};
-const DeckBuilderButton = ({ state, setState }) => {
-  const handleClick = () => {
-    console.log('clicked');
-
-    setState({ ...state, OverView: 'deck' });
-  };
-  return (
-    <div onClick={handleClick} className="deck-builder-button">
-      <h3>Deck Builder</h3>
-    </div>
-  );
-};
-const ShopButton = ({ state, setState }) => {
-  const handleClick = () => {
-    console.log('clicked');
-
-    setState({ ...state, OverView: 'shop' });
-  };
-  return (
-    <div onClick={handleClick} className="shop-button">
-      <h3>Shop</h3>
-    </div>
-  );
-};
-const InventoryButton = ({ state, setState }) => {
-  const handleClick = () => {
-    setState({ ...state, OverView: 'inventory' });
-    console.log('clicked');
-  };
-  return (
-    <div onClick={handleClick} className="inventory-button">
-      <h3>Inventory</h3>
-    </div>
-  );
-};
-const OverViewHub = ({ state, setState }) => {
-  return (
-    <div id="OverViewHub">
-      <div id="button-container">
-        <PartyBuilderButton state={state} setState={setState} />
-        <DeckBuilderButton state={state} setState={setState} />
-        <ShopButton state={state} setState={setState} />
-        <InventoryButton state={state} setState={setState} />
-      </div>
-      <OverViewDisplay state={state} setState={setState} />
-    </div>
-  );
-};
 const OverViewHeader = ({ state, setState }) => {
   return (
-    <div id="OverViewHeader">
-      <h1>{state.story[state.currentStory].chapterTitle}</h1>
-      {state.currency}
+    <div id="OverviewHeader">
+      <h1>Current Chapter: {state.story[state.currentStory].chapterTitle}</h1>
+      <h2>Orbs: {state.currency}</h2>
     </div>
   );
 };
+
 const OverViewMap = ({ state, setState }) => {
   return (
     <div id="OverViewMap">
@@ -125,6 +24,7 @@ const OverViewMap = ({ state, setState }) => {
     </div>
   );
 };
+
 const PartyMemberStats = (props) => {
   const { hero } = props;
   return (
@@ -138,6 +38,7 @@ const PartyMemberStats = (props) => {
     </div>
   );
 };
+
 const PartyMemberImg = (props) => {
   const { hero } = props;
   return (
@@ -146,6 +47,7 @@ const PartyMemberImg = (props) => {
     </div>
   );
 };
+
 const PartyMember = (props) => {
   const { hero, isModule, setIsModule } = props;
   const handleClick = () => {
@@ -163,6 +65,7 @@ const PartyMember = (props) => {
     </div>
   );
 };
+
 const OverviewParty = (props) => {
   const { state, setState } = props;
   const [isModule, setIsModule] = useState(false);
@@ -187,23 +90,24 @@ const OverviewParty = (props) => {
 
 const Dashboard = (props) => {
   const { state, setState } = props;
-  useEffect(() => {
-    setState({
-      ...state,
-      party: [state.tank, state.melee, state.ranged, state.healer],
-    });
-  }, [state.tank, state.melee, state.ranged, state.healer]);
   return (
     <div id="Dashboard">
-      <div id="top-row">
-        <OverViewHeader state={state} setState={setState} />
-        <OverViewMap state={state} setState={setState} />
+      <div id="top">
+        <div className="top-left">
+          <OverViewHeader state={state} setState={setState} />
+          <OverviewParty state={state} setState={setState} />
+        </div>
+        <div className="top-right">
+          <OverViewMap state={state} setState={setState} />
+        </div>
       </div>
-      <div id="ReadyUp">
-        <OverviewParty state={state} setState={setState} />
-      </div>
-      <div id="hub">
-        <OverViewHub state={state} setState={setState} />
+      <div id="bottom">
+        <div id="nav-buttons">
+          <OverViewNavBar state={state} setState={setState} />
+        </div>
+        <div>
+          <OverViewHub state={state} setState={setState} />
+        </div>
       </div>
     </div>
   );

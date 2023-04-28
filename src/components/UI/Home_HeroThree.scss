@@ -1,11 +1,11 @@
-@import "../../styleSheets/_variables.scss";
-@import "../../styleSheets/_mixins.scss";
-@import "./Home.scss";
+@import '../../styleSheets/_variables.scss';
+@import '../../styleSheets/_mixins.scss';
+@import './Home.scss';
 
 // !---Home_HeroThree.jsx------------------------------------------------------------------
 #heroThree {
   @include flex(flex-start, center, column);
-  @include background-image("src/assets/images/landscapes/background-10.jpg");
+  @include background-image('https://i.imgur.com/XANxTtf.jpg');
   height: 100vh;
   scroll-snap-align: center;
 
