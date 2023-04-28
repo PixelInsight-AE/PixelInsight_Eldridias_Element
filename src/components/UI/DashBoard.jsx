@@ -14,7 +14,6 @@ const Shop = ({ state, setState }) => {
     </div>
   );
 };
-
 const InventoryBuilder = ({ state, setState }) => {
   return (
     <div>
@@ -23,7 +22,6 @@ const InventoryBuilder = ({ state, setState }) => {
     </div>
   );
 };
-
 const OverViewDisplay = ({ state, setState }) => {
   const setDisplay = (state) => {
     switch (state.OverView) {
@@ -52,7 +50,6 @@ const OverViewDisplay = ({ state, setState }) => {
 
   return <div id="OverViewDisplay">{hudDisplay}</div>;
 };
-
 const PartyBuilderButton = ({ state, setState }) => {
   const handleClick = () => {
     console.log('clicked');
@@ -116,7 +113,8 @@ const OverViewHub = ({ state, setState }) => {
 const OverViewHeader = ({ state, setState }) => {
   return (
     <div id="OverViewHeader">
-      <h1>OverViewHeader</h1>
+      <h1>{state.story[state.currentStory].chapterTitle}</h1>
+      {state.currency}
     </div>
   );
 };
