@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { NavBar } from "./NavBar.jsx";
-import { heroList } from "../../vanillaJsFiles/heros.js";
-import {  } from "../../vanillaJsFiles/heros.js";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { NavBar } from './NavBar.jsx';
+import { heroList } from '../../vanillaJsFiles/heros.js';
+import {} from '../../vanillaJsFiles/heros.js';
 // ! SELECT COMPONENTS
 
 /**
@@ -212,56 +212,54 @@ const AvailableHeroes = (props) => {
  * ? This component will be passed a list of selected heroes
  * ? This component will be passed a function to handle the selection of a hero
  */
-const Party = ({
-  state, setState
-}) => {
+const Party = ({ state, setState }) => {
   // ? This function will handle the selection of a hero
   const handlePartySelect = (hero) => {
-    console.log("clicked");
-    if (hero.role === "Tank") {
-      setState({...state, tank: hero});
+    console.log('clicked');
+    if (hero.role === 'Tank') {
+      setState({ ...state, tank: hero });
     }
-    if (hero.role === "Melee") {
-      setState({...state, melee: hero});
+    if (hero.role === 'Melee') {
+      setState({ ...state, melee: hero });
     }
-    if (hero.role === "Ranged") {
-      setState({...state, ranged: hero});
+    if (hero.role === 'Ranged') {
+      setState({ ...state, ranged: hero });
     }
-    if (hero.role === "Healer") {
-      setState({...state, healer: hero});
+    if (hero.role === 'Healer') {
+      setState({ ...state, healer: hero });
     }
   };
   //? This useEffect will update the party array when a hero state is updated
   useEffect(() => {
-    setState({...state, party: [state.tank, state.melee, state.ranged, state.healer]})
-  }, [state.tank, state.melee, state.ranged, state.healer])
-  
+    setState({
+      ...state,
+      party: [state.tank, state.melee, state.ranged, state.healer],
+    });
+  }, [state.tank, state.melee, state.ranged, state.healer]);
+
   return (
     <div>
-      <NavBar />
       <div id="party-select-container">
-        <TankSelect
+        {/* <TankSelect
           state={state}
           setState={setState}
           handlePartySelect={handlePartySelect}
         />
         <MeleeSelect
-          state={state}          
+          state={state}
           setState={setState}
           handlePartySelect={handlePartySelect}
         />
         <RangedSelect
           state={state}
           setState={setState}
-          
-
           handlePartySelect={handlePartySelect}
         />
         <HealerSelect
           state={state}
           setState={setState}
           handlePartySelect={handlePartySelect}
-        />
+        /> */}
       </div>
       <AvailableHeroes
         heroList={heroList}

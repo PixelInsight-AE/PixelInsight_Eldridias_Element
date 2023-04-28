@@ -24,8 +24,19 @@
     height: 20vh;
     display: flex;
     flex-direction: row;
-    button {
-      width: 15vh;
+    #OverviewParty {
+      display: flex;
+      flex-direction: row;
+      button {
+        width: 15vh;
+      }
+      .party-image {
+        img {
+          width: 15vh;
+          height: 15vh;
+          border-radius: 50%;
+        }
+      }
     }
   }
   #OverViewHub {
@@ -42,9 +53,4 @@
       width: 75vh;
     }
   }
-}
-
-.hero-image {
-  border: 3px solid lightblue;
-  border-radius: 50%;
 }

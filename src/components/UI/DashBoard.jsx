@@ -1,19 +1,59 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { NavBar } from './NavBar';
-import { Shop } from './DashBoard_Shop';
-import { Catalog } from './DashBoard_Catalog';
+import { Party } from './DashBoard_Party';
+import { DeckBuilder } from './DashBoard_Deck';
 import './DashBoard.scss';
+import { useEffect } from 'react';
+let hudDisplay;
 
-const OverViewDisplay = ({ state, setState, battle, setBattle }) => {
+const Shop = ({ state, setState }) => {
   return (
-    <div id="OverViewDisplay">
-      <h1>big box for display here</h1>
-      <h2>{state.OverView}</h2>
+    <div>
+      <h1>Shop</h1>
+      <h2>UNDER CONSTRUCTION</h2>
     </div>
   );
 };
-const PartyBuilderButton = ({ state, setState, battle, setBattle }) => {
+
+const InventoryBuilder = ({ state, setState }) => {
+  return (
+    <div>
+      <h1>Inventory</h1>
+      <h2>UNDER CONSTRUCTION</h2>
+    </div>
+  );
+};
+
+const OverViewDisplay = ({ state, setState }) => {
+  const setDisplay = (state) => {
+    switch (state.OverView) {
+      case 'party':
+        hudDisplay = <Party state={state} setState={setState} />;
+        break;
+      case 'deck':
+        hudDisplay = <DeckBuilder state={state} setState={setState} />;
+        break;
+      case 'shop':
+        hudDisplay = <Shop state={state} setState={setState} />;
+        break;
+      case 'inventory':
+        hudDisplay = <InventoryBuilder state={state} setState={setState} />;
+        break;
+      default:
+        hudDisplay = <Party state={state} setState={setState} />;
+        break;
+    }
+    return hudDisplay;
+  };
+
+  useEffect(() => {
+    setDisplay(state);
+  }, [state.OverView]);
+
+  return <div id="OverViewDisplay">{hudDisplay}</div>;
+};
+
+const PartyBuilderButton = ({ state, setState }) => {
   const handleClick = () => {
     console.log('clicked');
 
@@ -25,7 +65,7 @@ const PartyBuilderButton = ({ state, setState, battle, setBattle }) => {
     </div>
   );
 };
-const DeckBuilderButton = ({ state, setState, battle, setBattle }) => {
+const DeckBuilderButton = ({ state, setState }) => {
   const handleClick = () => {
     console.log('clicked');
 
@@ -37,7 +77,7 @@ const DeckBuilderButton = ({ state, setState, battle, setBattle }) => {
     </div>
   );
 };
-const ShopButton = ({ state, setState, battle, setBattle }) => {
+const ShopButton = ({ state, setState }) => {
   const handleClick = () => {
     console.log('clicked');
 
@@ -49,7 +89,7 @@ const ShopButton = ({ state, setState, battle, setBattle }) => {
     </div>
   );
 };
-const InventoryButton = ({ state, setState, battle, setBattle }) => {
+const InventoryButton = ({ state, setState }) => {
   const handleClick = () => {
     setState({ ...state, OverView: 'inventory' });
     console.log('clicked');
@@ -60,121 +100,101 @@ const InventoryButton = ({ state, setState, battle, setBattle }) => {
     </div>
   );
 };
-const OverViewHub = ({ state, setState, battle, setBattle }) => {
+const OverViewHub = ({ state, setState }) => {
   return (
     <div id="OverViewHub">
       <div id="button-container">
-        <PartyBuilderButton
-          state={state}
-          setState={setState}
-          battle={battle}
-          setBattle={setBattle}
-        />
-        <DeckBuilderButton
-          state={state}
-          setState={setState}
-          battle={battle}
-          setBattle={setBattle}
-        />
-        <ShopButton
-          state={state}
-          setState={setState}
-          battle={battle}
-          setBattle={setBattle}
-        />
-        <InventoryButton
-          state={state}
-          setState={setState}
-          battle={battle}
-          setBattle={setBattle}
-        />
+        <PartyBuilderButton state={state} setState={setState} />
+        <DeckBuilderButton state={state} setState={setState} />
+        <ShopButton state={state} setState={setState} />
+        <InventoryButton state={state} setState={setState} />
       </div>
       <OverViewDisplay state={state} setState={setState} />
     </div>
   );
 };
-
-const OverViewHeader = ({ state, setState, battle, setBattle }) => {
+const OverViewHeader = ({ state, setState }) => {
   return (
     <div id="OverViewHeader">
       <h1>OverViewHeader</h1>
     </div>
   );
 };
-
-const OverViewMap = ({ state, setState, battle, setBattle }) => {
+const OverViewMap = ({ state, setState }) => {
   return (
     <div id="OverViewMap">
       <h1>OverViewMap</h1>
     </div>
   );
 };
-
-// ? Party member to be mapped into the current party component.
-const PartyMember = (props) => {
+const PartyMemberStats = (props) => {
   const { hero } = props;
   return (
-    <div className="healer-select">
-      <h1 className="hero-name">{hero.name}</h1>
-
-      <div className="hero-image">
-        <img src={hero.imgUrl} alt={hero.name} />
-      </div>
-      <h2>
-        LV: {hero.heroLevel} - {hero.elementType}
-      </h2>
-      <div className="stats-container">
-        <div className="stats-hp">
-          <h3>HP:</h3>
-          <h3>{hero.maxHealth}</h3>
-        </div>
-        <div className="stats-ap">
-          <h3>ATK:</h3>
-          <h3>{hero.attackPower}</h3>
-        </div>
-        <div className="stats-df">
-          <h3>DEF:</h3>
-          <h3>{hero.defense}</h3>
-        </div>
-      </div>
+    <div>
+      <h3>{hero.name}</h3>
+      <h3>{hero.heroLevel}</h3>
+      <h3>{hero.health}</h3>
+      <h3>{hero.defense}</h3>
+      <h3>{hero.attackPower}</h3>
+      <h3>{hero.elementType}</h3>
     </div>
   );
 };
-
-// ? Holding the current party.
-const OverviewCurrentParty = (props) => {
-  const { state, setState } = props;
+const PartyMemberImg = (props) => {
+  const { hero } = props;
   return (
-    <div className="current-party-container">
+    <div className="party-image">
+      <img src={hero.imgUrl} alt={hero.name} />
+    </div>
+  );
+};
+const PartyMember = (props) => {
+  const { hero, isModule, setIsModule } = props;
+  const handleClick = () => {
+    console.log('clicked');
+    setIsModule(!isModule);
+  };
+
+  return (
+    <div onClick={handleClick} className="PartyMember">
+      {isModule ? (
+        <PartyMemberStats hero={hero} />
+      ) : (
+        <PartyMemberImg hero={hero} />
+      )}
+    </div>
+  );
+};
+const OverviewParty = (props) => {
+  const { state, setState } = props;
+  const [isModule, setIsModule] = useState(false);
+
+  return (
+    <div id="OverviewParty">
       {state.party.map((hero) => (
-        <div key={hero.name} className="hero-container">
-          <PartyMember hero={hero} />
+        <div key={hero.name} className="PartyMember">
+          <PartyMember
+            hero={hero}
+            isModule={isModule}
+            setIsModule={setIsModule}
+          />
         </div>
       ))}
-    </div>
-  );
-};
-
-const OverView = (props) => {
-  const { state, setState } = props;
-  return (
-    <div id="OverView">
-      <div id="top-row">
-        <OverViewHeader state={state} setState={setState} />
-        <OverViewMap state={state} setState={setState} />
-      </div>
-      <div id="hub">
-        <OverViewHub state={state} setState={setState} />
-        <Link to={state.story[state.currentStory].path}>
-          <button>Start Game</button>
-        </Link>
-      </div>
+      <Link to={state.story[state.currentStory].path}>
+        <button>Start Game</button>
+      </Link>
     </div>
   );
 };
 
 const Dashboard = (props) => {
-  const { state, setState, battle, setBattle } = props;
+  const { state, setState } = props;
+  useEffect(() => {
+    setState({
+      ...state,
+      party: [state.tank, state.melee, state.ranged, state.healer],
+    });
+  }, [state.tank, state.melee, state.ranged, state.healer]);
   return (
     <div id="Dashboard">
       <div id="top-row">
@@ -182,10 +202,7 @@ const Dashboard = (props) => {
         <OverViewMap state={state} setState={setState} />
       </div>
       <div id="ReadyUp">
-        <h2>party and play goes heres</h2>
-        <Link to={state.story[state.currentStory].path}>
-          <button>Start Game</button>
-        </Link>
+        <OverviewParty state={state} setState={setState} />
       </div>
       <div id="hub">
         <OverViewHub state={state} setState={setState} />
@@ -194,4 +211,4 @@ const Dashboard = (props) => {
   );
 };
 
-export { Dashboard, OverView };
+export { Dashboard };

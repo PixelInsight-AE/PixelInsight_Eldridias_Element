@@ -14,7 +14,7 @@ import {
 import { magicPlayingCards } from './vanillaJsFiles/magicCards.js';
 import { allElementalCards } from './vanillaJsFiles/elementCards.js';
 import { Home } from './components/UI/Home.jsx';
-import { Dashboard, OverView } from './components/UI/DashBoard.jsx';
+import { Dashboard } from './components/UI/DashBoard.jsx';
 import { Party } from './components/UI/DashBoard_Party.jsx';
 import { DeckBuilder } from './components/UI/DashBoard_Deck.jsx';
 import { GameComponent } from './components/UI/GameComponent.jsx';
@@ -51,7 +51,7 @@ function EldridiasElement() {
     story: storyOne,
     currentStory: 0,
     currentLevel: 0,
-    OverView: 'party',
+    OverView: 'deck',
   });
 
   // ! Like our error said, in V6 we need to nest all Route elements inside of a Routes component.
@@ -62,10 +62,10 @@ function EldridiasElement() {
         path="/dashboard"
         element={<Dashboard state={state} setState={setState} />}
       />
-      <Route
+      {/* <Route
         path="/dashboard/overview"
         element={<OverView state={state} setState={setState} />}
-      />
+      /> */}
       {/* <Route
         path="/dashboard/party"
         element={<Party state={state} setState={setState} />}
