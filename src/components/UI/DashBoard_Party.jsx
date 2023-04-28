@@ -173,9 +173,7 @@ const AvailableHeroes = (props) => {
             <div className="hero-image">
               <img src={hero.imgUrl} alt={hero.name} />
             </div>
-            <h2>
-              {hero.elementType} - {hero.role}
-            </h2>
+            <h2>{hero.role}</h2>
             <div className="stats-container">
               <div className="stats-hp">
                 <h3>HP:</h3>

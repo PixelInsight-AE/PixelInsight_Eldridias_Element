@@ -7,11 +7,11 @@
 #Dashboard {
   @include radial-gradient-dark($start-color, $end-color);
   @include flex(center, center, column);
-  width: 100vw;
+  width: 100%;
   #top {
     @include flex(center, center, row);
     width: 100%;
-
+    padding: 1rem;
     .top-left {
       @include flex(center, center, column);
       width: 70%;
@@ -80,42 +80,53 @@
         padding: 0.25rem;
       }
     }
+    #OverViewHub {
+      padding: 1rem;
+      #OverViewDisplay {
+        width: 100%;
+        border-radius: 25px;
+        border: 2px solid rgb(123, 249, 245);
+        box-shadow: 0 0 10px 5px rgba(123, 249, 245, 0.5);
+        padding: 1.5rem;
+      }
+    }
     #available-heros {
       width: 100%;
+      height: 50vh;
+      overflow-y: scroll;
 
       #hero-list {
+        padding: 1rem;
         color: #ffffff;
-        width: 90%;
-        //grid template for mapped heros
+        width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 2rem;
         justify-items: center;
         align-items: center;
-
-        //overflow: scroll;
+        //overflow-y: scroll;
 
         .hero-card {
+          text-align: center;
           color: #ffffff;
-          border: 3px solid red;
-          //padding: 20px;
-          //margin: 10px;
+          border: 2px solid rgb(255, 187, 0);
+          box-shadow: 0 0 10px 5px rgba(255, 187, 0, 0.5);
           border-radius: 25px;
-          width: 200px;
-          height: 400px;
+          width: 250px;
+          height: 425px;
 
           h1 {
+            text-align: center;
             font-size: 2rem;
-            //margin-bottom: 10px;
           }
 
           .hero-image {
-            //margin: 20px 0;
+            text-align: center;
             img {
-              max-width: 150px;
+              max-width: 175px;
               height: auto;
               border-radius: 50%;
-              box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+              box-shadow: 0 0 10px rgba(9, 140, 228, 0.63);
             }
           }
         }
@@ -123,21 +134,12 @@
     }
 
     .stats-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+      @include flex(space-around, center, row);
       width: 100%;
-      //margin: 10px 0;
-      //padding: 10px 0;
-      border-top: 1px solid #ffffff;
-      //font-size: 1rem;
+      border-top: 2px solid rgb(255, 187, 0);
 
       .stats-hp {
         color: green;
-
-        display: flex;
-        flex-direction: column;
       }
 
       .hero-name {

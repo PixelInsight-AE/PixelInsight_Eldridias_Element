@@ -51,7 +51,7 @@ function EldridiasElement() {
     story: storyOne,
     currentStory: 0,
     currentLevel: 0,
-    OverView: 'deck',
+    OverView: 'party',
   });
 
   // ! Like our error said, in V6 we need to nest all Route elements inside of a Routes component.
