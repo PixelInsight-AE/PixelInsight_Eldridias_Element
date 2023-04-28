@@ -1,17 +1,18 @@
-import { controller } from "./controller.js";
+import { controller } from './controller.js';
 
 const computer = {
-  name: "Computer",
+  name: 'Computer',
   isTurn: false,
   monsterGraveyard: [],
   isWaveDefeated: false,
   isBossDefeated: false,
   gameOver: function (hero) {
     if (hero.length <= 1) {
-      console.log("PARTY HAS FALLEN Game Over.");
+      console.log('PARTY HAS FALLEN Game Over.');
     }
   },
   attack: function (hero, monster, party) {
+    console.log('computer attack ran');
     if (monster.health > 0 && hero.health > 0) {
       console.log(
         `${monster.name} attacked ${hero.name} with ${monster.name} for ${monster.attackPower} damage`
@@ -21,7 +22,7 @@ const computer = {
     }
   },
   deathCheck: function (monster, floor) {
-    if (monster.role === "Boss" && monster.health <= 0) {
+    if (monster.role === 'Boss' && monster.health <= 0) {
       this.isBossDefeated = true;
     }
     if (monster.health <= 0) {
@@ -47,7 +48,7 @@ const computer = {
       }
     }
     if (isWaveDefeated) {
-      console.log("WaveDefeated");
+      console.log('WaveDefeated');
       this.resetMonsters(floor);
       this.isWaveDefeated = true;
     }

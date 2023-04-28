@@ -4,7 +4,7 @@ import { NavBar } from './NavBar.jsx';
 import { heroList } from '../../vanillaJsFiles/heros.js';
 import {} from '../../vanillaJsFiles/heros.js';
 // ! SELECT COMPONENTS
-
+import './GameComponent.scss';
 // /**
 //  * ! Hero select components
 //  * ? These components are used to select a hero for each party slot

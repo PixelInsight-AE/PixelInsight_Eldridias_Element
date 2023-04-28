@@ -1,24 +1,22 @@
-import { deck } from "./deck.js";
-import { compareElements } from "./helpers.js";
-import { computer } from "./computerPlayer.js";
+import { deck } from './deck.js';
+import { compareElements } from './helpers.js';
+import { computer } from './computerPlayer.js';
 
 //! PLAYER OBJECT
 const controller = {
-  name: "Arno",
+  name: 'Arno',
   mana: 5,
   isTurn: true,
   canPlayCard: true,
   turnCount: 0,
   playerGraveyard: [],
-  playerUsedCards: [],
-  playingCardsInHand: [],
   effect: [],
-  imgUrl: "https://i.imgur.com/ej7j6r0.jpeg",
+  imgUrl: 'https://i.imgur.com/ej7j6r0.jpeg',
 
   selectCard: function (hero, monster) {
     if (this.canPlayCard === true) {
       console.log(this.playingCardsInHand);
-      let cardToPlay = parseInt(prompt("Select a card to play"));
+      let cardToPlay = parseInt(prompt('Select a card to play'));
       let foundCard = false;
       for (let i = 0; i < this.playingCardsInHand.length; i++) {
         if (cardToPlay === this.playingCardsInHand[i].id) {
@@ -29,7 +27,7 @@ const controller = {
           break;
         }
         if (!foundCard) {
-          console.log("Card not found");
+          console.log('Card not found');
         }
       }
     }
@@ -44,7 +42,7 @@ const controller = {
     }
   },
   death: function (party) {
-    console.log("death function");
+    console.log('death function');
     let isPartyDead = false;
     // check if all party members are dead
     // if all party members are dead, end game
@@ -57,7 +55,7 @@ const controller = {
       }
     }
     if (isPartyDead) {
-      console.log("Game Over");
+      console.log('Game Over');
       this.resetImgUrl(party);
     }
   },
@@ -78,16 +76,16 @@ const controller = {
         console.log(`${monster.name} is already dead`);
       }
     } else {
-      console.log("You cant use this action!");
+      console.log('You cant use this action!');
     }
   },
   endTurn: function (controller, computer, hero, monster, party) {
-    console.log("End turn");
+    console.log('End turn');
     controller.isTurn = false;
     computer.isTurn = true;
     controller.mana += 1;
     controller.turnCount++;
-    this.resetStats(party);
+    //this.resetStats(party);
     computer.computerTurn(hero, monster, party);
   },
   gameOver: function (hero) {
@@ -111,24 +109,26 @@ const controller = {
       computer.deathCheck(hero, monster);
       console.log(player.mana);
     } else {
-      console.log("Not enough mana");
+      console.log('Not enough mana');
     }
     displayCurrentGame(hero, monster);
   },
-  drawCards: function (deck) {
-    if (this.playingCardsInHand.length < 8) {
-      s;
-      this.playingCardsInHand.push(deck.pop());
-      this.playingCardsInHand.push(deck.pop());
+  drawCards: function (playerHand, deck) {
+    console.log('draw cards');
+    if (playerHand.length < 10) {
+      for (let i = 0; i < 2; i++) {
+        let card = deck.pop();
+        playerHand.push(card);
+      }
     } else {
-      console.log("You have too many cards in hand");
+      console.log('You have too many cards in hand');
     }
   },
-  resetStats: function (party) {
-    for (let i = 0; i < party.length; i++) {
-      party[i].canRegularAttack = true;
-    }
-  },
+  // resetStats: function (party) {
+  //   for (let i = 0; i < party.length; i++) {
+  //     party[i].canRegularAttack = true;
+  //   }
+  // },
   resetImgUrl: function (party) {
     for (let i = 0; i < party.length; i++) {
       party[i].imgUrl = party[i].defaultImgUrl;

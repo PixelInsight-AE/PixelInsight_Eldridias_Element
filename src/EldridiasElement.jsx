@@ -12,7 +12,13 @@ import {
   paladin,
 } from './vanillaJsFiles/heros.js';
 import { magicPlayingCards } from './vanillaJsFiles/magicCards.js';
-import { allElementalCards } from './vanillaJsFiles/elementCards.js';
+import {
+  allElementalCards,
+  waterCard,
+  fireCard,
+  airCard,
+  earthCard,
+} from './vanillaJsFiles/elementCards.js';
 import { Home } from './components/UI/Home.jsx';
 import { Dashboard } from './components/UI/DashBoard.jsx';
 import { Party } from './components/UI/DashBoard_Party.jsx';
@@ -29,12 +35,13 @@ import {
 } from './vanillaJsFiles/floors.js';
 import { StoryBoard } from './components/UI/GameComponent_StoryBoard.jsx';
 import { storyOne } from './vanillaJsFiles/storyboard.js';
-//console.log(controller);
+console.log(airCard);
 
 function EldridiasElement() {
   const [state, setState] = useState({
     controller: controller,
     computer: computer,
+    playerHand: [],
     tank: bulwark,
     melee: beastMaster,
     ranged: gunslinger,
@@ -62,23 +69,6 @@ function EldridiasElement() {
         path="/dashboard"
         element={<Dashboard state={state} setState={setState} />}
       />
-      {/* <Route
-        path="/dashboard/overview"
-        element={<OverView state={state} setState={setState} />}
-      /> */}
-      {/* <Route
-        path="/dashboard/party"
-        element={<Party state={state} setState={setState} />}
-      />
-      <Route
-        path="/dashboard/deck"
-        element={<DeckBuilder state={state} setState={setState} />}
-      />
-      <Route
-        path="/dashboard/catalog"
-        element={<Catalog state={state} setState={setState} />}
-      />
-      <Route path="/dashboard/shop" element={<Shop />} /> */}
       <Route
         path="/dashboard/play"
         element={<GameComponent state={state} setState={setState} />}
@@ -92,5 +82,3 @@ function EldridiasElement() {
 }
 
 export default EldridiasElement;
-
-// party and set party hoo
