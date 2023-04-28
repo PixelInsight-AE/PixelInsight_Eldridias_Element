@@ -1,5 +1,5 @@
-import { NavBar } from "./NavBar";
-import { Link } from "react-router-dom";
+import { NavBar } from './NavBar';
+import { Link } from 'react-router-dom';
 
 // ? DeckDisplayCard is a component that displays a single card in the deck
 const DeckDisplayCard = (props) => {
@@ -12,8 +12,8 @@ const DeckDisplayCard = (props) => {
       </div>
       <h3>{card.rarity}</h3>
       <h2>
-        {card.cardLevel} -{" "}
-        <img className="element-icon" src={card.elementIcon} /> -{" "}
+        {card.cardLevel} -{' '}
+        <img className="element-icon" src={card.elementIcon} /> -{' '}
         {card.attackPower}
       </h2>
     </div>
@@ -22,13 +22,12 @@ const DeckDisplayCard = (props) => {
 
 // ? DeckBuilder is a component that displays the entire deck
 const DeckBuilder = (props) => {
-  const { deck } = props;
+  const { state } = props;
   return (
     <div>
-      <NavBar />
       <h1>Deck</h1>
       <div id="deck-grid">
-        {deck.map((card) => (
+        {state.deck.map((card) => (
           <div key={card.id}>
             <DeckDisplayCard card={card} />
           </div>

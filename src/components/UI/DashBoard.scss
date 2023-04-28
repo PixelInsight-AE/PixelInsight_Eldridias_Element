@@ -1,0 +1,148 @@
+@import './home.scss';
+
+* {
+  box-sizing: border-box;
+  // border: 1px solid red;
+}
+#Dashboard {
+  @include radial-gradient-dark($start-color, $end-color);
+  @include flex(center, center, column);
+  width: 100vw;
+  #top {
+    @include flex(center, center, row);
+    width: 100%;
+
+    .top-left {
+      @include flex(center, center, column);
+      width: 70%;
+
+      border: 3px solid lightblue;
+      border-radius: 15px;
+      box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+      #OverviewHeader {
+        @include flex(flex-start, flex-start, column);
+        padding: 1rem;
+        width: 100%;
+
+        h1 {
+          font-size: 2rem;
+          color: lightblue;
+          padding: 1rem;
+        }
+      }
+      #OverviewParty {
+        @include flex(center, center, row);
+
+        background-color: rgba(113, 203, 236, 0.25);
+        width: 100%;
+
+        img {
+          height: 200px;
+          width: 200px;
+          margin: 1rem;
+          border: 5px solid lightblue;
+          box-shadow: 0 0 10px 5px rgba(57, 162, 231, 0.5);
+          border-radius: 50%;
+        }
+
+        button {
+          height: 50px;
+          width: 150px;
+          margin: 1rem;
+          border: 5px solid lightblue;
+          box-shadow: 0 0 10px 5px rgba(57, 162, 231, 0.5);
+          border-radius: 5%;
+        }
+      }
+    }
+    .top-right {
+      width: 30%;
+      #OverViewMap {
+        color: aqua;
+
+        width: 100%;
+      }
+    }
+  }
+  #bottom {
+    width: 100%;
+
+    #OverViewNavBar {
+      @include flex(flex-start, center, row);
+      width: 100%;
+      button {
+        border: 3px solid lightblue;
+        border-radius: 15px;
+        box-shadow: 0 0 10px 5px rgba(123, 249, 245, 0.5);
+        height: 50px;
+        width: 175px;
+        margin: 1rem;
+        padding: 0.25rem;
+      }
+    }
+    #available-heros {
+      width: 100%;
+
+      #hero-list {
+        color: #ffffff;
+        width: 90%;
+        //grid template for mapped heros
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 10px;
+        justify-items: center;
+        align-items: center;
+
+        //overflow: scroll;
+
+        .hero-card {
+          color: #ffffff;
+          border: 3px solid red;
+          //padding: 20px;
+          //margin: 10px;
+          border-radius: 25px;
+          width: 200px;
+          height: 400px;
+
+          h1 {
+            font-size: 2rem;
+            //margin-bottom: 10px;
+          }
+
+          .hero-image {
+            //margin: 20px 0;
+            img {
+              max-width: 150px;
+              height: auto;
+              border-radius: 50%;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
+      }
+    }
+
+    .stats-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      //margin: 10px 0;
+      //padding: 10px 0;
+      border-top: 1px solid #ffffff;
+      //font-size: 1rem;
+
+      .stats-hp {
+        color: green;
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero-name {
+        align-self: center;
+      }
+    }
+  }
+}

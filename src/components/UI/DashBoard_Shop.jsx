@@ -1,16 +1,12 @@
-import { Link } from "react-router-dom";
-import { NavBar } from "./NavBar";
+import { Link } from 'react-router-dom';
+import { NavBar } from './NavBar';
 
-const Shop = (props) => {
+const Shop = ({ state, setState }) => {
   return (
     <div>
-      <NavBar />
       <h1>Shop</h1>
-      <Link to="/dashboard">
-        <button>Back</button>
-      </Link>
+      <h2>UNDER CONSTRUCTION</h2>
     </div>
   );
 };
-
 export { Shop };
