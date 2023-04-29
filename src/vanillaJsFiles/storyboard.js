@@ -129,12 +129,12 @@ const storyOne = [
     content: '',
     image: 'https://i.imgur.com/ZHLh0zg.pnghttps://i.imgur.com/ZHLh0zg.png',
     background: 'https://i.imgur.com/CrcBLo1.jpg',
-    path: '/dashboard/story',
+    path: '/dashboard',
     nameOfSpeaker: 'The Party',
     isReward: false,
     rewards: [],
     storyPath: '',
-    pathIsValid: false,
+    pathIsValid: true,
   },
 ];
 

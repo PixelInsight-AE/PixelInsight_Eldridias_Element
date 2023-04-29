@@ -2,7 +2,7 @@ import {
   magiTheLiar,
   yamiTheDreamer,
   sargarasTheDestroyer,
-} from "./bossCards.js";
+} from './bossCards.js';
 import {
   skeleton,
   orc,
@@ -13,10 +13,10 @@ import {
   blackKnight,
   blackWasp,
   dragon,
-} from "./monsters.js";
+} from './monsters.js';
 const lootBox = [
   {
-    name: "Loot Box",
+    name: 'Loot Box',
     currency: 1000,
   },
 ];

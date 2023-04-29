@@ -49,17 +49,6 @@ const MappedPlayingCards = ({ state, setState }) => {
 };
 
 const TankButton = ({ state, setState, battle, setBattle }) => {
-  const handleKeyPress = (e) => {
-    if (e.key === 'a') {
-      setBattle({ ...battle, targetHero: state.party[0] });
-    }
-  };
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [state.tank]);
   return (
     <div id="TankButton">
       <img src={state.tank.imgUrl} alt="Tank Atk BTN" />
@@ -67,18 +56,6 @@ const TankButton = ({ state, setState, battle, setBattle }) => {
   );
 };
 const MeleeButton = ({ state, setState, battle, setBattle }) => {
-  const handleKeyPress = (e) => {
-    if (e.key === 's') {
-      setBattle({ ...battle, targetHero: state.party[1] });
-    }
-  };
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [state.melee]);
-
   return (
     <div id="MeleeButton">
       <img src={state.melee.imgUrl} alt="Melee Atk BTN" />
@@ -86,18 +63,6 @@ const MeleeButton = ({ state, setState, battle, setBattle }) => {
   );
 };
 const RangedButton = ({ state, setState, battle, setBattle }) => {
-  const handleKeyPress = (e) => {
-    if (e.key === 'd') {
-      setBattle({ ...battle, targetHero: state.party[2] });
-    }
-  };
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [state.ranged]);
-
   return (
     <div id="RangedButton">
       <img src={state.ranged.imgUrl} alt="Ranged Attack BTN" />
@@ -106,7 +71,7 @@ const RangedButton = ({ state, setState, battle, setBattle }) => {
 };
 const HealerButton = ({ state, setState, battle, setBattle }) => {
   const handleKeyPress = (e) => {
-    if (e.key === 'f') {
+    if (e.key === '4') {
       setBattle({ ...battle, targetHero: state.party[3] });
     }
   };
@@ -180,7 +145,93 @@ const ManaTracker = ({ state, setState, battle, setBattle }) => {
 };
 
 const GeneralButtons = ({ state, setState, battle, setBattle }) => {
-  //find the current index of the targetMonster in the floor array
+  const findMonsterIndex = () => {
+    for (let i = 0; i < state.floor.length; i++) {
+      if (state.floor[i] === battle.targetMonster) {
+        console.log('Monster Index: ', i);
+        return i;
+      }
+    }
+  };
+  const changeTargetMonster = () => {
+    if (findMonsterIndex() === state.floor.length - 1) {
+      setBattle({ ...battle, targetMonster: state.floor[0] });
+    } else {
+      setBattle({
+        ...battle,
+        targetMonster: state.floor[findMonsterIndex() + 1],
+      });
+    }
+  };
+  //? function to draw cards on the D button press
+  const handleKeyPress = (e) => {
+    if (e.key === '1') {
+      setBattle({ ...battle, targetHero: state.party[0] });
+    }
+    if (e.key === '2') {
+      setBattle({ ...battle, targetHero: state.party[1] });
+    }
+    if (e.key === '3') {
+      setBattle({ ...battle, targetHero: state.party[2] });
+    }
+    if (e.key === '4') {
+      setBattle({ ...battle, targetHero: state.party[3] });
+    }
+    if (e.key === 'a') {
+      state.controller.attack(
+        battle.targetHero,
+        battle.targetMonster,
+        state.floor
+      );
+      handleWaveChange();
+
+      setBattle({
+        ...battle,
+        targetHeroHealth: battle.targetHero.health,
+        targetMonsterHealth: battle.targetMonster.health,
+      });
+    }
+
+    if (e.key === 'd') {
+      state.controller.drawCards(state.playerHand, state.deck);
+      setState({
+        ...state,
+        playerHand: state.playerHand,
+        deck: state.deck,
+      });
+    }
+    if (e.key === 'e') {
+      state.controller.endTurn(
+        state.controller,
+        state.computer,
+        battle.targetHero,
+        battle.targetMonster,
+        state.party
+      );
+      setBattle({
+        ...battle,
+        targetHeroHealth: battle.targetHero.health,
+        targetMonsterHealth: battle.targetMonster.health,
+      });
+    }
+    if (e.key === 't') {
+      if (state.floor.length > 1) {
+        changeTargetMonster();
+      } else {
+        console.log('Boss is targeted');
+      }
+    }
+  };
+  //? useEffect to add and remove event listener for key press
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [battle]);
+
+  //? function to end turn on the E button press
+
   const progressCheck = () => {
     if (state.currentFloor == state.maxFloor && state.computer.isBossDefeated) {
       setState({
@@ -237,7 +288,6 @@ const GeneralButtons = ({ state, setState, battle, setBattle }) => {
       targetMonsterHealth: battle.targetMonster.health,
       targetHeroHealth: battle.targetHero.health,
     });
-    // setSelectedMonster(selectedMonster.health);
     handleWaveChange();
   };
   return (
