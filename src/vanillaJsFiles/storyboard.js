@@ -101,7 +101,7 @@ const storyOne = [
     image: 'https://i.imgur.com/ZHLh0zg.png',
     content: '',
     background: 'https://i.imgur.com/CrcBLo1.jpg',
-    path: '/dashboard',
+    path: '/dashboard/play',
     nameOfSpeaker: 'Stranger On the Road',
     isReward: false,
     rewards: [],

@@ -52,6 +52,8 @@ const GameComponent = (props) => {
         setState={setState}
         battle={battle}
         setBattle={setBattle}
+        handleHeroClick={handleHeroClick}
+        handleMonsterClick={handleMonsterClick}
       />
     </>
   );

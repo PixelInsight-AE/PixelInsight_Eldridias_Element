@@ -1,9 +1,22 @@
 import { Link } from 'react-router-dom';
 import { floor1 } from '../vanillaJsFiles/floors';
-const PlayerControlls = ({ state, setState, battle, setBattle }) => {
+import { useEffect } from 'react';
+const PlayerControlls = ({
+  state,
+  setState,
+  battle,
+  setBattle,
+  handleHeroClick,
+  handleMonsterClick,
+}) => {
   return (
     <div id="GameControlls">
-      <HeroAttackButtons state={state} setState={setState} />
+      <HeroAttackButtons
+        state={state}
+        setState={setState}
+        battle={battle}
+        setBattle={setBattle}
+      />
       <PlayingCards
         state={state}
         setState={setState}
@@ -36,45 +49,124 @@ const MappedPlayingCards = ({ state, setState }) => {
 };
 
 const TankButton = ({ state, setState, battle, setBattle }) => {
+  const handleKeyPress = (e) => {
+    if (e.key === 'a') {
+      setBattle({ ...battle, targetHero: state.party[0] });
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [state.tank]);
   return (
     <div id="TankButton">
-      <img src="" alt="Tank Atk BTN" />
+      <img src={state.tank.imgUrl} alt="Tank Atk BTN" />
     </div>
   );
 };
-
-const HealerButton = ({ state, setState, battle, setBattle }) => {
-  return (
-    <div id="HealerButton">
-      <img src="" alt="Healer Atk BTN" />
-    </div>
-  );
-};
-
 const MeleeButton = ({ state, setState, battle, setBattle }) => {
+  const handleKeyPress = (e) => {
+    if (e.key === 's') {
+      setBattle({ ...battle, targetHero: state.party[1] });
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [state.melee]);
+
   return (
     <div id="MeleeButton">
-      <img src="" alt="Melee Atk BTN" />
+      <img src={state.melee.imgUrl} alt="Melee Atk BTN" />
     </div>
   );
 };
-
 const RangedButton = ({ state, setState, battle, setBattle }) => {
+  const handleKeyPress = (e) => {
+    if (e.key === 'd') {
+      setBattle({ ...battle, targetHero: state.party[2] });
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [state.ranged]);
+
   return (
     <div id="RangedButton">
-      <img src="" alt="Ranged Attack BTN" />
+      <img src={state.ranged.imgUrl} alt="Ranged Attack BTN" />
+    </div>
+  );
+};
+const HealerButton = ({ state, setState, battle, setBattle }) => {
+  const handleKeyPress = (e) => {
+    if (e.key === 'f') {
+      setBattle({ ...battle, targetHero: state.party[3] });
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [state.healer]);
+
+  return (
+    <div id="HealerButton">
+      <img src={state.healer.imgUrl} alt="Healer Atk BTN" />
     </div>
   );
 };
 
-const HeroAttackButtons = ({ state, setState, battle, setBattle }) => {
+const HeroAttackButtons = ({
+  state,
+  setState,
+  battle,
+  setBattle,
+  handleHeroClick,
+}) => {
   return (
     <div id="HeroAttackButtons">
-      <TankButton state={state} setState={setState} battle={battle} />
-      <MeleeButton state={state} setState={setState} battle={battle} />
-      <RangedButton state={state} setState={setState} battle={battle} />
-      <HealerButton state={state} setState={setState} battle={battle} />
-      <ManaTracker state={state} setState={setState} battle={battle} />
+      <TankButton
+        state={state}
+        setState={setState}
+        battle={battle}
+        setBattle={setBattle}
+        handleHeroClick={handleHeroClick}
+      />
+      <MeleeButton
+        state={state}
+        setState={setState}
+        battle={battle}
+        setBattle={setBattle}
+        handleHeroClick={handleHeroClick}
+      />
+      <RangedButton
+        state={state}
+        setState={setState}
+        battle={battle}
+        setBattle={setBattle}
+        handleHeroClick={handleHeroClick}
+      />
+      <HealerButton
+        state={state}
+        setState={setState}
+        battle={battle}
+        setBattle={setBattle}
+        handleHeroClick={handleHeroClick}
+      />
+      <ManaTracker
+        state={state}
+        setState={setState}
+        battle={battle}
+        setBattle={setBattle}
+      />
     </div>
   );
 };
@@ -88,6 +180,7 @@ const ManaTracker = ({ state, setState, battle, setBattle }) => {
 };
 
 const GeneralButtons = ({ state, setState, battle, setBattle }) => {
+  //find the current index of the targetMonster in the floor array
   const progressCheck = () => {
     if (state.currentFloor == state.maxFloor && state.computer.isBossDefeated) {
       setState({
