@@ -136,6 +136,20 @@ const storyOne = [
     storyPath: '',
     pathIsValid: true,
   },
+  {
+    id: 9,
+    hasViewed: false,
+    chapterTitle: 'The Mysterious Stranger is saved',
+    content: '',
+    image: 'https://i.imgur.com/ZHLh0zg.png',
+    background: 'https://i.imgur.com/CrcBLo1.jpg',
+    path: '/dashboard/play',
+    nameOfSpeaker: 'Stranger On the Road',
+    isReward: false,
+    rewards: [],
+    storyPath: '',
+    pathIsValid: true,
+  },
 ];
 
 // const StoryLine = {

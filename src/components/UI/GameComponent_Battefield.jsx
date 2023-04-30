@@ -1,19 +1,17 @@
-import { ClickableHeros, ClickableMonsters } from "./GameComponent_Clickables";
-import { PartyStats, MonsterStats } from "./GameComponent_Stats";
-import { Link } from "react-router-dom";
-import { floor1, floor2 } from "../../vanillaJsFiles/floors";
+import { ClickableHeros, ClickableMonsters } from './GameComponent_Clickables';
+import { PartyStats, MonsterStats } from './GameComponent_Stats';
+import { Link } from 'react-router-dom';
+import { floor1, floor2 } from '../../vanillaJsFiles/floors';
 
 const VictoryComponent = (props) => {
-  const {    
-    state,
-    setState,
-    battle,
-    setBattle,
-  } = props;
+  const { state, setState, battle, setBattle } = props;
 
   const handleLevelChange = () => {
-    
-    setState({ ...state, currentWave: 0, floor: floor2[state.currentWave] });
+    setState({
+      ...state,
+      currentWave: 0,
+      floor: floor2[state.currentWave],
+    });
 
     state.computer.isBossDefeated = false;
   };
@@ -34,14 +32,8 @@ const VictoryComponent = (props) => {
   );
 };
 
-const DisplayCurrentBattle = (props) =>{ 
-  const {
-    state,
-    setState,
-    battle,
-    setBattle,
-  } = props;
-
+const DisplayCurrentBattle = (props) => {
+  const { state, setState, battle, setBattle } = props;
 
   const victoryMessage = (
     <VictoryComponent
@@ -82,12 +74,16 @@ const Battlefield = (props) => {
     setBattle,
     handleHeroClick,
     handleMonsterClick,
-
   } = props;
   return (
     <>
       <div id="left-container">
-        <PartyStats battle={battle} setBattle={setBattle} state={state} setState={setState} />
+        <PartyStats
+          battle={battle}
+          setBattle={setBattle}
+          state={state}
+          setState={setState}
+        />
       </div>
       <div id="middle-container">
         <div id="message-box">
@@ -96,30 +92,39 @@ const Battlefield = (props) => {
 
         <div id="enemy-battlefield">
           <ClickableMonsters
-            battle={battle} 
+            battle={battle}
             setBattle={setBattle}
-            state={state} 
+            state={state}
             setState={setState}
             handleMonsterClick={handleMonsterClick}
           />
         </div>
         <div id="battle-animation-container">
           <DisplayCurrentBattle
-            battle={battle} 
+            battle={battle}
             setBattle={setBattle}
-            state={state} 
+            state={state}
             setState={setState}
           />
         </div>
         <div id="party-battlefield">
           <ClickableHeros
-          battle={battle} setBattle={setBattle} state={state} setState={setState} handleHeroClick={handleHeroClick} />
+            battle={battle}
+            setBattle={setBattle}
+            state={state}
+            setState={setState}
+            handleHeroClick={handleHeroClick}
+          />
         </div>
       </div>
 
       <div id="right-container">
         <MonsterStats
-        battle={battle} setBattle={setBattle} state={state} setState={setState}  />
+          battle={battle}
+          setBattle={setBattle}
+          state={state}
+          setState={setState}
+        />
       </div>
     </>
   );
