@@ -55,6 +55,7 @@ class Hero {
 class Monster {
   constructor(
     name,
+    id,
     description,
     message,
     elementType,
@@ -73,6 +74,7 @@ class Monster {
     debuffs
   ) {
     this.name = name;
+    this.id = id;
     this.description = description;
     this.message = message;
     this.elementType = elementType;
@@ -162,5 +164,7 @@ class MagicCard {
     this.elementIcon = elementIcon;
   }
 }
+
+
 
 export { Hero, Monster, ElementCard, MagicCard };

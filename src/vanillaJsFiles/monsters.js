@@ -2,6 +2,7 @@ import { Monster } from "./constructor.js";
 const gravestoneIMG = "https://i.imgur.com/jEiDFYT.png";
 const wizard = new Monster(
   "Wizard of the North", //name
+  1, //id
   "A powerful mage that can deal massive damage.", //description
   "It seems I was no match for you... AAArggggzz", //deathMessage
   "Magic", //elementType
@@ -21,6 +22,7 @@ const wizard = new Monster(
 );
 const goblin = new Monster(
   "Goble",
+  2,
   "gobbbbblegoooblbbleeegggoble!",
   "Gobbbbbleeee goooobbbbllle GOB....",
   "Earth",
@@ -40,6 +42,7 @@ const goblin = new Monster(
 );
 const dragon = new Monster(
   "Dragon",
+  3,
   "A powerful dragon that can deal massive damage.",
   "Raaaarrrrrrrrrrrrrrggggg",
   "Fire",
@@ -59,6 +62,7 @@ const dragon = new Monster(
 );
 const skeleton = new Monster(
   "Skeleton",
+  4,
   "A powerful skeleton that can deal massive damage.",
   "",
   "Earth",
@@ -78,6 +82,7 @@ const skeleton = new Monster(
 );
 const orc = new Monster(
   "Orc",
+  5,
   "A powerful orc that can deal massive damage.",
   "",
   "Earth",
@@ -97,6 +102,7 @@ const orc = new Monster(
 );
 const spider = new Monster(
   "Spider",
+  6,
   "A powerful spider that can deal massive damage.",
   "screeches as it dies",
   "Earth",
@@ -116,6 +122,7 @@ const spider = new Monster(
 );
 const slime = new Monster(
   "Slime",
+  7,
   "A powerful slime that can deal massive damage.",
   "Gloooob",
   "Earth",
@@ -135,6 +142,7 @@ const slime = new Monster(
 );
 const blackWasp = new Monster(
   "Black Wasp",
+  8,
   " A powerful wasp that can deal massive damage.",
   "I  am the queen of the wasps!",
   "Earth",
@@ -155,6 +163,7 @@ const blackWasp = new Monster(
 );
 const blackKnight = new Monster(
   "Black Knight",
+  9,
   "You Shall Not Pass!",
   "Tiss a flesh wound!",
   "Earth",

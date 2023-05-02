@@ -7,19 +7,19 @@ import './GameComponent.scss';
 console.log(bulwark.name);
 const GameComponent = (props) => {
   const { state, setState } = props;
+  const [levelManager, setLevelManager] = useState({
+    // boss: bossOne,
+    maxFloor: 1,
+    currentFloor: 1,
+    wave: state.computer.waveGenerator(state.sceneManager, state.difficulty),
+  });
   const [battle, setBattle] = useState({
     targetHero: state.party[0],
-    targetMonster: state.floor[0],
+    targetMonster: levelManager.wave[0],
     heroHealth: state.party[0].health,
-    monsterHealth: state.floor[0].health,
+    monsterHealth: levelManager.wave[0].health,
   });
-  // const [selectedHero, setSelectedHero] = useState(party[0]);
-  // const [selectedMonster, setSelectedMonster] = useState(floor[0]);
-  // const [selectedHerosHp, setSelectedHerosHp] = useState(selectedHero.health);
-  // const [selectedMonstersHp, setSelectedMonstersHp] = useState(
-  //   selectedMonster.health
-  // );
-
+  
   const handleHeroClick = (hero) => {
     setBattle({
       ...battle,
@@ -38,6 +38,8 @@ const GameComponent = (props) => {
     <>
       <div id="game-container">
         <Battlefield
+          levelManager={levelManager}
+          setLevelManager={setLevelManager}
           state={state}
           setState={setState}
           battle={battle}
@@ -48,6 +50,8 @@ const GameComponent = (props) => {
       </div>
 
       <PlayerControlls
+        levelManager={levelManager}
+        setLevelManager={setLevelManager}
         state={state}
         setState={setState}
         battle={battle}

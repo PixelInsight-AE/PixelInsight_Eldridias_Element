@@ -25,13 +25,11 @@ import { Party } from './components/UI/DashBoard_Party.jsx';
 import { DeckBuilder } from './components/UI/DashBoard_Deck.jsx';
 import { GameComponent } from './components/UI/GameComponent.jsx';
 import {
-  waveOne,
-  waveTwo,
-  waveThree,
+  waveGenerator,
+  monsterList,
+  monsterList2,
   bossOne,
   bossTwo,
-  floor1,
-  floor2,
 } from './vanillaJsFiles/floors.js';
 import { StoryBoard } from './components/UI/GameComponent_StoryBoard.jsx';
 import { storyOne } from './vanillaJsFiles/storyboard.js';
@@ -47,11 +45,8 @@ function EldridiasElement() {
     ranged: gunslinger,
     healer: hogarth,
     party: [bulwark, beastMaster, gunslinger, hogarth],
-    boss: bossTwo,
-    currentWave: 0,
-    maxFloor: 1,
-    currentFloor: 1,
-    floor: floor1[0],
+    sceneManager: monsterList,
+    difficulty: 4,
     currency: 500,
     inventory: [],
     deck: [...magicPlayingCards, ...allElementalCards],

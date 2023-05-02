@@ -74,6 +74,8 @@ const Battlefield = (props) => {
     setBattle,
     handleHeroClick,
     handleMonsterClick,
+    levelManager,
+    setLevelManager,
   } = props;
   return (
     <>
@@ -92,6 +94,8 @@ const Battlefield = (props) => {
 
         <div id="enemy-battlefield">
           <ClickableMonsters
+            levelManager={levelManager}
+            setLevelManager={setLevelManager}
             battle={battle}
             setBattle={setBattle}
             state={state}
@@ -101,6 +105,8 @@ const Battlefield = (props) => {
         </div>
         <div id="battle-animation-container">
           <DisplayCurrentBattle
+            levelManager={levelManager}
+            setLevelManager={setLevelManager}
             battle={battle}
             setBattle={setBattle}
             state={state}
@@ -120,6 +126,8 @@ const Battlefield = (props) => {
 
       <div id="right-container">
         <MonsterStats
+          levelManager={levelManager}
+          setLevelManager={setLevelManager}
           battle={battle}
           setBattle={setBattle}
           state={state}

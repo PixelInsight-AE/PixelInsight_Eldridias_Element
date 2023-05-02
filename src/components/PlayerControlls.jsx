@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { floor1 } from '../vanillaJsFiles/floors';
+import { floor1, waveGenerator, monsterList, monsterList2 } from '../vanillaJsFiles/floors';
 import { useEffect } from 'react';
 const PlayerControlls = ({
   state,
@@ -8,6 +8,8 @@ const PlayerControlls = ({
   setBattle,
   handleHeroClick,
   handleMonsterClick,
+  levelManager,
+  setLevelManager,
 }) => {
   return (
     <div id="GameControlls">
@@ -24,6 +26,8 @@ const PlayerControlls = ({
         setBattle={setBattle}
       />
       <GeneralButtons
+        levelManager={levelManager}
+        setLevelManager={setLevelManager}
         state={state}
         setState={setState}
         battle={battle}
@@ -70,18 +74,6 @@ const RangedButton = ({ state, setState, battle, setBattle }) => {
   );
 };
 const HealerButton = ({ state, setState, battle, setBattle }) => {
-  const handleKeyPress = (e) => {
-    if (e.key === '4') {
-      setBattle({ ...battle, targetHero: state.party[3] });
-    }
-  };
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [state.healer]);
-
   return (
     <div id="HealerButton">
       <img src={state.healer.imgUrl} alt="Healer Atk BTN" />
@@ -144,22 +136,22 @@ const ManaTracker = ({ state, setState, battle, setBattle }) => {
   );
 };
 
-const GeneralButtons = ({ state, setState, battle, setBattle }) => {
+const GeneralButtons = ({ state, setState, battle, setBattle, levelManager, setLevelManager }) => {
   const findMonsterIndex = () => {
-    for (let i = 0; i < state.floor.length; i++) {
-      if (state.floor[i] === battle.targetMonster) {
+    for (let i = 0; i < levelManager.wave.length; i++) {
+      if (levelManager.wave[i] === battle.targetMonster) {
         console.log('Monster Index: ', i);
         return i;
       }
     }
   };
   const changeTargetMonster = () => {
-    if (findMonsterIndex() === state.floor.length - 1) {
-      setBattle({ ...battle, targetMonster: state.floor[0] });
+    if (findMonsterIndex() === levelManager.wave.length - 1) {
+      setBattle({ ...battle, targetMonster: levelManager.wave[0] });
     } else {
       setBattle({
         ...battle,
-        targetMonster: state.floor[findMonsterIndex() + 1],
+        targetMonster: levelManager.wave[findMonsterIndex() + 1],
       });
     }
   };
@@ -181,7 +173,7 @@ const GeneralButtons = ({ state, setState, battle, setBattle }) => {
       state.controller.attack(
         battle.targetHero,
         battle.targetMonster,
-        state.floor
+        levelManager.wave,
       );
       handleWaveChange();
 
@@ -215,7 +207,7 @@ const GeneralButtons = ({ state, setState, battle, setBattle }) => {
       });
     }
     if (e.key === 't') {
-      if (state.floor.length > 1) {
+      if (levelManager.wave.length > 1) {
         changeTargetMonster();
       } else {
         console.log('Boss is targeted');
@@ -233,23 +225,27 @@ const GeneralButtons = ({ state, setState, battle, setBattle }) => {
   //? function to end turn on the E button press
 
   const progressCheck = () => {
-    if (state.currentFloor == state.maxFloor && state.computer.isBossDefeated) {
-      setState({
-        ...state,
-        maxFloor: state.maxFloor + 1,
-        currentFloor: state.currentFloor + 1,
+    if (levelManager.currentFloor == levelManager.maxFloor && state.computer.isBossDefeated) {
+      // setState({
+      //   ...state,
+      //   maxFloor: levelManager.maxFloor + 1,
+      //   currentFloor: levelManager.currentFloor + 1,
+      //   currentWave: 0,
+      // });
+      setLevelManager({
+        ...levelManager,
+        maxFloor: levelManager.maxFloor + 1,
+        currentFloor: levelManager.currentFloor + 1,
         currentWave: 0,
       });
     }
   };
   const handleWaveChange = () => {
-    // what happens when boss wave is defeate
-    // what happens when a normal wave is defeated
+    console.log("is wave change running?")
     if (state.computer.isWaveDefeated) {
-      setState({
-        ...state,
-        currentWave: state.currentWave + 1,
-        floor: floor1[state.currentWave + 1],
+      setLevelManager({
+        ...levelManager,
+        wave: state.computer.waveGenerator(state.sceneManager, state.difficulty),
       });
       progressCheck();
       state.computer.isWaveDefeated = false;
@@ -281,7 +277,7 @@ const GeneralButtons = ({ state, setState, battle, setBattle }) => {
     state.controller.attack(
       battle.targetHero,
       battle.targetMonster,
-      state.floor
+      levelManager.wave,
     );
     setBattle({
       ...battle,

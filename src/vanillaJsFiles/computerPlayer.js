@@ -50,12 +50,20 @@ const computer = {
     }
     if (isWaveDefeated) {
       console.log('WaveDefeated');
-      this.resetMonsters(floor);
+      //this.resetMonsters(floor);
       this.isWaveDefeated = true;
     }
   },
   computerTurn: function (hero, monster, party) {
     console.log("=== Computer's Turn ===");
+  },
+  waveGenerator: function (list, amount){
+    let wave = [];
+    for (let i = 0; i < amount; i++) {
+      const monster = { ...list[Math.floor(Math.random() * list.length)], id: i };
+      wave.push(monster);
+    }
+    return wave;
   },
   resetMonsters: function (floor) {
     for (let i = 0; i < floor.length; i++) {

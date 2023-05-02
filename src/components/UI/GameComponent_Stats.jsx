@@ -21,11 +21,11 @@ const PartyStats = (props) => {
 };
 
 const MonsterStats = (props) => {
-  const { state, setState } = props;
+  const { state, setState, levelManager, setLevelManager } = props;
   return (
     <div className="monster-stats-container">
-      {state.floor.map((monster) => (
-        <div className="monster-stats" key={monster.name}>
+      {levelManager.wave.map((monster) => (
+        <div className="monster-stats" key={monster.id}>
           <div className="monster-stats-top">
             <img src={monster.imgUrl} alt="" />
             <h2>{monster.name}</h2>

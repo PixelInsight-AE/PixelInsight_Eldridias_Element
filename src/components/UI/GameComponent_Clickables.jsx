@@ -1,9 +1,9 @@
 const ClickableMonsters = (props) => {
-  const { handleMonsterClick, state, setState } = props;
+  const { handleMonsterClick, state, setState, levelManager, setLevelManager } = props;
   return (
     <div className="battlefield">
-      {state.floor.map((mob) => (
-        <div onClick={() => handleMonsterClick(mob)} key={mob.name}>
+      {levelManager.wave.map((mob) => (
+        <div onClick={() => handleMonsterClick(mob)} key={mob.id}>
           <img src={mob.imgUrl} alt={mob.name} />
         </div>
       ))}
