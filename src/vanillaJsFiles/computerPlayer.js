@@ -6,6 +6,7 @@ const computer = {
   monsterGraveyard: [],
   isWaveDefeated: false,
   isBossDefeated: false,
+  isBoss: false,
   gameOver: function (hero) {
     if (hero.length <= 1) {
       console.log('PARTY HAS FALLEN Game Over.');
@@ -55,7 +56,6 @@ const computer = {
   },
   computerTurn: function (hero, monster, party) {
     console.log("=== Computer's Turn ===");
-    this.attack(hero, monster, party);
   },
   resetMonsters: function (floor) {
     for (let i = 0; i < floor.length; i++) {

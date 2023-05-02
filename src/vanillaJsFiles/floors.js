@@ -2,7 +2,7 @@ import {
   magiTheLiar,
   yamiTheDreamer,
   sargarasTheDestroyer,
-} from "./bossCards.js";
+} from './bossCards.js';
 import {
   skeleton,
   orc,
@@ -13,10 +13,10 @@ import {
   blackKnight,
   blackWasp,
   dragon,
-} from "./monsters.js";
+} from './monsters.js';
 const lootBox = [
   {
-    name: "Loot Box",
+    name: 'Loot Box',
     currency: 1000,
   },
 ];
@@ -26,6 +26,6 @@ const waveTwo = [slime, blackKnight, blackWasp, dragon];
 const waveThree = [dragon, blackKnight, blackWasp, slime];
 const bossOne = [magiTheLiar];
 const bossTwo = [yamiTheDreamer];
-const floor1 = [waveOne, bossOne, lootBox];
+const floor1 = [waveOne, bossOne, [lootBox]];
 const floor2 = [waveTwo, bossTwo, lootBox];
 export { waveOne, waveTwo, waveThree, bossOne, bossTwo, floor1, floor2 };
