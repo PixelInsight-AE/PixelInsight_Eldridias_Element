@@ -3,6 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { PlayerControlls } from './../../PlayerControlls';
 import { Battlefield } from './GameComponent_Battefield';
 import { PartyStats, MonsterStats } from './GameComponent_Stats';
+import {
+  PartyStatusBar,
+  EnemyStatusBar,
+  VictoryMessageLootBox,
+} from './GameComponent_StatusBars';
 import './GameComponent.scss';
 
 const GameComponent = (props) => {
@@ -40,7 +45,9 @@ const GameComponent = (props) => {
   }, [battle.selectedCard]);
   return (
     <div id="GameComponent">
-      <PartyStats state={state} setState={setState} battle={battle} />
+      <div id="party-side">
+        <PartyStats state={state} setState={setState} battle={battle} />
+      </div>
       <Battlefield
         levelManager={levelManager}
         setLevelManager={setLevelManager}
@@ -61,11 +68,13 @@ const GameComponent = (props) => {
         handleHeroClick={handleHeroClick}
         handleMonsterClick={handleMonsterClick}
       />
-      <MonsterStats
-        levelManager={levelManager}
-        setLevelManager={setLevelManager}
-        battle={battle}
-      />
+      <div id="monster-side">
+        <MonsterStats
+          levelManager={levelManager}
+          setLevelManager={setLevelManager}
+          battle={battle}
+        />
+      </div>
     </div>
   );
 };

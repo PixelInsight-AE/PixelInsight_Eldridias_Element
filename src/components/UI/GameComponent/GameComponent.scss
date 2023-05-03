@@ -8,17 +8,27 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
 
 #GameComponent {
   @include flex(column, center, center);
+  #party-side {
+    position: absolute;
+    top: 0;
+    left: 1%;
+  }
+  #monster-side {
+    position: absolute;
+    top: 0;
+    right: 1%;
+  }
   #Battlefield {
     @include flex(row, center, center);
     #left-container {
       img {
-        width: 100px;
+        width: 125px;
         border-radius: 50%;
       }
     }
     #party-battlefield {
       img {
-        width: 100px;
+        width: 125px;
         border-radius: 50%;
       }
     }
@@ -26,13 +36,13 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
     }
     #enemy-battlefield {
       img {
-        width: 100px;
+        width: 125px;
         border-radius: 50%;
       }
     }
     #right-container {
       img {
-        width: 100px;
+        width: 125px;
         border-radius: 50%;
       }
     }
@@ -52,6 +62,7 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
       @include flex(row, center, center);
       img {
         width: 75px;
+        border-radius: 50%;
       }
     }
     #GeneralButtons {

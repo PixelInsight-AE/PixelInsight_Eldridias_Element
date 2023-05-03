@@ -1,9 +1,13 @@
 const ClickableMonsters = (props) => {
-  const { handleMonsterClick, levelManager } = props;
+  const { handleMonsterClick, levelManager, battle, setBattle } = props;
+  //make array of monsters minus the target monster
+  let monsters = levelManager.wave.filter(
+    (monster) => monster.id !== battle.targetMonster.id
+  );
 
   return (
     <div className="battlefield">
-      {levelManager.wave.map((mob) => (
+      {monsters.map((mob) => (
         <div onClick={() => handleMonsterClick(mob)} key={mob.id}>
           <img src={mob.imgUrl} alt={mob.name} />
         </div>

@@ -1,7 +1,7 @@
 import { ClickableHeros, ClickableMonsters } from './GameComponent_Clickables';
 import { PartyStats, MonsterStats } from './GameComponent_Stats';
 import { Link } from 'react-router-dom';
-
+import { PartyStatusBar, EnemyStatusBar } from './GameComponent_StatusBars';
 const VictoryComponent = (props) => {
   const { state, setState } = props;
 
@@ -84,6 +84,7 @@ const Battlefield = (props) => {
   return (
     <div id="Battlefield">
       <div id="left-container">
+        <PartyStatusBar state={state} />
         <ClickableHeros battle={battle} setBattle={setBattle} state={state} />
       </div>
       <div id="party-battlefield">
@@ -98,9 +99,12 @@ const Battlefield = (props) => {
         <BattleMonster battle={battle} />
       </div>
       <div id="right-container">
+        <EnemyStatusBar battle={battle} />
         <ClickableMonsters
           levelManager={levelManager}
           handleMonsterClick={handleMonsterClick}
+          battle={battle}
+          setBattle={setBattle}
         />
       </div>
     </div>
