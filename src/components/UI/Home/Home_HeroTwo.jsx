@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import "./Home_HeroTwo.scss";
+import { motion } from 'framer-motion';
+import './Home_HeroTwo.scss';
 
 const HeroTwo = () => {
   return (

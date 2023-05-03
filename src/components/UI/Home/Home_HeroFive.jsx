@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { monsterList } from "../../vanillaJsFiles/monsters.js";
-import "./Home_HeroFive.scss";
+import { motion } from 'framer-motion';
+import { monsterList } from '../../../vanillaJsFiles/monsters.js';
+import './Home_HeroFive.scss';
 
 const HeroFive = (props) => {
   return (
@@ -20,9 +20,9 @@ const HeroFive = (props) => {
               background: `url(${monster.imgUrl}) center/cover`,
               zIndex: monsterList.length - index,
               left: `${(index / (monsterList.length - 1)) * 100}%`,
-              transformOrigin: "center center",
-              transformStyle: "preserve-3d",
-              translateX: "-50%",
+              transformOrigin: 'center center',
+              transformStyle: 'preserve-3d',
+              translateX: '-50%',
             }}
           >
             <motion.h2

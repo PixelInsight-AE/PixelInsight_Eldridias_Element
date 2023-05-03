@@ -1,5 +1,5 @@
-import Dashboard from './DashBoard';
-import GameComponent from './GameComponent';
-import StoryBoard from './GameComponent_StoryBoard';
-import Home from './Home';
-export { Dashboard, GameComponent, StoryBoard, Home };
+import { GameComponent } from './GameComponent/GameComponent';
+import { StoryBoard } from './GameComponent/GameComponent_StoryBoard';
+import { Home } from './Home/Home';
+import { Dashboard } from './Dashboard/DashBoard';
+export { GameComponent, StoryBoard, Home, Dashboard };

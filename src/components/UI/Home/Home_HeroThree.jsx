@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { heroList } from "../../vanillaJsFiles/heros.js";
-import "./Home_HeroThree.scss";
+import { motion } from 'framer-motion';
+import { heroList } from '../../../vanillaJsFiles/heros.js';
+import './Home_HeroThree.scss';
 
 const HeroThree = (props) => {
   return (
@@ -28,9 +28,9 @@ const HeroThree = (props) => {
               background: `url(${hero.imgUrl}) center/cover`,
               zIndex: heroList.length - index,
               left: `${(index / (heroList.length - 1)) * 100}%`,
-              transformOrigin: "center center",
-              transformStyle: "preserve-3d",
-              translateX: "-50%",
+              transformOrigin: 'center center',
+              transformStyle: 'preserve-3d',
+              translateX: '-50%',
             }}
           >
             <motion.h2

@@ -1,6 +1,6 @@
-@import "../../styleSheets/_variables.scss";
-@import "../../styleSheets/_mixins.scss";
-@import "./Home.scss";
+@import '../../../styleSheets/_variables.scss';
+@import '../../../styleSheets/_mixins.scss';
+@import './Home.scss';
 
 #heroOne {
   @include flex(center, center, column);
@@ -15,7 +15,7 @@
     padding: $padding-6;
 
     h2 {
-      font-family: "Lovers Quarrel", cursive;
+      font-family: 'Lovers Quarrel', cursive;
       color: lightblue;
       font-size: 5rem;
       margin-bottom: 1rem;

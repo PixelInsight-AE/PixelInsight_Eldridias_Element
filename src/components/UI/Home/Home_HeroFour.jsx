@@ -1,12 +1,12 @@
-import { motion } from "framer-motion";
-import { heroList } from "../../vanillaJsFiles/heros.js";
+import { motion } from 'framer-motion';
+import { heroList } from '../../../vanillaJsFiles/heros.js';
 import {
   skeleton,
   goblin,
   slime,
   wizard,
-} from "../../vanillaJsFiles/monsters.js";
-import "./Home_HeroFour.scss";
+} from '../../../vanillaJsFiles/monsters.js';
+import './Home_HeroFour.scss';
 
 const HeroFour = (props) => {
   return (

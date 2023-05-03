@@ -1,6 +1,6 @@
 import { deck } from './deck.js';
 import { compareElements } from './helpers.js';
-import { computer } from './computerPlayer.js';
+import { computer } from './computer.js';
 
 //! PLAYER OBJECT
 const controller = {

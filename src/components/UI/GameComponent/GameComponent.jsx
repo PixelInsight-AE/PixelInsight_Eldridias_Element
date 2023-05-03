@@ -1,6 +1,6 @@
 // import bootstrap oly to this file
 import React, { useEffect, useState } from 'react';
-import { PlayerControlls } from '../PlayerControlls';
+import { PlayerControlls } from './../../PlayerControlls';
 import { Battlefield } from './GameComponent_Battefield';
 import './GameComponent.scss';
 

@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import "./Home_HeroOne.scss";
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import './Home_HeroOne.scss';
 
 const HeroOne = (props) => {
   return (
@@ -15,14 +15,14 @@ const HeroOne = (props) => {
         <motion.h2
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 2, delay: 0.25, ease: "easeInOut" }}
+          transition={{ duration: 2, delay: 0.25, ease: 'easeInOut' }}
         >
           Eldridia's Element
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 2, delay: 1.5, ease: "easeInOut" }}
+          transition={{ duration: 2, delay: 1.5, ease: 'easeInOut' }}
         >
           Enter a world of magic and adventure, where you can collect and trade
           powerful cards featuring epic heroes and fearsome monsters.
@@ -33,7 +33,7 @@ const HeroOne = (props) => {
             initial={{ scale: 1, x: -50, opacity: 0 }}
             animate={{ scale: 1, x: 0, opacity: 1 }}
             transition={{
-              ease: "easeInOut",
+              ease: 'easeInOut',
               delay: 2,
               duration: 1,
             }}
@@ -42,12 +42,12 @@ const HeroOne = (props) => {
               initial={{
                 scale: 1,
                 y: 0,
-                backgroundColor: "white",
+                backgroundColor: 'white',
               }}
               whileHover={{
                 scale: 1.1,
                 y: -10,
-                backgroundColor: "pink",
+                backgroundColor: 'pink',
                 duration: 0.5,
               }}
             >

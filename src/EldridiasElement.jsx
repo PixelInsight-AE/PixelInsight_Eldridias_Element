@@ -1,22 +1,5 @@
 import { useState, useRef } from 'react';
 import { Routes, Route } from 'react-router-dom';
-//import { controller } from './vanillaJsFiles/controller.js';
-//import { computer } from './vanillaJsFiles/computerPlayer.js';
-//import {
-//   bulwark,
-//   beastMaster,
-//   hogarth,
-//   gunslinger,
-// } from './vanillaJsFiles/heros.js';
-//import { magicPlayingCards } from './vanillaJsFiles/magicCards.js';
-//import { allElementalCards } from './vanillaJsFiles/elementCards.js';
-//import { monsterList } from './vanillaJsFiles/floors.js';
-//import all from index.js
-//import { storyOne } from './vanillaJsFiles/storyboard.js';
-// import { Home } from './components/UI/Home.jsx';
-// import { Dashboard } from './components/UI/DashBoard.jsx';
-// import { GameComponent } from './components/UI/GameComponent.jsx';
-// import { StoryBoard } from './components/UI/GameComponent_StoryBoard.jsx';
 import {
   Dashboard,
   GameComponent,
