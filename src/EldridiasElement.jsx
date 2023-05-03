@@ -1,42 +1,62 @@
 import { useState, useRef } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { controller } from './vanillaJsFiles/controller.js';
-import { computer } from './vanillaJsFiles/computerPlayer.js';
+//import { controller } from './vanillaJsFiles/controller.js';
+//import { computer } from './vanillaJsFiles/computerPlayer.js';
+//import {
+//   bulwark,
+//   beastMaster,
+//   hogarth,
+//   gunslinger,
+// } from './vanillaJsFiles/heros.js';
+//import { magicPlayingCards } from './vanillaJsFiles/magicCards.js';
+//import { allElementalCards } from './vanillaJsFiles/elementCards.js';
+//import { monsterList } from './vanillaJsFiles/floors.js';
+//import all from index.js
+//import { storyOne } from './vanillaJsFiles/storyboard.js';
+// import { Home } from './components/UI/Home.jsx';
+// import { Dashboard } from './components/UI/DashBoard.jsx';
+// import { GameComponent } from './components/UI/GameComponent.jsx';
+// import { StoryBoard } from './components/UI/GameComponent_StoryBoard.jsx';
 import {
-  bulwark,
-  sorceress,
-  shadow,
-  beastMaster,
-  hogarth,
-  gunslinger,
-  paladin,
-} from './vanillaJsFiles/heros.js';
-import { magicPlayingCards } from './vanillaJsFiles/magicCards.js';
+  Dashboard,
+  GameComponent,
+  StoryBoard,
+  Home,
+} from './components/UI/index.js';
 import {
+  magiTheLiar,
+  yamiTheDreamer,
+  sargarasTheDestroyer,
+  computer,
+  controller,
+  Hero,
+  Monster,
+  ElementCard,
+  MagicCard,
   allElementalCards,
-  waterCard,
-  fireCard,
-  airCard,
-  earthCard,
-} from './vanillaJsFiles/elementCards.js';
-import { Home } from './components/UI/Home.jsx';
-import { Dashboard } from './components/UI/DashBoard.jsx';
-import { Party } from './components/UI/DashBoard_Party.jsx';
-import { DeckBuilder } from './components/UI/DashBoard_Deck.jsx';
-import { GameComponent } from './components/UI/GameComponent.jsx';
-import {
-  waveGenerator,
+  magicPlayingCards,
   monsterList,
   monsterList2,
-  bossOne,
-  bossTwo,
-} from './vanillaJsFiles/floors.js';
-import { StoryBoard } from './components/UI/GameComponent_StoryBoard.jsx';
-import { storyOne } from './vanillaJsFiles/storyboard.js';
-console.log(airCard);
+  deck,
+  heroList,
+  bulwark,
+  hogarth,
+  beastMaster,
+  sorceress,
+  druidess,
+  gunslinger,
+  paladin,
+  seer,
+  shadow,
+  storm,
+  nightshade,
+  storyOne,
+  sceneManager,
+} from './vanillaJsFiles/index.js';
 
 function EldridiasElement() {
   const [state, setState] = useState({
+    OverView: 'party',
     controller: controller,
     computer: computer,
     playerHand: [],
@@ -45,6 +65,7 @@ function EldridiasElement() {
     ranged: gunslinger,
     healer: hogarth,
     party: [bulwark, beastMaster, gunslinger, hogarth],
+    //! will replace monsterList with sceneManager(), which will be a switch case
     sceneManager: monsterList,
     difficulty: 4,
     currency: 500,
@@ -52,8 +73,6 @@ function EldridiasElement() {
     deck: [...magicPlayingCards, ...allElementalCards],
     story: storyOne,
     currentStory: 0,
-    currentLevel: 0,
-    OverView: 'party',
   });
 
   // ! Like our error said, in V6 we need to nest all Route elements inside of a Routes component.

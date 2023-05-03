@@ -1,16 +1,15 @@
 import { ClickableHeros, ClickableMonsters } from './GameComponent_Clickables';
 import { PartyStats, MonsterStats } from './GameComponent_Stats';
 import { Link } from 'react-router-dom';
-import { floor1, floor2 } from '../../vanillaJsFiles/floors';
 
 const VictoryComponent = (props) => {
-  const { state, setState, battle, setBattle } = props;
+  const { state, setState } = props;
 
   const handleLevelChange = () => {
     setState({
       ...state,
       currentWave: 0,
-      floor: floor2[state.currentWave],
+      floor: state.computer.waveGenerator(state.sceneManager, state.difficulty),
     });
 
     state.computer.isBossDefeated = false;

@@ -57,10 +57,13 @@ const computer = {
   computerTurn: function (hero, monster, party) {
     console.log("=== Computer's Turn ===");
   },
-  waveGenerator: function (list, amount){
+  waveGenerator: function (list, amount) {
     let wave = [];
     for (let i = 0; i < amount; i++) {
-      const monster = { ...list[Math.floor(Math.random() * list.length)], id: i };
+      const monster = {
+        ...list[Math.floor(Math.random() * list.length)],
+        id: i,
+      };
       wave.push(monster);
     }
     return wave;

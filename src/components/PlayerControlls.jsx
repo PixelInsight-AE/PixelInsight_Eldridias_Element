@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { floor1, waveGenerator, monsterList, monsterList2 } from '../vanillaJsFiles/floors';
+
 import { useEffect } from 'react';
 const PlayerControlls = ({
   state,
@@ -128,7 +128,7 @@ const HeroAttackButtons = ({
   );
 };
 
-const ManaTracker = ({ state, setState, battle, setBattle }) => {
+const ManaTracker = ({ state }) => {
   return (
     <div id="ManaTracker">
       <h1>Mana: {state.controller.mana}</h1>
@@ -136,7 +136,14 @@ const ManaTracker = ({ state, setState, battle, setBattle }) => {
   );
 };
 
-const GeneralButtons = ({ state, setState, battle, setBattle, levelManager, setLevelManager }) => {
+const GeneralButtons = ({
+  state,
+  setState,
+  battle,
+  setBattle,
+  levelManager,
+  setLevelManager,
+}) => {
   const findMonsterIndex = () => {
     for (let i = 0; i < levelManager.wave.length; i++) {
       if (levelManager.wave[i] === battle.targetMonster) {
@@ -155,7 +162,7 @@ const GeneralButtons = ({ state, setState, battle, setBattle, levelManager, setL
       });
     }
   };
-  //? function to draw cards on the D button press
+
   const handleKeyPress = (e) => {
     if (e.key === '1') {
       setBattle({ ...battle, targetHero: state.party[0] });
@@ -173,7 +180,7 @@ const GeneralButtons = ({ state, setState, battle, setBattle, levelManager, setL
       state.controller.attack(
         battle.targetHero,
         battle.targetMonster,
-        levelManager.wave,
+        levelManager.wave
       );
       handleWaveChange();
 
@@ -183,7 +190,6 @@ const GeneralButtons = ({ state, setState, battle, setBattle, levelManager, setL
         targetMonsterHealth: battle.targetMonster.health,
       });
     }
-
     if (e.key === 'd') {
       state.controller.drawCards(state.playerHand, state.deck);
       setState({
@@ -214,6 +220,7 @@ const GeneralButtons = ({ state, setState, battle, setBattle, levelManager, setL
       }
     }
   };
+
   //? useEffect to add and remove event listener for key press
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
@@ -222,16 +229,11 @@ const GeneralButtons = ({ state, setState, battle, setBattle, levelManager, setL
     };
   }, [battle]);
 
-  //? function to end turn on the E button press
-
   const progressCheck = () => {
-    if (levelManager.currentFloor == levelManager.maxFloor && state.computer.isBossDefeated) {
-      // setState({
-      //   ...state,
-      //   maxFloor: levelManager.maxFloor + 1,
-      //   currentFloor: levelManager.currentFloor + 1,
-      //   currentWave: 0,
-      // });
+    if (
+      levelManager.currentFloor == levelManager.maxFloor &&
+      state.computer.isBossDefeated
+    ) {
       setLevelManager({
         ...levelManager,
         maxFloor: levelManager.maxFloor + 1,
@@ -241,11 +243,14 @@ const GeneralButtons = ({ state, setState, battle, setBattle, levelManager, setL
     }
   };
   const handleWaveChange = () => {
-    console.log("is wave change running?")
+    console.log('is wave change running?');
     if (state.computer.isWaveDefeated) {
       setLevelManager({
         ...levelManager,
-        wave: state.computer.waveGenerator(state.sceneManager, state.difficulty),
+        wave: state.computer.waveGenerator(
+          state.sceneManager,
+          state.difficulty
+        ),
       });
       progressCheck();
       state.computer.isWaveDefeated = false;
@@ -277,7 +282,7 @@ const GeneralButtons = ({ state, setState, battle, setBattle, levelManager, setL
     state.controller.attack(
       battle.targetHero,
       battle.targetMonster,
-      levelManager.wave,
+      levelManager.wave
     );
     setBattle({
       ...battle,
@@ -295,7 +300,7 @@ const GeneralButtons = ({ state, setState, battle, setBattle, levelManager, setL
   );
 };
 
-const PlayingCards = ({ setState, setBattle, battle, state }) => {
+const PlayingCards = ({ setState, state }) => {
   console.log(state.playerHand);
   return (
     <div id="PlayingCards">

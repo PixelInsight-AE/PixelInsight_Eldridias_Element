@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { PlayerControlls } from '../PlayerControlls';
 import { Battlefield } from './GameComponent_Battefield';
-import { bulwark } from '../../vanillaJsFiles/heros.js';
 import './GameComponent.scss';
-console.log(bulwark.name);
+
 const GameComponent = (props) => {
   const { state, setState } = props;
   const [levelManager, setLevelManager] = useState({
-    // boss: bossOne,
+    boss: 'blankfornow',
+    currentLevel: 1,
     maxFloor: 1,
     currentFloor: 1,
     wave: state.computer.waveGenerator(state.sceneManager, state.difficulty),
@@ -19,7 +19,7 @@ const GameComponent = (props) => {
     heroHealth: state.party[0].health,
     monsterHealth: levelManager.wave[0].health,
   });
-  
+
   const handleHeroClick = (hero) => {
     setBattle({
       ...battle,

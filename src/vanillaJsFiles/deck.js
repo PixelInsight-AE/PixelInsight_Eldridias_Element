@@ -1,5 +1,5 @@
-import { allElementalCards } from "./elementCards.js";
-import { magicPlayingCards } from "./magicCards.js";
+import { allElementalCards } from './elementCards.js';
+import { magicPlayingCards } from './magicCards.js';
 
 const createDeck = () => {
   const deck = [];
@@ -18,7 +18,6 @@ const shuffleDeck = (deck) => {
   }
 };
 
-const deck = createDeck();
-shuffleDeck(deck);
+const deck = [...allElementalCards, ...magicPlayingCards];
 
 export { deck };
