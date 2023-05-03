@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import { earthQuakeCard } from '../vanillaJsFiles/elementCards';
 const PlayingCards = ({ setState, state }) => {
   return (
     <div id="PlayingCards">
@@ -180,10 +180,19 @@ const GeneralButtons = ({
       setBattle({ ...battle, targetHero: state.party[0] });
     }
     if (e.key === '1' && e.altKey) {
+      e.preventDefault();
       if (levelManager.wave[0]) {
         setBattle({ ...battle, targetMonster: levelManager.wave[0] });
       } else {
         console.log('No Monsters Left');
+      }
+    }
+    if (e.key === '1' && e.ctrlKey) {
+      e.preventDefault();
+      if (state.playerHand.length) {
+        setBattle({ ...battle, selectedCard: state.playerHand[0] });
+      } else {
+        console.log('No Cards in hand');
       }
     }
     if (e.key === '2') {
@@ -196,6 +205,14 @@ const GeneralButtons = ({
         console.log('No Monsters Left');
       }
     }
+    if (e.key === '2' && e.ctrlKey) {
+      e.preventDefault();
+      if (state.playerHand[1]) {
+        setBattle({ ...battle, selectedCard: state.playerHand[1] });
+      } else {
+        console.log('No Cards in hand');
+      }
+    }
     if (e.key === '3') {
       setBattle({ ...battle, targetHero: state.party[2] });
     }
@@ -206,14 +223,31 @@ const GeneralButtons = ({
         console.log('No Monsters Left');
       }
     }
+    if (e.key === '3' && e.ctrlKey) {
+      e.preventDefault();
+      if (state.playerHand[2]) {
+        setBattle({ ...battle, selectedCard: state.playerHand[2] });
+      } else {
+        console.log('No Cards in hand');
+      }
+    }
     if (e.key === '4') {
       setBattle({ ...battle, targetHero: state.party[3] });
     }
     if (e.key === '4' && e.altKey) {
+      e.preventDefault();
       if (levelManager.wave[3]) {
         setBattle({ ...battle, targetMonster: levelManager.wave[3] });
       } else {
         console.log('No Monsters Left');
+      }
+    }
+    if (e.key === '4' && e.ctrlKey) {
+      e.preventDefault();
+      if (state.playerHand[3]) {
+        setBattle({ ...battle, selectedCard: state.playerHand[3] });
+      } else {
+        console.log('No Cards in hand');
       }
     }
     if (e.key === '5' && e.altKey) {
@@ -223,11 +257,28 @@ const GeneralButtons = ({
         console.log('No Monsters Left');
       }
     }
+    if (e.key === '5' && e.ctrlKey) {
+      e.preventDefault();
+      if (state.playerHand[4]) {
+        setBattle({ ...battle, selectedCard: state.playerHand[4] });
+      } else {
+        console.log('No Cards in hand');
+        console.log(battle.selectedCard);
+      }
+    }
     if (e.key === '6' && e.altKey) {
       if (levelManager.wave[5]) {
         setBattle({ ...battle, targetMonster: levelManager.wave[5] });
       } else {
         console.log('No Monsters Left');
+      }
+    }
+    if (e.key === '6' && e.ctrlKey) {
+      e.preventDefault();
+      if (state.playerHand[5]) {
+        setBattle({ ...battle, selectedCard: state.playerHand[5] });
+      } else {
+        console.log('No Cards in hand');
       }
     }
     if (e.key === '7' && e.altKey) {
@@ -237,6 +288,14 @@ const GeneralButtons = ({
         console.log('No Monsters Left');
       }
     }
+    if (e.key === '7' && e.ctrlKey) {
+      e.preventDefault();
+      if (state.playerHand[6]) {
+        setBattle({ ...battle, selectedCard: state.playerHand[6] });
+      } else {
+        console.log('No Cards in hand');
+      }
+    }
     if (e.key === '8' && e.altKey) {
       if (levelManager.wave[7]) {
         setBattle({ ...battle, targetMonster: levelManager.wave[7] });
@@ -244,26 +303,76 @@ const GeneralButtons = ({
         console.log('No Monsters Left');
       }
     }
+    if (e.key === '8' && e.ctrlKey) {
+      e.preventDefault();
+      if (state.playerHand[7]) {
+        setBattle({ ...battle, selectedCard: state.playerHand[7] });
+      } else {
+        console.log('No Cards in hand');
+      }
+    }
     if (e.key === '9' && e.altKey) {
+      e.preventDefault();
       if (levelManager.wave[8]) {
         setBattle({ ...battle, targetMonster: levelManager.wave[8] });
       } else {
         console.log('No Monsters Left');
       }
     }
+    if (e.key === '9' && e.ctrlKey) {
+      e.preventDefault();
+      if (state.playerHand[8]) {
+        setBattle({ ...battle, selectedCard: state.playerHand[8] });
+      } else {
+        console.log('No Cards in hand');
+      }
+    }
     if (e.key === '0' && e.altKey) {
+      e.preventDefault();
       if (levelManager.wave[9]) {
         setBattle({ ...battle, targetMonster: levelManager.wave[9] });
       } else {
         console.log('No Monsters Left');
       }
     }
+    if (e.key === '0' && e.ctrlKey) {
+      e.preventDefault();
+      if (state.playerHand[9]) {
+        setBattle({ ...battle, selectedCard: null });
+      } else {
+        console.log('No Cards in hand');
+      }
+    }
+    if (e.key === 'h') {
+      console.log('h pressed');
+      battle.selectedCard.effect();
+    }
     if (e.key === 'a') {
-      state.controller.attack(
-        battle.targetHero,
-        battle.targetMonster,
-        levelManager.wave
-      );
+      const manaCost = battle.selectedCard.manaCost;
+      const mana = state.controller.mana;
+      if (battle.selectedCard) {
+        if (mana >= manaCost) {
+          battle.selectedCard.effect(
+            battle.targetHero,
+            battle.targetMonster,
+            state.computer,
+            levelManager.wave
+          );
+          let manaDrain = battle.selectedCard.manaCost;
+          let currentMana = state.controller.mana - manaDrain;
+          console.log(currentMana, manaDrain, state.controller.mana);
+          state.controller.mana = currentMana;
+        } else {
+          console.log('Not enough mana');
+        }
+      } else {
+        state.controller.attack(
+          battle.targetHero,
+          battle.targetMonster,
+          levelManager.wave
+        );
+      }
+
       handleWaveChange();
 
       setBattle({

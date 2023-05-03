@@ -14,6 +14,7 @@ const GameComponent = (props) => {
     wave: state.computer.waveGenerator(state.sceneManager, state.difficulty),
   });
   const [battle, setBattle] = useState({
+    selectedCard: null,
     targetHero: state.party[0],
     targetMonster: levelManager.wave[0],
     heroHealth: state.party[0].health,
@@ -33,7 +34,9 @@ const GameComponent = (props) => {
       targetMonster: monster,
     });
   };
-
+  useEffect(() => {
+    console.log(battle.selectedCard);
+  }, [battle.selectedCard]);
   return (
     <>
       <div id="game-container">
