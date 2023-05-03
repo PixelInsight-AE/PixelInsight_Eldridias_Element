@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { earthQuakeCard } from '../vanillaJsFiles/elementCards';
 const PlayingCards = ({ setState, state }) => {
   return (
-    <div id="PlayingCards">
+    <div className="playing-cards">
       {state.playerHand.length ? (
         <MappedPlayingCards state={state} setState={setState} />
       ) : (
@@ -32,34 +32,35 @@ const PlayerControlls = ({
   setState,
   battle,
   setBattle,
-  handleHeroClick,
+
   handleMonsterClick,
   levelManager,
   setLevelManager,
 }) => {
   return (
-    <div id="GameControlls">
+    <div id="PlayerControlls">
       <HeroAttackButtons
-        handleHeroClick={handleHeroClick}
         state={state}
         setState={setState}
         battle={battle}
         setBattle={setBattle}
       />
-      <PlayingCards
-        state={state}
-        setState={setState}
-        battle={battle}
-        setBattle={setBattle}
-      />
-      <GeneralButtons
-        levelManager={levelManager}
-        setLevelManager={setLevelManager}
-        state={state}
-        setState={setState}
-        battle={battle}
-        setBattle={setBattle}
-      />
+      <div id="clickable-controls">
+        <PlayingCards
+          state={state}
+          setState={setState}
+          battle={battle}
+          setBattle={setBattle}
+        />
+        <GeneralButtons
+          levelManager={levelManager}
+          setLevelManager={setLevelManager}
+          state={state}
+          setState={setState}
+          battle={battle}
+          setBattle={setBattle}
+        />
+      </div>
     </div>
   );
 };
@@ -337,20 +338,16 @@ const GeneralButtons = ({
     }
     if (e.key === '0' && e.ctrlKey) {
       e.preventDefault();
-      if (state.playerHand[9]) {
-        setBattle({ ...battle, selectedCard: null });
-      } else {
-        console.log('No Cards in hand');
-      }
+      setBattle({ ...battle, selectedCard: null });
     }
     if (e.key === 'h') {
       console.log('h pressed');
       battle.selectedCard.effect();
     }
     if (e.key === 'a') {
-      const manaCost = battle.selectedCard.manaCost;
       const mana = state.controller.mana;
-      if (battle.selectedCard) {
+      if (battle.selectedCard && battle.selectedCard.manaCost) {
+        const manaCost = battle.selectedCard.manaCost;
         if (mana >= manaCost) {
           battle.selectedCard.effect(
             battle.targetHero,
@@ -390,18 +387,7 @@ const GeneralButtons = ({
       });
     }
     if (e.key === 'e') {
-      state.controller.endTurn(
-        state.controller,
-        state.computer,
-        battle.targetHero,
-        battle.targetMonster,
-        state.party
-      );
-      setBattle({
-        ...battle,
-        targetHeroHealth: battle.targetHero.health,
-        targetMonsterHealth: battle.targetMonster.health,
-      });
+      handleEndTurn();
     }
     if (e.key === 't') {
       if (levelManager.wave.length > 1) {
@@ -463,6 +449,11 @@ const GeneralButtons = ({
       battle.targetMonster,
       state.party
     );
+    state.computer.attack(
+      battle.targetHero,
+      battle.targetMonster,
+      levelManager.wave
+    );
     setBattle({
       ...battle,
       targetHeroHealth: battle.targetHero.health,
@@ -480,7 +471,7 @@ const GeneralButtons = ({
       targetMonsterHealth: battle.targetMonster.health,
       targetHeroHealth: battle.targetHero.health,
     });
-    234;
+
     handleWaveChange();
   };
   return (

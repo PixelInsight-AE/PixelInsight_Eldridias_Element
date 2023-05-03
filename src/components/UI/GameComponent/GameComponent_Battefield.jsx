@@ -30,51 +30,43 @@ const VictoryComponent = (props) => {
   );
 };
 
-const BattleMonster = (props) => {
-  const { battle, setBattle, state, setState } = props;
+const VictoryMessageLootBox = (props) => {
+  const { state, setState } = props;
+
+  const victoryMessage = <VictoryComponent state={state} setState={setState} />;
+
   return (
-    <div className="battle-monster">
-      <h1>{battle.targetMonster.name}</h1>
-      <h2>{battle.targetMonster.health}</h2>
-      <img src={battle.targetMonster.imgUrl} alt="" />
+    <div className="battlefield">
+      <div className="battle-animation">
+        {state.computer.isBossDefeated ? victoryMessage : <h1>VS</h1>}
+      </div>
+      <div id="LootBox">
+        {state.story[state.currentStory].isReward ? <h2>lootbox</h2> : null}
+      </div>
     </div>
   );
 };
 
-const DisplayCurrentBattle = (props) => {
-  const { state, setState, battle, setBattle } = props;
-  const loadingMessage = <h1>Select First Target</h1>;
-  const victoryMessage = (
-    <VictoryComponent
-      state={state}
-      setState={setState}
-      battle={battle}
-      setBattle={setBattle}
-    />
-  );
-
+const BattleHero = (props) => {
+  const { battle, setBattle, state, setState } = props;
+  const handleTankClick = () => {
+    setBattle({
+      ...battle,
+      targetHero: state.party[0],
+    });
+  };
   return (
-    <div className="battlefield">
-      <div className="battle-hero">
-        <h1></h1>
-        <h1>{battle.targetHero.name}</h1>
-        <h2>{battle.targetHero.health}</h2>
-        <img src={battle.targetHero.imgUrl} alt="" />
-      </div>
+    <div onClick={handleTankClick} id="BattleHero">
+      <img src={state.tank.imgUrl} alt="" />
+    </div>
+  );
+};
 
-      <div className="battle-animation">
-        {state.computer.isBossDefeated ? victoryMessage : <h1>VS</h1>}
-      </div>
-      {battle.targetMonster ? (
-        <BattleMonster
-          battle={battle}
-          setBattle={setBattle}
-          state={state}
-          setState={setState}
-        />
-      ) : (
-        loadingMessage
-      )}
+const BattleMonster = (props) => {
+  const { battle, setBattle, state, setState } = props;
+  return (
+    <div id="BattleMonster">
+      <img src={battle.targetMonster.imgUrl} alt="" />
     </div>
   );
 };
@@ -85,69 +77,33 @@ const Battlefield = (props) => {
     setState,
     battle,
     setBattle,
-    handleHeroClick,
     handleMonsterClick,
     levelManager,
     setLevelManager,
   } = props;
   return (
-    <>
+    <div id="Battlefield">
       <div id="left-container">
-        <PartyStats
-          battle={battle}
-          setBattle={setBattle}
-          state={state}
-          setState={setState}
-        />
+        <ClickableHeros battle={battle} setBattle={setBattle} state={state} />
       </div>
+      <div id="party-battlefield">
+        <BattleHero state={state} setBattle={setBattle} battle={battle} />
+      </div>
+
       <div id="middle-container">
-        <div id="message-box">
-          <h2></h2>
-        </div>
-
-        <div id="enemy-battlefield">
-          <ClickableMonsters
-            levelManager={levelManager}
-            setLevelManager={setLevelManager}
-            battle={battle}
-            setBattle={setBattle}
-            state={state}
-            setState={setState}
-            handleMonsterClick={handleMonsterClick}
-          />
-        </div>
-        <div id="battle-animation-container">
-          <DisplayCurrentBattle
-            levelManager={levelManager}
-            setLevelManager={setLevelManager}
-            battle={battle}
-            setBattle={setBattle}
-            state={state}
-            setState={setState}
-          />
-        </div>
-        <div id="party-battlefield">
-          <ClickableHeros
-            battle={battle}
-            setBattle={setBattle}
-            state={state}
-            setState={setState}
-            handleHeroClick={handleHeroClick}
-          />
-        </div>
+        <VictoryMessageLootBox state={state} setState={setState} />
       </div>
 
+      <div id="enemy-battlefield">
+        <BattleMonster battle={battle} />
+      </div>
       <div id="right-container">
-        <MonsterStats
+        <ClickableMonsters
           levelManager={levelManager}
-          setLevelManager={setLevelManager}
-          battle={battle}
-          setBattle={setBattle}
-          state={state}
-          setState={setState}
+          handleMonsterClick={handleMonsterClick}
         />
       </div>
-    </>
+    </div>
   );
 };
 
