@@ -6,7 +6,6 @@ import {
   slime,
   wizard,
 } from '../../../vanillaJsFiles/monsters.js';
-import './Home_HeroFour.scss';
 
 const HeroFour = (props) => {
   return (

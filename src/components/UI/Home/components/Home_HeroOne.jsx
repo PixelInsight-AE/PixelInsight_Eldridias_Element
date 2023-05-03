@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import './Home_HeroOne.scss';
 
 const HeroOne = (props) => {
   return (

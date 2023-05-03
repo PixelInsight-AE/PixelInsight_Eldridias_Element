@@ -1,6 +1,32 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useEffect } from 'react';
+const PlayingCards = ({ setState, state }) => {
+  return (
+    <div id="PlayingCards">
+      {state.playerHand.length ? (
+        <MappedPlayingCards state={state} setState={setState} />
+      ) : (
+        <h2>You Need Some Cards to Do Battle!</h2>
+      )}
+    </div>
+  );
+};
+const MappedPlayingCards = ({ state }) => {
+  return (
+    <div id="PlayingCards">
+      {state.playerHand.map((card) => {
+        return (
+          <div key={card.id}>
+            <h1>{card.name}</h1>
+            <img src={card.imgUrl} alt="" />
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 const PlayerControlls = ({
   state,
   setState,
@@ -14,6 +40,7 @@ const PlayerControlls = ({
   return (
     <div id="GameControlls">
       <HeroAttackButtons
+        handleHeroClick={handleHeroClick}
         state={state}
         setState={setState}
         battle={battle}
@@ -37,43 +64,28 @@ const PlayerControlls = ({
   );
 };
 
-const MappedPlayingCards = ({ state, setState }) => {
-  return (
-    <div id="PlayingCards">
-      {state.playerHand.map((card) => {
-        return (
-          <div key={card.id}>
-            <h1>{card.name}</h1>
-            <img src={card.imgUrl} alt="" />
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
-const TankButton = ({ state, setState, battle, setBattle }) => {
+const TankButton = ({ state, handleHeroClick }) => {
   return (
     <div id="TankButton">
       <img src={state.tank.imgUrl} alt="Tank Atk BTN" />
     </div>
   );
 };
-const MeleeButton = ({ state, setState, battle, setBattle }) => {
+const MeleeButton = ({ state, handleHeroClick }) => {
   return (
     <div id="MeleeButton">
       <img src={state.melee.imgUrl} alt="Melee Atk BTN" />
     </div>
   );
 };
-const RangedButton = ({ state, setState, battle, setBattle }) => {
+const RangedButton = ({ state, handleHeroClick }) => {
   return (
     <div id="RangedButton">
       <img src={state.ranged.imgUrl} alt="Ranged Attack BTN" />
     </div>
   );
 };
-const HealerButton = ({ state, setState, battle, setBattle }) => {
+const HealerButton = ({ state, handleHeroClick }) => {
   return (
     <div id="HealerButton">
       <img src={state.healer.imgUrl} alt="Healer Atk BTN" />
@@ -167,14 +179,84 @@ const GeneralButtons = ({
     if (e.key === '1') {
       setBattle({ ...battle, targetHero: state.party[0] });
     }
+    if (e.key === '1' && e.altKey) {
+      if (levelManager.wave[0]) {
+        setBattle({ ...battle, targetMonster: levelManager.wave[0] });
+      } else {
+        console.log('No Monsters Left');
+      }
+    }
     if (e.key === '2') {
       setBattle({ ...battle, targetHero: state.party[1] });
+    }
+    if (e.key === '2' && e.altKey) {
+      if (levelManager.wave[1]) {
+        setBattle({ ...battle, targetMonster: levelManager.wave[1] });
+      } else {
+        console.log('No Monsters Left');
+      }
     }
     if (e.key === '3') {
       setBattle({ ...battle, targetHero: state.party[2] });
     }
+    if (e.key === '3' && e.altKey) {
+      if (levelManager.wave[2]) {
+        setBattle({ ...battle, targetMonster: levelManager.wave[2] });
+      } else {
+        console.log('No Monsters Left');
+      }
+    }
     if (e.key === '4') {
       setBattle({ ...battle, targetHero: state.party[3] });
+    }
+    if (e.key === '4' && e.altKey) {
+      if (levelManager.wave[3]) {
+        setBattle({ ...battle, targetMonster: levelManager.wave[3] });
+      } else {
+        console.log('No Monsters Left');
+      }
+    }
+    if (e.key === '5' && e.altKey) {
+      if (levelManager.wave[4]) {
+        setBattle({ ...battle, targetMonster: levelManager.wave[4] });
+      } else {
+        console.log('No Monsters Left');
+      }
+    }
+    if (e.key === '6' && e.altKey) {
+      if (levelManager.wave[5]) {
+        setBattle({ ...battle, targetMonster: levelManager.wave[5] });
+      } else {
+        console.log('No Monsters Left');
+      }
+    }
+    if (e.key === '7' && e.altKey) {
+      if (levelManager.wave[6]) {
+        setBattle({ ...battle, targetMonster: levelManager.wave[6] });
+      } else {
+        console.log('No Monsters Left');
+      }
+    }
+    if (e.key === '8' && e.altKey) {
+      if (levelManager.wave[7]) {
+        setBattle({ ...battle, targetMonster: levelManager.wave[7] });
+      } else {
+        console.log('No Monsters Left');
+      }
+    }
+    if (e.key === '9' && e.altKey) {
+      if (levelManager.wave[8]) {
+        setBattle({ ...battle, targetMonster: levelManager.wave[8] });
+      } else {
+        console.log('No Monsters Left');
+      }
+    }
+    if (e.key === '0' && e.altKey) {
+      if (levelManager.wave[9]) {
+        setBattle({ ...battle, targetMonster: levelManager.wave[9] });
+      } else {
+        console.log('No Monsters Left');
+      }
     }
     if (e.key === 'a') {
       state.controller.attack(
@@ -243,7 +325,6 @@ const GeneralButtons = ({
     }
   };
   const handleWaveChange = () => {
-    console.log('is wave change running?');
     if (state.computer.isWaveDefeated) {
       setLevelManager({
         ...levelManager,
@@ -252,8 +333,9 @@ const GeneralButtons = ({
           state.difficulty
         ),
       });
-      progressCheck();
+      //progressCheck();
       state.computer.isWaveDefeated = false;
+    } else {
     }
   };
   const handleDrawCards = () => {
@@ -289,6 +371,7 @@ const GeneralButtons = ({
       targetMonsterHealth: battle.targetMonster.health,
       targetHeroHealth: battle.targetHero.health,
     });
+    234;
     handleWaveChange();
   };
   return (
@@ -296,19 +379,9 @@ const GeneralButtons = ({
       <button onClick={handleDrawCards}>Draw Cards</button>
       <button onClick={handleEndTurn}>End Turn</button>
       <button onClick={handleAttack}>Attack</button>
-    </div>
-  );
-};
-
-const PlayingCards = ({ setState, state }) => {
-  console.log(state.playerHand);
-  return (
-    <div id="PlayingCards">
-      {state.playerHand.length ? (
-        <MappedPlayingCards state={state} setState={setState} />
-      ) : (
-        <h2>You Need Some Cards to Do Battle!</h2>
-      )}
+      <Link to="/dashboard">
+        <button>Surrender</button>
+      </Link>
     </div>
   );
 };

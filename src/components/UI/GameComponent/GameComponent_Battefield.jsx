@@ -11,7 +11,6 @@ const VictoryComponent = (props) => {
       currentWave: 0,
       floor: state.computer.waveGenerator(state.sceneManager, state.difficulty),
     });
-
     state.computer.isBossDefeated = false;
   };
   return (
@@ -31,9 +30,20 @@ const VictoryComponent = (props) => {
   );
 };
 
+const BattleMonster = (props) => {
+  const { battle, setBattle, state, setState } = props;
+  return (
+    <div className="battle-monster">
+      <h1>{battle.targetMonster.name}</h1>
+      <h2>{battle.targetMonster.health}</h2>
+      <img src={battle.targetMonster.imgUrl} alt="" />
+    </div>
+  );
+};
+
 const DisplayCurrentBattle = (props) => {
   const { state, setState, battle, setBattle } = props;
-
+  const loadingMessage = <h1>Select First Target</h1>;
   const victoryMessage = (
     <VictoryComponent
       state={state}
@@ -55,12 +65,16 @@ const DisplayCurrentBattle = (props) => {
       <div className="battle-animation">
         {state.computer.isBossDefeated ? victoryMessage : <h1>VS</h1>}
       </div>
-
-      <div className="battle-monster">
-        <h1>{battle.targetMonster.name}</h1>
-        <h2>{battle.targetMonster.health}</h2>
-        <img src={battle.targetMonster.imgUrl} alt="" />
-      </div>
+      {battle.targetMonster ? (
+        <BattleMonster
+          battle={battle}
+          setBattle={setBattle}
+          state={state}
+          setState={setState}
+        />
+      ) : (
+        loadingMessage
+      )}
     </div>
   );
 };

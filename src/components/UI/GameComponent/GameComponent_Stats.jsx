@@ -1,5 +1,5 @@
 const PartyStats = (props) => {
-  const { state, setState } = props;
+  const { state } = props;
   return (
     <div id="left-side-container">
       {state.party.map((hero) => (
@@ -21,7 +21,7 @@ const PartyStats = (props) => {
 };
 
 const MonsterStats = (props) => {
-  const { state, setState, levelManager, setLevelManager } = props;
+  const { levelManager } = props;
   return (
     <div className="monster-stats-container">
       {levelManager.wave.map((monster) => (

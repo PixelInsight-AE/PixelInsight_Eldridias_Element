@@ -1,6 +1,5 @@
-import { motion } from "framer-motion";
-import { HeroOne } from "./Home_HeroOne";
-import "./Home_HeroSix.scss";
+import { motion } from 'framer-motion';
+import { HeroOne } from './Home_HeroOne';
 
 const HeroSix = (props) => {
   return (

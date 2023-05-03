@@ -1,20 +1,11 @@
 import { motion } from 'framer-motion';
-import { heroList } from '../../../vanillaJsFiles/heros.js';
-import './Home_HeroThree.scss';
+import { monsterList } from '../../../../vanillaJsFiles/monsters.js';
 
-const HeroThree = (props) => {
+const HeroFive = (props) => {
   return (
-    <section id="heroThree">
-      <motion.h1
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 2 }}
-      >
-        Choose your party!
-      </motion.h1>
-
-      <div id="playingCards">
-        {heroList.map((hero, index) => (
+    <section id="heroFive">
+      <div id="monster-container">
+        {monsterList.map((monster, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, x: -200, rotate: -90, scale: 0.25 }}
@@ -22,12 +13,12 @@ const HeroThree = (props) => {
             whileTap={{ scale: 0.9 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0, scale: 1.1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, delay: index * 0.2 }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
             className="card-big"
             style={{
-              background: `url(${hero.imgUrl}) center/cover`,
-              zIndex: heroList.length - index,
-              left: `${(index / (heroList.length - 1)) * 100}%`,
+              background: `url(${monster.imgUrl}) center/cover`,
+              zIndex: monsterList.length - index,
+              left: `${(index / (monsterList.length - 1)) * 100}%`,
               transformOrigin: 'center center',
               transformStyle: 'preserve-3d',
               translateX: '-50%',
@@ -39,9 +30,7 @@ const HeroThree = (props) => {
               whileInView={{ opacity: 1, y: 0, scale: 1.1 }}
               transition={{ duration: 0.25, delay: index * 0.2 + 0.5 }}
               className="card-title"
-            >
-              {hero.name}
-            </motion.h2>
+            ></motion.h2>
           </motion.div>
         ))}
       </div>
@@ -49,4 +38,4 @@ const HeroThree = (props) => {
   );
 };
 
-export { HeroThree };
+export { HeroFive };
