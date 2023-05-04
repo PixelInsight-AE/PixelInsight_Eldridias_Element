@@ -208,7 +208,16 @@ const GeneralButtons = ({
     }
     if (e.key === 'h') {
       console.log('h pressed');
-      battle.selectedCard.effect();
+      battle.selectedCard.effect(
+        battle,
+        setBattle,
+        battle.targetMonster,
+        state.computer,
+        levelManager.wave
+      );
+      setTimeout(() => {
+        setBattle({ ...battle, heroDamageAnimation: null });
+      }, 1000);
     }
     if (e.key === 'a') {
       const mana = state.controller.mana;

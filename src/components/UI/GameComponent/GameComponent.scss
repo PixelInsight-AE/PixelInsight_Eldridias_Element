@@ -8,6 +8,7 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
 
 $start-color: #2d2d2d;
 $end-color: #000000;
+$end-color-grey: #1b1a1a;
 $start-color-gold: #dab654;
 $end-color-gold: #f7a01d;
 @mixin radial-gradient-dark($start-color, $end-color) {
@@ -47,8 +48,8 @@ $end-color-gold: #f7a01d;
 
 @mixin borderAndBoxShadowGold() {
   border: rgb(231, 175, 24) 3px solid;
-  box-shadow: 0 0 10px 5px rgba(231, 175, 24, 0.5);
-  border-radius: 5%;
+  box-shadow: 0 0 10px 2px rgba(231, 175, 24, 0.5);
+  border-radius: 15px;
 }
 
 @mixin img-circular($width: 50px) {
@@ -163,8 +164,8 @@ $end-color-gold: #f7a01d;
     @include borderAndBoxShadowGold();
     //width: 100%;
     height: 150px;
-
-    background-color: rgba(9, 9, 8, 0.404);
+    @include radial-gradient-dark($start-color, $end-color-grey);
+    //background-color: rgba(9, 9, 8, 0.404);
     margin-top: -100px;
   }
   #PlayingCards {
@@ -209,8 +210,11 @@ $end-color-gold: #f7a01d;
 
     button {
       //@include borderAndBoxShadowGold();
+      box-shadow: 0 0 10px 2px rgba(231, 175, 24, 0.5);
+
+      border: #535151 1px solid;
       color: #535151;
-      border-radius: 7.5%;
+      border-radius: 7.5px;
       padding: 0.5rem;
       font-weight: 600;
       background-color: $end-color-gold;
