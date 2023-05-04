@@ -49,7 +49,8 @@ function EldridiasElement() {
     healer: hogarth,
     party: [bulwark, beastMaster, hogarth, gunslinger],
     //! will replace monsterList with sceneManager(), which will be a switch case
-    sceneManager: monsterList,
+    selectedScene: 'gameStart',
+    sceneManager: [monsterList, monsterList2],
     difficulty: 4,
     currency: 500,
     inventory: [],

@@ -1,32 +1,8 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { earthQuakeCard } from '../vanillaJsFiles/elementCards';
-const PlayingCards = ({ setState, state }) => {
-  return (
-    <div className="playing-cards">
-      {state.playerHand.length ? (
-        <MappedPlayingCards state={state} setState={setState} />
-      ) : (
-        <h2>You Need Some Cards to Do Battle!</h2>
-      )}
-    </div>
-  );
-};
-const MappedPlayingCards = ({ state }) => {
-  return (
-    <div id="PlayingCards">
-      {state.playerHand.map((card) => {
-        return (
-          <div key={card.id}>
-            <h1>{card.name}</h1>
-            <img src={card.imgUrl} alt="" />
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
+import { PlayingCards } from './UI/GameComponent/GameComponent_Cards';
+import { HeroSpecialAttackButtons } from './UI/GameComponent/GameComponent_SpecialAttackButtons';
 const PlayerControlls = ({
   state,
   setState,
@@ -39,7 +15,7 @@ const PlayerControlls = ({
 }) => {
   return (
     <div id="PlayerControlls">
-      <HeroAttackButtons
+      <HeroSpecialAttackButtons
         state={state}
         setState={setState}
         battle={battle}
@@ -65,89 +41,89 @@ const PlayerControlls = ({
   );
 };
 
-const TankButton = ({ state, handleHeroClick }) => {
-  return (
-    <div id="TankButton">
-      <img src={state.tank.imgUrl} alt="Tank Atk BTN" />
-    </div>
-  );
-};
-const MeleeButton = ({ state, handleHeroClick }) => {
-  return (
-    <div id="MeleeButton">
-      <img src={state.melee.imgUrl} alt="Melee Atk BTN" />
-    </div>
-  );
-};
-const RangedButton = ({ state, handleHeroClick }) => {
-  return (
-    <div id="RangedButton">
-      <img src={state.ranged.imgUrl} alt="Ranged Attack BTN" />
-    </div>
-  );
-};
-const HealerButton = ({ state, handleHeroClick }) => {
-  return (
-    <div id="HealerButton">
-      <img src={state.healer.imgUrl} alt="Healer Atk BTN" />
-    </div>
-  );
-};
+// const TankButton = ({ state, handleHeroClick }) => {
+//   return (
+//     <div id="TankButton">
+//       <img src={state.tank.imgUrl} alt="Tank Atk BTN" />
+//     </div>
+//   );
+// };
+// const MeleeButton = ({ state, handleHeroClick }) => {
+//   return (
+//     <div id="MeleeButton">
+//       <img src={state.melee.imgUrl} alt="Melee Atk BTN" />
+//     </div>
+//   );
+// };
+// const RangedButton = ({ state, handleHeroClick }) => {
+//   return (
+//     <div id="RangedButton">
+//       <img src={state.ranged.imgUrl} alt="Ranged Attack BTN" />
+//     </div>
+//   );
+// };
+// const HealerButton = ({ state, handleHeroClick }) => {
+//   return (
+//     <div id="HealerButton">
+//       <img src={state.healer.imgUrl} alt="Healer Atk BTN" />
+//     </div>
+//   );
+// };
 
-const HeroAttackButtons = ({
-  state,
-  setState,
-  battle,
-  setBattle,
-  handleHeroClick,
-}) => {
-  return (
-    <div id="HeroAttackButtons">
-      <TankButton
-        state={state}
-        setState={setState}
-        battle={battle}
-        setBattle={setBattle}
-        handleHeroClick={handleHeroClick}
-      />
-      <MeleeButton
-        state={state}
-        setState={setState}
-        battle={battle}
-        setBattle={setBattle}
-        handleHeroClick={handleHeroClick}
-      />
-      <RangedButton
-        state={state}
-        setState={setState}
-        battle={battle}
-        setBattle={setBattle}
-        handleHeroClick={handleHeroClick}
-      />
-      <HealerButton
-        state={state}
-        setState={setState}
-        battle={battle}
-        setBattle={setBattle}
-        handleHeroClick={handleHeroClick}
-      />
-      <ManaTracker
-        state={state}
-        setState={setState}
-        battle={battle}
-        setBattle={setBattle}
-      />
-    </div>
-  );
-};
+// const HeroSpecialAttackButtons = ({
+//   state,
+//   setState,
+//   battle,
+//   setBattle,
+//   handleHeroClick,
+// }) => {
+//   return (
+//     <div id="HeroSpecialAttackButtons">
+//       <TankButton
+//         state={state}
+//         setState={setState}
+//         battle={battle}
+//         setBattle={setBattle}
+//         handleHeroClick={handleHeroClick}
+//       />
+//       <MeleeButton
+//         state={state}
+//         setState={setState}
+//         battle={battle}
+//         setBattle={setBattle}
+//         handleHeroClick={handleHeroClick}
+//       />
+//       <RangedButton
+//         state={state}
+//         setState={setState}
+//         battle={battle}
+//         setBattle={setBattle}
+//         handleHeroClick={handleHeroClick}
+//       />
+//       <HealerButton
+//         state={state}
+//         setState={setState}
+//         battle={battle}
+//         setBattle={setBattle}
+//         handleHeroClick={handleHeroClick}
+//       />
+//       <ManaTracker
+//         state={state}
+//         setState={setState}
+//         battle={battle}
+//         setBattle={setBattle}
+//       />
+//     </div>
+//   );
+// };
 
-const ManaTracker = ({ state }) => {
-  return (
-    <div id="ManaTracker">
-      <h1>Mana: {state.controller.mana}</h1>
-    </div>
-  );
-};
+// const ManaTracker = ({ state }) => {
+//   return (
+//     <div id="ManaTracker">
+//       <h1>Mana: {state.controller.mana}</h1>
+//     </div>
+//   );
+// };
 
 const GeneralButtons = ({
   state,
@@ -452,7 +428,7 @@ const GeneralButtons = ({
       setLevelManager({
         ...levelManager,
         wave: state.computer.waveGenerator(
-          state.sceneManager,
+          state.sceneManager[0],
           state.difficulty
         ),
       });

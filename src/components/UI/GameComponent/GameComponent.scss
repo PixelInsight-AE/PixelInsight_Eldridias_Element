@@ -8,6 +8,17 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
 
 #GameComponent {
   @include flex(column, center, center);
+  #hero-attack-animation {
+    font-size: larger;
+  }
+  #PlayerStatusBar {
+    border: 1px solid $primaryColor;
+    margin: 0.5rem;
+  }
+  #EnemyStatusBar {
+    border: 1px solid $primaryColor;
+    margin: 0.5rem;
+  }
   #party-side {
     position: absolute;
     top: 0;
@@ -58,7 +69,7 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
     #clickable-controls {
       @include flex(row, center, center);
     }
-    #HeroAttackButtons {
+    #HeroSpecialAttackButtons {
       @include flex(row, center, center);
       img {
         width: 75px;
