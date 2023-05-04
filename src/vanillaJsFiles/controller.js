@@ -18,6 +18,7 @@ const controller = {
       this.playerGraveyard.push(hero);
       hero.imgUrl = hero.deathImgUrl;
       console.log(this.playerGraveyard);
+      hero.flag = true;
       this.death(party);
     }
   },
@@ -113,6 +114,7 @@ const controller = {
     for (let i = 0; i < party.length; i++) {
       party[i].imgUrl = party[i].defaultImgUrl;
       party[i].health = party[i].maxHealth;
+      party[i].flag = false;
     }
   },
 };

@@ -41,90 +41,6 @@ const PlayerControlls = ({
   );
 };
 
-// const TankButton = ({ state, handleHeroClick }) => {
-//   return (
-//     <div id="TankButton">
-//       <img src={state.tank.imgUrl} alt="Tank Atk BTN" />
-//     </div>
-//   );
-// };
-// const MeleeButton = ({ state, handleHeroClick }) => {
-//   return (
-//     <div id="MeleeButton">
-//       <img src={state.melee.imgUrl} alt="Melee Atk BTN" />
-//     </div>
-//   );
-// };
-// const RangedButton = ({ state, handleHeroClick }) => {
-//   return (
-//     <div id="RangedButton">
-//       <img src={state.ranged.imgUrl} alt="Ranged Attack BTN" />
-//     </div>
-//   );
-// };
-// const HealerButton = ({ state, handleHeroClick }) => {
-//   return (
-//     <div id="HealerButton">
-//       <img src={state.healer.imgUrl} alt="Healer Atk BTN" />
-//     </div>
-//   );
-// };
-
-// const HeroSpecialAttackButtons = ({
-//   state,
-//   setState,
-//   battle,
-//   setBattle,
-//   handleHeroClick,
-// }) => {
-//   return (
-//     <div id="HeroSpecialAttackButtons">
-//       <TankButton
-//         state={state}
-//         setState={setState}
-//         battle={battle}
-//         setBattle={setBattle}
-//         handleHeroClick={handleHeroClick}
-//       />
-//       <MeleeButton
-//         state={state}
-//         setState={setState}
-//         battle={battle}
-//         setBattle={setBattle}
-//         handleHeroClick={handleHeroClick}
-//       />
-//       <RangedButton
-//         state={state}
-//         setState={setState}
-//         battle={battle}
-//         setBattle={setBattle}
-//         handleHeroClick={handleHeroClick}
-//       />
-//       <HealerButton
-//         state={state}
-//         setState={setState}
-//         battle={battle}
-//         setBattle={setBattle}
-//         handleHeroClick={handleHeroClick}
-//       />
-//       <ManaTracker
-//         state={state}
-//         setState={setState}
-//         battle={battle}
-//         setBattle={setBattle}
-//       />
-//     </div>
-//   );
-// };
-
-// const ManaTracker = ({ state }) => {
-//   return (
-//     <div id="ManaTracker">
-//       <h1>Mana: {state.controller.mana}</h1>
-//     </div>
-//   );
-// };
-
 const GeneralButtons = ({
   state,
   setState,
@@ -325,7 +241,6 @@ const GeneralButtons = ({
       if (battle.selectedCard && battle.selectedCard.manaCost) {
         const manaCost = battle.selectedCard.manaCost;
         if (mana >= manaCost) {
-          let animatedValue = 0;
           battle.selectedCard.effect(
             battle,
             setBattle,
@@ -403,12 +318,35 @@ const GeneralButtons = ({
 
   //? useEffect to add and remove event listener for key press
   useEffect(() => {
-    console.log(battle.heroDamageAnimation);
     window.addEventListener('keydown', handleKeyPress);
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
     };
   }, [battle]);
+
+  useEffect(() => {
+    if (battle.targetHero.health <= 0) {
+      for (let i = 0; i < state.party.length; i++) {
+        if (state.party[i].health > 0) {
+          let newTargetHero = state.party[i];
+          setBattle({ ...battle, targetHero: newTargetHero });
+          break;
+        }
+      }
+    }
+  }, [battle.targetHero.health]);
+
+  useEffect(() => {
+    if (battle.targetMonster.health <= 0) {
+      for (let i = 0; i < levelManager.wave.length; i++) {
+        if (levelManager.wave[i + 1].health > 0) {
+          let newTargetMonster = levelManager.wave[i + 1];
+          setBattle({ ...battle, targetMonster: newTargetMonster });
+          break;
+        }
+      }
+    }
+  }, [battle.targetMonster.health]);
 
   const progressCheck = () => {
     if (
@@ -453,18 +391,22 @@ const GeneralButtons = ({
       battle.targetMonster,
       state.party
     );
-    state.computer.attack(
-      battle.targetHero,
-      battle.targetMonster,
-      levelManager.wave
-    );
-    let monsterDamage = battle.targetMonster.attackPower;
-    setBattle({
-      ...battle,
-      targetHeroHealth: battle.targetHero.health,
-      targetMonsterHealth: battle.targetMonster.health,
-      monsterDamageAnimation: monsterDamage,
-    });
+    if (battle.targetHero.health >= 0) {
+      state.computer.attack(
+        battle.targetHero,
+        battle.targetMonster,
+        state.party
+      );
+      let monsterDamage = battle.targetMonster.attackPower;
+      setBattle({
+        ...battle,
+        targetHeroHealth: battle.targetHero.health,
+        targetMonsterHealth: battle.targetMonster.health,
+        monsterDamageAnimation: monsterDamage,
+      });
+    } else {
+      console.log('Hero is dead');
+    }
     setTimeout(() => {
       setBattle({
         ...battle,

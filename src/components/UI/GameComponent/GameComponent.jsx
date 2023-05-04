@@ -13,6 +13,7 @@ const GameComponent = (props) => {
     currentLevel: 1,
     maxFloor: 1,
     currentFloor: 1,
+    location: 'blankfornow',
     wave: state.computer.waveGenerator(state.sceneManager[0], state.difficulty),
   });
   const [battle, setBattle] = useState({

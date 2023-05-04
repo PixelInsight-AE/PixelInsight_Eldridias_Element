@@ -9,7 +9,12 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
 #GameComponent {
   @include flex(column, center, center);
   #hero-attack-animation {
-    font-size: larger;
+    font-size: 2rem;
+    color: rgb(136, 13, 13);
+  }
+  #monster-attack-animation {
+    font-size: 2rem;
+    color: rgb(136, 13, 13);
   }
   #PlayerStatusBar {
     border: 1px solid $primaryColor;

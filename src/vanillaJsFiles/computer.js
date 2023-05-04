@@ -20,6 +20,8 @@ const computer = {
       );
       hero.health -= monster.attackPower;
       controller.deathCheck(hero, party);
+    } else {
+      console.log('You cant use this action!');
     }
   },
   deathCheck: function (monster, floor) {

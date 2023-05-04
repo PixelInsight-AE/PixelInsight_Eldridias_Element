@@ -1,16 +1,8 @@
 const VictoryComponent = (props) => {
-  const { state, setState } = props;
+  const { state, setState, levelManager, setLevelManager } = props;
 
   const handleLevelChange = () => {
-    setState({
-      ...state,
-      currentWave: 0,
-      floor: state.computer.waveGenerator(
-        state.sceneManager[0],
-        state.difficulty
-      ),
-    });
-    state.computer.isBossDefeated = false;
+    console.log('levelchange');
   };
   return (
     <div>
