@@ -349,18 +349,32 @@ const GeneralButtons = ({
       if (battle.selectedCard && battle.selectedCard.manaCost) {
         const manaCost = battle.selectedCard.manaCost;
         if (mana >= manaCost) {
+          let animatedValue = 0;
           battle.selectedCard.effect(
-            battle.targetHero,
+            battle,
+            setBattle,
             battle.targetMonster,
             state.computer,
             levelManager.wave
           );
+
           let manaDrain = battle.selectedCard.manaCost;
           let currentMana = state.controller.mana - manaDrain;
-          console.log(currentMana, manaDrain, state.controller.mana);
-          state.controller.mana = currentMana;
+          setState({
+            ...state,
+            controller: {
+              ...state.controller,
+              mana: currentMana,
+            },
+          });
         } else {
+          let message = 'Not enough mana';
           console.log('Not enough mana');
+          battle.heroDamageAnimation = message;
+          setBattle({
+            ...battle,
+            heroDamageAnimation: battle.heroDamageAnimation,
+          });
         }
       } else {
         state.controller.attack(
@@ -368,7 +382,20 @@ const GeneralButtons = ({
           battle.targetMonster,
           levelManager.wave
         );
+        const damage = battle.targetHero.attackPower;
+        console.log(damage);
+        battle.heroDamageAnimation = damage;
+        setBattle({
+          ...battle,
+          heroDamageAnimation: damage,
+        });
       }
+      setTimeout(() => {
+        setBattle({
+          ...battle,
+          heroDamageAnimation: null,
+        });
+      }, 1000);
 
       handleWaveChange();
 
@@ -400,6 +427,7 @@ const GeneralButtons = ({
 
   //? useEffect to add and remove event listener for key press
   useEffect(() => {
+    console.log(battle.heroDamageAnimation);
     window.addEventListener('keydown', handleKeyPress);
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
@@ -454,11 +482,19 @@ const GeneralButtons = ({
       battle.targetMonster,
       levelManager.wave
     );
+    let monsterDamage = battle.targetMonster.attackPower;
     setBattle({
       ...battle,
       targetHeroHealth: battle.targetHero.health,
       targetMonsterHealth: battle.targetMonster.health,
+      monsterDamageAnimation: monsterDamage,
     });
+    setTimeout(() => {
+      setBattle({
+        ...battle,
+        monsterDamageAnimation: null,
+      });
+    }, 1000);
   };
   const handleAttack = () => {
     state.controller.attack(

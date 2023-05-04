@@ -3,11 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { PlayerControlls } from './../../PlayerControlls';
 import { Battlefield } from './GameComponent_Battefield';
 import { PartyStats, MonsterStats } from './GameComponent_Stats';
-import {
-  PartyStatusBar,
-  EnemyStatusBar,
-  VictoryMessageLootBox,
-} from './GameComponent_StatusBars';
+
 import './GameComponent.scss';
 
 const GameComponent = (props) => {
@@ -25,6 +21,8 @@ const GameComponent = (props) => {
     targetMonster: levelManager.wave[0],
     heroHealth: state.party[0].health,
     monsterHealth: levelManager.wave[0].health,
+    heroDamageAnimation: null,
+    monsterDamageAnimation: null,
   });
 
   const handleHeroClick = (hero) => {
