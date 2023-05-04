@@ -47,7 +47,7 @@ function EldridiasElement() {
     melee: beastMaster,
     ranged: gunslinger,
     healer: hogarth,
-    party: [bulwark, beastMaster, gunslinger, hogarth],
+    party: [bulwark, beastMaster, hogarth, gunslinger],
     //! will replace monsterList with sceneManager(), which will be a switch case
     selectedScene: 'gameStart',
     sceneManager: [monsterList, monsterList2],

@@ -4,44 +4,6 @@ import { earthQuakeCard } from '../vanillaJsFiles/elementCards';
 import { PlayingCards } from './UI/GameComponent/GameComponent_Cards';
 import { HeroSpecialAttackButtons } from './UI/GameComponent/GameComponent_SpecialAttackButtons';
 
-const PlayerControlls = ({
-  state,
-  setState,
-  battle,
-  setBattle,
-
-  //handleMonsterClick,
-  levelManager,
-  setLevelManager,
-}) => {
-  return (
-    <div id="PlayerControlls">
-      <HeroSpecialAttackButtons
-        state={state}
-        setState={setState}
-        battle={battle}
-        setBattle={setBattle}
-      />
-      <div id="clickable-controls">
-        <PlayingCards
-          state={state}
-          setState={setState}
-          battle={battle}
-          setBattle={setBattle}
-        />
-        <GeneralButtons
-          levelManager={levelManager}
-          setLevelManager={setLevelManager}
-          state={state}
-          setState={setState}
-          battle={battle}
-          setBattle={setBattle}
-        />
-      </div>
-    </div>
-  );
-};
-
 const GeneralButtons = ({
   state,
   setState,
@@ -50,7 +12,7 @@ const GeneralButtons = ({
   levelManager,
   setLevelManager,
 }) => {
-  const myRef = useRef(0);
+  // const myRef = useRef(0);
   // look right :)
   const findMonsterIndex = () => {
     for (let i = 0; i < levelManager.wave.length; i++) {
@@ -74,8 +36,8 @@ const GeneralButtons = ({
   // TODO handle focus
   const handleKeyPress = (e) => {
     if (e.key === '1') {
-      myRef.current.tabIndex = 0;
-      myRef.current.focus();
+      // myRef.current.tabIndex = 0;
+      // myRef.current.focus();
       setBattle({ ...battle, targetHero: state.party[0] });
     }
     if (e.key === '1' && e.altKey) {
@@ -96,8 +58,8 @@ const GeneralButtons = ({
     }
     if (e.key === '2') {
       setBattle({ ...battle, targetHero: state.party[1] });
-      myRef.current.tabIndex = 1;
-      myRef.current.focus();
+      // myRef.current.tabIndex = 1;
+      // myRef.current.focus();
     }
     if (e.key === '2' && e.altKey) {
       if (levelManager.wave[1]) {
@@ -116,8 +78,8 @@ const GeneralButtons = ({
     }
     if (e.key === '3') {
       setBattle({ ...battle, targetHero: state.party[2] });
-      myRef.current.tabIndex = 2;
-      myRef.current.focus();
+      // myRef.current.tabIndex = 2;
+      // myRef.current.focus();
     }
     if (e.key === '3' && e.altKey) {
       if (levelManager.wave[2]) {
@@ -136,8 +98,8 @@ const GeneralButtons = ({
     }
     if (e.key === '4') {
       setBattle({ ...battle, targetHero: state.party[3] });
-      myRef.current.tabIndex = 3;
-      myRef.current.focus();
+      // myRef.current.tabIndex = 3;
+      // myRef.current.focus();
     }
     if (e.key === '4' && e.altKey) {
       e.preventDefault();
@@ -242,7 +204,7 @@ const GeneralButtons = ({
     }
     if (e.key === '0' && e.ctrlKey) {
       e.preventDefault();
-      setBattle({ ...battle, selectedCard: null });
+      setBattle({ ...battle, selectedCard: 'None' });
     }
     if (e.key === 'h') {
       console.log('h pressed');
@@ -432,22 +394,80 @@ const GeneralButtons = ({
       battle.targetMonster,
       levelManager.wave
     );
+    let damage = battle.targetHero.attackPower;
     setBattle({
       ...battle,
+      heroDamageAnimation: damage,
       targetMonsterHealth: battle.targetMonster.health,
       targetHeroHealth: battle.targetHero.health,
     });
+    setTimeout(() => {
+      setBattle({
+        ...battle,
+        heroDamageAnimation: null,
+      });
+    }, 1000);
 
     handleWaveChange();
   };
+  const handleEmptyHand = () => {
+    setBattle({
+      ...battle,
+      selectedCard: 'None',
+    });
+  };
+
   return (
     <div id="GeneralButtons">
       <button onClick={handleDrawCards}>Draw Cards</button>
       <button onClick={handleEndTurn}>End Turn</button>
       <button onClick={handleAttack}>Attack</button>
-      <Link to="/dashboard">
-        <button>Surrender</button>
-      </Link>
+      <button onClick={handleEmptyHand}>Deselect Card</button>
+      <button>
+        <Link to="/dashboard" id="surrender">
+          Surrender
+        </Link>
+      </button>
+    </div>
+  );
+};
+
+const PlayerControlls = ({
+  state,
+  setState,
+  battle,
+  setBattle,
+
+  //handleMonsterClick,
+  levelManager,
+  setLevelManager,
+}) => {
+  return (
+    <div id="PlayerControlls">
+      <div className="border">
+        <HeroSpecialAttackButtons
+          state={state}
+          setState={setState}
+          battle={battle}
+          setBattle={setBattle}
+        />
+        <GeneralButtons
+          levelManager={levelManager}
+          setLevelManager={setLevelManager}
+          state={state}
+          setState={setState}
+          battle={battle}
+          setBattle={setBattle}
+        />
+      </div>
+      <div id="clickable-controls">
+        <PlayingCards
+          state={state}
+          setState={setState}
+          battle={battle}
+          setBattle={setBattle}
+        />
+      </div>
     </div>
   );
 };

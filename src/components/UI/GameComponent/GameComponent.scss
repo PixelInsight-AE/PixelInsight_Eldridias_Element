@@ -8,11 +8,16 @@ $backgroundColor: rgba(0, 0, 0, 0.8);
 
 $start-color: #2d2d2d;
 $end-color: #000000;
+$start-color-gold: #dab654;
+$end-color-gold: #f7a01d;
 @mixin radial-gradient-dark($start-color, $end-color) {
   background: $start-color;
   background: radial-gradient(circle, $start-color, $end-color);
 }
-
+@mixin radial-gradient-gold($start-color-gold, $end-color-gold) {
+  background: $start-color;
+  background: radial-gradient(circle, $start-color-gold, $end-color-gold);
+}
 // Mixins for flexbox (flex, flex-direction, justify-content, align-items, etc.)
 @mixin flex($direction: row, $justify: flex-start, $align: center) {
   display: flex;
@@ -37,7 +42,7 @@ $end-color: #000000;
 @mixin borderAndBoxShadowBlue() {
   border: 3px solid lightblue;
   box-shadow: 0 0 10px 5px lightblue;
-  border-radius: 5%;
+  border-radius: 45px;
 }
 
 @mixin borderAndBoxShadowGold() {
@@ -46,10 +51,10 @@ $end-color: #000000;
   border-radius: 5%;
 }
 
-@mixin img-small-circular() {
+@mixin img-circular($width: 50px) {
   img {
     @include borderAndBoxShadowGold();
-    width: 50px;
+    width: $width;
     border-radius: 50%;
   }
 }
@@ -77,11 +82,19 @@ $end-color: #000000;
 }
 
 #GameComponent {
+  position: relative;
   @include flex(column, center, center);
   @include radial-gradient-dark($start-color, $end-color);
+  background-image: url('https://i.imgur.com/c1zyLkR.jpg');
+  //background-color: rgba(0, 0, 0, 0.8);
   font-size: 2rem;
   color: whitesmoke;
   height: 100%;
+  #darken {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+  }
   //!--STATS--Component-----------------------------------
   #Stats {
     text-align: center;
@@ -95,7 +108,7 @@ $end-color: #000000;
     }
     .selected-icons {
       @include flex(row, center, center);
-      @include img-small-circular();
+      @include img-circular();
     }
     .selected-stats {
       @include flex(column, center, center);
@@ -116,6 +129,7 @@ $end-color: #000000;
       @include positionAndTop();
       @include borderAndBoxShadowBlue();
       left: 2%;
+      background-color: brown;
     }
     #SelectedMonsterStats {
       width: 200px;
@@ -145,11 +159,19 @@ $end-color: #000000;
 //!--PLAYERCONTROLLS--Component-----------------------------------
 #PlayerControlls {
   @include flex(column, center, center);
+  .border {
+    @include borderAndBoxShadowGold();
+    //width: 100%;
+    height: 150px;
+
+    background-color: rgba(9, 9, 8, 0.404);
+    margin-top: -100px;
+  }
   #PlayingCards {
     @include flex(row, center, center);
     img {
       width: 100px;
-      text-align: center;
+      border-radius: 15px;
     }
     .PlayingCard {
       @include borderAndBoxShadowGold();
@@ -164,16 +186,43 @@ $end-color: #000000;
     @include flex(row, center, center);
   }
   #HeroSpecialAttackButtons {
-    @include flex(row, center, center);
-    @include img-small-circular();
+    @include flex(row, flex-start, center);
+    @include img-circular(75px);
+    height: 100px;
     #ManaTracker {
       @include flex(row, center, center);
       @include borderAndBoxShadowGold();
       @include img-medium-circular();
+      @include radial-gradient-gold($start-color-gold, $end-color-gold);
+      color: #535151;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-top: -50px;
+    }
+    .hero-button {
+      margin: 1rem 0.5rem 0 0.5rem;
     }
   }
   #GeneralButtons {
-    @include flex(column, center, center);
+    @include flex(row, center, center);
+
+    button {
+      //@include borderAndBoxShadowGold();
+      color: #535151;
+      border-radius: 7.5%;
+      padding: 0.5rem;
+      font-weight: 600;
+      background-color: $end-color-gold;
+      margin: 0 0.5rem 0 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      #surrender {
+        text-decoration: none;
+        //link color
+        color: #535151;
+      }
+    }
   }
 }
 

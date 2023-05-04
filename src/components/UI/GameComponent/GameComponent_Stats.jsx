@@ -52,17 +52,22 @@ const SelectedMonsterStats = (props) => {
 };
 
 const PartyStatusBar = (props) => {
+  const { battle } = props;
   return (
     <div id="PlayerStatusBar">
-      <h2>Player Stats bar</h2>
+      <h2>
+        {battle.targetHero.name} HP: {battle.targetHero.health}
+      </h2>
+      <h3>{battle.selectedCard.name}</h3>
     </div>
   );
 };
 
 const EnemyStatusBar = (props) => {
+  const { battle } = props;
   return (
     <div id="EnemyStatusBar">
-      <h2>enemy status bar</h2>
+      <h2>{battle.targetMonster.name}</h2>
     </div>
   );
 };

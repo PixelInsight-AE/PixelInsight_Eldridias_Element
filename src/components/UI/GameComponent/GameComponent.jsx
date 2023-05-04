@@ -17,7 +17,7 @@ const GameComponent = (props) => {
     wave: state.computer.waveGenerator(state.sceneManager[0], state.difficulty),
   });
   const [battle, setBattle] = useState({
-    selectedCard: null,
+    selectedCard: 'None',
     targetHero: state.party[0],
     targetMonster: levelManager.wave[0],
     heroHealth: state.party[0].health,
@@ -45,28 +45,30 @@ const GameComponent = (props) => {
   }, [battle.selectedCard]);
   return (
     <div id="GameComponent">
-      <Stats battle={battle} />
+      <div id="darken">
+        <Stats battle={battle} />
 
-      <Battlefield
-        levelManager={levelManager}
-        setLevelManager={setLevelManager}
-        state={state}
-        setState={setState}
-        battle={battle}
-        setBattle={setBattle}
-        handleMonsterClick={handleMonsterClick}
-        handleHeroClick={handleHeroClick}
-      />
-      <PlayerControlls
-        levelManager={levelManager}
-        setLevelManager={setLevelManager}
-        state={state}
-        setState={setState}
-        battle={battle}
-        setBattle={setBattle}
-        handleHeroClick={handleHeroClick}
-        handleMonsterClick={handleMonsterClick}
-      />
+        <Battlefield
+          levelManager={levelManager}
+          setLevelManager={setLevelManager}
+          state={state}
+          setState={setState}
+          battle={battle}
+          setBattle={setBattle}
+          handleMonsterClick={handleMonsterClick}
+          handleHeroClick={handleHeroClick}
+        />
+        <PlayerControlls
+          levelManager={levelManager}
+          setLevelManager={setLevelManager}
+          state={state}
+          setState={setState}
+          battle={battle}
+          setBattle={setBattle}
+          handleHeroClick={handleHeroClick}
+          handleMonsterClick={handleMonsterClick}
+        />
+      </div>
     </div>
   );
 };
