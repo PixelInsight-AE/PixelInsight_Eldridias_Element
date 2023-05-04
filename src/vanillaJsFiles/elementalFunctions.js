@@ -1,11 +1,4 @@
-const earthQuakeCardEffect = (
-  battle,
-  setBattle,
-  monster,
-  computer,
-  wave,
-  animatedValue
-) => {
+const earthQuakeCardEffect = (battle, setBattle, monster, computer, wave) => {
   console.log('earthQuakeCardEffect');
   const heroDamage = Math.floor(Math.random() * 10) + 1;
   if (monster.health >= 0) {

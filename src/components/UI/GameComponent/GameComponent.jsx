@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { PlayerControlls } from './../../PlayerControlls';
 import { Battlefield } from './GameComponent_Battefield';
-import { PartyStats, MonsterStats } from './GameComponent_Stats';
+import { Stats } from './GameComponent_Stats';
 
 import './GameComponent.scss';
 
@@ -26,6 +26,7 @@ const GameComponent = (props) => {
     monsterDamageAnimation: null,
   });
 
+  // todo move to battlefield, and pass down as props to clickables
   const handleHeroClick = (hero) => {
     setBattle({
       ...battle,
@@ -44,9 +45,8 @@ const GameComponent = (props) => {
   }, [battle.selectedCard]);
   return (
     <div id="GameComponent">
-      <div id="party-side">
-        <PartyStats state={state} setState={setState} battle={battle} />
-      </div>
+      <Stats battle={battle} />
+
       <Battlefield
         levelManager={levelManager}
         setLevelManager={setLevelManager}
@@ -67,13 +67,6 @@ const GameComponent = (props) => {
         handleHeroClick={handleHeroClick}
         handleMonsterClick={handleMonsterClick}
       />
-      <div id="monster-side">
-        <MonsterStats
-          levelManager={levelManager}
-          setLevelManager={setLevelManager}
-          battle={battle}
-        />
-      </div>
     </div>
   );
 };

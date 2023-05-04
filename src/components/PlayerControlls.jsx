@@ -1,15 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { earthQuakeCard } from '../vanillaJsFiles/elementCards';
 import { PlayingCards } from './UI/GameComponent/GameComponent_Cards';
 import { HeroSpecialAttackButtons } from './UI/GameComponent/GameComponent_SpecialAttackButtons';
+
 const PlayerControlls = ({
   state,
   setState,
   battle,
   setBattle,
 
-  handleMonsterClick,
+  //handleMonsterClick,
   levelManager,
   setLevelManager,
 }) => {
@@ -49,6 +50,8 @@ const GeneralButtons = ({
   levelManager,
   setLevelManager,
 }) => {
+  const myRef = useRef(0);
+  // look right :)
   const findMonsterIndex = () => {
     for (let i = 0; i < levelManager.wave.length; i++) {
       if (levelManager.wave[i] === battle.targetMonster) {
@@ -68,8 +71,11 @@ const GeneralButtons = ({
     }
   };
 
+  // TODO handle focus
   const handleKeyPress = (e) => {
     if (e.key === '1') {
+      myRef.current.tabIndex = 0;
+      myRef.current.focus();
       setBattle({ ...battle, targetHero: state.party[0] });
     }
     if (e.key === '1' && e.altKey) {
@@ -90,6 +96,8 @@ const GeneralButtons = ({
     }
     if (e.key === '2') {
       setBattle({ ...battle, targetHero: state.party[1] });
+      myRef.current.tabIndex = 1;
+      myRef.current.focus();
     }
     if (e.key === '2' && e.altKey) {
       if (levelManager.wave[1]) {
@@ -108,6 +116,8 @@ const GeneralButtons = ({
     }
     if (e.key === '3') {
       setBattle({ ...battle, targetHero: state.party[2] });
+      myRef.current.tabIndex = 2;
+      myRef.current.focus();
     }
     if (e.key === '3' && e.altKey) {
       if (levelManager.wave[2]) {
@@ -126,6 +136,8 @@ const GeneralButtons = ({
     }
     if (e.key === '4') {
       setBattle({ ...battle, targetHero: state.party[3] });
+      myRef.current.tabIndex = 3;
+      myRef.current.focus();
     }
     if (e.key === '4' && e.altKey) {
       e.preventDefault();
@@ -339,8 +351,8 @@ const GeneralButtons = ({
   useEffect(() => {
     if (battle.targetMonster.health <= 0) {
       for (let i = 0; i < levelManager.wave.length; i++) {
-        if (levelManager.wave[i + 1].health > 0) {
-          let newTargetMonster = levelManager.wave[i + 1];
+        if (levelManager.wave[i].health > 0) {
+          let newTargetMonster = levelManager.wave[i];
           setBattle({ ...battle, targetMonster: newTargetMonster });
           break;
         }

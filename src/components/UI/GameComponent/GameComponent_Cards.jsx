@@ -14,9 +14,11 @@ const MappedPlayingCards = ({ state }) => {
     <div id="PlayingCards">
       {state.playerHand.map((card) => {
         return (
-          <div key={card.id}>
-            <h1>{card.name}</h1>
+          <div className="PlayingCard" key={card.id}>
+            <h3>{card.name}</h3>
             <img src={card.imgUrl} alt="" />
+            <p>Type: {card.elementType}</p>
+            <p>MP Cost: {card.manaCost}</p>
           </div>
         );
       })}

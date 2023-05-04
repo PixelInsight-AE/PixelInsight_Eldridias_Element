@@ -6,341 +6,179 @@ $secondaryColor: #6c757d;
 $borderColor: #fff;
 $backgroundColor: rgba(0, 0, 0, 0.8);
 
+$start-color: #2d2d2d;
+$end-color: #000000;
+@mixin radial-gradient-dark($start-color, $end-color) {
+  background: $start-color;
+  background: radial-gradient(circle, $start-color, $end-color);
+}
+
+// Mixins for flexbox (flex, flex-direction, justify-content, align-items, etc.)
+@mixin flex($direction: row, $justify: flex-start, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// mixin for grid (grid-template-columns, grid-template-rows, etc.)
+@mixin grid($columns: 1, $rows: 1, $gap: 0) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-template-rows: repeat($rows, 1fr);
+  grid-gap: $gap;
+}
+
+@mixin positionAndTop() {
+  position: absolute;
+  top: 4%;
+}
+
+@mixin borderAndBoxShadowBlue() {
+  border: 3px solid lightblue;
+  box-shadow: 0 0 10px 5px lightblue;
+  border-radius: 5%;
+}
+
+@mixin borderAndBoxShadowGold() {
+  border: rgb(231, 175, 24) 3px solid;
+  box-shadow: 0 0 10px 5px rgba(231, 175, 24, 0.5);
+  border-radius: 5%;
+}
+
+@mixin img-small-circular() {
+  img {
+    @include borderAndBoxShadowGold();
+    width: 50px;
+    border-radius: 50%;
+  }
+}
+
+@mixin img-medium-circular() {
+  img {
+    @include borderAndBoxShadowBlue();
+    width: 150px;
+    border-radius: 50%;
+    margin: 1rem;
+    padding: 0.25rem;
+  }
+}
+
+@mixin stat-coloring() {
+  .atk {
+    color: rgb(147, 8, 8);
+  }
+  .def {
+    color: rgb(0, 0, 187);
+  }
+  .hp {
+    color: rgb(21, 161, 21);
+  }
+}
+
 #GameComponent {
   @include flex(column, center, center);
-  #hero-attack-animation {
-    font-size: 2rem;
-    color: rgb(136, 13, 13);
-  }
-  #monster-attack-animation {
-    font-size: 2rem;
-    color: rgb(136, 13, 13);
-  }
-  #PlayerStatusBar {
-    border: 1px solid $primaryColor;
-    margin: 0.5rem;
-  }
-  #EnemyStatusBar {
-    border: 1px solid $primaryColor;
-    margin: 0.5rem;
-  }
-  #party-side {
-    position: absolute;
-    top: 0;
-    left: 1%;
-  }
-  #monster-side {
-    position: absolute;
-    top: 0;
-    right: 1%;
-  }
-  #Battlefield {
-    @include flex(row, center, center);
-    #left-container {
-      img {
-        width: 125px;
-        border-radius: 50%;
-      }
+  @include radial-gradient-dark($start-color, $end-color);
+  font-size: 2rem;
+  color: whitesmoke;
+  height: 100%;
+  //!--STATS--Component-----------------------------------
+  #Stats {
+    text-align: center;
+
+    h2 {
+      text-align: center;
+      font-size: 1.5rem;
     }
-    #party-battlefield {
-      img {
-        width: 125px;
-        border-radius: 50%;
-      }
+    p {
+      font-size: 1.2rem;
     }
-    #middle-container {
-    }
-    #enemy-battlefield {
-      img {
-        width: 125px;
-        border-radius: 50%;
-      }
-    }
-    #right-container {
-      img {
-        width: 125px;
-        border-radius: 50%;
-      }
-    }
-  }
-  #PlayerControlls {
-    @include flex(column, center, center);
-    #PlayingCards {
+    .selected-icons {
       @include flex(row, center, center);
-      img {
-        width: 100px;
-      }
+      @include img-small-circular();
     }
-    #clickable-controls {
-      @include flex(row, center, center);
-    }
-    #HeroSpecialAttackButtons {
-      @include flex(row, center, center);
-      img {
-        width: 75px;
-        border-radius: 50%;
-      }
-    }
-    #GeneralButtons {
+    .selected-stats {
       @include flex(column, center, center);
+      @include stat-coloring();
+    }
+    #PlayerStatusBar {
+      @include positionAndTop();
+      @include borderAndBoxShadowBlue();
+      left: 25%;
+    }
+    #EnemyStatusBar {
+      @include positionAndTop();
+      @include borderAndBoxShadowBlue();
+      right: 25%;
+    }
+    #SelectedHeroStats {
+      width: 200px;
+      @include positionAndTop();
+      @include borderAndBoxShadowBlue();
+      left: 2%;
+    }
+    #SelectedMonsterStats {
+      width: 200px;
+      @include positionAndTop();
+      @include borderAndBoxShadowBlue();
+      right: 2%;
     }
   }
 }
-// // * {
-// //   border: 1px solid red;
-// //   box-sizing: border-box;
-// // }
-// #game-container {
-//   background-color: $backgroundColor;
-//   color: #fff;
-//   display: flex;
-//   justify-content: space-around;
-//   align-items: center;
-//   width: 100%;
+//!--BATLLEFIELD--Component-----------------------------------
+#Battlefield {
+  @include flex(row, space-around, center);
+  @include borderAndBoxShadowBlue();
+  width: 100%;
+  #ClickableHeros,
+  #BattleHero,
+  #BattleMonster,
+  #ClickableMonsters {
+    @include img-medium-circular();
+  }
 
-//   //! Left Side Container
-//   #left-side-container {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: flex-start;
-//     width: 20%;
-//     padding: 1rem;
-//     color: #fff;
+  #VictoryMessageLootBox {
+    margin: 5rem;
+  }
+}
 
-//     .party-stats {
-//       background-color: rgba($color: #6c757d, $alpha: 0.7);
-//       display: flex;
-//       flex-direction: column;
-//       justify-content: flex-start;
-//       border: 3px solid blue;
-//       border-radius: 0.5rem;
-//       margin: 0.25rem;
-//       img {
-//         width: 150px;
-//         border-radius: 25%;
-//       }
+//!--PLAYERCONTROLLS--Component-----------------------------------
+#PlayerControlls {
+  @include flex(column, center, center);
+  #PlayingCards {
+    @include flex(row, center, center);
+    img {
+      width: 100px;
+      text-align: center;
+    }
+    .PlayingCard {
+      @include borderAndBoxShadowGold();
+      margin: 1rem;
+      font-size: 1rem;
+      width: 150px;
+      background-color: rgba(140, 68, 1, 0.8);
+      height: 275px;
+    }
+  }
+  #clickable-controls {
+    @include flex(row, center, center);
+  }
+  #HeroSpecialAttackButtons {
+    @include flex(row, center, center);
+    @include img-small-circular();
+    #ManaTracker {
+      @include flex(row, center, center);
+      @include borderAndBoxShadowGold();
+      @include img-medium-circular();
+    }
+  }
+  #GeneralButtons {
+    @include flex(column, center, center);
+  }
+}
 
-//       .hero-stats {
-//         display: flex;
-//         flex-direction: row;
-//         justify-content: flex-start;
-//         align-self: start;
-//         align-items: flex-end;
-//         width: 100%;
-//         padding: 0.5rem;
-//         .hp {
-//           font-size: 1.5rem;
-//           color: green;
-//           text-shadow: 0.5 0.25 0.25rem black;
-//           //webkit-text-stroke: 0.5px black;
-//         }
-//         img {
-//           width: 50px;
-//           border-radius: 20%;
-//           margin-right: 2rem;
-//         }
-//         h2 {
-//           font-size: 1.75rem;
-//         }
-//       }
-//     }
-//   }
-
-//   //! Middle Container
-//   #middle-container {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     width: 60%;
-//     padding: 1rem;
-
-//     #enemy-battlefield {
-//       display: flex;
-//       flex-direction: row;
-//       justify-content: space-around;
-
-//       padding: 1rem;
-//       margin-top: 1rem;
-
-//       .battlefield {
-//         display: flex;
-//         flex-direction: row;
-//         justify-content: space-around;
-//         img {
-//           width: 100px;
-//           border-radius: 50%;
-//           border: 3px solid gold;
-//           padding: 0.5rem;
-//           margin: 0.25rem;
-//           &:hover {
-//             background-color: rgba($color: #c83b6f, $alpha: 0.7);
-//             transform: scale(1.1);
-//           }
-//         }
-//       }
-//     }
-
-//     .battlefield {
-//       display: flex;
-//       flex-direction: row;
-//       justify-content: center;
-
-//       .battle-hero {
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         align-items: center;
-//         width: 100%;
-//         padding: 1rem;
-//         margin: 1rem;
-//         h1 {
-//           font-size: 2.5rem;
-//           color: #fff;
-//           text-shadow: 0.5 0.25 0.25rem black;
-//           webkit-text-stroke: 0.5px black;
-//         }
-//         img {
-//           border: 4px solid blue;
-//           width: 200px;
-//           border-radius: 20%;
-//           padding: 0.5rem;
-//         }
-//       }
-
-//       .battle-animation {
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         align-items: center;
-//         width: 100%;
-//         padding: 1rem;
-//         margin: 1rem;
-
-//         h1 {
-//           font-size: 4rem;
-//           color: red;
-//           text-shadow: 0.5 0.25 0.25rem black;
-//           webkit-text-stroke: 0.5px black;
-//         }
-//       }
-
-//       .hero-click {
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         align-items: center;
-//         width: 100%;
-//         padding: 1rem;
-//         margin: 1rem;
-//         h1 {
-//           font-size: 2.5rem;
-//           color: #fff;
-//           text-shadow: 0.5 0.25 0.25rem black;
-//           webkit-text-stroke: 0.5px black;
-//         }
-//         img {
-//           border: 4px solid blue;
-//           width: 125px;
-//           border-radius: 20%;
-//           padding: 0.5rem;
-//         }
-//       }
-
-//       .battle-monster {
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         align-items: center;
-//         width: 100%;
-//         padding: 1rem;
-//         margin: 1rem;
-//         h1 {
-//           font-size: 2.5rem;
-//           color: #fff;
-//           text-shadow: 0.5 0.25 0.25rem black;
-//           webkit-text-stroke: 0.5px black;
-//         }
-//         img {
-//           border: 4px solid gold;
-//           width: 200px;
-//           border-radius: 20%;
-//           padding: 0.5rem;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// #right-side-container {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: flex-start;
-//   width: 20%;
-//   padding: 1rem;
-//   color: #fff;
-
-//   .monster-stats-container {
-//     background-color: rgba($color: #6c757d, $alpha: 0.7);
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: flex-start;
-//     border: 3px solid gold;
-//     border-radius: 0.5rem;
-//     margin: 0.25rem;
-//     .monster-stats-top {
-//       img {
-//         width: 70px;
-//         border-radius: 25%;
-//       }
-//     }
-
-//     .monster-stats {
-//       display: flex;
-//       flex-direction: row;
-//       justify-content: flex-start;
-//       align-self: start;
-//       align-items: flex-end;
-//       width: 100%;
-//       padding: 0.5rem;
-//       .hp {
-//         font-size: 1.5rem;
-//         color: green;
-//         text-shadow: 0.5 0.25 0.25rem black;
-//         webkit-text-stroke: 0.5px black;
-//       }
-//       img {
-//         width: 50px;
-//         border-radius: 20%;
-//         margin-right: 2rem;
-//       }
-//       h2 {
-//         font-size: 1.75rem;
-//       }
-//     }
-//   }
-// }
-
-// #PlayingCards {
-//   display: grid;
-//   grid-template-columns: repeat(10, 1fr);
-//   img {
-//     width: 100px;
-//   }
-// }
-
-// #HeroAttackButtons {
-//   @include flex(center, flex-start, row);
-
-//   #ManaTracker {
-//     width: 150px;
-//     height: 150px;
-//     border-radius: 50%;
-//     border: #c83b6f 3px solid;
-//   }
-
-//   img {
-//     width: 75px;
-//     height: 75px;
-//     border-radius: 50%;
-//   }
-// }
+// TODO where to go?
+#monster-attack-animation {
+  font-size: 2rem;
+  color: rgb(136, 13, 13);
+}

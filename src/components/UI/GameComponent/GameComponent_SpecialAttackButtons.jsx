@@ -29,6 +29,14 @@ const HealerButton = ({ state, handleHeroClick }) => {
   );
 };
 
+const ManaTracker = ({ state }) => {
+  // todo: release h1 ervywhere habit pls XD
+  return (
+    <div id="ManaTracker">
+      <h2>{state.controller.mana}</h2>
+    </div>
+  );
+};
 const HeroSpecialAttackButtons = ({
   state,
   setState,
@@ -72,13 +80,6 @@ const HeroSpecialAttackButtons = ({
         battle={battle}
         setBattle={setBattle}
       />
-    </div>
-  );
-};
-const ManaTracker = ({ state }) => {
-  return (
-    <div id="ManaTracker">
-      <h1>Mana: {state.controller.mana}</h1>
     </div>
   );
 };

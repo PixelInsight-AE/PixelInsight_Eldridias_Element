@@ -27,7 +27,7 @@ const VictoryMessageLootBox = (props) => {
   const victoryMessage = <VictoryComponent state={state} setState={setState} />;
 
   return (
-    <div className="battlefield">
+    <div id="VictoryMessageLootBox">
       <div className="battle-animation">
         {state.computer.isBossDefeated ? victoryMessage : <h1>VS</h1>}
       </div>
