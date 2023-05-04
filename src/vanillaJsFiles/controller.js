@@ -1,43 +1,24 @@
 import { deck } from './deck.js';
 import { compareElements } from './helpers.js';
-import { computer } from './computerPlayer.js';
+import { computer } from './computer.js';
 
 //! PLAYER OBJECT
 const controller = {
   name: 'Arno',
-  mana: 5,
+  mana: 15,
   isTurn: true,
   canPlayCard: true,
   turnCount: 0,
   playerGraveyard: [],
   effect: [],
   imgUrl: 'https://i.imgur.com/ej7j6r0.jpeg',
-
-  selectCard: function (hero, monster) {
-    if (this.canPlayCard === true) {
-      console.log(this.playingCardsInHand);
-      let cardToPlay = parseInt(prompt('Select a card to play'));
-      let foundCard = false;
-      for (let i = 0; i < this.playingCardsInHand.length; i++) {
-        if (cardToPlay === this.playingCardsInHand[i].id) {
-          let playCard = this.playingCardsInHand[i];
-          compareElements(hero, playCard);
-          playerUsedCards.push(this.playingCardsInHand.splice(i, 1));
-          foundCard = true;
-          break;
-        }
-        if (!foundCard) {
-          console.log('Card not found');
-        }
-      }
-    }
-  },
   deathCheck: function (hero, party) {
     if (hero.health <= 0) {
       console.log(`${hero.name} has fallen`);
       this.playerGraveyard.push(hero);
       hero.imgUrl = hero.deathImgUrl;
       console.log(this.playerGraveyard);
+      hero.flag = true;
       this.death(party);
     }
   },
@@ -133,6 +114,7 @@ const controller = {
     for (let i = 0; i < party.length; i++) {
       party[i].imgUrl = party[i].defaultImgUrl;
       party[i].health = party[i].maxHealth;
+      party[i].flag = false;
     }
   },
 };

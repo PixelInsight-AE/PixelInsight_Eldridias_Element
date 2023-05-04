@@ -111,7 +111,8 @@ class ElementCard {
     maxCardLevel,
     duration,
     imgUrl,
-    elementIcon
+    elementIcon,
+    cardEffect
   ) {
     this.id = id;
     this.name = name;
@@ -128,6 +129,7 @@ class ElementCard {
     this.duration = duration;
     this.imgUrl = imgUrl;
     this.elementIcon = elementIcon;
+    this.cardEffect = cardEffect;
   }
 }
 
@@ -164,7 +166,5 @@ class MagicCard {
     this.elementIcon = elementIcon;
   }
 }
-
-
 
 export { Hero, Monster, ElementCard, MagicCard };

@@ -1,0 +1,346 @@
+@import '../../../styleSheets/mixins.scss';
+@import '../../../styleSheets/variables.scss';
+
+$primaryColor: #007bff;
+$secondaryColor: #6c757d;
+$borderColor: #fff;
+$backgroundColor: rgba(0, 0, 0, 0.8);
+
+#GameComponent {
+  @include flex(column, center, center);
+  #hero-attack-animation {
+    font-size: 2rem;
+    color: rgb(136, 13, 13);
+  }
+  #monster-attack-animation {
+    font-size: 2rem;
+    color: rgb(136, 13, 13);
+  }
+  #PlayerStatusBar {
+    border: 1px solid $primaryColor;
+    margin: 0.5rem;
+  }
+  #EnemyStatusBar {
+    border: 1px solid $primaryColor;
+    margin: 0.5rem;
+  }
+  #party-side {
+    position: absolute;
+    top: 0;
+    left: 1%;
+  }
+  #monster-side {
+    position: absolute;
+    top: 0;
+    right: 1%;
+  }
+  #Battlefield {
+    @include flex(row, center, center);
+    #left-container {
+      img {
+        width: 125px;
+        border-radius: 50%;
+      }
+    }
+    #party-battlefield {
+      img {
+        width: 125px;
+        border-radius: 50%;
+      }
+    }
+    #middle-container {
+    }
+    #enemy-battlefield {
+      img {
+        width: 125px;
+        border-radius: 50%;
+      }
+    }
+    #right-container {
+      img {
+        width: 125px;
+        border-radius: 50%;
+      }
+    }
+  }
+  #PlayerControlls {
+    @include flex(column, center, center);
+    #PlayingCards {
+      @include flex(row, center, center);
+      img {
+        width: 100px;
+      }
+    }
+    #clickable-controls {
+      @include flex(row, center, center);
+    }
+    #HeroSpecialAttackButtons {
+      @include flex(row, center, center);
+      img {
+        width: 75px;
+        border-radius: 50%;
+      }
+    }
+    #GeneralButtons {
+      @include flex(column, center, center);
+    }
+  }
+}
+// // * {
+// //   border: 1px solid red;
+// //   box-sizing: border-box;
+// // }
+// #game-container {
+//   background-color: $backgroundColor;
+//   color: #fff;
+//   display: flex;
+//   justify-content: space-around;
+//   align-items: center;
+//   width: 100%;
+
+//   //! Left Side Container
+//   #left-side-container {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: flex-start;
+//     width: 20%;
+//     padding: 1rem;
+//     color: #fff;
+
+//     .party-stats {
+//       background-color: rgba($color: #6c757d, $alpha: 0.7);
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: flex-start;
+//       border: 3px solid blue;
+//       border-radius: 0.5rem;
+//       margin: 0.25rem;
+//       img {
+//         width: 150px;
+//         border-radius: 25%;
+//       }
+
+//       .hero-stats {
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: flex-start;
+//         align-self: start;
+//         align-items: flex-end;
+//         width: 100%;
+//         padding: 0.5rem;
+//         .hp {
+//           font-size: 1.5rem;
+//           color: green;
+//           text-shadow: 0.5 0.25 0.25rem black;
+//           //webkit-text-stroke: 0.5px black;
+//         }
+//         img {
+//           width: 50px;
+//           border-radius: 20%;
+//           margin-right: 2rem;
+//         }
+//         h2 {
+//           font-size: 1.75rem;
+//         }
+//       }
+//     }
+//   }
+
+//   //! Middle Container
+//   #middle-container {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     width: 60%;
+//     padding: 1rem;
+
+//     #enemy-battlefield {
+//       display: flex;
+//       flex-direction: row;
+//       justify-content: space-around;
+
+//       padding: 1rem;
+//       margin-top: 1rem;
+
+//       .battlefield {
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: space-around;
+//         img {
+//           width: 100px;
+//           border-radius: 50%;
+//           border: 3px solid gold;
+//           padding: 0.5rem;
+//           margin: 0.25rem;
+//           &:hover {
+//             background-color: rgba($color: #c83b6f, $alpha: 0.7);
+//             transform: scale(1.1);
+//           }
+//         }
+//       }
+//     }
+
+//     .battlefield {
+//       display: flex;
+//       flex-direction: row;
+//       justify-content: center;
+
+//       .battle-hero {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         align-items: center;
+//         width: 100%;
+//         padding: 1rem;
+//         margin: 1rem;
+//         h1 {
+//           font-size: 2.5rem;
+//           color: #fff;
+//           text-shadow: 0.5 0.25 0.25rem black;
+//           webkit-text-stroke: 0.5px black;
+//         }
+//         img {
+//           border: 4px solid blue;
+//           width: 200px;
+//           border-radius: 20%;
+//           padding: 0.5rem;
+//         }
+//       }
+
+//       .battle-animation {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         align-items: center;
+//         width: 100%;
+//         padding: 1rem;
+//         margin: 1rem;
+
+//         h1 {
+//           font-size: 4rem;
+//           color: red;
+//           text-shadow: 0.5 0.25 0.25rem black;
+//           webkit-text-stroke: 0.5px black;
+//         }
+//       }
+
+//       .hero-click {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         align-items: center;
+//         width: 100%;
+//         padding: 1rem;
+//         margin: 1rem;
+//         h1 {
+//           font-size: 2.5rem;
+//           color: #fff;
+//           text-shadow: 0.5 0.25 0.25rem black;
+//           webkit-text-stroke: 0.5px black;
+//         }
+//         img {
+//           border: 4px solid blue;
+//           width: 125px;
+//           border-radius: 20%;
+//           padding: 0.5rem;
+//         }
+//       }
+
+//       .battle-monster {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         align-items: center;
+//         width: 100%;
+//         padding: 1rem;
+//         margin: 1rem;
+//         h1 {
+//           font-size: 2.5rem;
+//           color: #fff;
+//           text-shadow: 0.5 0.25 0.25rem black;
+//           webkit-text-stroke: 0.5px black;
+//         }
+//         img {
+//           border: 4px solid gold;
+//           width: 200px;
+//           border-radius: 20%;
+//           padding: 0.5rem;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// #right-side-container {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   width: 20%;
+//   padding: 1rem;
+//   color: #fff;
+
+//   .monster-stats-container {
+//     background-color: rgba($color: #6c757d, $alpha: 0.7);
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: flex-start;
+//     border: 3px solid gold;
+//     border-radius: 0.5rem;
+//     margin: 0.25rem;
+//     .monster-stats-top {
+//       img {
+//         width: 70px;
+//         border-radius: 25%;
+//       }
+//     }
+
+//     .monster-stats {
+//       display: flex;
+//       flex-direction: row;
+//       justify-content: flex-start;
+//       align-self: start;
+//       align-items: flex-end;
+//       width: 100%;
+//       padding: 0.5rem;
+//       .hp {
+//         font-size: 1.5rem;
+//         color: green;
+//         text-shadow: 0.5 0.25 0.25rem black;
+//         webkit-text-stroke: 0.5px black;
+//       }
+//       img {
+//         width: 50px;
+//         border-radius: 20%;
+//         margin-right: 2rem;
+//       }
+//       h2 {
+//         font-size: 1.75rem;
+//       }
+//     }
+//   }
+// }
+
+// #PlayingCards {
+//   display: grid;
+//   grid-template-columns: repeat(10, 1fr);
+//   img {
+//     width: 100px;
+//   }
+// }
+
+// #HeroAttackButtons {
+//   @include flex(center, flex-start, row);
+
+//   #ManaTracker {
+//     width: 150px;
+//     height: 150px;
+//     border-radius: 50%;
+//     border: #c83b6f 3px solid;
+//   }
+
+//   img {
+//     width: 75px;
+//     height: 75px;
+//     border-radius: 50%;
+//   }
+// }
