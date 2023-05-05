@@ -5,20 +5,20 @@ const HeroTwo_left = () => {
   return (
     <div id="heroTwo-left">
       <motion.h2
-        variants={variants.heroLeft.h2}
+        variants={variants.heroTwo.heroLeft.h2}
         initial="hidden"
         animate="visible"
         whileHover="whileHover"
-        transition={variants.heroLeft.h2.transition}
+        transition={variants.heroTwo.heroLeft.h2.transition}
         >
         Battle Glorious Hero's!
       </motion.h2>
       <motion.img
-        variants={variants.heroLeft.img}
+        variants={variants.heroTwo.heroLeft.img}
         initial="hidden"
         animate="visible"
         whileHover="whileHover"
-        transition={variants.heroLeft.img.transition}
+        transition={variants.heroTwo.heroLeft.img.transition}
         src="https://i.imgur.com/v9lWrKm.png"
         alt=""
         />
@@ -29,11 +29,11 @@ const HeroTwo_left = () => {
 const HeroTwo_right = () => {
   return (
     <motion.div
-    variants={variants.heroRight}
+    variants={variants.heroTwo.heroRight}
     initial="hidden"
     animate="visible"
     whileHover="whileHover"
-    transition={variants.heroRight.transition} // ? Why do I have to target dot notation only for transition??? Figure this out.....
+    transition={variants.heroTwo.heroRight.transition} // ? Why do I have to target dot notation only for transition??? Figure this out.....
     // ! This is because the transition is an object, and the other two are not.
     id="heroTwo-right"
     >
