@@ -6,6 +6,8 @@ import {
   StoryBoard,
   Home,
 } from './components/UI/index.js';
+
+// ? taken out all unused imports
 import {
   magiTheLiar,
   yamiTheDreamer,
@@ -59,7 +61,6 @@ function EldridiasElement() {
     currentStory: 0,
   });
 
-  // ! Like our error said, in V6 we need to nest all Route elements inside of a Routes component.
   return (
     <Routes>
       <Route path="/" element={<Home />} />
