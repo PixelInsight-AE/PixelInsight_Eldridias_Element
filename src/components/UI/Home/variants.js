@@ -14,6 +14,24 @@ const variants = {
         whileHover: { scale: 1.1, backgroundColor: 'pink' },
       }
   },
+  heroOne: {
+    heroOneWrapper: {
+      hidden: { opacity: 0, scale: 0.25 },
+      visible: { opacity: 1, scale: 1 },
+      whileHover: { scale: 1.1 },
+      transition: { duration: 2 },
+    },
+    h2: {
+      hidden: { opacity: 0, x: -100 },
+      visible: { opacity: 1, x: 0 },
+      transition: { duration: 2, delay: 0.25, ease },
+    },
+    p: {
+      hidden: { opacity: 0},
+      visible: { opacity: 1 },
+      transition: { duration: 2, delay: 1.5, ease: 'easeInOut' },
+    },
+  },
   heroTwo: {
     heroRight: {
       hidden: { opacity: 0, y: 300 },
