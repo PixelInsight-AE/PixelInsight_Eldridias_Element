@@ -482,3 +482,7 @@ const PlayerControlls = ({
 };
 
 export { PlayerControlls };
+
+// TODO: should be inside GameComponent folder. 
+// TODO: Abstract key mapping to a helper function... 
+

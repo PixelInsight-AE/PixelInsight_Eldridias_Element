@@ -28,5 +28,5 @@ const Home = (props) => {
 export { Home };
 
 /**
- * TODO: Also display element cards on the scrollable row
+ * ? Done, clean as can be....
  */

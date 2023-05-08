@@ -1,35 +1,43 @@
 import { motion } from 'framer-motion';
+import { variants } from '../variants';
 
-const HeroTwo = () => {
+const HeroTwo_left = () => {
   return (
-    <section id="heroTwo">
-      <div id="heroTwo-left">
-        <motion.h2
-          initial={{ opacity: 0, x: -100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 2 }}
+    <div id="heroTwo-left">
+      <motion.h2
+        variants={variants.heroTwo.heroLeft.h2}
+        initial="hidden"
+        animate="visible"
+        whileHover="whileHover"
+        transition={variants.heroTwo.heroLeft.h2.transition}
         >
-          Battle Glorious Hero's!
-        </motion.h2>
-        <motion.img
-          initial={{ scale: 0.75, rotate: 10 }}
-          whileInView={{ scale: 1.25, rotate: 0 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ duration: 2 }}
-          src="https://i.imgur.com/v9lWrKm.png"
-          alt=""
+        Battle Glorious Hero's!
+      </motion.h2>
+      <motion.img
+        variants={variants.heroTwo.heroLeft.img}
+        initial="hidden"
+        animate="visible"
+        whileHover="whileHover"
+        transition={variants.heroTwo.heroLeft.img.transition}
+        src="https://i.imgur.com/v9lWrKm.png"
+        alt=""
         />
-      </div>
-      <motion.div
-        initial={{ opacity: 0, y: 300 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.1 }}
-        transition={{ duration: 2, delay: 0.5 }}
-        id="heroTwo-right"
-      >
-        <h1>Eldridias Element</h1>
+    </div>
+  );
+};
 
+const HeroTwo_right = () => {
+  return (
+    <motion.div
+    variants={variants.heroTwo.heroRight}
+    initial="hidden"
+    animate="visible"
+    whileHover="whileHover"
+    transition={variants.heroTwo.heroRight.transition} // ? Why do I have to target dot notation only for transition??? Figure this out.....
+    // ! This is because the transition is an object, and the other two are not.
+    id="heroTwo-right"
+    >
+        <h1>Eldridias Element</h1>
         <p>
           Welcome to the world of Eldridia, a land of magic and mystery, where
           the elements of earth, air, water, fire, and magic reign supreme.
@@ -45,8 +53,20 @@ const HeroTwo = () => {
           victorious? The fate of the world is in your hands.
         </p>
       </motion.div>
+  );
+};
+
+
+const HeroTwo = () => {
+  return (
+    <section id="heroTwo">
+      <HeroTwo_left />
+      <HeroTwo_right  />
     </section>
   );
 };
 
 export { HeroTwo };
+
+// ? abstracted all animation to the variants file, and imported it here.
+// ? I also abstracted the left and right side of the heroTwo component to their own components.

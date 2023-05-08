@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import {
   Dashboard,
@@ -7,34 +7,18 @@ import {
   Home,
 } from './components/UI/index.js';
 
-// ? taken out all unused imports
+// ? taken out all unused imports, left sceneManger in here due to your comment. :) 
 import {
-  magiTheLiar,
-  yamiTheDreamer,
-  sargarasTheDestroyer,
   computer,
   controller,
-  Hero,
-  Monster,
-  ElementCard,
-  MagicCard,
   allElementalCards,
   magicPlayingCards,
   monsterList,
   monsterList2,
-  deck,
-  heroList,
   bulwark,
   hogarth,
   beastMaster,
-  sorceress,
-  druidess,
   gunslinger,
-  paladin,
-  seer,
-  shadow,
-  storm,
-  nightshade,
   storyOne,
   sceneManager,
 } from './vanillaJsFiles/index.js';
@@ -51,6 +35,7 @@ function EldridiasElement() {
     healer: hogarth,
     party: [bulwark, beastMaster, hogarth, gunslinger],
     //! will replace monsterList with sceneManager(), which will be a switch case
+    // ? Tell me about that... 
     selectedScene: 'gameStart',
     sceneManager: [monsterList, monsterList2],
     difficulty: 4,
@@ -81,3 +66,5 @@ function EldridiasElement() {
 }
 
 export default EldridiasElement;
+
+// ? All good and cleaned up.

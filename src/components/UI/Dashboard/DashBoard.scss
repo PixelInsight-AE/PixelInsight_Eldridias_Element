@@ -1,11 +1,7 @@
-@import './../Home/Home.scss';
+@import '/src/main.scss';
 
-* {
-  box-sizing: border-box;
-  // border: 1px solid red;
-}
 #Dashboard {
-  @include radial-gradient-dark($start-color, $end-color);
+  @include radial-gradient-dark();
   @include flex(center, center, column);
   width: 100%;
   #top {
