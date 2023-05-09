@@ -1,4 +1,9 @@
-import { allElementalCards } from './elementCards.js';
+// import { allElementalCards } from './elementCards.js';
+import { allEarthCards } from './elementalCards/earthCards.js';
+import { allFireCards } from './elementalCards/fireCards.js';
+import { allWaterCards } from './elementalCards/waterCards.js';
+import { allAirCards } from './elementalCards/airCards.js';
+
 import { magicPlayingCards } from './magicCards.js';
 
 const createDeck = () => {
@@ -18,6 +23,6 @@ const shuffleDeck = (deck) => {
   }
 };
 
-const deck = [...allElementalCards, ...magicPlayingCards];
+const deck = [...magicPlayingCards];
 
 export { deck };

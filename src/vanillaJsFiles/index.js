@@ -7,7 +7,7 @@ import { storyOne } from './storyboard.js';
 import { computer } from './computer.js';
 import { Hero, Monster, ElementCard, MagicCard } from './constructor.js';
 import { controller } from './controller.js';
-import { allElementalCards } from './elementCards.js';
+
 import { magicPlayingCards } from './magicCards.js';
 import { monsterList, monsterList2 } from './floors.js';
 import { deck } from './deck.js';
@@ -37,7 +37,6 @@ export {
   Monster,
   ElementCard,
   MagicCard,
-  allElementalCards,
   magicPlayingCards,
   monsterList,
   monsterList2,

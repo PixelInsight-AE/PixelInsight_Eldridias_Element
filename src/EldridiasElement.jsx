@@ -6,12 +6,11 @@ import {
   StoryBoard,
   Home,
 } from './components/UI/index.js';
-
-// ? taken out all unused imports, left sceneManger in here due to your comment. :) 
+import { allElementalCards } from './vanillaJsFiles/elementalCards/index.js';
+// ? taken out all unused imports, left sceneManger in here due to your comment. :)
 import {
   computer,
   controller,
-  allElementalCards,
   magicPlayingCards,
   monsterList,
   monsterList2,
@@ -35,7 +34,7 @@ function EldridiasElement() {
     healer: hogarth,
     party: [bulwark, beastMaster, hogarth, gunslinger],
     //! will replace monsterList with sceneManager(), which will be a switch case
-    // ? Tell me about that... 
+    // ? Tell me about that...
     selectedScene: 'gameStart',
     sceneManager: [monsterList, monsterList2],
     difficulty: 4,

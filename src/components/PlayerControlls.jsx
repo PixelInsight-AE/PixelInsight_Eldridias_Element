@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { earthQuakeCard } from '../vanillaJsFiles/elementCards';
+//import { earthQuakeCard } from '../vanillaJsFiles/elementCards';
 import { PlayingCards } from './UI/GameComponent/GameComponent_Cards';
 import { HeroSpecialAttackButtons } from './UI/GameComponent/GameComponent_SpecialAttackButtons';
 
@@ -483,6 +483,5 @@ const PlayerControlls = ({
 
 export { PlayerControlls };
 
-// TODO: should be inside GameComponent folder. 
-// TODO: Abstract key mapping to a helper function... 
-
+// TODO: should be inside GameComponent folder.
+// TODO: Abstract key mapping to a helper function...
