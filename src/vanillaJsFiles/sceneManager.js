@@ -1,19 +1,18 @@
-import { monsterList } from './monsters.js';
+import { monsterList, monsterList2, floor1, floor2 } from './floors.js';
 
-const sceneManager = () => {
-  let scene = monsterList2;
+const sceneManager = (scene) => {
+  console.log('sceneManager.js is loaded');
+
   switch (scene) {
-    case state.selectedScene === 'gameStart':
-      return monsterList;
+    case 'gameStart':
+      return floor1.monsters;
       break;
-    case state.selectedScene === 'level1':
-      return monsterList2;
+    case 'level1':
+      return floor2.monsters;
       break;
     default:
       return monsterList;
   }
-
-  console.log('sceneManager.js is loaded');
 };
 
 export { sceneManager };

@@ -35,26 +35,42 @@ function EldridiasElement() {
     party: [bulwark, beastMaster, hogarth, gunslinger],
     //! will replace monsterList with sceneManager(), which will be a switch case
     // ? Tell me about that...
-    selectedScene: 'gameStart',
-    sceneManager: [monsterList, monsterList2],
-    difficulty: 4,
+    selectedScene: 1,
+    monsterAmount: 4,
     currency: 500,
     inventory: [],
     deck: [...magicPlayingCards, ...allElementalCards],
     story: storyOne,
     currentStory: 0,
   });
-
+  const [storyManager, setStoryManager] = useState({
+    sceneManager: sceneManager(state.selectedScene),
+  });
+  //console.log(storyManager.sceneManager);
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route
         path="/dashboard"
-        element={<Dashboard state={state} setState={setState} />}
+        element={
+          <Dashboard
+            state={state}
+            setState={setState}
+            storyManager={storyManager}
+            setStoryManager={setStoryManager}
+          />
+        }
       />
       <Route
         path="/dashboard/play"
-        element={<GameComponent state={state} setState={setState} />}
+        element={
+          <GameComponent
+            state={state}
+            setState={setState}
+            storyManager={storyManager}
+            setStoryManager={setStoryManager}
+          />
+        }
       />
       <Route
         path="/dashboard/story"

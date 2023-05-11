@@ -9,7 +9,7 @@ import { Hero, Monster, ElementCard, MagicCard } from './constructor.js';
 import { controller } from './controller.js';
 
 import { magicPlayingCards } from './magicCards.js';
-import { monsterList, monsterList2 } from './floors.js';
+import { monsterList, monsterList2, floor1, floor2 } from './floors.js';
 import { deck } from './deck.js';
 import {
   heroList,

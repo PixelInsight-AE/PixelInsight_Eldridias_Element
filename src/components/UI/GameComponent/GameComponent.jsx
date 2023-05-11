@@ -7,19 +7,22 @@ import { Stats } from './GameComponent_Stats';
 import './GameComponent.scss';
 
 const GameComponent = (props) => {
-  const { state, setState } = props;
+  const { state, setState, storyManager, setStoryManager } = props;
   const [levelManager, setLevelManager] = useState({
     boss: 'blankfornow',
     currentLevel: 1,
     maxFloor: 1,
     currentFloor: 1,
     location: 'blankfornow',
-    wave: state.computer.waveGenerator(state.sceneManager[0], state.difficulty),
+    wave: state.computer.waveGenerator(
+      storyManager.sceneManager,
+      state.monsterAmount
+    ),
   });
   const [battle, setBattle] = useState({
     selectedCard: 'None',
     targetHero: state.party[0],
-    targetMonster: levelManager.wave[0],
+    targetMonster: levelManager.wave.length > 0 ? levelManager.wave[0] : null,
     heroHealth: state.party[0].health,
     monsterHealth: levelManager.wave[0].health,
     heroDamageAnimation: null,
@@ -67,6 +70,8 @@ const GameComponent = (props) => {
           setBattle={setBattle}
           handleHeroClick={handleHeroClick}
           handleMonsterClick={handleMonsterClick}
+          storyManager={storyManager}
+          setStoryManager={setStoryManager}
         />
       </div>
     </div>

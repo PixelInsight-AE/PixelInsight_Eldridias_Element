@@ -38,23 +38,23 @@ const computer = {
     }
   },
   death: function (floor) {
-    let isWaveDefeated = false;
-    console.log(isWaveDefeated);
-    // check if all party members are dead
-    // if all party members are dead, end game
-    for (let i = 0; i < floor.length; i++) {
-      if (floor[i].health <= 0) {
-        isWaveDefeated = true;
-      } else {
-        isWaveDefeated = false;
-        break;
-      }
-    }
-    if (isWaveDefeated) {
-      console.log('WaveDefeated');
-      //this.resetMonsters(floor);
-      this.isWaveDefeated = true;
-    }
+    // let isWaveDefeated = false;
+    // console.log(isWaveDefeated);
+    // // check if all party members are dead
+    // // if all party members are dead, end game
+    // for (let i = 0; i < floor.length; i++) {
+    //   if (floor[i].health <= 0) {
+    //     isWaveDefeated = true;
+    //   } else {
+    //     isWaveDefeated = false;
+    //     break;
+    //   }
+    // }
+    // if (isWaveDefeated) {
+    //   console.log('WaveDefeated');
+    //   //this.resetMonsters(floor);
+    //   this.isWaveDefeated = true;
+    // }
   },
   computerTurn: function (hero, monster, party) {
     console.log("=== Computer's Turn ===");

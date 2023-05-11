@@ -11,6 +11,7 @@ const GeneralButtons = ({
   setBattle,
   levelManager,
   setLevelManager,
+  storyManager,
 }) => {
   // const myRef = useRef(0);
   // look right :)
@@ -58,8 +59,6 @@ const GeneralButtons = ({
     }
     if (e.key === '2') {
       setBattle({ ...battle, targetHero: state.party[1] });
-      // myRef.current.tabIndex = 1;
-      // myRef.current.focus();
     }
     if (e.key === '2' && e.altKey) {
       if (levelManager.wave[1]) {
@@ -78,8 +77,6 @@ const GeneralButtons = ({
     }
     if (e.key === '3') {
       setBattle({ ...battle, targetHero: state.party[2] });
-      // myRef.current.tabIndex = 2;
-      // myRef.current.focus();
     }
     if (e.key === '3' && e.altKey) {
       if (levelManager.wave[2]) {
@@ -98,8 +95,6 @@ const GeneralButtons = ({
     }
     if (e.key === '4') {
       setBattle({ ...battle, targetHero: state.party[3] });
-      // myRef.current.tabIndex = 3;
-      // myRef.current.focus();
     }
     if (e.key === '4' && e.altKey) {
       e.preventDefault();
@@ -301,9 +296,13 @@ const GeneralButtons = ({
 
   //? useEffect to add and remove event listener for key press
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
+    window.addEventListener('keydown', (e) => {
+      handleKeyPress(e);
+    });
     return () => {
-      window.removeEventListener('keydown', handleKeyPress);
+      window.removeEventListener('keydown', (e) => {
+        handleKeyPress(e);
+      });
     };
   }, [battle]);
 
@@ -331,29 +330,17 @@ const GeneralButtons = ({
     }
   }, [battle.targetMonster.health]);
 
-  const progressCheck = () => {
-    if (
-      levelManager.currentFloor == levelManager.maxFloor &&
-      state.computer.isBossDefeated
-    ) {
-      setLevelManager({
-        ...levelManager,
-        maxFloor: levelManager.maxFloor + 1,
-        currentFloor: levelManager.currentFloor + 1,
-        currentWave: 0,
-      });
-    }
-  };
   const handleWaveChange = () => {
+    console.log(state.computer.isWaveDefeated);
     if (state.computer.isWaveDefeated) {
       setLevelManager({
         ...levelManager,
         wave: state.computer.waveGenerator(
-          state.sceneManager[0],
-          state.difficulty
+          storyManager.sceneManager,
+          state.monsterAmount
         ),
       });
-      //progressCheck();
+
       state.computer.isWaveDefeated = false;
     } else {
     }
@@ -446,8 +433,7 @@ const PlayerControlls = ({
   setState,
   battle,
   setBattle,
-
-  //handleMonsterClick,
+  storyManager,
   levelManager,
   setLevelManager,
 }) => {
@@ -467,6 +453,7 @@ const PlayerControlls = ({
           setState={setState}
           battle={battle}
           setBattle={setBattle}
+          storyManager={storyManager}
         />
       </div>
       <div id="clickable-controls">

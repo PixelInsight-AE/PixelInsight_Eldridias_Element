@@ -1,3 +1,5 @@
+import { compareElements } from '../helpers';
+
 const fireCardFunction = (battle, setBattle, monster, computer, wave) => {
   console.log('fireCardFunctions');
 };

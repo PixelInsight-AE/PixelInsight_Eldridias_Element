@@ -1,4 +1,3 @@
-
 // !----IMPORTS------------------------------------------------------------
 @import url('https://fonts.googleapis.com/css2?family=Lovers+Quarrel&display=swap');
 $font-title: 'Lovers Quarrel', cursive;
@@ -8,6 +7,7 @@ $font-title: 'Lovers Quarrel', cursive;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: whitesmoke;
 }
 html {
   margin: 0;
@@ -46,9 +46,9 @@ $accent-color-3: #000000;
 $accent-color-4: #ffffff;
 
 // variables for font families
-$font-family-1: "Roboto", sans-serif;
-$font-family-2: "Roboto", sans-serif;
-$font-family-3: "Roboto", sans-serif;
+$font-family-1: 'Roboto', sans-serif;
+$font-family-2: 'Roboto', sans-serif;
+$font-family-3: 'Roboto', sans-serif;
 
 // variables for border-radius
 $border-radius-1: 0.25rem;
@@ -131,12 +131,6 @@ $end-color: #000000; */ //? these will become default values to be changed on ca
 }
 //!-------------------------------------------------------------------------
 
-
-
-
-
-
-
 // ! Ensure to define mixins where you need them, move them here once finished....
 // TODO Pick one flexbox or grid mixin... I would say direction --> Justify --> Align
-// ? Will not remove the other one for now, may break stuff elsewhere. 
+// ? Will not remove the other one for now, may break stuff elsewhere.
