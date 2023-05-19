@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
+
 import { Home } from "./components/Home/Home";
+
 
 
 function Eldridia() {
@@ -20,8 +22,10 @@ function Eldridia() {
 
   return (
     <Routes>
+
       <Route path="/" element={<Home />} />
       <Route path="/signup" element={<h1>Signup</h1>} />
+
       <Route path="/signup/introduction" element={<h1>Introduction</h1>} />
 
       <Route path="/dashboard" element={ <h1>dash</h1> } />
