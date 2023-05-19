@@ -1,4 +1,4 @@
-import { Hero } from './constructor.js';
+import { Hero } from '../gameLogic/constructor.js';
 const deathImg = 'https://i.imgur.com/jEiDFYT.png';
 const bulwark = new Hero(
   'Bulwark', //name
