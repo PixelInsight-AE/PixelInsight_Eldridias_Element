@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Dashboard } from "./components/Dashboard/DashBoard";
+import { SignUp } from "./components/Signup/Signup";
 
 function Eldridia() {
   // todo add states for storyManager, battleManager, sceneManager, inventoryManager, deckManager, partyManager, heroManager, cardManager, saveManager, disabledManager.
@@ -20,7 +21,7 @@ function Eldridia() {
   return (
     <Routes>
       <Route path="/" element={<h1>Home</h1>} />
-      <Route path="/signup" element={<h1>Signup</h1>} />
+      <Route path="/signup" element={<SignUp />} />
       <Route path="/signup/introduction" element={<h1>Introduction</h1>} />
 
       <Route path="/dashboard" element={<Dashboard />} />
