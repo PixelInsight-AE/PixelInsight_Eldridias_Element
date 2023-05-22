@@ -1,5 +1,6 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { logInFunction } from "../../../src/gameLogic/backendCalls/login.js";
+import { useNavigate } from "react-router-dom";
 const ExistingUserSignIn = () => {
   //? Existing User State and error handlers. Will be passed to the backend and cleared out.
   const [existingUser, setExistingUser] = useState({
@@ -10,6 +11,11 @@ const ExistingUserSignIn = () => {
       password: "",
     },
   });
+  useEffect(() => {
+    console.log(existingUser);
+  }, [existingUser]);
+
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -32,10 +38,12 @@ const ExistingUserSignIn = () => {
   //? handles submit for the login form.
   const handleSubmit = (e) => {
     e.preventDefault();
-    //logInFunction(existingUser);
+    logInFunction(existingUser);
+    //navigate("/");
+    //move user to home page
   };
   return (
-    <div id="existing-user">
+    <div id="ExistingUserSignIn">
       <h2>Already a Member?</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">

@@ -1,5 +1,6 @@
 const logInFunction = async (user) => {
-  fetch("http://localhost:3001/login", {
+  fetch("http://localhost:3000/sessions", {
+    mode: "cors",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
