@@ -6,17 +6,25 @@ import { authUser } from "./../src/gameLogic/backendCalls/auth.js";
 import { getCSRF } from "./../src/gameLogic/backendCalls/getCSRF.js";
 import { mainStory } from "./../src/gameObjects/index.js";
 import { img } from "./../src/assets/imgur.js";
+import { StoryBoard } from "./../src/components/index.js";
 function Eldridia() {
   const [user, setUser] = useState({
     username: "",
     isAuthenticated: false,
   });
   console.log(mainStory);
+  const [battleManager, setBattleManager] = useState({});
+  const [sceneManager, setSceneManager] = useState({});
 
+  const [inventoryManager, setInventoryManager] = useState({});
+  const [deckManager, setDeckManager] = useState({});
+  const [partyManager, setPartyManager] = useState({});
+  const [heroManager, setHeroManager] = useState({});
+  const [cardManager, setCardManager] = useState({});
+
+  const [saveManager, setSaveManager] = useState({});
+  const [disabledManager, setDisabledManager] = useState({});
   const [state, setState] = useState({
-    storyManager: {
-      story: mainStory, // main story object here//,
-    },
     battleManager: {},
     sceneManager: {},
     inventoryManager: {},
@@ -43,7 +51,7 @@ function Eldridia() {
       <Route path="/dashboard" element={<h1>dash</h1>} />
 
       <Route path="/game" element={<h1>Game</h1>} />
-      <Route path="/game/story" element={<h1>Story</h1>} />
+      <Route path="/game/story" element={<StoryBoard />} />
       <Route path="/game/play" element={<h1>Play</h1>} />
 
       <Route path="/account" element={<h1>Account</h1>} />
@@ -59,15 +67,5 @@ export default Eldridia;
 // todo get rid of UI folder
 /* 
 const [storyManager, setStoryManager] = useState({});
-const [battleManager, setBattleManager] = useState({});
-const [sceneManager, setSceneManager] = useState({});
 
-const [inventoryManager, setInventoryManager] = useState({});
-const [deckManager, setDeckManager] = useState({});
-const [partyManager, setPartyManager] = useState({});
-const [heroManager, setHeroManager] = useState({});
-const [cardManager, setCardManager] = useState({});
-
-const [saveManager, setSaveManager] = useState({});
-const [disabledManager, setDisabledManager] = useState({}); 
 */

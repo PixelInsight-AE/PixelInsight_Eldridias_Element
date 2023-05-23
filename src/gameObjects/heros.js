@@ -1,5 +1,6 @@
 
 import { Hero } from "../gameLogic/constructor.js";
+import { img } from "../assets/imgur.js";
 const deathImg = "https://i.imgur.com/jEiDFYT.png";
 
 const bulwark = new Hero(
@@ -17,7 +18,7 @@ const bulwark = new Hero(
   1, //specialAttackCost
   200, //specialAttackPower
   true, //canRegularAttack
-  "https://i.imgur.com/OEIQ1ee.png", //imgUrl
+  img.bulwark, //imgUrl
   "https://i.imgur.com/OEIQ1ee.png", //imgUrl
   deathImg,
   1, //heroLevel
