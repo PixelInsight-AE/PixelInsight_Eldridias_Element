@@ -4,36 +4,69 @@ import { Home } from "./components/Home/Home";
 import { useEffect, useState } from "react";
 import { authUser } from "./../src/gameLogic/backendCalls/auth.js";
 import { getCSRF } from "./../src/gameLogic/backendCalls/getCSRF.js";
-import { mainStory } from "./../src/gameObjects/index.js";
+import {
+  mainStory,
+  bulwark,
+  beastMaster,
+  hogarth,
+  sorceress,
+  gunslinger,
+} from "./../src/gameObjects/index.js";
 import { img } from "./../src/assets/imgur.js";
-import { StoryBoard } from "./../src/components/index.js";
+import { StoryBoard, Dashboard } from "./../src/components/index.js";
 function Eldridia() {
   const [user, setUser] = useState({
     username: "",
     isAuthenticated: false,
   });
-  console.log(mainStory);
-  const [battleManager, setBattleManager] = useState({});
   const [sceneManager, setSceneManager] = useState({});
-
-  const [inventoryManager, setInventoryManager] = useState({});
+  const [levelManager, setLevelManager] = useState({
+    boss: "blankfornow",
+    currentLevel: 1,
+    maxFloor: 1,
+    currentFloor: 1,
+    location: "blankfornow",
+    wave: null,
+  });
+  const [battleManager, setBattleManager] = useState({
+    selectedCard: "None",
+    targetHero: null,
+    targetMonster: null,
+    heroHealth: null,
+    monsterHealth: null,
+    heroDamageAnimation: null,
+    monsterDamageAnimation: null,
+  });
+  const [inventoryManager, setInventoryManager] = useState({
+    orbs: 0,
+  });
+  const [gameManager, setGameManager] = useState({
+    currentScene: "StoryBoard",
+    overview: "party",
+    controller: null,
+    // currentIndex: 0,
+  });
   const [deckManager, setDeckManager] = useState({});
-  const [partyManager, setPartyManager] = useState({});
+  const [partyManager, setPartyManager] = useState({
+    tank: bulwark,
+    melee: beastMaster,
+    ranged: gunslinger,
+    healer: hogarth,
+    party: [bulwark, beastMaster, hogarth, gunslinger],
+  });
   const [heroManager, setHeroManager] = useState({});
   const [cardManager, setCardManager] = useState({});
 
   const [saveManager, setSaveManager] = useState({});
-  const [disabledManager, setDisabledManager] = useState({});
-  const [state, setState] = useState({
-    battleManager: {},
-    sceneManager: {},
-    inventoryManager: {},
-    deckManager: {},
-    partyManager: {},
-    heroManager: {},
-    cardManager: {},
-    saveManager: {},
-    disabledManager: {},
+  const [disabledManager, setDisabledManager] = useState({
+    partyBuilder: true,
+    inventory: true,
+    deckBuilder: true,
+    shop: true,
+    tankSelect: true,
+    healerSelect: true,
+    meleeSelect: true,
+    rangedSelect: true,
   });
 
   useEffect(() => {
@@ -48,7 +81,35 @@ function Eldridia() {
 
       <Route path="/signup/introduction" element={<h1>Introduction</h1>} />
 
-      <Route path="/dashboard" element={<h1>dash</h1>} />
+      <Route
+        path="/dashboard"
+        element={
+          <Dashboard
+            sceneManager={sceneManager}
+            levelManager={levelManager}
+            battleManager={battleManager}
+            inventoryManager={inventoryManager}
+            deckManager={deckManager}
+            partyManager={partyManager}
+            heroManager={heroManager}
+            cardManager={cardManager}
+            saveManager={saveManager}
+            disabledManager={disabledManager}
+            gameManager={gameManager}
+            setGameManager={setGameManager}
+            setSceneManager={setSceneManager}
+            setLevelManager={setLevelManager}
+            setBattleManager={setBattleManager}
+            setInventoryManager={setInventoryManager}
+            setDeckManager={setDeckManager}
+            setPartyManager={setPartyManager}
+            setHeroManager={setHeroManager}
+            setCardManager={setCardManager}
+            setSaveManager={setSaveManager}
+            setDisabledManager={setDisabledManager}
+          />
+        }
+      />
 
       <Route path="/game" element={<h1>Game</h1>} />
       <Route path="/game/story" element={<StoryBoard />} />

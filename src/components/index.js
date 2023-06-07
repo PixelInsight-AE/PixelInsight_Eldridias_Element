@@ -1,3 +1,3 @@
 import { StoryBoard } from "./story/StoryBoard";
-
-export { StoryBoard };
+import { Dashboard } from "./Dashboard/DashBoard";
+export { StoryBoard, Dashboard };

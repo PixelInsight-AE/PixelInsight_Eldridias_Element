@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  
+  const testuser = useSelector((state) => state.auth.username);
+  console.log(testuser);
   return (
     <motion.header
       initial={{ opacity: 0, y: -100 }}
@@ -41,6 +43,7 @@ const Header = () => {
           </motion.button>
         </motion.form>
       </div>
+      <h1>{testuser}</h1>
     </motion.header>
   );
 };

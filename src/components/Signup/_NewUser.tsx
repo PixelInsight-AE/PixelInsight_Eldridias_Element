@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import {
-  createNewUser,
-  createAccount,
-} from "../../../src/gameLogic/backendCalls/signUp.js";
-import { getCSRF } from "../../../src/gameLogic/backendCalls/getCSRF.js";
+import { useAuth } from "./../../hooks/useAuth";
+
 const NewUserSignUp = () => {
   //? New User State and error handlers. Will be passed to the backend and cleared out.
   const [newUser, setNewUser] = useState({
@@ -24,6 +21,7 @@ const NewUserSignUp = () => {
       lastName: "",
     },
   });
+
   //? age check funtion. can be modified to check for any age.
   const checkAge = (date) => {
     const currentDate = new Date();
@@ -74,6 +72,7 @@ const NewUserSignUp = () => {
   };
 
   //? Handles the submit for the form. Checks for errors and submits to the backend for user creation.
+  const { signup } = useAuth();
   const handleSubmit = (e) => {
     e.preventDefault();
     // Collect all error messages
@@ -83,15 +82,17 @@ const NewUserSignUp = () => {
 
     if (errorMessages.length === 0) {
       console.log("Submitting form");
-      //createNewUser(newUser);
-      createAccount(newUser);
+      let newUser = {
+        username: newUser.username,
+        password: newUser.password,
+        email: newUser.email,
+      };
+
+      signup(newUser);
     } else {
       console.log("Errors in form:", errorMessages);
     }
   };
-  useEffect(() => {
-    console.log(newUser);
-  }, [newUser]);
 
   return (
     <div id="NewUser">
