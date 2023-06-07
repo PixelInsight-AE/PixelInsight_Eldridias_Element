@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../store/slices/authSlice";
 const useAuth = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.username);
+  const user = useSelector((state) => state.auth.user);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const token = useSelector((state) => state.auth.token);
 
@@ -21,11 +21,15 @@ const useAuth = () => {
     });
   };
 
-  const login = (user) => {
-    logInFunction(user).then(() => {
-      dispatch(authActions.setUser(user.username));
-      navigate("/");
-    });
+  const login = async (user) => {
+    const res = await logInFunction(user);
+    if (!res) return;
+
+    console.log(res.user.username);
+    dispatch(authActions.setUser(res.user.username));
+
+    //!! change this to navigate to dashboard
+    navigate("/");
   };
   const logout = () => {
     logOutFunction();
