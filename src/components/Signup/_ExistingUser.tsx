@@ -1,21 +1,22 @@
 import { useEffect, useState } from "react";
-import { logInFunction } from "../../../src/gameLogic/backendCalls/login.js";
+import { useAuth } from "./../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 const ExistingUserSignIn = () => {
+  const dispatch = useDispatch();
+  const testuser = useSelector((state) => state.auth.username);
+
   //? Existing User State and error handlers. Will be passed to the backend and cleared out.
   const [existingUser, setExistingUser] = useState({
     username: "",
     password: "",
-    errors: {
-      username: "",
-      password: "",
-    },
   });
-  useEffect(() => {
-    console.log(existingUser);
-  }, [existingUser]);
+  const { login } = useAuth();
+  const [errors, setErrors] = useState({
+    username: "",
+    password: "",
+  });
 
-  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -38,17 +39,17 @@ const ExistingUserSignIn = () => {
   //? handles submit for the login form.
   const handleSubmit = (e) => {
     e.preventDefault();
-    logInFunction(existingUser);
-    //navigate("/");
-    //move user to home page
+    login(existingUser);
   };
+  useEffect(() => {
+    console.log(testuser);
+  }, [testuser]);
   return (
     <div id="ExistingUserSignIn">
       <h2>Already a Member?</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">
-          Username:{" "}
-          <span className="error">{existingUser.errors.username}</span>
+          Username: <span className="error">{errors.username}</span>
         </label>
         <input
           type="text"

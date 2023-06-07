@@ -1,3 +1,3 @@
 import { mainStory } from "./storyboard";
-
-export { mainStory };
+import { bulwark, hogarth, beastMaster, sorceress, gunslinger } from "./heros";
+export { mainStory, bulwark, hogarth, beastMaster, sorceress, gunslinger };

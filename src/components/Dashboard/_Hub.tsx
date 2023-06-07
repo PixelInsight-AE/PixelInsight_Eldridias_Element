@@ -5,9 +5,9 @@ import { InventoryBuilder } from "./_Inventory";
 import { Shop } from "./_Shop";
 import { Party } from "./_Party";
 
-const OverViewDisplay = ({ state, setState }) => {
-  const setDisplay = (state) => {
-    switch (state.OverView) {
+const OverViewDisplay = ({ gameManager }) => {
+  const setDisplay = (gameManager) => {
+    switch (gameManager.overview) {
       case "party":
         return <Party state={state} setState={setState} />;
       case "deck":

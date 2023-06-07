@@ -7,17 +7,18 @@ import "./DashBoard.scss";
 import { Shop } from "./_Shop";
 import { useEffect } from "react";
 import { OverViewHub, OverViewNavBar } from "./_Hub";
+import { mainStory } from "./../../gameObjects/storyboard";
 
-const OverViewHeader = ({ state, setState }) => {
+const OverViewHeader = ({ orbs }) => {
   return (
     <div id="OverviewHeader">
-      <h1>Current Chapter: {state.story[state.currentStory].chapterTitle}</h1>
-      <h2>Orbs: {state.currency}</h2>
+      <h1>Current Chapter: {mainStory[0].chapterTitle}</h1>
+      <h2>Orbs: {orbs}</h2>
     </div>
   );
 };
 
-const OverViewMap = ({ state, setState }) => {
+const OverViewMap = () => {
   return (
     <div id="OverViewMap">
       <h1>OverViewMap</h1>
@@ -67,12 +68,12 @@ const PartyMember = (props) => {
 };
 
 const OverviewParty = (props) => {
-  const { state, setState } = props;
+  const { partyManager } = props;
   const [isModule, setIsModule] = useState(false);
 
   return (
     <div id="OverviewParty">
-      {state.party.map((hero) => (
+      {partyManager.party.map((hero) => (
         <div key={hero.name} className="PartyMember">
           <PartyMember
             hero={hero}
@@ -81,7 +82,7 @@ const OverviewParty = (props) => {
           />
         </div>
       ))}
-      <Link to={state.story[state.currentStory].path}>
+      <Link to={mainStory[0].path}>
         <button>Start Game</button>
       </Link>
     </div>
@@ -89,24 +90,49 @@ const OverviewParty = (props) => {
 };
 
 const Dashboard = (props) => {
-  const { state, setState } = props;
+  const {
+    sceneManager,
+    levelManager,
+    battleManager,
+    inventoryManager,
+    deckManager,
+    partyManager,
+    heroManager,
+    cardManager,
+    saveManager,
+    disabledManager,
+    gameManager,
+    setGameManager,
+    setSaveManager,
+    setLevelManager,
+    setBattleManager,
+    setInventoryManager,
+    setDeckManager,
+    setPartyManager,
+    setHeroManager,
+    setCardManager,
+    setDisabledManager,
+  } = props;
   return (
     <div id="Dashboard">
       <div id="top">
         <div className="top-left">
-          <OverViewHeader state={state} setState={setState} />
-          <OverviewParty state={state} setState={setState} />
+          <OverViewHeader orbs={inventoryManager.orbs} />
+          <OverviewParty
+            partyManager={partyManager}
+            setPartyManager={setPartyManager}
+          />
         </div>
         <div className="top-right">
-          <OverViewMap state={state} setState={setState} />
+          <OverViewMap />
         </div>
       </div>
       <div id="bottom">
         <div id="nav-buttons">
-          <OverViewNavBar state={state} setState={setState} />
+          <OverViewNavBar />
         </div>
         <div>
-          <OverViewHub state={state} setState={setState} />
+          <OverViewHub gameManager={gameManager} />
         </div>
       </div>
     </div>
