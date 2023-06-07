@@ -13,6 +13,7 @@ import {
 } from "./../src/gameObjects/index.js";
 import { img } from "./../src/assets/imgur.js";
 import { StoryBoard, Dashboard } from "./../src/components/index.js";
+import { GameComponent } from "./components/Game/GameComponent.js";
 function Eldridia() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [sceneManager, setSceneManager] = useState({});
@@ -98,7 +99,7 @@ function Eldridia() {
 
       <Route path="/game" element={<h1>Game</h1>} />
       <Route path="/game/story" element={<StoryBoard />} />
-      <Route path="/game/play" element={<h1>Play</h1>} />
+      <Route path="/game/play" element={<GameComponent />} />
 
       <Route path="/account" element={<h1>Account</h1>} />
       <Route path="/account/profile" element={<h1>Profile</h1>} />

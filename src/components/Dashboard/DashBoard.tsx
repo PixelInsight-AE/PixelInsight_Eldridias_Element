@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Party } from "./_Party";
-import { DeckBuilder } from "./_Deck";
-import { InventoryBuilder } from "./_Inventory";
-import "./DashBoard.scss";
-import { Shop } from "./_Shop";
-import { useEffect } from "react";
-import { OverViewHub, OverViewNavBar } from "./_Hub";
-import { mainStory } from "./../../gameObjects/storyboard";
 
-const OverViewHeader = ({ orbs }) => {
+import { useEffect } from "react";
+import { OverViewHub } from "./_Hub";
+import { mainStory } from "./../../gameObjects/storyboard";
+import { useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+const OverViewHeader = () => {
+  const orbs = useSelector((state) => state.inventoryManager.orbs);
+  const story = useSelector((state) => state.storyManager.story);
+  const index = useSelector((state) => state.storyManager.currentSceneIndex);
+
   return (
     <div id="OverviewHeader">
-      <h1>Current Chapter: {mainStory[0].chapterTitle}</h1>
+      <h1>Current Chapter: {story[index].chapterTitle}</h1>
       <h2>Orbs: {orbs}</h2>
     </div>
   );
@@ -55,9 +56,11 @@ const PartyMember = (props) => {
     console.log("clicked");
     setIsModule(!isModule);
   };
-
+  const generaateUUID = () => {
+    return uuidv4();
+  };
   return (
-    <div onClick={handleClick} className="PartyMember">
+    <div key={generaateUUID} onClick={handleClick} className="PartyMember">
       {isModule ? (
         <PartyMemberStats hero={hero} />
       ) : (
@@ -67,14 +70,16 @@ const PartyMember = (props) => {
   );
 };
 
-const OverviewParty = (props) => {
-  const { partyManager } = props;
+const OverviewParty = () => {
   const [isModule, setIsModule] = useState(false);
-
+  const party = useSelector((state) => state.partyManager);
+  const partyArray = Object.values(party);
+  const story = useSelector((state) => state.storyManager.story);
+  const index = useSelector((state) => state.storyManager.currentSceneIndex);
   return (
     <div id="OverviewParty">
-      {partyManager.party.map((hero) => (
-        <div key={hero.name} className="PartyMember">
+      {partyArray.map((hero) => (
+        <div className="PartyMember">
           <PartyMember
             hero={hero}
             isModule={isModule}
@@ -82,7 +87,7 @@ const OverviewParty = (props) => {
           />
         </div>
       ))}
-      <Link to={mainStory[0].path}>
+      <Link to={story[index].paths}>
         <button>Start Game</button>
       </Link>
     </div>
@@ -90,38 +95,28 @@ const OverviewParty = (props) => {
 };
 
 const Dashboard = (props) => {
-  const {
-    sceneManager,
-    levelManager,
-    battleManager,
-    inventoryManager,
-    deckManager,
-    partyManager,
-    heroManager,
-    cardManager,
-    saveManager,
-    disabledManager,
-    gameManager,
-    setGameManager,
-    setSaveManager,
-    setLevelManager,
-    setBattleManager,
-    setInventoryManager,
-    setDeckManager,
-    setPartyManager,
-    setHeroManager,
-    setCardManager,
-    setDisabledManager,
-  } = props;
+  //!! set states in here for the dashboard that are not in redux
+  const [overview, setOverview] = useState("party");
+
+  const handleSaveManager = () => {
+    const dashboardSaveState = {
+      orbs: orbs,
+      party: party,
+      deck: deck,
+      inventory: inventory,
+    };
+    // send off data to backedn
+  };
+  const handleOverviewSelect = (selection) => {
+    setOverview(selection);
+  };
+
   return (
     <div id="Dashboard">
       <div id="top">
         <div className="top-left">
-          <OverViewHeader orbs={inventoryManager.orbs} />
-          <OverviewParty
-            partyManager={partyManager}
-            setPartyManager={setPartyManager}
-          />
+          <OverViewHeader />
+          <OverviewParty />
         </div>
         <div className="top-right">
           <OverViewMap />
@@ -129,10 +124,15 @@ const Dashboard = (props) => {
       </div>
       <div id="bottom">
         <div id="nav-buttons">
-          <OverViewNavBar />
+          <button onClick={() => handleOverviewSelect("party")}>Party</button>
+          <button onClick={() => handleOverviewSelect("deck")}>Deck</button>
+          <button onClick={() => handleOverviewSelect("inventory")}>
+            Inventory
+          </button>
+          <button onClick={() => handleOverviewSelect("shop")}>Shop</button>
         </div>
         <div>
-          <OverViewHub gameManager={gameManager} />
+          <OverViewHub overview={overview} />
         </div>
       </div>
     </div>

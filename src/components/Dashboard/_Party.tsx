@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { heroList } from "../../../src/gameObjects/heros.js";
 import "./DashBoard.scss";
-
+import { partyActions } from "../../store/slices/partySlice.js";
+import { useDispatch, useSelector } from "react-redux";
 /**
  *
  * ! All available heroes
@@ -59,33 +60,25 @@ const AvailableHeroes = (props) => {
  * ? This component will be passed a function to handle the selection of a hero
  */
 const Party = ({ state, setState }) => {
+  const dispatch = useDispatch();
+
   // ? This function will handle the selection of a hero
   const handlePartySelect = (hero) => {
-    setState((prevState) => {
-      if (hero.role === "Tank") {
-        return { ...prevState, tank: hero };
-      }
-      if (hero.role === "Melee") {
-        return { ...prevState, melee: hero };
-      }
-      if (hero.role === "Ranged") {
-        return { ...prevState, ranged: hero };
-      }
-      if (hero.role === "Healer") {
-        return { ...prevState, healer: hero };
-      }
-      return prevState;
-    });
+    if (hero.role === "Tank") {
+      dispatch(partyActions.setTank(hero));
+    }
+    if (hero.role === "Healer") {
+      dispatch(partyActions.setHealer(hero));
+    }
+    if (hero.role === "Melee") {
+      dispatch(partyActions.setMelee(hero));
+    }
+    if (hero.role === "Ranged") {
+      dispatch(partyActions.setRanged(hero));
+    }
   };
 
   //? This useEffect will update the party array when a hero state is updated
-  useEffect(() => {
-    console.log("party updated", state);
-    setState({
-      ...state,
-      party: [state.tank, state.melee, state.ranged, state.healer],
-    });
-  }, [state.tank, state.melee, state.ranged, state.healer]);
 
   return (
     <div>

@@ -7,21 +7,8 @@ import { useEffect } from "react";
 import { heroActions } from "./../../store/slices/heroSlice.js";
 const Header = () => {
   const { login } = useLogin();
-  const testuser = useSelector((state) => state.auth.username);
-  const heros = useSelector((state) => state.heroManager);
-  const testHeroUnlocks = useSelector((state) => state.heroManager.druid);
-  console.log(testHeroUnlocks);
-  const [user, setUser] = useState({ username: "", password: "" });
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(heroActions.unlockHero({ heroName: "druid" }));
-    dispatch(heroActions.levelUpHero({ heroName: "druid" }));
-    console.log("dispatched");
-  }, [dispatch]);
-  useEffect(() => {
-    console.log(heros);
-  }, [heros]);
+  const [user, setUser] = useState({ username: "", password: "" });
 
   const handleLogin = (e) => {
     e.preventDefault();

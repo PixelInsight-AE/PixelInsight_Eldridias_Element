@@ -1,23 +1,22 @@
 // import bootstrap oly to this file
-import React, { useEffect, useState } from 'react';
-import { PlayerControlls } from './../../PlayerControlls';
-import { Battlefield } from './GameComponent_Battefield';
-import { Stats } from './GameComponent_Stats';
+import React, { useEffect, useState } from "react";
+import { PlayerControlls } from "./../../PlayerControlls";
+import { Battlefield } from "./GameComponent_Battefield";
+import { Stats } from "./GameComponent_Stats";
 
-import './GameComponent.scss';
+import "./GameComponent.scss";
 
-const GameComponent = (props) => {
-  const { state, setState } = props;
+const GameComponent = () => {
   const [levelManager, setLevelManager] = useState({
-    boss: 'blankfornow',
+    boss: "blankfornow",
     currentLevel: 1,
     maxFloor: 1,
     currentFloor: 1,
-    location: 'blankfornow',
+    location: "blankfornow",
     wave: state.computer.waveGenerator(state.sceneManager[0], state.difficulty),
   });
   const [battle, setBattle] = useState({
-    selectedCard: 'None',
+    selectedCard: "None",
     targetHero: state.party[0],
     targetMonster: levelManager.wave[0],
     heroHealth: state.party[0].health,
@@ -50,21 +49,15 @@ const GameComponent = (props) => {
 
         <Battlefield
           levelManager={levelManager}
-          setLevelManager={setLevelManager}
           state={state}
-          setState={setState}
           battle={battle}
-          setBattle={setBattle}
           handleMonsterClick={handleMonsterClick}
           handleHeroClick={handleHeroClick}
         />
         <PlayerControlls
           levelManager={levelManager}
-          setLevelManager={setLevelManager}
           state={state}
-          setState={setState}
           battle={battle}
-          setBattle={setBattle}
           handleHeroClick={handleHeroClick}
           handleMonsterClick={handleMonsterClick}
         />

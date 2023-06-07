@@ -22,6 +22,35 @@ const initialState = {
     currentLevel: 1,
     unlocked: false,
   },
+  paladin: {
+    currentLevel: 1,
+    unlocked: false,
+  },
+  shadow: {
+    currentLevel: 1,
+    unlocked: false,
+  },
+  seer: {
+    currentLevel: 1,
+    unlocked: false,
+  },
+  storm: {
+    currentLevel: 1,
+    unlocked: false,
+  },
+  sentinel: {
+    currentLevel: 1,
+
+    unlocked: false,
+  },
+  nightshade: {
+    currentLevel: 1,
+    unlocked: false,
+  },
+  gunslinger: {
+    currentLevel: 1,
+    unlocked: false,
+  },
 };
 
 const heroSlice = createSlice({
@@ -35,6 +64,7 @@ const heroSlice = createSlice({
         currentLevel: state[heroName].currentLevel + 1,
       };
     },
+    //!! dispatch(heroActions.levelUpHero({ heroName: "druid" })
 
     unlockHero(state, action) {
       const { heroName } = action.payload;
@@ -43,6 +73,7 @@ const heroSlice = createSlice({
         unlocked: true,
       };
     },
+    //!! dispatch(heroActions.unlockHero({ heroName: "druid" })
   },
 });
 

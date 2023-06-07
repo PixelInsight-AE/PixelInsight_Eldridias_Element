@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 // ? DeckDisplayCard is a component that displays a single card in the deck
 const DeckDisplayCard = (props) => {
   const { card } = props;
@@ -11,8 +11,8 @@ const DeckDisplayCard = (props) => {
       </div>
       <h3>{card.rarity}</h3>
       <h2>
-        {card.cardLevel} -{' '}
-        <img className="element-icon" src={card.elementIcon} /> -{' '}
+        {card.cardLevel} -{" "}
+        <img className="element-icon" src={card.elementIcon} /> -{" "}
         {card.attackPower}
       </h2>
     </div>
@@ -20,13 +20,13 @@ const DeckDisplayCard = (props) => {
 };
 
 // ? DeckBuilder is a component that displays the entire deck
-const DeckBuilder = (props) => {
-  const { state } = props;
+const DeckBuilder = () => {
+  const deck = useSelector((state) => state.inventoryManager.deck);
   return (
     <div>
       <h1>Deck</h1>
       <div id="deck-grid">
-        {state.deck.map((card) => (
+        {deck.map((card) => (
           <div key={card.id}>
             <DeckDisplayCard card={card} />
           </div>
