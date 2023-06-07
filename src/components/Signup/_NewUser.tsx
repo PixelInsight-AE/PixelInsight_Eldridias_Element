@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "./../../hooks/useAuth";
 
 const NewUserSignUp = () => {
   //? New User State and error handlers. Will be passed to the backend and cleared out.
@@ -72,7 +71,7 @@ const NewUserSignUp = () => {
   };
 
   //? Handles the submit for the form. Checks for errors and submits to the backend for user creation.
-  const { signup } = useAuth();
+  //const { signup } = useAuth();
   const handleSubmit = (e) => {
     e.preventDefault();
     // Collect all error messages
@@ -88,7 +87,7 @@ const NewUserSignUp = () => {
         email: newUser.email,
       };
 
-      signup(newUser);
+      //signup(newUser);
     } else {
       console.log("Errors in form:", errorMessages);
     }

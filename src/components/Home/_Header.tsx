@@ -1,11 +1,27 @@
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-import { useAuth } from "../../hooks/useAuth";
+import { useLogin } from "../../hooks/useLogin";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { heroActions } from "./../../store/slices/heroSlice.js";
 const Header = () => {
-  const { login } = useAuth();
+  const { login } = useLogin();
   const testuser = useSelector((state) => state.auth.username);
+  const heros = useSelector((state) => state.heroManager);
+  const testHeroUnlocks = useSelector((state) => state.heroManager.druid);
+  console.log(testHeroUnlocks);
   const [user, setUser] = useState({ username: "", password: "" });
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(heroActions.unlockHero({ heroName: "druid" }));
+    dispatch(heroActions.levelUpHero({ heroName: "druid" }));
+    console.log("dispatched");
+  }, [dispatch]);
+  useEffect(() => {
+    console.log(heros);
+  }, [heros]);
 
   const handleLogin = (e) => {
     e.preventDefault();

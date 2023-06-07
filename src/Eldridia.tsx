@@ -2,8 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { SignUp } from "./components/Signup/Signup";
 import { Home } from "./components/Home/Home";
 import { useEffect, useState } from "react";
-import { authUser } from "./../src/gameLogic/backendCalls/auth.js";
-import { getCSRF } from "./../src/gameLogic/backendCalls/getCSRF.js";
+import { useSelector } from "react-redux";
 import {
   mainStory,
   bulwark,
@@ -15,10 +14,7 @@ import {
 import { img } from "./../src/assets/imgur.js";
 import { StoryBoard, Dashboard } from "./../src/components/index.js";
 function Eldridia() {
-  const [user, setUser] = useState({
-    username: "",
-    isAuthenticated: false,
-  });
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [sceneManager, setSceneManager] = useState({});
   const [levelManager, setLevelManager] = useState({
     boss: "blankfornow",
@@ -73,7 +69,7 @@ function Eldridia() {
     //? This is where we will fetch all the data from the backend.
     //? We will then pass it down to the components that need it.
   }, []);
-
+  console.log(isAuthenticated);
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -96,17 +92,6 @@ function Eldridia() {
             saveManager={saveManager}
             disabledManager={disabledManager}
             gameManager={gameManager}
-            setGameManager={setGameManager}
-            setSceneManager={setSceneManager}
-            setLevelManager={setLevelManager}
-            setBattleManager={setBattleManager}
-            setInventoryManager={setInventoryManager}
-            setDeckManager={setDeckManager}
-            setPartyManager={setPartyManager}
-            setHeroManager={setHeroManager}
-            setCardManager={setCardManager}
-            setSaveManager={setSaveManager}
-            setDisabledManager={setDisabledManager}
           />
         }
       />
