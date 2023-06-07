@@ -1,9 +1,16 @@
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-
+import { useAuth } from "../../hooks/useAuth";
+import { useState } from "react";
 const Header = () => {
+  const { login } = useAuth();
   const testuser = useSelector((state) => state.auth.username);
-  console.log(testuser);
+  const [user, setUser] = useState({ username: "", password: "" });
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login(user);
+  };
   return (
     <motion.header
       initial={{ opacity: 0, y: -100 }}
@@ -27,17 +34,25 @@ const Header = () => {
           transition={{ delay: 2 }}
           action=""
         >
-          <input type="email" name="email" id="email" placeholder="email" />
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="username"
+            onChange={(e) => setUser({ ...user, username: e.target.value })}
+          />
           <input
             type="password"
             name="password"
             id="password"
             placeholder="password"
+            onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.5 }}
+            onClick={handleLogin}
           >
             Login
           </motion.button>
