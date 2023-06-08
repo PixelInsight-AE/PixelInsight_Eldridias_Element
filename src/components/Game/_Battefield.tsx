@@ -1,7 +1,7 @@
-import { ClickableHeros, ClickableMonsters } from './GameComponent_Clickables';
-import { BattleHero, BattleMonster } from './GameComponent_Battle_station';
-import { Link } from 'react-router-dom';
-import { VictoryMessageLootBox } from './GameComponent_LootBox';
+import { ClickableHeros, ClickableMonsters } from "./_Clickables";
+import { BattleHero, BattleMonster } from "./_Battle_station";
+import { Link } from "react-router-dom";
+import { VictoryMessageLootBox } from "./_LootBox";
 
 const Battlefield = (props) => {
   const {

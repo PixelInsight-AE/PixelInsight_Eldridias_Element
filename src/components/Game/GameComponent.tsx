@@ -1,26 +1,21 @@
 // import bootstrap oly to this file
 import React, { useEffect, useState } from "react";
-import { PlayerControlls } from "./../../PlayerControlls";
-import { Battlefield } from "./GameComponent_Battefield";
-import { Stats } from "./GameComponent_Stats";
-
+import { PlayerControlls } from "./PlayerControlls.jsx";
+import { Battlefield } from "./_Battefield";
+import { Stats } from "./_Stats";
+import { Aragar } from "./../../gameObjects/Towns/Aragar.jsx";
+import { useSelector } from "react-redux";
 import "./GameComponent.scss";
 
 const GameComponent = () => {
-  const [levelManager, setLevelManager] = useState({
-    boss: "blankfornow",
-    currentLevel: 1,
-    maxFloor: 1,
-    currentFloor: 1,
-    location: "blankfornow",
-    wave: state.computer.waveGenerator(state.sceneManager[0], state.difficulty),
-  });
+  const party = useSelector((state) => state.partyManager);
+
   const [battle, setBattle] = useState({
     selectedCard: "None",
-    targetHero: state.party[0],
-    targetMonster: levelManager.wave[0],
-    heroHealth: state.party[0].health,
-    monsterHealth: levelManager.wave[0].health,
+    targetHero: party.tank,
+    targetMonster: "None",
+    heroHealth: party.tank.health,
+    monsterHealth: "100%",
     heroDamageAnimation: null,
     monsterDamageAnimation: null,
   });
@@ -48,15 +43,11 @@ const GameComponent = () => {
         <Stats battle={battle} />
 
         <Battlefield
-          levelManager={levelManager}
-          state={state}
           battle={battle}
           handleMonsterClick={handleMonsterClick}
           handleHeroClick={handleHeroClick}
         />
         <PlayerControlls
-          levelManager={levelManager}
-          state={state}
           battle={battle}
           handleHeroClick={handleHeroClick}
           handleMonsterClick={handleMonsterClick}

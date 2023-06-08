@@ -1,17 +1,11 @@
-import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-const BattleHero = (props) => {
-  const { battle, setBattle, state, setState } = props;
-
-  const handleTankClick = () => {
-    setBattle({
-      ...battle,
-      targetHero: state.party[0],
-    });
-  };
+import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+const BattleHero = () => {
+  const tank = useSelector((state) => state.partyManager.tank);
 
   return (
-    <div onClick={handleTankClick} id="BattleHero">
+    <div id="BattleHero">
       <motion.div
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
@@ -19,19 +13,18 @@ const BattleHero = (props) => {
         transition={{ delay: 0.5, duration: 0.5 }}
         id="monster-attack-animation"
       >
-        {battle.monsterDamageAnimation}
+        "damage here"
       </motion.div>
-      <img src={state.tank.imgUrl} alt="" />
+      <img src={tank.imgUrl} alt={tank.name} />
     </div>
   );
 };
 
-const BattleMonster = (props) => {
-  const { battle } = props;
+const BattleMonster = () => {
   return (
     <div id="BattleMonster">
-      <div id="hero-attack-animation">{battle.heroDamageAnimation}</div>
-      <img src={battle.targetMonster.imgUrl} alt="" />
+      <div id="hero-attack-animation"></div>
+      <img src="test" alt="" />
     </div>
   );
 };

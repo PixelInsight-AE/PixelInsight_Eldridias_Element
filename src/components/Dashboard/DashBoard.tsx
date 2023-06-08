@@ -1,28 +1,40 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { TownHub } from "../../gameObjects/Towns/TownHub";
 import { useEffect } from "react";
 import { OverViewHub } from "./_Hub";
 import { mainStory } from "./../../gameObjects/storyboard";
-import { useSelector } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
+import { useSelector, useDispatch } from "react-redux";
+import { GameManager } from "../../gameLogic/GameManager";
+import { useTownUnlock } from "../../hooks/useTownUnlock";
+
 const OverViewHeader = () => {
   const orbs = useSelector((state) => state.inventoryManager.orbs);
   const story = useSelector((state) => state.storyManager.story);
   const index = useSelector((state) => state.storyManager.currentSceneIndex);
-
+  const currentPlayer = useSelector((state) => state.auth.username);
   return (
     <div id="OverviewHeader">
-      <h1>Current Chapter: {story[index].chapterTitle}</h1>
+      <h1>
+        Current Chapter: {story[index].chapterTitle} - {currentPlayer}
+      </h1>
       <h2>Orbs: {orbs}</h2>
     </div>
   );
 };
 
 const OverViewMap = () => {
+  const { viewTownList } = useTownUnlock();
+  const townsArray = viewTownList();
   return (
     <div id="OverViewMap">
       <h1>OverViewMap</h1>
+      {/* dropdown with the towns array to select from */}
+      <select>
+        {townsArray.map((town) => (
+          <option value={town}>{town}</option>
+        ))}
+      </select>
     </div>
   );
 };
@@ -56,11 +68,9 @@ const PartyMember = (props) => {
     console.log("clicked");
     setIsModule(!isModule);
   };
-  const generaateUUID = () => {
-    return uuidv4();
-  };
+
   return (
-    <div key={generaateUUID} onClick={handleClick} className="PartyMember">
+    <div onClick={handleClick} className="PartyMember">
       {isModule ? (
         <PartyMemberStats hero={hero} />
       ) : (
@@ -81,6 +91,7 @@ const OverviewParty = () => {
       {partyArray.map((hero) => (
         <div className="PartyMember">
           <PartyMember
+            key={hero.id}
             hero={hero}
             isModule={isModule}
             setIsModule={setIsModule}
@@ -115,15 +126,17 @@ const Dashboard = (props) => {
     <div id="Dashboard">
       <div id="top">
         <div className="top-left">
+          <GameManager />
           <OverViewHeader />
           <OverviewParty />
         </div>
         <div className="top-right">
           <OverViewMap />
+          <TownHub />
         </div>
       </div>
       <div id="bottom">
-        <div id="nav-buttons">
+        <div id="OverViewNavBar">
           <button onClick={() => handleOverviewSelect("party")}>Party</button>
           <button onClick={() => handleOverviewSelect("deck")}>Deck</button>
           <button onClick={() => handleOverviewSelect("inventory")}>

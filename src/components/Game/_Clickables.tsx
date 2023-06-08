@@ -1,15 +1,14 @@
-import { motion } from 'framer-motion';
-
+import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { Aragar } from "./../../gameObjects/Towns/Aragar.jsx";
 const ClickableMonsters = (props) => {
-  const { handleMonsterClick, levelManager, battle, setBattle } = props;
+  const [bossAragar, waveOneAragar] = Aragar();
+
   //make array of monsters minus the target monster
-  let monsters = levelManager.wave.filter(
-    (monster) => monster.id !== battle.targetMonster.id
-  );
 
   return (
     <div id="ClickableMonsters">
-      {monsters.map((mob) => (
+      {bossAragar.map((mob) => (
         <div onClick={() => handleMonsterClick(mob)} key={mob.id}>
           <img src={mob.imgUrl} alt={mob.name} />
         </div>
@@ -18,25 +17,17 @@ const ClickableMonsters = (props) => {
   );
 };
 
-const ClickableHeros = (props) => {
-  const { state, setBattle, battle } = props;
+const ClickableHeros = () => {
+  const party = useSelector((state) => state.partyManager);
+
   const handleMeleeClick = () => {
-    setBattle({
-      ...battle,
-      targetHero: state.party[1],
-    });
+    //something here
   };
   const handleHealerClick = () => {
-    setBattle({
-      ...battle,
-      targetHero: state.party[2],
-    });
+    //somethinghere
   };
   const handleRangedClick = () => {
-    setBattle({
-      ...battle,
-      targetHero: state.party[3],
-    });
+    //somethingHErer
   };
 
   // TODO: Add tabIndex to divs and modify keypress handler inside playercontrolls
@@ -48,15 +39,15 @@ const ClickableHeros = (props) => {
           whileHover={{ scale: 1.2 }}
           whileFocus={{ scale: 1.2 }}
           tabIndex="0"
-          src={state.melee.imgUrl}
-          alt=""
+          src={party.melee.imgUrl}
+          alt={party.melee.name}
         />
       </div>
       <div tabIndex={1} onClick={handleHealerClick} id="healer">
-        <img src={state.healer.imgUrl} alt="" />
+        <img src={party.healer.imgUrl} alt={party.healer.name} />
       </div>
       <div tabIndex={2} onClick={handleRangedClick} id="ranged">
-        <img src={state.ranged.imgUrl} alt="" />
+        <img src={party.ranged.imgUrl} alt={party.ranged.name} />
       </div>
     </div>
   );

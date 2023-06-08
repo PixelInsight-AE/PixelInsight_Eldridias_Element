@@ -11,7 +11,7 @@ const ExistingUserSignIn = () => {
     username: "",
     password: "",
   });
-  const { login } = useAuth();
+  const { login } = useLogin();
   const [errors, setErrors] = useState({
     username: "",
     password: "",

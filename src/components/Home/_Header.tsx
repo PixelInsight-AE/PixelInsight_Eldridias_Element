@@ -61,7 +61,7 @@ const Header = () => {
           </motion.button>
         </motion.form>
       </div>
-      <h1>{testuser}</h1>
+      <h1></h1>
     </motion.header>
   );
 };

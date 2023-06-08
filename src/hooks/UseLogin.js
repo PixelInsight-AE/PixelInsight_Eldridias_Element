@@ -36,7 +36,7 @@ export const useLogin = () => {
       dispatch(authActions.setToken(json.token));
       setLoading(false);
       //!! navigate to dash after login
-      navigate("/");
+      navigate("/dashboard");
     }
   };
 
