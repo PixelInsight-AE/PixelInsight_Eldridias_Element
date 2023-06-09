@@ -1,10 +1,8 @@
 import { Aragar, Elyssia } from "./index";
 
 const TownHub = () => {
-  const [aragarBoss, aragarEasy, aragarMedium, aragarHard] = Aragar();
-
-  console.log(aragarBoss[0].name);
-
-  return <div>town</div>;
+  const townOfAragar = Aragar();
+  const townOfElyssia = Elyssia();
+  return { townOfAragar, townOfElyssia };
 };
 export { TownHub };

@@ -21,9 +21,7 @@ class Hero {
     maxHeroLevel,
     heroExperience,
     maxAttackPower,
-    id,
-    buffs,
-    debuffs
+    id
   ) {
     this.name = name;
     this.attackPower = attackPower;
@@ -47,8 +45,6 @@ class Hero {
     this.heroExperience = heroExperience;
     this.maxAttackPower = maxAttackPower;
     this.id = id;
-    this.buffs = buffs;
-    this.debuffs = debuffs;
   }
 }
 

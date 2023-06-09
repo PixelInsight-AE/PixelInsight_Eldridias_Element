@@ -1,55 +1,69 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { heroManagerInitialState } from "../initialStates/heroManager";
 
 const initialState = {
   bulwark: {
     currentLevel: 1,
     unlocked: true,
+    currentExp: 0,
   },
   hogarth: {
     currentLevel: 1,
     unlocked: true,
+
+    currentExp: 0,
   },
   beastMaster: {
     currentLevel: 1,
     unlocked: true,
+
+    currentExp: 0,
   },
   sorcceress: {
     currentLevel: 1,
     unlocked: true,
+
+    currentExp: 0,
   },
   druid: {
     currentLevel: 1,
     unlocked: false,
+    currentExp: 0,
   },
   paladin: {
     currentLevel: 1,
     unlocked: false,
+    currentExp: 0,
   },
   shadow: {
     currentLevel: 1,
     unlocked: false,
+    currentExp: 0,
   },
   seer: {
     currentLevel: 1,
     unlocked: false,
+    currentExp: 0,
   },
   storm: {
     currentLevel: 1,
     unlocked: false,
+    currentExp: 0,
   },
   sentinel: {
     currentLevel: 1,
 
     unlocked: false,
+    currentExp: 0,
   },
   nightshade: {
     currentLevel: 1,
     unlocked: false,
+    currentExp: 0,
   },
   gunslinger: {
     currentLevel: 1,
     unlocked: false,
+    currentExp: 0,
   },
 };
 

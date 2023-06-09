@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { OverViewHub } from "./_Hub";
 import { mainStory } from "./../../gameObjects/storyboard";
 import { useSelector, useDispatch } from "react-redux";
-import { GameManager } from "../../gameLogic/GameManager";
+
 import { useTownUnlock } from "../../hooks/useTownUnlock";
 
 const OverViewHeader = () => {
@@ -126,13 +126,11 @@ const Dashboard = (props) => {
     <div id="Dashboard">
       <div id="top">
         <div className="top-left">
-          <GameManager />
           <OverViewHeader />
           <OverviewParty />
         </div>
         <div className="top-right">
           <OverViewMap />
-          <TownHub />
         </div>
       </div>
       <div id="bottom">

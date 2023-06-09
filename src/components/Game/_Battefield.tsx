@@ -4,25 +4,16 @@ import { Link } from "react-router-dom";
 import { VictoryMessageLootBox } from "./_LootBox";
 
 const Battlefield = (props) => {
-  const {
-    state,
-    setState,
-    battle,
-    setBattle,
-    handleMonsterClick,
-    levelManager,
-  } = props;
+  const { battle, handleMonsterClick } = props;
   return (
     <div id="Battlefield">
-      <ClickableHeros battle={battle} setBattle={setBattle} state={state} />
-      <BattleHero state={state} setBattle={setBattle} battle={battle} />
-      <VictoryMessageLootBox state={state} setState={setState} />
+      <ClickableHeros battle={battle} />
+      <BattleHero battle={battle} />
+      <VictoryMessageLootBox />
       <BattleMonster battle={battle} />
       <ClickableMonsters
-        levelManager={levelManager}
         handleMonsterClick={handleMonsterClick}
         battle={battle}
-        setBattle={setBattle}
       />
     </div>
   );

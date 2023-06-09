@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 const SelectedHeroStats = (props) => {
   const { battle } = props;
@@ -7,7 +7,7 @@ const SelectedHeroStats = (props) => {
       <motion.div
         initial={{ opacity: 50, x: -225 }}
         whileHover={{ opacity: 100, x: 0 }}
-        transition={{ duration: 0.5, ease: 'easeInOut', type: 'spring' }}
+        transition={{ duration: 0.5, ease: "easeInOut", type: "spring" }}
         id="SelectedHeroStats"
       >
         <h2>{battle.targetHero.name}</h2>
@@ -33,7 +33,7 @@ const SelectedMonsterStats = (props) => {
     <motion.div
       initial={{ opacity: 50, x: 225 }}
       whileHover={{ opacity: 100, x: 0 }}
-      transition={{ duration: 0.5, ease: 'easeInOut', type: 'spring' }}
+      transition={{ duration: 0.5, ease: "easeInOut", type: "spring" }}
       id="SelectedMonsterStats"
     >
       <h2>{battle.targetMonster.name}</h2>
@@ -67,7 +67,9 @@ const EnemyStatusBar = (props) => {
   const { battle } = props;
   return (
     <div id="EnemyStatusBar">
-      <h2>{battle.targetMonster.name}</h2>
+      <h2>
+        {battle.targetMonster.name} HP - {battle.targetMonster.health}
+      </h2>
     </div>
   );
 };

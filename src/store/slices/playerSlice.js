@@ -4,6 +4,8 @@ const initialState = {
   mana: 0,
   isTurn: false,
   gameStatus: "playing",
+  currentTown: "aragar",
+  playerHand: [],
 };
 const playerSlice = createSlice({
   name: "playerManager",
@@ -17,6 +19,9 @@ const playerSlice = createSlice({
     },
     removeMana(state, action) {
       state.mana -= action.payload;
+    },
+    drawCard(state, action) {
+      state.playerHand.push(action.payload);
     },
   },
 });

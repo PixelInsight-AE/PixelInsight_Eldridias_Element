@@ -20,11 +20,12 @@ const BattleHero = () => {
   );
 };
 
-const BattleMonster = () => {
+const BattleMonster = (props) => {
+  const { battle } = props;
   return (
     <div id="BattleMonster">
       <div id="hero-attack-animation"></div>
-      <img src="test" alt="" />
+      <img src={battle.targetMonster.imgUrl} alt="" />
     </div>
   );
 };

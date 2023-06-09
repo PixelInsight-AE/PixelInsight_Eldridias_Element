@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { allElementalCards } from "../../gameObjects/elementCards";
 const initialState = {
   orbs: 0,
-  inventory: [],
+  inventory: ["yep"],
   deck: [...allElementalCards],
 };
 

@@ -84,8 +84,6 @@ const Party = ({ state, setState }) => {
     <div>
       <AvailableHeroes
         heroList={heroList}
-        state={state}
-        setState={setState}
         handlePartySelect={handlePartySelect}
       />
     </div>

@@ -10,14 +10,16 @@ const Elyssia = () => {
   const elyssiaWaveOne = aragarEasy;
   const elyssiaWaveTwo = aragarMedium;
   const elyssiawaveThree = aragarHard;
-  const townName = ["Elyssia"];
+  const townName = "Elyssia";
+  const townUnlocked = true;
 
-  return [
+  return {
     townName,
     elyssiaBoss,
     elyssiaWaveOne,
     elyssiaWaveTwo,
     elyssiawaveThree,
-  ];
+    townUnlocked,
+  };
 };
 export { Elyssia };

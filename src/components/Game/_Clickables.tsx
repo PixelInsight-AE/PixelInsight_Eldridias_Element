@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
+import { TownHub } from "./../../gameObjects/Towns/TownHub.jsx";
 import { Aragar } from "./../../gameObjects/Towns/Aragar.jsx";
 const ClickableMonsters = (props) => {
-  const [bossAragar, waveOneAragar] = Aragar();
-
-  //make array of monsters minus the target monster
+  const { handleMonsterClick } = props;
+  const { townOfAragar } = TownHub();
+  console.log(townOfAragar.name);
 
   return (
     <div id="ClickableMonsters">
-      {bossAragar.map((mob) => (
+      {townOfAragar.waveOneAragar.map((mob) => (
         <div onClick={() => handleMonsterClick(mob)} key={mob.id}>
           <img src={mob.imgUrl} alt={mob.name} />
         </div>

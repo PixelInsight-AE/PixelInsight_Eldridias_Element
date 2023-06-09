@@ -83,7 +83,7 @@ const mainStory = [
     chapterTitle: "The Changing Winds",
     content:
       "That child of mine that seeks to destroy me must be stopped. But I'll shall not interfere directly. Let things unfold.....",
-    paths: "/dashboard",
+    paths: "/game/play",
     backgrounds: img.backgrounds.introduction.sceneFive,
     speaker: img.mainCharacters.eldrida,
     isReward: false,

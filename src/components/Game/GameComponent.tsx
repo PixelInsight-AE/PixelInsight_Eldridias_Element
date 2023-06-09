@@ -3,54 +3,59 @@ import React, { useEffect, useState } from "react";
 import { PlayerControlls } from "./PlayerControlls.jsx";
 import { Battlefield } from "./_Battefield";
 import { Stats } from "./_Stats";
-import { Aragar } from "./../../gameObjects/Towns/Aragar.jsx";
+import { TownHub } from "./../../gameObjects/Towns/TownHub.jsx";
+
 import { useSelector } from "react-redux";
 import "./GameComponent.scss";
 
-const GameComponent = () => {
+const GameComponent = (props) => {
   const party = useSelector((state) => state.partyManager);
+  const { townOfAragar } = TownHub();
+  console.log(townOfAragar);
 
   const [battle, setBattle] = useState({
     selectedCard: "None",
-    targetHero: party.tank,
-    targetMonster: "None",
+    targetHero: party.healer,
+    targetMonster: townOfAragar.waveOneAragar[0],
     heroHealth: party.tank.health,
-    monsterHealth: "100%",
+    monsterHealth: townOfAragar.waveOneAragar[0].health,
     heroDamageAnimation: null,
     monsterDamageAnimation: null,
   });
-
-  // todo move to battlefield, and pass down as props to clickables
-  const handleHeroClick = (hero) => {
-    setBattle({
-      ...battle,
-      targetHero: hero,
-    });
-  };
-
-  const handleMonsterClick = (monster) => {
-    setBattle({
-      ...battle,
-      targetMonster: monster,
-    });
+  const healthReRender = () => {
+    setBattle((prev) => ({
+      ...prev,
+      heroHealth: battle.targetHero.health,
+      monsterHealth: battle.targetMonster.health,
+    }));
   };
   useEffect(() => {
-    console.log(battle.selectedCard);
-  }, [battle.selectedCard]);
+    //effect to set monster to current index one
+    // const firstTarget;
+    //functionToSetTarget(firstTarget);
+    // setBattle((prev) => ({
+    //   ...prev,
+    //   targetMonster: firstTarget,
+    // }));
+  }, []);
+
+  const handleMonsterClick = (monster) => {
+    setBattle((prev) => ({
+      ...prev,
+      targetMonster: monster,
+    }));
+  };
+
   return (
     <div id="GameComponent">
       <div id="darken">
         <Stats battle={battle} />
 
-        <Battlefield
-          battle={battle}
-          handleMonsterClick={handleMonsterClick}
-          handleHeroClick={handleHeroClick}
-        />
+        <Battlefield battle={battle} handleMonsterClick={handleMonsterClick} />
         <PlayerControlls
           battle={battle}
-          handleHeroClick={handleHeroClick}
           handleMonsterClick={handleMonsterClick}
+          healthReRender={healthReRender}
         />
       </div>
     </div>

@@ -9,13 +9,7 @@ const PlayingCards = ({ setState, state, battle, setBattle }) => {
   return (
     <div className="playing-cards">
       {state.playerHand.length ? (
-        <MappedPlayingCards
-          handleClick={handleClick}
-          state={state}
-          setState={setState}
-          battle={battle}
-          setBattle={setBattle}
-        />
+        <MappedPlayingCards handleClick={handleClick} battle={battle} />
       ) : (
         <h2>You Need Some Cards to Do Battle!</h2>
       )}
