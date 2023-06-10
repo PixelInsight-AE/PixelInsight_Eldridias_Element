@@ -2,7 +2,7 @@
 import { allElementalCards } from "../elementCards";
 import { aragarEasy, aragarHard, aragarMedium, aragarBoss } from "./Aragar";
 import { useSelector, useDispatch } from "react-redux";
-import { townActions } from "../../store/townSlice";
+import { townActions } from "../../store/slices/townSlice";
 import { useEffect } from "react";
 import { img } from "../../assets/imgur";
 const Aragar = () => {
