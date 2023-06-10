@@ -9,7 +9,8 @@ import { GameComponent } from "./components/Game/GameComponent.js";
 import { TownHub } from "../src/gameObjects/Towns/TownHub.jsx";
 function Eldridia() {
   const { lockout } = useLockout();
-  const { currentTown, handleTownSelect } = TownHub();
+  const { currentTown, handleTownSelect, monstersToDisplay, setEncounter } =
+    TownHub();
   const [disabledManager, setDisabledManager] = useState({
     partyBuilder: true,
     inventory: true,
@@ -45,6 +46,7 @@ function Eldridia() {
         element={
           <Dashboard
             currentTown={currentTown}
+            setEncounter={setEncounter}
             handleTownSelect={handleTownSelect}
           />
         }
@@ -56,6 +58,7 @@ function Eldridia() {
         element={
           <GameComponent
             currentTown={currentTown}
+            monsters={monstersToDisplay}
             handleTownSelect={handleTownSelect}
           />
         }

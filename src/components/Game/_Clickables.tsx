@@ -1,14 +1,16 @@
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-import { TownHub } from "./../../gameObjects/Towns/TownHub.jsx";
-import { Aragar } from "./../../gameObjects/Towns/Aragar.jsx";
+import { useState } from "react";
 const ClickableMonsters = (props) => {
-  const { handleMonsterClick, currentTown } = props;
+  const { handleMonsterClick, currentTown, monsters } = props;
+
   console.log(currentTown);
+  // make a shallow copy of monsters array
+  const monsterList = [...monsters];
 
   return (
     <div id="ClickableMonsters">
-      {currentTown.boss.map((mob) => (
+      {monsterList.map((mob) => (
         <div onClick={() => handleMonsterClick(mob)} key={mob.id}>
           <img src={mob.imgUrl} alt={mob.name} />
         </div>
@@ -17,23 +19,18 @@ const ClickableMonsters = (props) => {
   );
 };
 
-const ClickableHeros = () => {
+const ClickableHeros = ({ handleHeroClick }) => {
   const party = useSelector((state) => state.partyManager);
-
-  const handleMeleeClick = () => {
-    //something here
-  };
-  const handleHealerClick = () => {
-    //somethinghere
-  };
-  const handleRangedClick = () => {
-    //somethingHErer
-  };
 
   // TODO: Add tabIndex to divs and modify keypress handler inside playercontrolls
   return (
     <div id="ClickableHeros">
-      <div onClick={handleMeleeClick} id="melee">
+      <div
+        onClick={() => {
+          handleHeroClick(party.melee);
+        }}
+        id="melee"
+      >
         <motion.img
           initial={{ scale: 1 }}
           whileHover={{ scale: 1.2 }}
@@ -43,10 +40,22 @@ const ClickableHeros = () => {
           alt={party.melee.name}
         />
       </div>
-      <div tabIndex={1} onClick={handleHealerClick} id="healer">
+      <div
+        tabIndex={1}
+        onClick={() => {
+          handleHeroClick(party.healer);
+        }}
+        id="healer"
+      >
         <img src={party.healer.imgUrl} alt={party.healer.name} />
       </div>
-      <div tabIndex={2} onClick={handleRangedClick} id="ranged">
+      <div
+        tabIndex={2}
+        onClick={() => {
+          handleHeroClick(party.ranged);
+        }}
+        id="ranged"
+      >
         <img src={party.ranged.imgUrl} alt={party.ranged.name} />
       </div>
     </div>

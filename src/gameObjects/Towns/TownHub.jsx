@@ -1,14 +1,30 @@
-import { Aragar, Elyssia, Thorgar } from "./index";
+import { Aragar, Elyssia, Thorgar, Introduction } from "./index";
 import { useState } from "react";
 
 const TownHub = () => {
   //? Towns
+
   const townOfAragar = Aragar();
   const townOfElyssia = Elyssia();
   const townOfThorgar = Thorgar();
 
   //? Town Select
   const [currentTown, setCurrentTown] = useState(townOfAragar);
+  const [encounter, setEncounter] = useState("waveTwo");
+  let monstersToDisplay;
+
+  if (encounter === "waveOne") {
+    monstersToDisplay = currentTown.waveOne;
+  }
+  if (encounter === "waveTwo") {
+    monstersToDisplay = currentTown.waveTwo;
+  }
+  if (encounter === "waveThree") {
+    monstersToDisplay = currentTown.waveThree;
+  }
+  if (encounter === "boss") {
+    monstersToDisplay = currentTown.boss;
+  }
 
   const handleTownSelect = (town) => {
     if (town === "Aragar") {
@@ -22,6 +38,6 @@ const TownHub = () => {
     }
   };
 
-  return { currentTown, handleTownSelect };
+  return { currentTown, handleTownSelect, monstersToDisplay, setEncounter };
 };
 export { TownHub };

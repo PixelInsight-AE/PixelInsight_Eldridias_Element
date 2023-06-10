@@ -3,33 +3,29 @@ import React, { useEffect, useState } from "react";
 import { PlayerControlls } from "./PlayerControlls.jsx";
 import { Battlefield } from "./_Battefield";
 import { Stats } from "./_Stats";
-import { TownHub } from "./../../gameObjects/Towns/TownHub.jsx";
-
 import { useSelector } from "react-redux";
 import "./GameComponent.scss";
 
-const GameComponent = ({ currentTown, handleTownSelect }) => {
+const GameComponent = ({ currentTown, monsters }) => {
   const party = useSelector((state) => state.partyManager);
   console.log(currentTown);
 
   const [battle, setBattle] = useState({
     selectedCard: "None",
     targetHero: party.healer,
-    targetMonster: currentTown.waveOne[0],
-    heroHealth: party.tank.health,
-    monsterHealth: currentTown.waveOne[0].health,
+    targetMonster: monsters[0],
+    heroHealth: party.healer.health,
+    monsterHealth: monsters[0].health,
     heroDamageAnimation: null,
     monsterDamageAnimation: null,
   });
 
-  const healthReRender = () => {
+  const handleHeroClick = (hero) => {
     setBattle((prev) => ({
       ...prev,
-      heroHealth: battle.targetHero.health,
-      monsterHealth: battle.targetMonster.health,
+      targetHero: hero,
     }));
   };
-
   const handleMonsterClick = (monster) => {
     setBattle((prev) => ({
       ...prev,
@@ -45,12 +41,13 @@ const GameComponent = ({ currentTown, handleTownSelect }) => {
         <Battlefield
           battle={battle}
           handleMonsterClick={handleMonsterClick}
+          handleHeroClick={handleHeroClick}
           currentTown={currentTown}
+          monsters={monsters}
         />
         <PlayerControlls
           battle={battle}
           handleMonsterClick={handleMonsterClick}
-          healthReRender={healthReRender}
         />
       </div>
     </div>

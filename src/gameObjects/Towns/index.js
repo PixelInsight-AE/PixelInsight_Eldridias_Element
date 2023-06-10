@@ -1,4 +1,5 @@
 import { Aragar } from "./Aragar.jsx";
 import { Elyssia } from "./Elyssia.jsx";
 import { Thorgar } from "./Thorgar.jsx";
-export { Aragar, Elyssia, Thorgar };
+import { Introduction } from "./introduction.jsx";
+export { Aragar, Elyssia, Thorgar, Introduction };

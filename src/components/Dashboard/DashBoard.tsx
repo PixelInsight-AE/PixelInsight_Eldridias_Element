@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { TownHub } from "../../gameObjects/Towns/TownHub";
-import { useEffect } from "react";
+
 import { OverViewHub } from "./_Hub";
-import { mainStory } from "./../../gameObjects/storyboard";
-import { useSelector, useDispatch } from "react-redux";
+
+import { useSelector } from "react-redux";
 
 import { useTownUnlock } from "../../hooks/useTownUnlock";
 
@@ -24,7 +23,7 @@ const OverViewHeader = () => {
 };
 
 const OverViewMap = (props) => {
-  const { handleTownSelect, currentTown } = props;
+  const { handleTownSelect, currentTown, setEncounter } = props;
   const { viewTownList } = useTownUnlock();
   const townsArray = viewTownList();
   console.log(currentTown);
@@ -36,6 +35,12 @@ const OverViewMap = (props) => {
         {townsArray.map((town) => (
           <option value={town}>{town}</option>
         ))}
+      </select>
+      <select onChange={(e) => setEncounter(e.target.value)}>
+        <option value="waveOne">wave one</option>
+        <option value="waveTwo">wave two</option>
+        <option value="waveThree">wave three</option>
+        <option value="boss">boss</option>
       </select>
     </div>
   );
@@ -108,7 +113,7 @@ const OverviewParty = () => {
 };
 
 const Dashboard = (props) => {
-  const { currentTown, handleTownSelect } = props;
+  const { currentTown, handleTownSelect, setEncounter } = props;
   //!! set states in here for the dashboard that are not in redux
   const [overview, setOverview] = useState("party");
   const handleOverviewSelect = (selection) => {
@@ -126,6 +131,7 @@ const Dashboard = (props) => {
           <OverViewMap
             handleTownSelect={handleTownSelect}
             currentTown={currentTown}
+            setEncounter={setEncounter}
           />
         </div>
       </div>

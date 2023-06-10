@@ -1,11 +1,16 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-const BattleHero = () => {
+const BattleHero = ({ handleHeroClick }) => {
   const tank = useSelector((state) => state.partyManager.tank);
 
   return (
-    <div id="BattleHero">
+    <div
+      onClick={() => {
+        handleHeroClick(tank);
+      }}
+      id="BattleHero"
+    >
       <motion.div
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}

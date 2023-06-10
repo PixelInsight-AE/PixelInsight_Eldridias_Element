@@ -1,18 +1,19 @@
 //towns as function components that return  the town and objects for town such as monsters and npcs
-import { allElementalCards } from "../elementCards";
 import { aragarEasy, aragarHard, aragarMedium, aragarBoss } from "./Aragar";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { townActions } from "../../store/slices/townSlice";
-import { useEffect } from "react";
-import { img } from "../../assets/imgur";
+
 const Aragar = () => {
   const dispatch = useDispatch();
   const boss = aragarBoss;
   const waveOne = aragarEasy;
   const waveTwo = aragarMedium;
   const waveThree = aragarHard;
+  const isEasyDefeated = false;
+  const isMediumDefeated = false;
+  const isHardDefeated = false;
   const townName = "Aragar";
-  const isBossDefeated = false;
+  let isBossDefeated = false;
 
   // const sounds = {};
   // const images = {};
@@ -21,9 +22,18 @@ const Aragar = () => {
   //   allElementalCards[Math.random(0, 10) * 100],
   //   allElementalCards[Math.random(0, 10) * 100],
   // ];
-
+  const defeatTheBoss = () => {
+    isBossDefeated = true;
+  };
   const unlockNextTown = () => {
-    dispatch(townActions.unlockTown("Elyssia"));
+    if (
+      isEasyDefeated &&
+      isMediumDefeated &&
+      isHardDefeated &&
+      isBossDefeated
+    ) {
+      dispatch(townActions.unlockTown({ town: "Elyssia" }));
+    }
   };
 
   return {
@@ -34,6 +44,7 @@ const Aragar = () => {
     townName,
     isBossDefeated,
     unlockNextTown,
+    defeatTheBoss,
   };
 };
 export { Aragar };
