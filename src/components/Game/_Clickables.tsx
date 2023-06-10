@@ -3,13 +3,12 @@ import { useSelector } from "react-redux";
 import { TownHub } from "./../../gameObjects/Towns/TownHub.jsx";
 import { Aragar } from "./../../gameObjects/Towns/Aragar.jsx";
 const ClickableMonsters = (props) => {
-  const { handleMonsterClick } = props;
-  const { townOfAragar } = TownHub();
-  console.log(townOfAragar.name);
+  const { handleMonsterClick, currentTown } = props;
+  console.log(currentTown);
 
   return (
     <div id="ClickableMonsters">
-      {townOfAragar.waveOneAragar.map((mob) => (
+      {currentTown.boss.map((mob) => (
         <div onClick={() => handleMonsterClick(mob)} key={mob.id}>
           <img src={mob.imgUrl} alt={mob.name} />
         </div>

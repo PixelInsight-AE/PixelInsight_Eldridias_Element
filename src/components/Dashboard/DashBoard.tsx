@@ -23,14 +23,16 @@ const OverViewHeader = () => {
   );
 };
 
-const OverViewMap = () => {
+const OverViewMap = (props) => {
+  const { handleTownSelect, currentTown } = props;
   const { viewTownList } = useTownUnlock();
   const townsArray = viewTownList();
+  console.log(currentTown);
   return (
     <div id="OverViewMap">
       <h1>OverViewMap</h1>
       {/* dropdown with the towns array to select from */}
-      <select>
+      <select onChange={(e) => handleTownSelect(e.target.value)}>
         {townsArray.map((town) => (
           <option value={town}>{town}</option>
         ))}
@@ -106,18 +108,9 @@ const OverviewParty = () => {
 };
 
 const Dashboard = (props) => {
+  const { currentTown, handleTownSelect } = props;
   //!! set states in here for the dashboard that are not in redux
   const [overview, setOverview] = useState("party");
-
-  const handleSaveManager = () => {
-    const dashboardSaveState = {
-      orbs: orbs,
-      party: party,
-      deck: deck,
-      inventory: inventory,
-    };
-    // send off data to backedn
-  };
   const handleOverviewSelect = (selection) => {
     setOverview(selection);
   };
@@ -130,7 +123,10 @@ const Dashboard = (props) => {
           <OverviewParty />
         </div>
         <div className="top-right">
-          <OverViewMap />
+          <OverViewMap
+            handleTownSelect={handleTownSelect}
+            currentTown={currentTown}
+          />
         </div>
       </div>
       <div id="bottom">

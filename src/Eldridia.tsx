@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { StoryBoard, Dashboard } from "./../src/components/index.js";
 import { GameComponent } from "./components/Game/GameComponent.js";
+import { TownHub } from "../src/gameObjects/Towns/TownHub.jsx";
 function Eldridia() {
   const { lockout } = useLockout();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const { currentTown, handleTownSelect } = TownHub();
   const [disabledManager, setDisabledManager] = useState({
     partyBuilder: true,
     inventory: true,
@@ -28,6 +29,7 @@ function Eldridia() {
   //basic auto save feature here with useEffect
   useEffect(() => {
     //fetch game save data
+    //depe
     return () => {
       //save game data
     };
@@ -38,10 +40,26 @@ function Eldridia() {
       <Route path="/" element={<Home />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/signup/introduction" element={<h1></h1>} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route
+        path="/dashboard"
+        element={
+          <Dashboard
+            currentTown={currentTown}
+            handleTownSelect={handleTownSelect}
+          />
+        }
+      />
       <Route path="/game" element={<h1>Game</h1>} />
       <Route path="/game/story" element={<StoryBoard />} />
-      <Route path="/game/play" element={<GameComponent />} />
+      <Route
+        path="/game/play"
+        element={
+          <GameComponent
+            currentTown={currentTown}
+            handleTownSelect={handleTownSelect}
+          />
+        }
+      />
       <Route path="/account" element={<h1>Account</h1>} />
       <Route path="/account/profile" element={<h1>Profile</h1>} />
       <Route path="/account/settings" element={<h1>Settings</h1>} />
@@ -54,7 +72,3 @@ export default Eldridia;
 
 // ? All good and cleaned up.
 // todo get rid of UI folder
-/* 
-const [storyManager, setStoryManager] = useState({});
-
-*/

@@ -17,10 +17,6 @@ const GeneralButtons = ({ battle, healthReRender }) => {
     // }
   };
 
-  // useEffect(() => {
-  //   healthReRender();
-  // }, [healthReRender]);
-
   return (
     <div id="GeneralButtons">
       <button>Draw Cards</button>
@@ -47,19 +43,13 @@ const PlayerControlls = ({ battle, healthReRender }) => {
     <div id="PlayerControlls">
       <div className="border">
         {/* <HeroSpecialAttackButtons
-          state={state}
-          setState={setState}
           battle={battle}
-          setBattle={setBattle}
         /> */}
         <GeneralButtons battle={battle} healthReRender={healthReRender} />
       </div>
       <div id="clickable-controls">
         {/* <PlayingCards
-          state={state}
-          setState={setState}
           battle={battle}
-          setBattle={setBattle}
         /> */}
       </div>
     </div>

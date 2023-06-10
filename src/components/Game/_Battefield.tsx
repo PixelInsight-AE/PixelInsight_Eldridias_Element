@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { VictoryMessageLootBox } from "./_LootBox";
 
 const Battlefield = (props) => {
-  const { battle, handleMonsterClick } = props;
+  const { battle, handleMonsterClick, currentTown } = props;
   return (
     <div id="Battlefield">
       <ClickableHeros battle={battle} />
@@ -14,6 +14,7 @@ const Battlefield = (props) => {
       <ClickableMonsters
         handleMonsterClick={handleMonsterClick}
         battle={battle}
+        currentTown={currentTown}
       />
     </div>
   );

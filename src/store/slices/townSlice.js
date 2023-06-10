@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  aragar: true,
-  elyssia: true,
-  thorgar: false,
+  Aragar: true,
+  Elyssia: false,
+  Thorgar: false,
 };
 
 const townSlice = createSlice({
@@ -15,7 +15,7 @@ const townSlice = createSlice({
       state[town] = true;
     },
   },
-  //!! dispatch(townActions.unlockTown({ town: "elyssia" }));
+  //!! dispatch(townActions.unlockTown({ town: "Elyssia" }));
 });
 export const townActions = townSlice.actions;
 export default townSlice.reducer;

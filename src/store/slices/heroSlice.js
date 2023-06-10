@@ -9,13 +9,11 @@ const initialState = {
   hogarth: {
     currentLevel: 1,
     unlocked: true,
-
     currentExp: 0,
   },
   beastMaster: {
     currentLevel: 1,
     unlocked: true,
-
     currentExp: 0,
   },
   sorcceress: {
