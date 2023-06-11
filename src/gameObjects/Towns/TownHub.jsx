@@ -1,7 +1,9 @@
 import { Aragar, Elyssia, Thorgar, Introduction } from "./index";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { townActions } from "../../store/slices/townSlice";
 const TownHub = () => {
+  const dispatch = useDispatch();
   //? Towns
 
   const townOfAragar = Aragar();
@@ -38,6 +40,20 @@ const TownHub = () => {
     }
   };
 
-  return { currentTown, handleTownSelect, monstersToDisplay, setEncounter };
+  // const unlockNextTown = () => {
+  //   if (currentTown.townName === "Aragar") {
+  //     dispatch(townActions.unlockTown({ town: "Elyssia" }));
+  //   }
+  //   if (currentTown.townName === "Elyssia") {
+  //     dispatch(townActions.unlockTown({ town: "Thorgar" }));
+  //   }
+  // };
+
+  return {
+    currentTown,
+    monstersToDisplay,
+    handleTownSelect,
+    setEncounter,
+  };
 };
 export { TownHub };

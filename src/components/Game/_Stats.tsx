@@ -64,23 +64,23 @@ const PartyStatusBar = (props) => {
 };
 
 const EnemyStatusBar = (props) => {
-  const { battle } = props;
+  const { battle, monsterHealth } = props;
   return (
     <div id="EnemyStatusBar">
       <h2>
-        {battle.targetMonster.name} HP - {battle.targetMonster.health}
+        {battle.targetMonster.name} HP - {monsterHealth}
       </h2>
     </div>
   );
 };
 const Stats = (props) => {
-  const { battle } = props;
+  const { monsterHealth, heroHealth, battle } = props;
   return (
     <div id="Stats">
       <PartyStatusBar battle={battle} />
-      <SelectedHeroStats battle={battle} />
-      <EnemyStatusBar battle={battle} />
-      <SelectedMonsterStats battle={battle} />
+      <SelectedHeroStats battle={battle} heroHealth={heroHealth} />
+      <EnemyStatusBar battle={battle} monsterHealth={monsterHealth} />
+      <SelectedMonsterStats battle={battle} monsterHealth={monsterHealth} />
     </div>
   );
 };

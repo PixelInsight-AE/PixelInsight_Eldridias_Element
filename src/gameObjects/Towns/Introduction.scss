@@ -1,0 +1,15 @@
+.hogarth {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  z-index: 0;
+}
+
+.gobble {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  height: 200px;
+  width: 200px;
+  z-index: 1;
+}

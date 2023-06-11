@@ -5,34 +5,26 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { yamiTheDreamer } from "../bossCards";
 import { townActions } from "../../store/slices/townSlice";
+import { useState } from "react";
 
 const Elyssia = () => {
   const dispatch = useDispatch();
+  const [bossDead, setBossDead] = useState(false);
   //fucntion component to make the town of Aragar
   const boss = [yamiTheDreamer];
   const waveOne = aragarEasy;
   const waveTwo = aragarMedium;
   const waveThree = aragarHard;
   const townName = "Elyssia";
-  let isBossDefeated = false;
 
-  const defeatTheBoss = () => {
-    isBossDefeated = true;
-  };
-
-  const unlockNextTown = () => {
-    if (
-      isEasyDefeated &&
-      isMediumDefeated &&
-      isHardDefeated &&
-      isBossDefeated
-    ) {
-      dispatch(townActions.unlockTown({ town: "Thorgar" }));
+  const handleBossDeath = () => {
+    if (boss[0].health <= 0) {
+      setBossDead(true);
+      // boss.imgUrl = boss.deathImgUrl;
     }
   };
-
-  if (isBossDefeated) {
-    unlockNextTown();
+  if (bossDead) {
+    dispatch(townActions.unlockTown({ town: "Elyssia" }));
   }
 
   return {
@@ -41,9 +33,7 @@ const Elyssia = () => {
     waveOne,
     waveTwo,
     waveThree,
-    isBossDefeated,
-
-    defeatTheBoss,
+    handleBossDeath,
   };
 };
 export { Elyssia };

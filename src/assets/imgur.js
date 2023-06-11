@@ -22,9 +22,12 @@ const img = {
     prolouge: {},
   },
   enemies: {
+    gravestoneImg: "https://i.imgur.com/jEiDFYT.png",
     gobble: "https://i.imgur.com/p6y7Qsm.png",
   },
-  bosses: {},
+  bosses: {
+    magiTheLiar: "https://i.imgur.com/6QFTJpp.png",
+  },
   maps: {},
   elementCards: {},
   magicCards: {},

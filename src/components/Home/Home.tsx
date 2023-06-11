@@ -1,13 +1,13 @@
-import Snowfall from 'react-snowfall';
-import { Header } from './_Header'
-import { HeroOne } from './_Hero_01';
-import { HeroTwo } from './_Hero_02';
-import { HeroThree } from './_Hero_03';
-import { HeroFour } from './_Hero_04';
-import { HeroFive } from './_Hero_05';
-import { HeroSix } from './_Hero_06';
+import Snowfall from "react-snowfall";
+import { Header } from "./_Header";
+import { HeroOne } from "./_Hero_01";
+import { HeroTwo } from "./_Hero_02";
+import { HeroThree } from "./_Hero_03";
+import { HeroFour } from "./_Hero_04";
+import { HeroFive } from "./_Hero_05";
+import { HeroSix } from "./_Hero_06";
 
-import './Home.scss';
+import "./Home.scss";
 
 const Home = () => {
   return (

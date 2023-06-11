@@ -7,10 +7,17 @@ import { useSelector } from "react-redux";
 import { StoryBoard, Dashboard } from "./../src/components/index.js";
 import { GameComponent } from "./components/Game/GameComponent.js";
 import { TownHub } from "../src/gameObjects/Towns/TownHub.jsx";
+import { Introduction } from "/src/gameObjects/Towns/Introduction.jsx";
+
 function Eldridia() {
   const { lockout } = useLockout();
-  const { currentTown, handleTownSelect, monstersToDisplay, setEncounter } =
-    TownHub();
+  const {
+    currentTown,
+    handleTownSelect,
+    monstersToDisplay,
+    setEncounter,
+    defeatTheBoss,
+  } = TownHub();
   const [disabledManager, setDisabledManager] = useState({
     partyBuilder: true,
     inventory: true,
@@ -60,12 +67,14 @@ function Eldridia() {
             currentTown={currentTown}
             monsters={monstersToDisplay}
             handleTownSelect={handleTownSelect}
+            defeatTheBoss={defeatTheBoss}
           />
         }
       />
       <Route path="/account" element={<h1>Account</h1>} />
       <Route path="/account/profile" element={<h1>Profile</h1>} />
       <Route path="/account/settings" element={<h1>Settings</h1>} />
+      <Route path="/introduction" element={<Introduction />} />
       <Route path="*" element={<Home />} />
     </Routes>
   );

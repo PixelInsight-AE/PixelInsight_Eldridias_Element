@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 export const gameManager = {
-  const player = useSelector((state) => state.player);
+  player: useSelector((state) => state.player);
   name: player.name,
   isTurn: player.isTurn,
   mana: player.mana,

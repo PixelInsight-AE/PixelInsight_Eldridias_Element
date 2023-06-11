@@ -8,15 +8,6 @@ const GeneralButtons = ({ battle, healthReRender }) => {
   const { playTurn, endTurn, deathCheck, death, attack, specialAttack } =
     GameManager();
 
-  const findMonsterIndex = () => {
-    // for (let i = 0; i < levelManager.wave.length; i++) {
-    //   if (levelManager.wave[i] === battle.targetMonster) {
-    //     console.log("Monster Index: ", i);
-    //     return i;
-    //   }
-    // }
-  };
-
   return (
     <div id="GeneralButtons">
       <button>Draw Cards</button>

@@ -19,6 +19,6 @@ export const useTownUnlock = () => {
   const unlockTown = (town) => {
     dispatch(townActions.unlockTown({ town: town }));
   };
-
+  //!! dispatch(townActions.unlockTown({ town: "Elyssia" }));
   return { viewTownList, unlockTown };
 };

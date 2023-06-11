@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { townActions } from "../../store/slices/townSlice.js";
 const ClickableMonsters = (props) => {
   const { handleMonsterClick, currentTown, monsters } = props;
 
   console.log(currentTown);
-  // make a shallow copy of monsters array
-  const monsterList = [...monsters];
 
   return (
     <div id="ClickableMonsters">
-      {monsterList.map((mob) => (
+      {monsters.map((mob) => (
         <div onClick={() => handleMonsterClick(mob)} key={mob.id}>
           <img src={mob.imgUrl} alt={mob.name} />
         </div>

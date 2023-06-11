@@ -2,7 +2,7 @@ import {
   magiTheLiar,
   yamiTheDreamer,
   sargarasTheDestroyer,
-} from './bossCards.js';
+} from "./bossCards.js";
 import {
   skeleton,
   orc,
@@ -13,8 +13,8 @@ import {
   blackKnight,
   blackWasp,
   dragon,
-} from './monsters.js';
-const monsterList = [skeleton, orc, goblin, spider];
+} from "./monsters.js";
+const monsterList = [skeleton, orc, goblin, spider, spider];
 const monsterList2 = [wizard, slime, blackKnight, blackWasp, dragon];
 
 export { monsterList, monsterList2 };

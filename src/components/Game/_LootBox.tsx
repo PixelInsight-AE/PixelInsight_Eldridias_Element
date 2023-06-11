@@ -1,18 +1,15 @@
 import { Link } from "react-router-dom";
-const VictoryComponent = (props) => {
-  const handleLevelChange = () => {
-    console.log("levelchange");
-  };
+const VictoryComponent = ({ defeatTheBoss }) => {
   return (
     <div>
       <h1>You Completed The Floor</h1>
       <Link to="/dashboard/story">
-        <button onClick={handleLevelChange}>
+        <button onClick={defeatTheBoss}>
           <h2>Next Floor</h2>
         </button>
       </Link>
       <Link to="/dashboard/story">
-        <button onClick={handleLevelChange}>
+        <button onClick={defeatTheBoss}>
           <h2>Return To Town</h2>
         </button>
       </Link>
@@ -35,4 +32,4 @@ const VictoryMessageLootBox = (props) => {
   );
 };
 
-export { VictoryMessageLootBox };
+export { VictoryMessageLootBox, VictoryComponent };

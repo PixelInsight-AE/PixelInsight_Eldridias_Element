@@ -1,5 +1,7 @@
+import { img } from "../assets/imgur";
 const yamiTheDreamer = {
   name: "Yami the Dreamer",
+  isBossDefeated: false,
   attackPower: 350,
   defense: 770,
   mana: 250,
@@ -14,8 +16,6 @@ const yamiTheDreamer = {
         console.log(
           "Yami the Dreamer blows the dust of the dead on the party in attempt to put them into the eternal slumber."
         );
-        party[Math.random() * 4] -= attackPower;
-        party[Math.random() * 4] -= attackPower;
       },
       name: "Dream of Death",
       description:
@@ -26,8 +26,6 @@ const yamiTheDreamer = {
         console.log(
           "Yami summons a wave of darkness that strikes her enemies from the shadows, dealing massive damage."
         );
-        party[Math.random() * 4] -= attackPower;
-        party[Math.random() * 4] -= attackPower;
       },
       name: "Shadow of the Void",
       description:
@@ -38,8 +36,6 @@ const yamiTheDreamer = {
         console.log(
           "Yami unleashes a powerful scream that causes her enemies to become paralyzed with fear."
         );
-        party[Math.random() * 4] -= attackPower;
-        party[Math.random() * 4] -= attackPower;
       },
 
       name: " Night Terror",
@@ -51,8 +47,6 @@ const yamiTheDreamer = {
         console.log(
           "Yami consumes the dreams of her enemies, draining their energy and restoring her own health"
         );
-        party[Math.random() * 4] -= attackPower;
-        party[Math.random() * 4] -= attackPower;
       },
 
       name: "Dream Eater",
@@ -61,27 +55,10 @@ const yamiTheDreamer = {
     },
   ],
   attack: function (party) {
-    console.log(`Yami the Dreamer attacks ${party[0].name}`);
-    let currentTarget = party[0];
-    if (party.length > 0) {
-      console.log(`Yami the Dreamer ${currentTarget.name}`);
-      if (currentTarget.health >= 0) {
-        currentTarget.health -= this.attackPower;
-        console.log(
-          `${currentTarget.name}: Current Health :${currentTarget.health}`
-        );
-        currentTarget.death();
-      }
-    }
+    console.log(`Yami the Dreamer attacks `);
   },
   death: function () {
-    if (this.health <= 0) {
-      console.log("Yami the Dreamer has been defeated!");
-      this.health = this.maxHealth;
-
-      levelOne.pop();
-      console.log(levelOne);
-    }
+    console.log("Yami the Dreamer has been defeated!");
   },
 };
 
@@ -161,6 +138,7 @@ const sargarasTheDestroyer = {
 
 const magiTheLiar = {
   name: "Magi the Liar",
+
   description:
     "Magi the Liar is a powerful mage who uses deception to her advantage.",
   attackPower: 100,
@@ -172,6 +150,7 @@ const magiTheLiar = {
   role: "Boss",
   effect: [],
   imgUrl: "https://i.imgur.com/6QFTJpp.png",
+  deathImgUrl: img.enemies.gravestoneImg,
   abilities: [
     {
       liarsLament: function () {

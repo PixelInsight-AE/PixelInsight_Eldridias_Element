@@ -22,9 +22,6 @@ const GameManager = () => {
     if (defender.health <= 0) {
       return;
     }
-    if (defender.health > attacker.attackPower) {
-      death(defender);
-    }
     defender.health -= attacker.attackPower;
     deathCheck(defender);
   };
