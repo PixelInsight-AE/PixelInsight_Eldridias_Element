@@ -6,6 +6,7 @@ import partyReducer from "./slices/partySlice";
 import storyReducer from "./slices/storySlice";
 import playerReducer from "./slices/playerSlice";
 import townReducer from "./slices/townSlice";
+import battleReducer from "./slices/battleSlice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     storyManager: storyReducer,
     playerManager: playerReducer,
     townManager: townReducer,
+    battleManager: battleReducer,
   },
 });
 export default store;

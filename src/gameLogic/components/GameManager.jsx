@@ -2,7 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { playerActions } from "../../store/slices/playerSlice";
+import { battleActions } from "../../store/slices/battleSlice";
 const GameManager = () => {
+  const battle = useSelector((state) => state.battleManager);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -18,12 +20,15 @@ const GameManager = () => {
   const death = (subject) => {
     subject.imgUrl = subject.deathImgUrl;
   };
-  const attack = (attacker, defender) => {
-    if (defender.health <= 0) {
+  const attack = () => {
+    console.log(battle);
+    if (battle.targetMonster.health <= 0) {
       return;
     }
-    defender.health -= attacker.attackPower;
-    deathCheck(defender);
+
+    battle.targetMonster.health -= battle.targetHero.attackPower;
+    dispatch(battleActions.setTargetMonster(battle.targetMonster));
+    deathCheck(battle.targetMonster);
   };
   const specialAttack = (attacker, defender) => {
     defender.health -= attacker.specialAttackPower;

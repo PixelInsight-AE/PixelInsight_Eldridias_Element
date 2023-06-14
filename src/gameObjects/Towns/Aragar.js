@@ -8,8 +8,10 @@ import {
   blackKnight,
   blackWasp,
   dragon,
+  magiTheLiar,
 } from "../monsters";
-import { magiTheLiar } from "../bossCards";
+
+//import story for aragar
 
 const aragarEasy = [skeleton, goblin, spider, slime];
 const aragarMedium = [orc, blackWasp, blackWasp, blackWasp];

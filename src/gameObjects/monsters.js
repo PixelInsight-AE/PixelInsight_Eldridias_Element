@@ -182,6 +182,26 @@ const blackKnight = new Monster(
   [],
   []
 );
+const magiTheLiar = new Monster(
+  "Magi The Liar",
+  10,
+  "A powerful mage that can deal massive damage.",
+  "It seems I was no match for you... AAArggggzz",
+  "Magic",
+  "Boss",
+  500,
+  500,
+  100,
+  1000,
+  1000,
+  false,
+  "https://i.imgur.com/6QFTJpp.png",
+  "https://i.imgur.com/6QFTJpp.png",
+  gravestoneIMG,
+  "https://i.imgur.com/2Iff7Gw.png",
+  [],
+  []
+);
 
 const monsterList = [
   wizard,
@@ -206,4 +226,5 @@ export {
   blackWasp,
   blackKnight,
   monsterList,
+  magiTheLiar,
 };

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   Aragar: true,
-  Elyssia: false,
+  Elyssia: true,
   Thorgar: false,
 };
 

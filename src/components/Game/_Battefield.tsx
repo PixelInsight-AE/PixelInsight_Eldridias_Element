@@ -3,15 +3,12 @@ import { BattleHero, BattleMonster } from "./_Battle_station";
 import { Link } from "react-router-dom";
 import { VictoryComponent } from "./_LootBox";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { battleActions } from "../../store/slices/battleSlice.js";
 const Battlefield = (props) => {
-  const {
-    battle,
-    handleMonsterClick,
-    handleHeroClick,
-    currentTown,
-    monsters,
-    handleHealthChange,
-  } = props;
+  const party = useSelector((state) => state.partyManager);
+  const dispatch = useDispatch();
+  const { currentTown, monsters } = props;
 
   useEffect(() => {
     console.log(currentTown.boss[0].imgUrl);
@@ -19,19 +16,17 @@ const Battlefield = (props) => {
       currentTown.handleBossDeath();
     }
   }, [currentTown.boss[0].health]);
-
+  useEffect(() => {
+    dispatch(battleActions.setTargetMonster(monsters[0]));
+    dispatch(battleActions.setTargetHero(party.tank));
+  }, []);
   return (
     <div id="Battlefield">
-      <ClickableHeros handleHeroClick={handleHeroClick} />
-      <BattleHero battle={battle} handleHeroClick={handleHeroClick} />
+      <ClickableHeros />
+      <BattleHero />
 
-      <BattleMonster battle={battle} />
-      <ClickableMonsters
-        handleMonsterClick={handleMonsterClick}
-        battle={battle}
-        currentTown={currentTown}
-        monsters={monsters}
-      />
+      <BattleMonster />
+      <ClickableMonsters currentTown={currentTown} monsters={monsters} />
     </div>
   );
 };
