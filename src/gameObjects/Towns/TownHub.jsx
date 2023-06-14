@@ -12,7 +12,7 @@ const TownHub = () => {
 
   //? Town Select
   const [currentTown, setCurrentTown] = useState(townOfAragar);
-  const [encounter, setEncounter] = useState("waveTwo");
+  const [encounter, setEncounter] = useState("waveOne");
   let monstersToDisplay;
 
   if (encounter === "waveOne") {

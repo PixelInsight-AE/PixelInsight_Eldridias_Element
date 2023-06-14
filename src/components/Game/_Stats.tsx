@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { battleActions } from "./../../store/slices/battleSlice.js";
 
-const SelectedHeroStats = (props) => {
-  const { battle } = props;
+const SelectedHeroStats = () => {
+  const battle = useSelector((state) => state.battleManager);
+
+  useEffect(() => {
+    console.log(battle);
+  }, []);
+
   return (
     <>
       <motion.div
@@ -17,7 +25,7 @@ const SelectedHeroStats = (props) => {
           <img src={battle.targetHero.defaultImgUrl} alt="" />
         </div>
         <div className="selected-stats">
-          <p className="hp">|HP: {battle.targetHero.health}|</p>
+          <p className="hp">|HP: {battle.heroHealth}|</p>
           <p className="def">|DEF:{battle.targetHero.defense}|</p>
           <p className="atk">|ATK:{battle.targetHero.attackPower}|</p>
         </div>
@@ -26,8 +34,9 @@ const SelectedHeroStats = (props) => {
   );
 };
 
-const SelectedMonsterStats = (props) => {
-  const { battle } = props;
+const SelectedMonsterStats = () => {
+  const battle = useSelector((state) => state.battleManager);
+
   return (
     //! need to fix overflow x on the mosnter stat div right side
     <motion.div
@@ -51,36 +60,36 @@ const SelectedMonsterStats = (props) => {
   );
 };
 
-const PartyStatusBar = (props) => {
-  const { battle } = props;
+const PartyStatusBar = () => {
+  const battle = useSelector((state) => state.battleManager);
   return (
     <div id="PlayerStatusBar">
       <h2>
         {battle.targetHero.name} HP: {battle.targetHero.health}
       </h2>
-      <h3>{battle.selectedCard.name}</h3>
+      <h3></h3>
     </div>
   );
 };
 
-const EnemyStatusBar = (props) => {
-  const { battle, monsterHealth } = props;
+const EnemyStatusBar = () => {
+  const battle = useSelector((state) => state.battleManager);
+
   return (
     <div id="EnemyStatusBar">
       <h2>
-        {battle.targetMonster.name} HP - {monsterHealth}
+        {battle.targetMonster.name} HP - {battle.monsterHealth}
       </h2>
     </div>
   );
 };
-const Stats = (props) => {
-  const { monsterHealth, heroHealth, battle } = props;
+const Stats = () => {
   return (
     <div id="Stats">
-      <PartyStatusBar battle={battle} />
-      <SelectedHeroStats battle={battle} heroHealth={heroHealth} />
-      <EnemyStatusBar battle={battle} monsterHealth={monsterHealth} />
-      <SelectedMonsterStats battle={battle} monsterHealth={monsterHealth} />
+      <PartyStatusBar />
+      <SelectedHeroStats />
+      <EnemyStatusBar />
+      <SelectedMonsterStats />
     </div>
   );
 };

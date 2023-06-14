@@ -4,21 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { GameManager } from "../../gameLogic/components/GameManager";
 //import { useController } //!! need to make this hook
 
-const GeneralButtons = ({ battle, healthReRender }) => {
-  const { playTurn, endTurn, deathCheck, death, attack, specialAttack } =
-    GameManager();
+const GeneralButtons = () => {
+  const dispatch = useDispatch();
+  const battle = useSelector((state) => state.battleManager);
+  const { attack } = GameManager();
 
   return (
     <div id="GeneralButtons">
       <button>Draw Cards</button>
       <button>End Turn</button>
-      <button
-        onClick={() => {
-          attack(battle.targetHero, battle.targetMonster);
-        }}
-      >
-        Attack
-      </button>
+      <button onClick={attack}>Attack</button>
       <button>Deselect Card</button>
       <button>
         <Link to="/dashboard" id="surrender">
@@ -29,20 +24,13 @@ const GeneralButtons = ({ battle, healthReRender }) => {
   );
 };
 
-const PlayerControlls = ({ battle, healthReRender }) => {
+const PlayerControlls = () => {
   return (
     <div id="PlayerControlls">
       <div className="border">
-        {/* <HeroSpecialAttackButtons
-          battle={battle}
-        /> */}
-        <GeneralButtons battle={battle} healthReRender={healthReRender} />
+        <GeneralButtons />
       </div>
-      <div id="clickable-controls">
-        {/* <PlayingCards
-          battle={battle}
-        /> */}
-      </div>
+      <div id="clickable-controls"></div>
     </div>
   );
 };

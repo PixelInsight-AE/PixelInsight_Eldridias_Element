@@ -1,9 +1,17 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-const BattleHero = ({ handleHeroClick }) => {
+import { battleActions } from "./../../store/slices/battleSlice.js";
+const BattleHero = () => {
   const tank = useSelector((state) => state.partyManager.tank);
 
+  //console.log(battle);
+  const dispatch = useDispatch();
+
+  const handleHeroClick = (hero) => {
+    console.log(hero);
+    dispatch(battleActions.setTargetHero(hero));
+  };
   return (
     <div
       onClick={() => {
@@ -26,7 +34,8 @@ const BattleHero = ({ handleHeroClick }) => {
 };
 
 const BattleMonster = (props) => {
-  const { battle } = props;
+  const battle = useSelector((state) => state.battleManager);
+
   return (
     <div id="BattleMonster">
       <div id="hero-attack-animation"></div>

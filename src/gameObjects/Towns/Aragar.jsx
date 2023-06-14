@@ -11,6 +11,7 @@ const Aragar = () => {
   const waveTwo = aragarMedium;
   const waveThree = aragarHard;
   const townName = "Aragar";
+  //const story = aragarStory;
 
   // const sounds = {};
   // const images = {};
